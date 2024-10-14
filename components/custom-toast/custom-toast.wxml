@@ -1,0 +1,8 @@
+<view class="custom-toast {{show ? 'show' : ''}}" animation="{{animationData}}">
+  <view class="toast-content {{type}}">
+    <icon wx:if="{{type === 'success'}}" type="success" size="20"></icon>
+    <icon wx:elif="{{type === 'error'}}" type="warn" size="20"></icon>
+    <icon wx:elif="{{type === 'info'}}" type="info" size="20"></icon>
+    <text>{{message}}</text>
+  </view>
+</view>

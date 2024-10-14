@@ -1,0 +1,87 @@
+/* pages/my_page.wxss */
+.my-page {
+  background-color: #ffffff;
+  padding: 20rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-right: 20rpx;
+}
+
+.user-name {
+  font-size: 36rpx;
+  color: #333;
+}
+
+.section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  color: #ff8c00;
+  margin-bottom: 20rpx;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #fff5e6;
+  color: #ff8c00;
+  padding: 10rpx 20rpx;
+  border-radius: 30rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.health-tip {
+  background-color: #fff5e6;
+  color: #333;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+
+.recommendation-list {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.recommendation-item {
+  display: inline-block;
+  margin-right: 20rpx;
+  width: 200rpx;
+}
+
+.recommendation-image {
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+}
+
+.recommendation-title {
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 10rpx;
+}
+
+.about-us-btn {
+  background-color: #ff8c00;
+  color: #ffffff;
+  border: none;
+  border-radius: 40rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+}

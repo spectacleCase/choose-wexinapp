@@ -1,0 +1,17 @@
+<!-- 主页面的 wxml 文件 -->
+<view class="container">
+    <side-tabbar isOpen="{{isTabbarOpen}}" bindtabchange="onTabChange" bindclosetabbar="toggleTabbar"></side-tabbar>
+    <view class="page-content" animation="{{pageAnimation}}" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+        <view class="header">
+            <button class="icon-button " style="margin-right: 450rpx;" bindtap="toggleTabbar">
+                ☰
+            </button>
+            <button class="icon-button notification-button">🔔</button>
+        </view>
+        <view class="main-content">
+            <index-page wx:if="{{currentPage === 'index'}}"></index-page>
+            <settings-page wx:elif="{{currentPage === 'settings'}}"></settings-page>
+            <my-page wx:elif="{{currentPage === 'user'}}"></my-page>
+        </view>
+    </view>
+</view>

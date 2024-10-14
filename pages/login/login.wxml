@@ -1,0 +1,12 @@
+<!-- pages/login.wxml -->
+<view class="container">
+  <view class="background-decoration"></view>
+  <view class="content">
+    <image class="floating-icon" src="/images/coke.png" mode="aspectFit"></image>
+    <text class="title">美味食光</text>
+    <text class="subtitle">发现你的专属美食推荐</text>
+    <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">微信登录</button>
+  </view>
+  <text class="footer">继续即表示您同意我们的服务条款和隐私政策</text>
+  <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
+</view>

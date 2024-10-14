@@ -1,0 +1,27 @@
+<!-- pages/my-page.wxml -->
+<view class="my-page">
+  <view class="user-info">
+    <image class="user-avatar" src="{{userInfo.avatar}}" mode="aspectFill" bindtap="editUserInfo"></image>
+    <text class="user-name" bindtap="editUserInfo">{{userInfo.nickname}}</text>
+  </view>
+  <view class="section">
+    <view class="section-title">标签偏好</view>
+    <view class="tag-list" bindtap="editTags">
+      <text class="tag" wx:for="{{userTags}}" wx:key="index">{{item}}</text>
+    </view>
+  </view>
+  <view class="section">
+    <view class="section-title">健康小知识</view>
+    <view class="health-tip">{{healthTip}}</view>
+  </view>
+  <view class="section">
+    <view class="section-title">近期推荐</view>
+    <view class="recommendation-list">
+      <view class="recommendation-item" wx:for="{{recommendations}}" wx:key="index">
+        <image class="recommendation-image" src="{{item.image}}" mode="aspectFill"></image>
+        <text class="recommendation-title">{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+  <button class="about-us-btn" bindtap="navigateToAboutUs">关于我们</button>
+</view>

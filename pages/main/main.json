@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "page-container": "/components/page-container/page-container",
+    "side-tabbar": "/components/side-tabbar/side-tabbar"
+  }
+}

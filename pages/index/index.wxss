@@ -1,0 +1,477 @@
+/* pages/index/index.wxss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 40rpx 0; /* 移除左右padding，让背景色延伸到边缘 */
+  box-sizing: border-box;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: #ffffff;
+  position: relative;
+
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location-info {
+  display: flex;
+  align-items: center;
+}
+.location-icon {
+    margin-left: 70rpx;
+    width: 60rpx;
+      height: 60rpx;
+}
+
+.location-name {
+  font-size: 28rpx;
+  color: #333;
+
+}
+
+
+.main-title {
+  display: flex;
+  font-size: 36rpx;
+  color: #333;
+  margin-left: 80rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+
+}
+
+.user-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.health-tips {
+  width: calc(100% - 120rpx); /* 减去左右padding */
+  background-color: #FFF5E6;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-radius: 15rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  margin: 20rpx auto;
+  position: relative;
+  z-index: 2;
+}
+
+.tips-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #F55A00;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.tips-content {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+.recommendation-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.picker {
+  background-color: #fff;
+  border: 2rpx solid #ff8c00;
+  border-radius: 10rpx;
+  padding: 10rpx 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.recommend-button {
+  width: 160rpx;
+  height: 160rpx;
+  position: relative;
+  background: linear-gradient(145deg, #FFA07A, #FF8C69); /* 更淡的橙色渐变 */
+  border-radius: 50%;
+  box-shadow: 0 6rpx 15rpx rgba(255, 160, 122, 0.3); /* 更淡的阴影 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin: 30rpx auto;
+}
+
+.recommend-button::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  border: 2rpx solid rgba(255, 255, 255, 0.8); /* 略微增加边框透明度 */
+}
+
+.recommend-icon {
+  font-size: 70rpx;
+  color: white;
+  margin-bottom: -10rpx;
+}
+
+.recommend-text {
+  font-size: 24rpx;
+  color: white;
+  margin-top: 5rpx;
+}
+
+.recommend-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 3rpx 10rpx rgba(255, 160, 122, 0.4); /* 更淡的按压阴影 */
+  background: linear-gradient(145deg, #FF8C69, #FFA07A); /* 反转渐变方向 */
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.recommend-button:hover {
+  animation: bounce 0.3s ease;
+}
+
+.recommendation-results {
+  width: 100%;
+  height: 700rpx; /* 增加高度 */
+  background-color: #ffffff;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+.recommendation-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+
+  margin-left: 70rpx;
+  margin-top: 20rpx;
+  margin-bottom: -20rpx;
+}
+
+.results-scroll {
+  height: calc(100% - 52rpx); /* 减去标题的高度 */
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-item {
+  width: 80%;
+  background-color: #F7F8FC;
+  border-radius: 10rpx;
+  padding: 15rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.result-image {
+  width: 120rpx; /* 调整图片宽度 */
+  height: 120rpx; /* 调整图片高度 */
+  border-radius: 8rpx;
+  margin-right: 15rpx; /* 添加右边距 */
+}
+
+.result-info {
+  flex: 1; /* 让信息占据剩余空间 */
+  display: flex;
+  margin-left: 10rpx;
+  flex-direction: column;
+}
+
+.result-tag {
+  font-size: 20rpx;
+  color: #128FAE;
+  margin-bottom: 5rpx;
+}
+
+.result-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1F222B;
+  margin-bottom: 10rpx;
+  margin-top: 10rpx;
+}
+
+.result-distance {
+  font-size: 22rpx;
+  color: #B6B9C2;
+}
+
+.refresh-tip {
+  background-color: #F55A00;
+  color: #fff;
+  border: none;
+  border-radius: 10rpx;
+  padding: 10rpx 20rpx;
+  font-size: 28rpx;
+}
+
+.search-bar {
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input-container {
+  flex: 1;
+  height: 70rpx;
+  background-color: #f5f5f5;
+  border-radius: 35rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  margin-right: 20rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+
+.filter-button {
+  width: 70rpx;
+  height: 70rpx;
+  background-color: #f5f5f5;
+  border-radius: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+  z-index: 1000;
+}
+
+.filter-popup.show {
+  transform: translateY(0);
+}
+
+.filter-content {
+  padding: 40rpx;
+}
+
+.filter-option {
+  margin-bottom: 40rpx;
+}
+
+.filter-option text {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.picker {
+  background-color: #f5f5f5;
+  border-radius: 40rpx;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.confirm-button {
+  width: 100%;
+  height: 70rpx;
+  background-color: #F55A00;
+  color: #fff;
+  border: none;
+  border-radius: 35rpx;
+  font-size: 28rpx;
+  margin-top: 30rpx;
+}
+
+.count-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.count-button {
+  flex: 1;
+  margin: 0 10rpx;
+  height: 80rpx;
+  background-color: #fff;
+  color: #333;
+  border: 2rpx solid #F55A00;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.count-button.selected {
+  background-color: #fff;
+  color: #F55A00;
+  border: 2rpx solid #F55A00;
+  font-weight: bold;
+}
+
+.popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f9f9f9; /* 弹出层背景色 */
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+  z-index: 1000;
+  box-shadow: 0 -4rpx 10rpx rgba(0, 0, 0, 0.1); /* 添加顶部阴影 */
+}
+
+.popup.show {
+  transform: translateY(0);
+}
+
+.popup-content {
+  padding: 40rpx;
+  background-color: #f9f9f9; /* 确保内容区域也是相同的背景色 */
+}
+
+.popup-option {
+  margin-bottom: 30rpx;
+}
+
+.popup-option text {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.count-buttons, .category-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.count-button, .category-button {
+  flex: 0 0 30%;
+  margin: 5rpx;
+  height: 60rpx;
+  background-color: #f5f5f5;  /* 浅灰色背景 */
+  color: #666;  /* 深灰色字体 */
+  border: 2rpx solid #e0e0e0;  /* 浅灰色边框 */
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.count-button.selected, .category-button.selected {
+  background-color: #FFF5E6;  /* 浅橙色背景 */
+  color: #F55A00;  /* 橙色字体 */
+  border: 2rpx solid #F55A00;  /* 橙色边框 */
+  font-weight: bold;
+}
+
+.confirm-button {
+  width: 100%;
+  height: 70rpx;
+  background-color: #F55A00;
+  color: #fff;
+  border: none;
+  border-radius: 35rpx;
+  font-size: 28rpx;
+  margin-top: 30rpx;
+}
+
+.popup-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.popup-description {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.popup-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.popup-reset {
+  font-size: 28rpx;
+  color: #F55A00;
+}
+
+.search-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20rpx;
+  z-index: 1;
+}
+
+
+/* 调整 search-section 的样式 */
+.search-section {
+  width: 100%;
+  margin-bottom: 20rpx;  /* 添加底部边距 */
+  z-index: 1;
+}
+
+
+
+
+
+

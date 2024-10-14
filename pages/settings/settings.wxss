@@ -1,0 +1,47 @@
+.settings-list {
+  width: 100%;
+}
+
+.settings-container {
+  padding: 20rpx;
+  background-color: #f8f8f8;
+}
+
+.settings-group {
+  background-color: #ffffff;
+  border-radius: 15rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-label {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.picker {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.icon-arrow-right {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 10rpx;
+}
+
+switch {
+  transform: scale(0.8);
+}

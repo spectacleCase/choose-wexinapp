@@ -1,0 +1,12 @@
+/* pages/main/main.wxss */
+.main-container {
+  display: flex;
+  flex-direction: row;  /* 改为横向排列 */
+  height: 100vh;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  margin-left: 280rpx;  /* 为侧边栏留出空间 */
+}

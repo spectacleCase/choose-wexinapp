@@ -1,0 +1,84 @@
+/* pages/login.wxss */
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: #FFF5E6;
+  padding: 60rpx 40rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.background-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 165, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(255, 140, 0, 0.1) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  z-index: 1;
+}
+
+.floating-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 40rpx;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #FF8C00;
+  margin-bottom: 16rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #FF7F50;
+  margin-bottom: 80rpx;
+  text-align: center;
+}
+
+.login-btn {
+  width: 80%;
+  padding: 24rpx 0;
+  background-color: #FFA500;
+  color: #FFFFFF;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 40rpx;
+  box-shadow: 0 4rpx 8rpx rgba(255, 165, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.login-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 4rpx rgba(255, 165, 0, 0.3);
+}
+
+.footer {
+  font-size: 24rpx;
+  color: #FF7F50;
+  text-align: center;
+  z-index: 1;
+}

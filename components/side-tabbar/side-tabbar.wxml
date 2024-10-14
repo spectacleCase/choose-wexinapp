@@ -1,0 +1,12 @@
+<view class="side-tabbar-container">
+    <view class="user-info" style="margin-left: 70rpx">
+        <image class="user-avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+        <text class="user-name" style="padding-left: 20rpx">{{userInfo.nickname}}</text>
+    </view>
+    <view class="side-tabbar">
+        <view wx:for="{{tabItems}}" wx:key="index" class="tab-item {{activeTab === index ? 'active' : ''}}" bindtap="onTabItemTap" data-index="{{index}}">
+            <image class="tab-icon" src="{{item.icon}}"></image>
+            <text class="tab-text">{{item.text}}</text>
+        </view>
+    </view>
+</view>
