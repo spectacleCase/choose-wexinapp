@@ -4,6 +4,6 @@
     "side-tabbar": "/components/side-tabbar/side-tabbar",
     "index-page": "/pages/index/index",
     "settings-page": "/pages/settings/settings",
-    "my-page": "/pages/user/user"
+    "user": "/pages/user/user"
   }
 }

@@ -3,14 +3,13 @@
 .container {
   display: flex;
   flex-direction: column;
-
-  padding: 40rpx 0; /* 移除左右padding，让背景色延伸到边缘 */
+  padding: 40rpx 0;
+  /* 移除左右padding，让背景色延伸到边缘 */
   box-sizing: border-box;
   min-height: 100vh;
   max-height: 100vh;
   background-color: #ffffff;
   position: relative;
-
 }
 
 .header {
@@ -24,18 +23,17 @@
   display: flex;
   align-items: center;
 }
+
 .location-icon {
-    margin-left: 70rpx;
-    width: 60rpx;
-      height: 60rpx;
+  margin-left: 70rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .location-name {
   font-size: 28rpx;
   color: #333;
-
 }
-
 
 .main-title {
   display: flex;
@@ -45,7 +43,6 @@
   font-weight: bold;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
-
 }
 
 .user-avatar {
@@ -55,7 +52,8 @@
 }
 
 .health-tips {
-  width: calc(100% - 120rpx); /* 减去左右padding */
+  width: calc(100% - 120rpx);
+  /* 减去左右padding */
   background-color: #FFF5E6;
   padding: 20rpx;
   box-sizing: border-box;
@@ -100,9 +98,11 @@
   width: 160rpx;
   height: 160rpx;
   position: relative;
-  background: linear-gradient(145deg, #FFA07A, #FF8C69); /* 更淡的橙色渐变 */
+  background: linear-gradient(145deg, #FFA07A, #FF8C69);
+  /* 更淡的橙色渐变 */
   border-radius: 50%;
-  box-shadow: 0 6rpx 15rpx rgba(255, 160, 122, 0.3); /* 更淡的阴影 */
+  box-shadow: 0 6rpx 15rpx rgba(255, 160, 122, 0.3);
+  /* 更淡的阴影 */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,7 +118,8 @@
   width: 90%;
   height: 90%;
   border-radius: 50%;
-  border: 2rpx solid rgba(255, 255, 255, 0.8); /* 略微增加边框透明度 */
+  border: 2rpx solid rgba(255, 255, 255, 0.8);
+  /* 略微增加边框透明度 */
 }
 
 .recommend-icon {
@@ -135,13 +136,22 @@
 
 .recommend-button:active {
   transform: scale(0.95);
-  box-shadow: 0 3rpx 10rpx rgba(255, 160, 122, 0.4); /* 更淡的按压阴影 */
-  background: linear-gradient(145deg, #FF8C69, #FFA07A); /* 反转渐变方向 */
+  box-shadow: 0 3rpx 10rpx rgba(255, 160, 122, 0.4);
+  /* 更淡的按压阴影 */
+  background: linear-gradient(145deg, #FF8C69, #FFA07A);
+  /* 反转渐变方向 */
 }
 
 @keyframes bounce {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .recommend-button:hover {
@@ -150,7 +160,8 @@
 
 .recommendation-results {
   width: 100%;
-  height: 700rpx; /* 增加高度 */
+  height: 700rpx;
+  /* 增加高度 */
   background-color: #ffffff;
   padding: 20rpx 0;
   box-sizing: border-box;
@@ -163,14 +174,14 @@
   font-size: 40rpx;
   font-weight: bold;
   color: #333;
-
   margin-left: 70rpx;
   margin-top: 20rpx;
   margin-bottom: -20rpx;
 }
 
 .results-scroll {
-  height: calc(100% - 52rpx); /* 减去标题的高度 */
+  height: calc(100% - 52rpx);
+  /* 减去标题的高度 */
 }
 
 .results-container {
@@ -192,14 +203,18 @@
 }
 
 .result-image {
-  width: 120rpx; /* 调整图片宽度 */
-  height: 120rpx; /* 调整图片高度 */
+  width: 120rpx;
+  /* 调整图片宽度 */
+  height: 120rpx;
+  /* 调整图片高度 */
   border-radius: 8rpx;
-  margin-right: 15rpx; /* 添加右边距 */
+  margin-right: 15rpx;
+  /* 添加右边距 */
 }
 
 .result-info {
-  flex: 1; /* 让信息占据剩余空间 */
+  flex: 1;
+  /* 让信息占据剩余空间 */
   display: flex;
   margin-left: 10rpx;
   flex-direction: column;
@@ -352,13 +367,15 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #f9f9f9; /* 弹出层背景色 */
+  background-color: #f9f9f9;
+  /* 弹出层背景色 */
   border-top-left-radius: 30rpx;
   border-top-right-radius: 30rpx;
   transform: translateY(100%);
   transition: transform 0.3s ease-out;
   z-index: 1000;
-  box-shadow: 0 -4rpx 10rpx rgba(0, 0, 0, 0.1); /* 添加顶部阴影 */
+  box-shadow: 0 -4rpx 10rpx rgba(0, 0, 0, 0.1);
+  /* 添加顶部阴影 */
 }
 
 .popup.show {
@@ -367,7 +384,8 @@
 
 .popup-content {
   padding: 40rpx;
-  background-color: #f9f9f9; /* 确保内容区域也是相同的背景色 */
+  background-color: #f9f9f9;
+  /* 确保内容区域也是相同的背景色 */
 }
 
 .popup-option {
@@ -382,19 +400,24 @@
   display: block;
 }
 
-.count-buttons, .category-buttons {
+.count-buttons,
+.category-buttons {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.count-button, .category-button {
+.count-button,
+.category-button {
   flex: 0 0 30%;
   margin: 5rpx;
   height: 60rpx;
-  background-color: #f5f5f5;  /* 浅灰色背景 */
-  color: #666;  /* 深灰色字体 */
-  border: 2rpx solid #e0e0e0;  /* 浅灰色边框 */
+  background-color: #f5f5f5;
+  /* 浅灰色背景 */
+  color: #666;
+  /* 深灰色字体 */
+  border: 2rpx solid #e0e0e0;
+  /* 浅灰色边框 */
   border-radius: 30rpx;
   font-size: 24rpx;
   display: flex;
@@ -402,10 +425,14 @@
   justify-content: center;
 }
 
-.count-button.selected, .category-button.selected {
-  background-color: #FFF5E6;  /* 浅橙色背景 */
-  color: #F55A00;  /* 橙色字体 */
-  border: 2rpx solid #F55A00;  /* 橙色边框 */
+.count-button.selected,
+.category-button.selected {
+  background-color: #FFF5E6;
+  /* 浅橙色背景 */
+  color: #F55A00;
+  /* 橙色字体 */
+  border: 2rpx solid #F55A00;
+  /* 橙色边框 */
   font-weight: bold;
 }
 
@@ -461,17 +488,3 @@
   margin-bottom: 20rpx;
   z-index: 1;
 }
-
-
-/* 调整 search-section 的样式 */
-.search-section {
-  width: 100%;
-  margin-bottom: 20rpx;  /* 添加底部边距 */
-  z-index: 1;
-}
-
-
-
-
-
-

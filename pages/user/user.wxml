@@ -1,27 +1,46 @@
 <!-- pages/my-page.wxml -->
-<view class="my-page">
-  <view class="user-info">
+<view class="user-page">
+  <view class="user-info-card">
     <image class="user-avatar" src="{{userInfo.avatar}}" mode="aspectFill" bindtap="editUserInfo"></image>
-    <text class="user-name" bindtap="editUserInfo">{{userInfo.nickname}}</text>
-  </view>
-  <view class="section">
-    <view class="section-title">标签偏好</view>
-    <view class="tag-list" bindtap="editTags">
-      <text class="tag" wx:for="{{userTags}}" wx:key="index">{{item}}</text>
-    </view>
-  </view>
-  <view class="section">
-    <view class="section-title">健康小知识</view>
-    <view class="health-tip">{{healthTip}}</view>
-  </view>
-  <view class="section">
-    <view class="section-title">近期推荐</view>
-    <view class="recommendation-list">
-      <view class="recommendation-item" wx:for="{{recommendations}}" wx:key="index">
-        <image class="recommendation-image" src="{{item.image}}" mode="aspectFill"></image>
-        <text class="recommendation-title">{{item.title}}</text>
+    <view class="user-details">
+      <text class="user-name" bindtap="editUserInfo">{{userInfo.nickname}}</text>
+      <view class="user-tag-list" bindtap="editTags">
+        <text class="user-tag" wx:for="{{userTags}}" wx:key="index">{{item}}</text>
       </view>
     </view>
+    <view class="user-decoration">
+      <image class="user-decoration-icon" src="../../images/食物&器皿－酒.png" mode="aspectFit"></image>
+      <image class="user-decoration-icon" src="../../images/食物&器皿－披萨.png" mode="aspectFit"></image>
+    </view>
   </view>
-  <button class="about-us-btn" bindtap="navigateToAboutUs">关于我们</button>
+  <view class="user-section">
+    <view class="user-section-header">
+      <text class="user-section-title">近期推荐</text>
+      <text class="user-more-link">查看全部</text>
+    </view>
+    <scroll-view class="user-recommendation-list" scroll-y="true">
+      <view class="user-recommendation-item" wx:for="{{recommendations}}" wx:key="index">
+        <image class="user-recommendation-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="user-recommendation-info">
+          <text class="user-recommendation-title">{{item.title}}</text>
+          <text class="user-recommendation-tag">{{item.tag}}</text>
+          <text class="user-recommendation-distance">{{item.distance}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="user-actions">
+    <button class="user-action-btn" bindtap="navigateToAboutUs">
+      <image class="user-action-icon" src="/images/about-us-icon.png"></image>
+      <text>关于我们</text>
+    </button>
+    <button class="user-action-btn" bindtap="navigateToSettings">
+      <image class="user-action-icon" src="/images/settings-icon.png"></image>
+      <text>设置</text>
+    </button>
+  </view>
+  <view class="user-health-tip-section">
+    <view class="user-section-title">健康小知识</view>
+    <view class="user-health-tip">{{healthTip}}</view>
+  </view>
 </view>

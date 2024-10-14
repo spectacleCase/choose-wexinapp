@@ -1,87 +1,211 @@
 /* pages/my_page.wxss */
-.my-page {
-  background-color: #ffffff;
-  padding: 20rpx;
+
+.user-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 40rpx 30rpx;
 }
 
-.user-info {
+.user-info-card {
+  background-color: #2c2c2e; /* 稍微柔和一点的深色 */
+  border-radius: 20rpx;
+  padding: 50rpx 40rpx; /* 增加上下内边距 */
   display: flex;
   align-items: center;
   margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  min-height: 200rpx; /* 设置最小高度 */
+  position: relative;
+  overflow: hidden;
 }
 
 .user-avatar {
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 60rpx;
-  margin-right: 20rpx;
+  width: 140rpx; /* 稍微增大头像尺寸 */
+  height: 140rpx;
+  border-radius: 70rpx;
+  margin-right: 30rpx;
+  border: 3rpx solid #ffffff; /* 添加白色边框 */
+  z-index: 2;
+}
+
+.user-details {
+  flex: 1;
+  z-index: 2;
 }
 
 .user-name {
   font-size: 36rpx;
-  color: #333;
+  color: #ffffff;
+  margin-bottom: 10rpx;
+  font-weight: bold;
 }
 
-.section {
-  margin-bottom: 40rpx;
-}
-
-.section-title {
-  font-size: 32rpx;
-  color: #ff8c00;
-  margin-bottom: 20rpx;
-}
-
-.tag-list {
+.user-tag-list {
   display: flex;
   flex-wrap: wrap;
 }
 
-.tag {
-  background-color: #fff5e6;
-  color: #ff8c00;
-  padding: 10rpx 20rpx;
-  border-radius: 30rpx;
-  margin-right: 20rpx;
+.user-tag {
+  background-color: rgba(255, 255, 255, 0.15); /* 稍微降低透明度 */
+  color: #ffffff;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 24rpx;
+}
+
+.user-decoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.user-decoration-icon {
+  position: absolute;
+  opacity: 0.1;
+}
+
+.user-decoration-icon:nth-child(1) {
+  width: 120rpx;
+  height: 120rpx;
+  top: -20rpx;
+  right: -20rpx;
+  transform: rotate(45deg);
+}
+
+.user-decoration-icon:nth-child(2) {
+  width: 80rpx;
+  height: 80rpx;
+  bottom: -10rpx;
+  left: 40%;
+  transform: rotate(-30deg);
+}
+
+.user-section {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.user-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20rpx;
 }
 
-.health-tip {
-  background-color: #fff5e6;
-  color: #333;
-  padding: 20rpx;
-  border-radius: 10rpx;
+.user-section-title {
+  font-size: 32rpx;
+  color: #F55A00; /* 保持标题为橙色 */
+  font-weight: bold;
+  margin-bottom: 10rpx;
 }
 
-.recommendation-list {
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.recommendation-item {
-  display: inline-block;
-  margin-right: 20rpx;
-  width: 200rpx;
-}
-
-.recommendation-image {
-  width: 200rpx;
-  height: 150rpx;
-  border-radius: 10rpx;
-}
-
-.recommendation-title {
+.user-more-link {
   font-size: 24rpx;
-  color: #333;
+  color: #007aff;
+}
+
+.user-recommendation-list {
+  height: 500rpx;
+  overflow-y: auto;
+}
+
+.user-recommendation-item {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.user-recommendation-item:last-child {
+  border-bottom: none;
+}
+
+.user-recommendation-image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+}
+
+.user-recommendation-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-recommendation-title {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 6rpx;
+  font-weight: bold;
+}
+
+.user-recommendation-tag {
+  font-size: 24rpx;
+  color: #007aff;
+  margin-bottom: 6rpx;
+}
+
+.user-recommendation-distance {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.user-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+
+.user-action-btn {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 48%;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.user-action-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+.user-health-tip-section {
+  background-color: #FFF5E6; /* 保持浅橙色背景 */
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.user-health-tip {
+  font-size: 28rpx;
+  color: #666666; /* 将文字颜色改为灰色 */
+  line-height: 1.6;
   margin-top: 10rpx;
 }
 
-.about-us-btn {
-  background-color: #ff8c00;
-  color: #ffffff;
-  border: none;
-  border-radius: 40rpx;
-  padding: 20rpx 40rpx;
-  font-size: 28rpx;
+/* 添加一个微妙的渐变背景到页面 */
+.user-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  z-index: -1;
 }
