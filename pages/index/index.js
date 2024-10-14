@@ -118,9 +118,9 @@ Page({
     const mockResults = this.data.recommendationResults;
     // 可以在这里添加一些动画或加载效果
     wx.showToast({
-      title: '正在为您推荐',
-      icon: 'loading',
-      duration: 1000
+      title: "正在为您推荐",
+      icon: "loading",
+      duration: 1000,
     });
     // 模拟API调用延迟
     setTimeout(() => {
