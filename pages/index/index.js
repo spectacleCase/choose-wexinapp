@@ -69,6 +69,7 @@ Page({
       "适度运动可以提高免疫力。",
       "保持良好的作息习惯对身体很重要。",
     ];
+    // 测试
     const randomTip = tips[Math.floor(Math.random() * tips.length)];
     this.setData({ healthTip: randomTip });
   },
