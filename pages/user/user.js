@@ -4,6 +4,7 @@ Page({
       avatar:
         "http://119.91.145.137:9001/choose/2024/06/03/7595dce18c3440208c55204af85b8430.png",
       nickname: "用户名",
+      signature: "简约而不简单",
     },
     userTags: ["运动", "健康饮食", "瑜伽"],
     healthTip: "每天喝8杯水有助于保持身体水分平衡，促进新陈代谢。",
