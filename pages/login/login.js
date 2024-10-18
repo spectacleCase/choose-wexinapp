@@ -1,5 +1,5 @@
 // pages/login.js
-import Auth from "../../common/api/auth.js";
+import Auth from "../../services/api/auth.js";
 import RequestUtils from "../../utils/request_util";
 // 引入 toast 模块
 const toast = require("../../companies/toast.js").default;
@@ -48,18 +48,18 @@ Page({
             wx.showLoading({
               title: "登录中",
             });
-            const token = {
-              token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjkzNTY3NzQsInVzZXJJZCI6IjE3OTU0NDYwMDA3NzEwNTE1MjIifQ.1xYB_fSJgU0QtklbAu6lrO5QmAbf90ugL4Ujfwrk6JA",
-              tokenTimeout: "2024-12-22 00:52:54",
-            };
-            wx.setStorageSync("token", token);
-            wx.hideLoading();
-            toast.showToast("登录成功", "success");
-            setTimeout(() => {
-              wx.reLaunch({
-                url: "/pages/main/main",
-              });
-            }, 500);
+            // const token = {
+            //   token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjkzNTY3NzQsInVzZXJJZCI6IjE3OTU0NDYwMDA3NzEwNTE1MjIifQ.1xYB_fSJgU0QtklbAu6lrO5QmAbf90ugL4Ujfwrk6JA",
+            //   tokenTimeout: "2024-12-22 00:52:54",
+            // };
+            // wx.setStorageSync("token", token);
+            // wx.hideLoading();
+            // toast.showToast("登录成功", "success");
+            // setTimeout(() => {
+            //   wx.reLaunch({
+            //     url: "/pages/main/main",
+            //   });
+            // }, 500);
             RequestUtils.request(Auth.auth.login)
               .then((data) => {
                 const token = {
@@ -72,12 +72,16 @@ Page({
                 // 使用新的 toast 方法
                 toast.showToast("登录成功", "success");
                 setTimeout(() => {
-                  wx.reLaunch({
+                  wx.switchTab({
                     url: "/pages/main/main",
                   });
                 }, 500);
               })
               .catch((err) => {
+                wx.showToast({
+                  title: "登录失败",
+                  icon:"error"
+                });
                 console.log(err);
                 // 使用新的 toast 方法显示错误信息
                 toast.showToast("登录失败", "error");

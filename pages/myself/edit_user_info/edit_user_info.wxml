@@ -1,0 +1,28 @@
+<!-- pages/myself/edit_user_info.wxml -->
+<view class="edit-user-info">
+    <view class="avatar-section">
+        <image class="avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+        <button class="change-avatar-btn" bindtap="changeAvatar">更换头像</button>
+    </view>
+    <view class="info-item">
+        <text class="label">昵称</text>
+        <input class="input" value="{{userInfo.nickname}}" bindinput="onNicknameChange" placeholder="请输入昵称" />
+    </view>
+    <view class="info-item">
+        <text class="label">性别</text>
+        <radio-group class="radio-group" bindchange="onGenderChange">
+            <radio value="male" checked="{{userInfo.gender === '2'}}">男</radio>
+            <radio value="female" checked="{{userInfo.gender === '1'}}">女</radio>
+        </radio-group>
+    </view>
+    <view class="info-item">
+        <text class="label">手机号</text>
+        <input class="input" value="{{userInfo.phone}}" bindinput="onPhoneChange" type="number" placeholder="请输入手机号" />
+    </view>
+    <view class="info-item ">
+        <text class="label">个性签名</text>
+        <input class="input" value="{{userInfo.description}}" bindinput="onDescriptionChange" placeholder="请输入个性签名" />
+    </view>
+    <button class="save-btn" bindtap="saveUserInfo">保存</button>
+    <button class="save-btn" bindtap="getUser">获取哦</button>
+</view>

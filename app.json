@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/main/main",
     "pages/index/index",
     "pages/settings/settings",
-    "pages/user/user",
-    "pages/login/login"
+    "pages/myself/user/user",
+    "pages/myself/edit_user_info/edit_user_info"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -14,5 +15,18 @@
   "style": "v2",
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/main/main",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      }
+    ]
+  }
 }

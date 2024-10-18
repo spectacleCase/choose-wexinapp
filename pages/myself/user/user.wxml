@@ -1,18 +1,18 @@
 <!-- pages/my-page.wxml -->
 <view class="user-page">
-  <view class="user-info-card">
-    <image class="user-avatar" src="{{userInfo.avatar}}" mode="aspectFill" bindtap="editUserInfo"></image>
+  <view class="user-info-card" bindtap="editUserInfo">
+    <image class="user-avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
     <view class="user-details">
-      <text class="user-name" bindtap="editUserInfo">{{userInfo.nickname}}</text>
+      <text class="user-name">{{userInfo.nickname}}</text>
       <text class="user-signature">--{{userInfo.signature}}</text>
-      <view class="user-tag-list" bindtap="editTags">
+      <view class="user-tag-list">
         <text class="user-tag" wx:for="{{userTags}}" wx:key="index">{{item}}</text>
       </view>
     </view>
     <view class="personal-info-tag">个人信息 ></view>
     <view class="user-decoration">
-      <image class="user-decoration-icon" src="../../images/食物&器皿－酒.png" mode="aspectFit"></image>
-      <image class="user-decoration-icon" src="../../images/食物&器皿－披萨.png" mode="aspectFit"></image>
+      <image class="user-decoration-icon" src="../../../images/食物&器皿－酒.png" mode="aspectFit"></image>
+      <image class="user-decoration-icon" src="../../../images/食物&器皿－披萨.png" mode="aspectFit"></image>
     </view>
   </view>
   <view class="user-section">

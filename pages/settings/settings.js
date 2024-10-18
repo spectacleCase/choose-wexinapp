@@ -93,5 +93,32 @@ Page({
     // 这里可以添加开启/关闭通知的逻辑
   },
 
+  logout: function() {
+    wx.showModal({
+      title: '确认退出',
+      content: '您确定要退出登录吗？',
+      success: (res) => {
+        if (res.confirm) {
+          // 清理缓存的token和userInfo
+          wx.removeStorageSync('token');
+          wx.removeStorageSync('userInfo');
+          
+          // 使用reLaunch方法跳转到登录页面
+          wx.reLaunch({
+            url: '/pages/login/login',
+            success: () => {
+              // 可选：显示退出成功的提示
+              wx.showToast({
+                title: '已退出登录',
+                icon: 'success',
+                duration: 2000
+              });
+            }
+          });
+        }
+      }
+    });
+  },
+
   // 其他方法...
 })

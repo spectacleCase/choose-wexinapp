@@ -4,6 +4,11 @@ const toast = require("./companies/toast.js").default;
 
 App({
   onLaunch: function () {
+    if (wx.getStorageSync("token")) {
+      wx.reLaunch({
+        url: "/pages/login/login",
+      });
+    }
     // 拦截页面跳转
     this.interceptPageNavigation();
   },
@@ -52,15 +57,19 @@ App({
   },
 
   shouldIntercept: function (url) {
+    console.log("拦截", url);
     const token = wx.getStorageSync("token");
     if (token && token.token && token.tokenTimeout) {
       const currentTime = new Date().getTime();
       const tokenExpireTime = new Date(token.tokenTimeout).getTime();
       console.log("时间", currentTime, tokenExpireTime);
+      console.log(currentTime < tokenExpireTime);
       if (currentTime < tokenExpireTime) {
+        console.log("时间没有");
         this.globalData.isLoggedIn = true;
       } else {
         // Token已过期，清除存储的token
+        console.log("时间过期了");
         wx.removeStorageSync("token");
         wx.removeStorageSync("userInfo");
         this.globalData.isLoggedIn = false;
@@ -73,7 +82,9 @@ App({
     console.log("是否登录", !this.globalData.isLoggedIn);
     if (!this.globalData.isLoggedIn && !url.startsWith("/pages/login")) {
       toast.showToast("请先登录", "info");
-      wx.navigateTo({
+      console.log("跳转登录");
+
+      wx.reLaunch({
         url: "/pages/login/login",
       });
       return true;

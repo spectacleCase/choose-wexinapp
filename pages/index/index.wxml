@@ -19,7 +19,6 @@
     </view>
   </view>
   <view class="recommend-button" bindtap="onRecommendTap">
-    <!-- <view class="recommend-icon">待定调整</view> -->
     <text class="recommend-text">待定调整</text>
   </view>
   <view class="health-tips" bindtap="onRefreshTip">

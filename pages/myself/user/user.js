@@ -10,37 +10,37 @@ Page({
     healthTip: "每天喝8杯水有助于保持身体水分平衡，促进新陈代谢。",
     recommendations: [
       {
-        image: "../../images/食物.png",
+        image: "../../../images/食物.png",
         tag: "主菜",
         name: "红烧肉",
         distance: "20km",
       },
       {
-        image: "../../images/食物1.png",
+        image: "../../../images/食物1.png",
         tag: "甜品",
         name: "水果沙拉",
         distance: "10km",
       },
       {
-        image: "../../images/食物.png",
+        image: "../../../images/食物.png",
         tag: "糕点",
         name: "蛋糕",
         distance: "5km",
       },
       {
-        image: "../../images/食物1.png",
+        image: "../../../images/食物1.png",
         tag: "主菜",
         name: "红烧肉",
         distance: "20km",
       },
       {
-        image: "../../images/食物.png",
+        image: "../../../images/食物.png",
         tag: "甜品",
         name: "水果沙拉",
         distance: "10km",
       },
       {
-        image: "../../images/食物1.png",
+        image: "../../../images/食物1.png",
         tag: "糕点",
         name: "蛋糕",
         distance: "5km",
@@ -53,9 +53,11 @@ Page({
   },
 
   editUserInfo: function () {
+    console.log("兼容");
+    
     // 跳转到编辑用户信息页面
     wx.navigateTo({
-      url: "/pages/edit_user_info/edit_user_info",
+      url: "/pages/myself/edit_user_info/edit_user_info",
     });
   },
 

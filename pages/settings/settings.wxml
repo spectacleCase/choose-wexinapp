@@ -25,4 +25,9 @@
       <text class="iconfont icon-arrow-right" style="font-size: 24rpx; color: #999;"></text>
     </view>
   </view>
+  
+  <!-- 添加退出登录按钮 -->
+  <view style="margin-top: 40rpx;">
+    <button bindtap="logout" style="background-color: #ff4d4f; color: #ffffff; border: none; border-radius: 10rpx; padding: 20rpx 0;">退出登录</button>
+  </view>
 </view>
