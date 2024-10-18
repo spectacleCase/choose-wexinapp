@@ -12,7 +12,7 @@ Component({
     pages: {
       index: { url: "/pages/index/index", title: "首页" },
       settings: { url: "/pages/settings/settings", title: "设置" },
-      user: { url: "/pages/user/user", title: "我的" },
+      user: { url: "/pages/myself/user/user", title: "我的" },
     },
     startX: 0,
     startY: 0,
@@ -38,7 +38,7 @@ Component({
       const page = Object.keys(this.data.pages).find(
         (key) => this.data.pages[key].url === url
       );
-      console.log("结果是",page);
+      console.log("结果是", page);
       if (page) {
         this.setData({ currentPage: page });
       }

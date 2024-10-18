@@ -47,8 +47,8 @@
 }
 
 .user-avatar {
-  width: 180rpx;
-  height: 180rpx;
+  width: 90rpx;
+  height: 90rpx;
   border-radius: 90rpx;
   margin-right: 30rpx;
   border: 4rpx solid #ffffff;
@@ -239,6 +239,7 @@
   color: #666666;
   line-height: 1.4;
   margin-top: 5rpx;
+  margin-left: 10rpx;
 }
 
 /* 添加一个微妙的渐变背景到页面 */

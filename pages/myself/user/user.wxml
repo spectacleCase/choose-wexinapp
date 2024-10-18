@@ -4,15 +4,15 @@
     <image class="user-avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
     <view class="user-details">
       <text class="user-name">{{userInfo.nickname}}</text>
-      <text class="user-signature">--{{userInfo.signature}}</text>
+      <text class="user-signature">--{{userInfo.description}}</text>
       <view class="user-tag-list">
         <text class="user-tag" wx:for="{{userTags}}" wx:key="index">{{item}}</text>
       </view>
     </view>
     <view class="personal-info-tag">个人信息 ></view>
     <view class="user-decoration">
-      <image class="user-decoration-icon" src="../../../images/食物&器皿－酒.png" mode="aspectFit"></image>
-      <image class="user-decoration-icon" src="../../../images/食物&器皿－披萨.png" mode="aspectFit"></image>
+      <image class="user-decoration-icon" src="../../../assets/images/食物&器皿－酒.png" mode="aspectFit"></image>
+      <image class="user-decoration-icon" src="../../../assets/images/食物&器皿－披萨.png" mode="aspectFit"></image>
     </view>
   </view>
   <view class="user-section">
@@ -31,18 +31,18 @@
       </view>
     </scroll-view>
   </view>
-  <view class="user-health-tip-section">
+  <view class="user-health-tip-section" bindtap="getTips">
     <view class="user-section-title">健康小知识 🎉</view>
     <view class="user-health-tip">{{healthTip}}</view>
   </view>
   <view class="user-actions">
     <view class="user-action-item" bindtap="navigateToAboutUs">
       <text>关于我们</text>
-      <image class="user-action-arrow" src="/images/arrow-right.png" mode="aspectFit"></image>
+      <image class="user-action-arrow" src="../../../assets/images/我的.png" mode="aspectFit"></image>
     </view>
     <view class="user-action-item" bindtap="navigateToSettings">
       <text>设置</text>
-      <image class="user-action-arrow" src="/images/arrow-right.png" mode="aspectFit"></image>
+      <image class="user-action-arrow" src="../../../assets/images/设置.png" mode="aspectFit"></image>
     </view>
   </view>
 </view>

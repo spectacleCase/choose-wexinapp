@@ -16,9 +16,21 @@ Component({
   data: {
     pageAnimation: {},
     tabItems: [
-      { icon: "首页", text: "首页", url: "/pages/index/index" },
-      { icon: "首页", text: "我的", url: "/pages/user/user" },
-      { icon: "首页", text: "设置", url: "/pages/settings/settings" },
+      {
+        icon: "../../assets/images/首页.png",
+        text: "首页",
+        url: "/pages/index/index",
+      },
+      {
+        icon: "../../assets/images/我的.png",
+        text: "我的",
+        url: "/pages/myself/user/user",
+      },
+      {
+        icon: "../../assets/images/设置.png",
+        text: "设置",
+        url: "/pages/settings/settings",
+      },
     ],
     userInfo: {},
     activeTab: 0,

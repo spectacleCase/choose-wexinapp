@@ -2,7 +2,7 @@
 <view class="container">
   <view class="header">
     <view class="location-info">
-      <image class="location-icon" src="../../images/地点.png"></image>
+      <image class="location-icon" src="../../assets/images/地点.png"></image>
       <text class="location-name">{{locationName}}</text>
     </view>
   </view>
@@ -14,14 +14,14 @@
         <input class="search-input" placeholder="搜索美食..." bindinput="onSearchInput" />
       </view>
       <view class="filter-button" bindtap="showFilterOptions">
-        <image style="width: 60rpx; height: 60rpx;" src="../../images/更多.png" mode="aspectFill"></image>
+        <image style="width: 60rpx; height: 60rpx;" src="../../assets/images/更多.png" mode="aspectFill"></image>
       </view>
     </view>
   </view>
   <view class="recommend-button" bindtap="onRecommendTap">
     <text class="recommend-text">待定调整</text>
   </view>
-  <view class="health-tips" bindtap="onRefreshTip">
+  <view class="health-tips" bindtap="getTips">
     <text class="tips-title">健康小知识</text>
     <text class="tips-content">{{healthTip}}</text>
   </view>

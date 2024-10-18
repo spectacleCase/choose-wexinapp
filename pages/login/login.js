@@ -13,7 +13,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
+  onLoad(options) {
+    const token = wx.getStorageSync("token");
+    console.log(token);
+
+    if (token.token) {
+      wx.switchTab({
+        url: "/pages/main/main",
+      });
+      return;
+    }
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -80,7 +90,7 @@ Page({
               .catch((err) => {
                 wx.showToast({
                   title: "登录失败",
-                  icon:"error"
+                  icon: "error",
                 });
                 console.log(err);
                 // 使用新的 toast 方法显示错误信息

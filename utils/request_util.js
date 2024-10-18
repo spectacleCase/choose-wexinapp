@@ -1,3 +1,5 @@
+import ApiBaseUrl from "../config/config";
+import RequestCode from "../constant/RequestCodeConstant";
 const request = async (config) => {
   const { url, method, auth, data } = config;
 
@@ -20,12 +22,10 @@ const request = async (config) => {
     };
   }
 
-  console.log("这个是", auth);
-
   try {
     const response = await new Promise((resolve, reject) => {
       wx.request({
-        url: `http://192.168.235.2:12150/choose${url}`,
+        url: `${ApiBaseUrl.apiBaseUrl}${url}`,
         method,
         data,
         header: config.header,
@@ -33,11 +33,25 @@ const request = async (config) => {
         fail: (err) => reject(err),
       });
     });
+    console.log(response);
 
-    // 检查响应状态码
-    if (response.data.code === 200) {
+    if (response.statusCode === RequestCode.UNAUTHORIZED) {
+      wx.removeStorageSync("token");
+      wx.removeStorageSync("userInfo");
+      wx.showToast({
+        title: "请重新登录",
+      });
+      setTimeout(() => {
+        wx.redirectTo({
+          url: "/pages/login/login",
+        });
+      }, 500);
+
+      return;
+    } else if (response.data.code === RequestCode.SUCCESS) {
+      // 检查响应状态码
       return response.data;
-    } else if (response.data.code === 500) {
+    } else if (response.data.code === RequestCode.ERROR) {
       throw new Error("服务器内部错误");
     } else {
       throw new Error(`请求失败，状态码：${response.data.code}`);

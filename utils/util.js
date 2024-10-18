@@ -1,5 +1,6 @@
 // utils/uploadFile.js
 import Upload from "../services/api/common";
+import ApiBaseUrl from "../config/config";
 
 const formatTime = (date) => {
   const year = date.getFullYear();
@@ -37,7 +38,7 @@ const uploadFileUitl = async (filePath, formData = {}) => {
     }
     const response = await new Promise((resolve, reject) => {
       wx.uploadFile({
-        url: `http://localhost:12150/choose${Upload.common.upload.url}`,
+        url: `${ApiBaseUrl.apiBaseUrl}${Upload.common.upload.url}`,
         filePath,
         name: "file",
         formData: formData,

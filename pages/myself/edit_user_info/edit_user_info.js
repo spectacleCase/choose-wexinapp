@@ -2,6 +2,7 @@
 import RequestUtils from "../../../utils/request_util";
 import User from "../../../services/api/user";
 import util from "../../../utils/util";
+const toast = require("../../../companies/toast.js").default;
 
 Page({
   data: {
@@ -12,6 +13,7 @@ Page({
       phone: "",
       description: "",
     },
+    filePath: "",
   },
 
   onLoad: function (options) {
@@ -26,36 +28,17 @@ Page({
       sizeType: ["compressed"],
       sourceType: ["album", "camera"],
       success: async (res) => {
+        wx.showLoading({
+          title: "正在上传中",
+        });
         const tempFilePaths = res.tempFilePaths;
         console.log(tempFilePaths);
         const fileData = await util.uploadFileUitl(tempFilePaths[0]);
-        User.user.upateAvatar.data = fileData.filePath;
-        await RequestUtils.request(User.user.upateAvatar);
-        const userData = await RequestUtils.request(User.user.getUser);
-        console.log(userData);
-        wx.setStorageSync("userInfo", userData.data);
         this.setData({
-          userInfo: userData.data,
+          "userInfo.avatar": fileData.fileName,
+          filePath: fileData.filePath,
         });
-        // wx.uploadFile({
-        //   //! 图片要上传到的后端接口url,会返回图片的外网url
-        //   url: "http://localhost:12150/choose/common/v1/upload",
-        //   // 被上传的文件的路径url
-        //   filePath: tempFilePaths[0],
-        //   // 上传的文件的名称 后台来获取文件
-        //   name: "file",
-        //   // 顺带的文本信息
-        //   formData: {},
-        //   success: (result) => {
-        //     console.log(result.data);
-        //     const resFile = JSON.parse(result.data);
-        //     this.setData({
-        //       "userInfo.avatar": resFile.data.fileName,
-        //     });
-        //   },
-        // });
-
-        // 这里应该上传图片到服务器
+        toast.showToast("保存成功", "success");
       },
     });
   },
@@ -88,10 +71,12 @@ Page({
   saveUserInfo: function () {
     // 这里应该将修改后的用户信息保存到服务器
     console.log("保存的用户信息：", this.data.userInfo);
-
+    wx.showLoading({
+      title: "正在保存中",
+    });
     User.user.setUser.data = {
       nickname: this.data.userInfo.nickname,
-      avatar: this.data.userInfo.avatar,
+      avatar: this.data.filePath,
       gender: this.data.userInfo.gender,
       description: this.data.userInfo.description,
     };
@@ -101,6 +86,11 @@ Page({
         icon: "success",
         duration: 2000,
       });
+      console.log(res.data);
+      if (!res.data) {
+        wx.getStorageSync("userInfo", res.data);
+      }
+      toast.showToast("保存成功", "success");
       setTimeout(() => {
         wx.navigateBack();
       }, 2000);

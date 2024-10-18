@@ -15,14 +15,10 @@
             <radio value="female" checked="{{userInfo.gender === '1'}}">女</radio>
         </radio-group>
     </view>
-    <view class="info-item">
-        <text class="label">手机号</text>
-        <input class="input" value="{{userInfo.phone}}" bindinput="onPhoneChange" type="number" placeholder="请输入手机号" />
-    </view>
     <view class="info-item ">
         <text class="label">个性签名</text>
         <input class="input" value="{{userInfo.description}}" bindinput="onDescriptionChange" placeholder="请输入个性签名" />
     </view>
     <button class="save-btn" bindtap="saveUserInfo">保存</button>
-    <button class="save-btn" bindtap="getUser">获取哦</button>
+          <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
 </view>

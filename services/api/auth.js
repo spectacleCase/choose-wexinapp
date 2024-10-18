@@ -1,19 +1,17 @@
-const BASE_URL = "/user"
+const BASE_URL = "/user";
+/**
+ *  鉴权相关接口
+ */
 const auth = {
-  // 鉴权相关接口
+  //登录
   login: {
-    url: BASE_URL + '/v1/login-applet',
-    method: 'POST',
+    url: BASE_URL + "/v1/login-applet",
+    method: "POST",
     data: null,
     auth: false,
   },
-  getDate: {
-    url: "/getData",
-    method: 'GET',
-    auth: true
-  }
-}
+};
 
 export default {
-  auth
-}
+  auth,
+};
