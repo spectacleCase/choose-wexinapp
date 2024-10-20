@@ -10,6 +10,14 @@ const recommend = {
     auth: true,
     data: null,
   },
+
+  // 推荐
+  recommend: {
+    url: BASE_URL + "/v1/recommend",
+    method: "POST",
+    auth: true,
+    data: null,
+  },
 };
 
 export default {

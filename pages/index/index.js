@@ -1,6 +1,7 @@
 // components/index-component/index-component.js
 import RequestUtils from "../../utils/request_util";
 import User from "../../services/api/user";
+import Recommend from "../../services/api/recommend.js";
 const toast = require("../../companies/toast.js").default;
 Component({
   properties: {
@@ -122,8 +123,13 @@ Component({
       });
       // 模拟API调用延迟
       setTimeout(() => {
+        this.recommend();
         this.setData({ recommendationResults: mockResults });
       }, 1000);
+    },
+    recommend: function () {
+      const data = RequestUtils.request(Recommend.recommend.recommend);
+      console.log("推荐结果", data);
     },
 
     resetFilter() {
