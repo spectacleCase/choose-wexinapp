@@ -293,3 +293,17 @@
 .user-info-card {
   padding-right: 100rpx; /* 减少右侧内边距 */
 }
+
+/* 在文件末尾添加以下样式 */
+.bottom-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40rpx 0;
+}
+
+.bottom-image {
+  width: 200rpx;
+  height: 200rpx;
+  opacity: 0.6;
+}

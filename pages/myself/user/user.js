@@ -1,6 +1,7 @@
 import RequestUtils from "../../../utils/request_util";
 import Recommend from "../../../services/api/recommend";
 import User from "../../../services/api/user";
+const toast = require("../../../companies/toast.js").default;
 // user.js
 Component({
   properties: {
@@ -14,23 +15,25 @@ Component({
       nickname: "用户名",
       description: "简约而不简单",
     },
+
     userTags: ["运动", "健康饮食", "瑜伽"],
     healthTip: "每天喝8杯水有助于保持身体水分平衡，促进新陈代谢。",
     recommendations: [
       {
         image:
           "http://119.91.145.137:9001/choose/2024/06/03/7595dce18c3440208c55204af85b8430.png",
-        tag: "主菜",
-        name: "红烧肉",
+        tagName: "店铺",
+        dishesName: "红烧肉",
         distance: "20km",
       },
     ],
+    page: 1,
+    pageSize: 10,
+    hasMore: true,
   },
 
   methods: {
     editUserInfo: function () {
-      console.log("兼容");
-      console.log("User page shown");
       // 跳转到编辑用户信息页面
       wx.navigateTo({
         url: "/pages/myself/edit_user_info/edit_user_info",
@@ -64,6 +67,31 @@ Component({
         healthTip: helData.data.tips,
       });
     },
+    loadMore: async function (params) {
+      this.getrecommendRecord();
+    },
+
+    getrecommendRecord: async function () {
+      if (!this.data.hasMore) {
+        return;
+      }
+      wx.showLoading({
+        title: "加载中...",
+      });
+      Recommend.recommend.recommendRecord.data = {
+        page: this.data.page,
+      };
+
+      const data = await RequestUtils.request(
+        Recommend.recommend.recommendRecord
+      );
+      this.setData({
+        recommendations: this.data.recommendations.concat(data.data.list),
+        page: this.data.page + 1,
+        hasMore: data.data.list.length === this.data.pageSize,
+      });
+      wx.hideLoading();
+    },
   },
 
   attached: async function () {
@@ -73,8 +101,9 @@ Component({
     console.log("Initial userInfo:", userInfo);
     this.setData({ userInfo });
     Recommend.recommend.recommendRecord.data = {
-      page: 1,
+      page: this.data.page,
     };
+
     const data = await RequestUtils.request(
       Recommend.recommend.recommendRecord
     );
@@ -83,6 +112,8 @@ Component({
     this.setData({
       recommendations: data.data.list,
       healthTip: helData.data.tips,
+      page: this.data.page + 1,
+      hasMore: data.data.list.length === this.data.pageSize,
     });
   },
 });

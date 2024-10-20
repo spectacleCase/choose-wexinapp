@@ -1,5 +1,6 @@
+
 {
-  "navigationBarTitleText": "我的",
-  "navigationBarBackgroundColor": "#ff8c00",
-  "navigationBarTextStyle": "white"
+  "usingComponents": {
+    "custom-toast": "/components/custom-toast/custom-toast"
+  }
 }

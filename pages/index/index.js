@@ -1,6 +1,7 @@
 // components/index-component/index-component.js
 import RequestUtils from "../../utils/request_util";
 import User from "../../services/api/user";
+const toast = require("../../companies/toast.js").default;
 Component({
   properties: {
     // 定义属性

@@ -20,5 +20,5 @@
         <input class="input" value="{{userInfo.description}}" bindinput="onDescriptionChange" placeholder="请输入个性签名" />
     </view>
     <button class="save-btn" bindtap="saveUserInfo">保存</button>
-          <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
+    <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
 </view>

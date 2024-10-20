@@ -3,9 +3,12 @@
     <side-tabbar isOpen="{{isTabbarOpen}}" bindtabchange="onTabChange" bindclosetabbar="toggleTabbar"></side-tabbar>
     <view class="page-content" animation="{{pageAnimation}}" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
         <view class="header">
-            <button class="icon-button " style="margin-right: 450rpx;" bindtap="toggleTabbar">
-                ☰
-            </button>
+            <button class="icon-button" bindtap="toggleTabbar">☰</button>
+            <view class="weather-info">
+                <text>天气：{{weather.weather}}</text>
+                <text>温度：{{weather.temperature}}</text>
+                <text>风力：{{weather.windpower}}</text>
+            </view>
             <button class="icon-button notification-button">🔔</button>
         </view>
         <view class="main-content">

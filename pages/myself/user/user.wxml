@@ -20,12 +20,12 @@
       <text class="user-section-title">近期推荐</text>
       <text class="user-more-link">查看全部</text>
     </view>
-    <scroll-view class="user-recommendation-list" scroll-y="true">
+    <scroll-view class="user-recommendation-list" scroll-y="true" bindscrolltolower="loadMore">
       <view class="user-recommendation-item" wx:for="{{recommendations}}" wx:key="index">
         <image class="user-recommendation-image" src="{{item.image}}" mode="aspectFill"></image>
         <view class="user-recommendation-info">
-          <text class="user-recommendation-title">{{item.title}}</text>
-          <text class="user-recommendation-tag">{{item.tag}}</text>
+          <text class="user-recommendation-tag">{{item.dishesName}}</text>
+          <text class="user-recommendation-title">{{item.tagName}}</text>
           <text class="user-recommendation-distance">{{item.distance}}</text>
         </view>
       </view>
@@ -45,4 +45,5 @@
       <image class="user-action-arrow" src="../../../assets/images/设置.png" mode="aspectFit"></image>
     </view>
   </view>
+  <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
 </view>

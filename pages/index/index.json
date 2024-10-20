@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "side-tabbar": "/components/side-tabbar/side-tabbar"
+    "side-tabbar": "/components/side-tabbar/side-tabbar",
+    "custom-toast": "/components/custom-toast/custom-toast"
   }
 }

@@ -1,3 +1,5 @@
+import Common from "../../services/api/common";
+import RequestUtil from "../../utils/request_util";
 Component({
   properties: {
     currentPage: {
@@ -13,6 +15,11 @@ Component({
       index: { url: "/pages/index/index", title: "首页" },
       settings: { url: "/pages/settings/settings", title: "设置" },
       user: { url: "/pages/myself/user/user", title: "我的" },
+    },
+    weather: {
+      weather: "",
+      temperature: "",
+      windpower: "",
     },
     startX: 0,
     startY: 0,
@@ -110,5 +117,17 @@ Component({
       }
       this.setData({ moveX: 0, canSlide: false });
     },
+    getWeather: async function () {
+      console.log("到了导航栏 ");
+      const data = await RequestUtil.request(Common.common.getWeather);
+      this.setData({
+        weather: data.data,
+      });
+      console.log("结果");
+      console.log(this.data.weathar);
+    },
+  },
+  attached: async function () {
+    this.getWeather();
   },
 });

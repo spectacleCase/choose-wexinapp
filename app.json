@@ -1,11 +1,13 @@
 {
   "pages": [
+
     "pages/login/login",
     "pages/main/main",
     "pages/index/index",
     "pages/settings/settings",
     "pages/myself/user/user",
-    "pages/myself/edit_user_info/edit_user_info"
+    "pages/myself/edit_user_info/edit_user_info",
+    "pages/test/test"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,4 +1,6 @@
 const showToast = function (message, type = "success", duration = 2000) {
+  console.log("进入");
+
   wx.hideLoading();
   const pages = getCurrentPages();
   const currentPage = pages[pages.length - 1];

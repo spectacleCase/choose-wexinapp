@@ -1,5 +1,6 @@
 import ApiBaseUrl from "../config/config";
 import RequestCode from "../constant/RequestCodeConstant";
+const toast = require("../companies/toast.js").default;
 const request = async (config) => {
   const { url, method, auth, data } = config;
 
@@ -30,7 +31,14 @@ const request = async (config) => {
         data,
         header: config.header,
         success: (res) => resolve(res),
-        fail: (err) => reject(err),
+        fail: (err) => {
+          console.log(err);
+          wx.showToast({
+            title: "请求错误",
+            icon:"error"
+          });
+          reject(err);
+        },
       });
     });
     console.log(response);

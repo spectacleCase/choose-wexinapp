@@ -1,0 +1,6 @@
+<!-- test.wxml -->
+<view class="container" style="height: 100%;width: 100%;">
+  <map id="map" class="map" markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}" style="height: 90vh; width: 100vw;"></map>
+</view>
+<button size="mini" bindtap="buttonSearch">检索“美食”</button>
+<button size="mini" bindtap="getMap">定位</button>

@@ -5,9 +5,9 @@ const toast = require("./companies/toast.js").default;
 App({
   onLaunch: function () {
     if (wx.getStorageSync("token")) {
-      wx.reLaunch({
-        url: "/pages/login/login",
-      });
+      // wx.reLaunch({
+      //   url: "/pages/login/login",
+      // });
     }
     // 拦截页面跳转
     this.interceptPageNavigation();
