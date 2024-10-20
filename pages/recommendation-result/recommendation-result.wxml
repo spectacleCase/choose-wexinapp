@@ -5,7 +5,6 @@
       <image class="bubble-icon" src="{{item.icon}}" mode="aspectFit"></image>
     </view>
   </view>
-
   <!-- 推荐信息胶囊 -->
   <swiper class="info-capsule-swiper" bindchange="onSwiperChange" vertical="true" current="{{currentIndex}}">
     <swiper-item wx:for="{{recommendations}}" wx:key="id">
@@ -16,9 +15,17 @@
             <text class="dish-name">{{item.dishesName}}</text>
             <view class="stars">{{item.stars}}</view>
           </view>
-          <text class="shop-name">{{item.shopName}}</text>
+          <view class="shop-info">
+            <text class="shop-name">{{item.shopName}}</text>
+            <view class="navigation-container" bindtap="navigationShop" data-coordinate="{{item.coordinate}}" data-dishesName="{{item.dishesName}}">
+              <image class="navigation-icon" src="../../assets/images/导航.png" mode="aspectFit"></image>
+              <text class="navigation-text">导航到店</text>
+            </view>
+          </view>
           <view class="tags">
-            <text class="tag" wx:for="{{item.tagName}}" wx:for-item="tag" wx:key="index">{{tag}}</text>
+            <view class="tag" wx:for="{{item.tagName}}" wx:for-item="tag" wx:key="index">
+              {{tag}}
+            </view>
           </view>
           <view class="ai-description">
             <text class="ai-label">AI评价</text>

@@ -1,1 +1,57 @@
 /* pages/test.wxss */
+.container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+.destination-card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20vh; /* 占据屏幕底部1/5的高度 */
+  background-color: white;
+  box-shadow: 0 -4rpx 10rpx rgba(0, 0, 0, 0.1);
+  border-radius: 20rpx 20rpx 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-content {
+  padding: 20rpx 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.destination-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.navigation-button {
+  background-color: #4A90E2;
+  color: white;
+  padding: 10rpx 20rpx;
+  border-radius: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.navigation-button image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.navigation-button text {
+  font-size: 24rpx;
+}

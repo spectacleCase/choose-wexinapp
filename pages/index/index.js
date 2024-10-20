@@ -1,7 +1,6 @@
 // components/index-component/index-component.js
 import RequestUtils from "../../utils/request_util";
-import User from "../../services/api/user";
-import Recommend from "../../services/api/recommend.js";
+import User from "../../services/api/user"
 const toast = require("../../companies/toast.js").default;
 Component({
   properties: {
@@ -58,13 +57,6 @@ Component({
   },
 
   methods: {
-    onAvatarTap() {
-      // 处理头像点击,例如导航到用户页面
-      wx.navigateTo({
-        url: "/pages/user/user",
-      });
-    },
-
     getTips: async function () {
       const helData = await RequestUtils.request(User.user.healthTips);
       this.setData({
@@ -112,24 +104,16 @@ Component({
     },
 
     getRecommendations() {
-      // 这里应该调用推荐API
-      // 暂时使用现有的模拟数据
-      const mockResults = this.data.recommendationResults;
-      // 可以在这里添加一些动画或加载效果
       wx.showToast({
         title: "正在为您推荐",
         icon: "loading",
         duration: 1000,
       });
-      // 模拟API调用延迟
       setTimeout(() => {
-        this.recommend();
-        this.setData({ recommendationResults: mockResults });
+        wx.navigateTo({
+          url: "/pages/recommendation-result/recommendation-result",
+        });
       }, 1000);
-    },
-    recommend: function () {
-      const data = RequestUtils.request(Recommend.recommend.recommend);
-      console.log("推荐结果", data);
     },
 
     resetFilter() {

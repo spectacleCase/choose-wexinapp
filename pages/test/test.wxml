@@ -1,6 +1,13 @@
 <!-- test.wxml -->
-<view class="container" style="height: 100%;width: 100%;">
-  <map id="map" class="map" markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}" style="height: 90vh; width: 100vw;"></map>
+<view class="container">
+  <map id="map" class="map" markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}"></map>
+  <view class="destination-card">
+    <view class="card-content">
+      <text class="destination-name">{{destinationName}}</text>
+      <view class="navigation-button" bindtap="nav">
+        <image src="../../assets/images/导航.png" mode="aspectFit"></image>
+        <text>导航</text>
+      </view>
+    </view>
+  </view>
 </view>
-<button size="mini" bindtap="buttonSearch">检索“美食”</button>
-<button size="mini" bindtap="getMap">定位</button>

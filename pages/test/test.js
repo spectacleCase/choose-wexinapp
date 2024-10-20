@@ -4,73 +4,66 @@ const app = getApp();
 
 Page({
   data: {
-    latitude: 21.682133,
-    longitude: 110.923515,
+    latitude: 21.682233,
+    longitude: 110.921815,
     markers: [],
-    id:1
+    destinationName: "目的地名称"
   },
 
-  buttonSearch(e) {
-    var _this = this;
-    var allMarkers = [];
-    //通过wx.request发起HTTPS接口请求
-    wx.request({
-      //地图WebserviceAPI地点搜索接口请求路径及参数（具体使用方法请参考开发文档）
-      url: "https://apis.map.qq.com/ws/place/v1/search?page_index=1&page_size=20&boundary=region(北京市,0)&keyword=美食&key=NHCBZ-Z57K3-5B63O-O5PON-MAZ65-7LFK3",
-      success(res) {
-        var result = res.data;
-        console.log(res.data);
-        var pois = result.data;
-        for (var i = 0; i < pois.length; i++) {
-          var title = pois[i].title;
-          var lat = pois[i].location.lat;
-          var lng = pois[i].location.lng;
-          console.log(title + "," + lat + "," + lng);
-          const marker = {
-            id: i,
-            latitude: lat,
-            longitude: lng,
-            callout: {
-              // 点击marker展示title
-              content: title,
-            },
-          };
-          allMarkers.push(marker);
-          marker = null;
-        }
-        console.log(allMarkers);
-        _this.setData({
-          latitude: allMarkers[0].latitude,
-          longitude: allMarkers[0].longitude,
-          markers: allMarkers,
-        });
-      },
-    });
-  },
-  getMap() {
-    let allMarkers = this.data.markers;
-    let a = this.data.latitude + 0.0001;
-    let b = this.data.longitude + 0.0001;
-    const marker = {
-      id: this.data.id,
-      latitude: a,
-      longitude: b,
-      title:"ces ",
-      iconPath:"../../assets/images/食物&器皿－披萨.png",
-      width: 20, // 必须指定宽度
-      height: 30, // 必须指定高度
-      callout: {
-        // 点击marker展示title
-        content: "title",
-      },
-    };
-    allMarkers.push(marker);
-    
+  onLoad: function (options) {
+    console.log("参数", options.latitude, options.longitude);
+    if (options.latitude && options.longitude) {
+      const lat = parseFloat(options.latitude);
+      const lng = parseFloat(options.longitude);
+      if (this.isValidLatitude(lat) && this.isValidLongitude(lng)) {
+        this.setMapMarker(lng, lat);
+      } else {
+        console.error("Invalid latitude or longitude");
+        // 使用默认值
+        this.setMapMarker(this.data.longitude, this.data.latitude);
+      }
+    } else {
+      // 如果没有传入参数，使用默认值
+      this.setMapMarker(this.data.longitude, this.data.latitude);
+    }
+    // 假设我们从options中获取目的地名称，如果没有则使用默认值
     this.setData({
-      latitude: a,
-      longitude: b,
-      markers: allMarkers,
-      id:this.data.id += 1
+      destinationName: options.name || "目的地名称"
     });
   },
+
+  setMapMarker(lng, lat) {
+    const marker = {
+      id: 1,
+      latitude: lat,
+      longitude: lng,
+      iconPath: "../../assets/images/食物&器皿－披萨.png",
+      width: 30,
+      height: 30,
+    };
+
+    this.setData({
+      latitude: lat,
+      longitude: lng,
+      markers: [marker],
+    });
+  },
+
+  nav: function () {  
+    wx.openLocation({
+      latitude: this.data.latitude,
+      longitude: this.data.longitude,
+      name: this.data.destinationName,
+      scale: 15,
+      address: `${this.data.latitude},${this.data.longitude}`
+    })
+  },
+
+  isValidLatitude: function(lat) {
+    return lat >= -90 && lat <= 90;
+  },
+
+  isValidLongitude: function(lng) {
+    return lng >= -180 && lng <= 180;
+  }
 });

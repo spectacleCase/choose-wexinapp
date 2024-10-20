@@ -1,3 +1,5 @@
+import RequestUtils from "../../utils/request_util";
+import Recommend from "../../services/api/recommend";
 Page({
   data: {
     bubbles: [],
@@ -13,6 +15,7 @@ Page({
         shopId: 9,
         shopName: "中文店铺4",
         tagName: ["距离适中", "酸辣辣"],
+        coordinate: "110.921815, 21.682233",
       },
       {
         dishesName: "特色菜品18",
@@ -25,8 +28,8 @@ Page({
         shopId: 9,
         shopName: "中文店铺4",
         tagName: ["距离适中", "酸辣辣"],
+        coordinate: "110.921815, 21.682233",
       },
-      // 添加更多推荐项...
     ],
     currentIndex: 0,
     bubbleColors: ["#FDF1E7", "#F07A10", "#FDF3E8", "#FDF3E8", "#FDF3E8"],
@@ -35,6 +38,10 @@ Page({
   onLoad: function () {
     this.generateBubbles();
     this.generateStarsForRecommendations();
+  },
+  recommend: function () {
+    const data = RequestUtils.request(Recommend.recommend.recommend);
+    console.log("推荐结果", data);
   },
 
   generateBubbles: function () {
@@ -93,14 +100,38 @@ Page({
     });
   },
 
-  generateStarsForRecommendations: function () {
-    const updatedRecommendations = this.data.recommendations.map((item) => {
+  generateStarsForRecommendations: async function () {
+    let List = [];
+    const data = await RequestUtils.request(Recommend.recommend.recommend);
+    List.push(data.data);
+    console.log(data.data);
+    console.log(List);
+
+    // this.setData({ recommendations: List });
+    const updatedRecommendations = List.map((item) => {
       return {
         ...item,
         stars: this.generateStars(item.mark),
       };
     });
     this.setData({ recommendations: updatedRecommendations });
+  },
+  navigationShop: function (event) {
+    console.log(event.currentTarget.dataset);
+
+    const coordinate = event.currentTarget.dataset.coordinate;
+    const dishesName = event.currentTarget.dataset.dishesname;
+    const [longitude, latitude] = coordinate.split(",");
+    console.log(latitude, longitude);
+    console.log(dishesName);
+
+    wx.openLocation({
+      latitude: Number(latitude),
+      longitude: Number(longitude),
+      name: "美食",
+      scale: 15,
+      address: dishesName,
+    });
   },
 
   generateStars: function (mark) {

@@ -94,10 +94,16 @@
   font-size: 18px;
 }
 
+.shop-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .shop-name {
   font-size: 16px;
   color: #666;
-  margin-bottom: 10px;
 }
 
 .tags {
@@ -163,4 +169,20 @@
 .arrow-text {
   font-size: 24px;
   color: #FF8C00;
+}
+
+.navigation-container {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 6rpx;
+}
+
+.navigation-text {
+  font-size: 22rpx;
+  color: #4A90E2;
 }
