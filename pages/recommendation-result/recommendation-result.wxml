@@ -1,0 +1,31 @@
+<view class="recommendation-result">
+  <!-- 背景气泡 -->
+  <view class="bubble-container">
+    <view class="bubble" wx:for="{{bubbles}}" wx:key="index" style="{{item.style}}">
+      <image class="bubble-icon" src="{{item.icon}}" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <!-- 推荐信息胶囊 -->
+  <swiper class="info-capsule-swiper" bindchange="onSwiperChange" vertical="true" current="{{currentIndex}}">
+    <swiper-item wx:for="{{recommendations}}" wx:key="id">
+      <view class="info-capsule">
+        <image class="dish-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="info-content">
+          <view class="dish-header">
+            <text class="dish-name">{{item.dishesName}}</text>
+            <view class="stars">{{item.stars}}</view>
+          </view>
+          <text class="shop-name">{{item.shopName}}</text>
+          <view class="tags">
+            <text class="tag" wx:for="{{item.tagName}}" wx:for-item="tag" wx:key="index">{{tag}}</text>
+          </view>
+          <view class="ai-description">
+            <text class="ai-label">AI评价</text>
+            <text class="ai-content">{{item.aiDescription}}</text>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

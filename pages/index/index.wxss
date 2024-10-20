@@ -95,51 +95,27 @@
 }
 
 .recommend-button {
-  width: 160rpx;
-  height: 160rpx;
-  position: relative;
-  background: linear-gradient(145deg, #FFA07A, #FF8C69);
-  /* 更淡的橙色渐变 */
-  border-radius: 50%;
-  box-shadow: 0 6rpx 15rpx rgba(255, 160, 122, 0.3);
-  /* 更淡的阴影 */
+  width: 200rpx;
+  height: 80rpx;
+  background-color: #FF8C00;
+  border-radius: 40rpx;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
-  transition: all 0.3s ease;
+  align-items: center;
   margin: 30rpx auto;
-}
-
-.recommend-button::before {
-  content: '';
-  position: absolute;
-  width: 90%;
-  height: 90%;
-  border-radius: 50%;
-  border: 2rpx solid rgba(255, 255, 255, 0.8);
-  /* 略微增加边框透明度 */
-}
-
-.recommend-icon {
-  font-size: 70rpx;
-  color: white;
-  margin-bottom: -10rpx;
+  box-shadow: 0 4rpx 8rpx rgba(255, 140, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .recommend-text {
-  font-size: 24rpx;
+  font-size: 28rpx;
   color: white;
-  margin-top: 5rpx;
+  font-weight: bold;
 }
 
 .recommend-button:active {
   transform: scale(0.95);
-  box-shadow: 0 3rpx 10rpx rgba(255, 160, 122, 0.4);
-  /* 更淡的按压阴影 */
-  background: linear-gradient(145deg, #FF8C69, #FFA07A);
-  /* 反转渐变方向 */
+  box-shadow: 0 2rpx 4rpx rgba(255, 140, 0, 0.1);
 }
 
 @keyframes bounce {
@@ -488,3 +464,93 @@
   margin-bottom: 20rpx;
   z-index: 1;
 }
+
+.recommend-card {
+  width: 75%;  /* 稍微减小宽度 */
+  height: 110rpx;  /* 减小高度 */
+  background: linear-gradient(135deg, #FFE4B5, #FFA07A);
+  border-radius: 15rpx;
+  display: flex;
+  align-items: center;
+  margin: 25rpx auto;
+  padding: 12rpx 15rpx;  /* 减小内边距 */
+  box-shadow: 0 4rpx 12rpx rgba(255, 165, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.recommend-content {
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  width: 100%;
+}
+
+.recommend-icon {
+  width: 60rpx;  /* 减小图标大小 */
+  height: 60rpx;
+  margin-right: 12rpx;  /* 减小右边距 */
+  flex-shrink: 0;
+}
+
+.recommend-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.recommend-text {
+  font-size: 28rpx;
+  color: #8B4513;
+  font-weight: bold;
+  margin-bottom: 2rpx;
+}
+
+.recommend-description {
+  font-size: 20rpx;  /* 减小字体大小 */
+  color: #A0522D;
+  opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recommend-decoration {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+.recommend-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 4rpx 10rpx rgba(255, 165, 0, 0.2);
+}
+
+.recommend-card:active .recommend-decoration {
+  transform: rotate(45deg) scale(1.1);
+}
+
+.recommend-embedded-icon {
+  position: absolute;
+  right: 00rpx;
+  bottom: -20rpx;
+  width: 150rpx;
+  height: 150rpx;
+  opacity: 0.3;
+  transform: rotate(15deg);
+  z-index: 1;
+}
+
+.recommend-content {
+  /* 保持现有样式 */
+  position: relative;
+  z-index: 2;
+}
+
+/* 其他现有样式保持不变 */

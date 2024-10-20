@@ -1,0 +1,166 @@
+.recommendation-result {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.bubble-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: float 15s infinite linear;
+  bottom: -50px; /* 从视图底部以下开始 */
+}
+
+.bubble-icon {
+  width: 50%;
+  height: 50%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg); /* 移动到视图顶部以上 */
+    opacity: 0;
+  }
+}
+
+.info-capsule-swiper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 70%;
+}
+
+.info-capsule {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-image {
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.info-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dish-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stars {
+  color: #FFD700;
+  font-size: 18px;
+}
+
+.shop-name {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.tag {
+  background-color: #FFE4B5;
+  color: #FF8C00;
+  padding: 4px 8px;
+  border-radius: 12px;
+  margin: 2px;
+  font-size: 12px;
+}
+
+.ai-description {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: rgba(255, 140, 0, 0.1);
+  border-radius: 8px;
+}
+
+.ai-label {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FF8C00;
+  margin-bottom: 5px;
+}
+
+.ai-content {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow-up {
+  top: 20px;
+}
+
+.arrow-down {
+  bottom: 20px;
+}
+
+.arrow-text {
+  font-size: 24px;
+  color: #FF8C00;
+}

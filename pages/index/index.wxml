@@ -18,8 +18,16 @@
       </view>
     </view>
   </view>
-  <view class="recommend-button" bindtap="onRecommendTap">
-    <text class="recommend-text">待定调整</text>
+  <view class="recommend-card" bindtap="onRecommendTap">
+    <view class="recommend-content">
+      <image class="recommend-icon" src="../../assets/images/推荐.png" mode="aspectFit"></image>
+      <view class="recommend-text-container">
+        <text class="recommend-text">今日推荐</text>
+        <text class="recommend-description">点击获取专属美食推荐</text>
+      </view>
+    </view>
+    <image class="recommend-embedded-icon" src="../../assets/images/食物.png" mode="aspectFit"></image>
+    <view class="recommend-decoration"></view>
   </view>
   <view class="health-tips" bindtap="getTips">
     <text class="tips-title">健康小知识</text>
