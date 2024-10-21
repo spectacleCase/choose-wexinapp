@@ -8,7 +8,7 @@
           <input class="search-input" placeholder="搜索美食..." bindinput="onSearchInput" />
         </view>
         <view class="filter-button" bindtap="showFilterOptions">
-          <image style="width: 60rpx; height: 60rpx;" src="../../assets/images/更多.png" mode="aspectFill"></image>
+          <image style="width: 50rpx; height: 50rpx;" src="../../assets/images/更多.png" mode="aspectFit"></image>
         </view>
       </view>
     </view>
@@ -20,15 +20,28 @@
     </view>
     <text class="main-title">你今天想吃什么?</text>
     <view class="recommendation-section">
-      <view class="recommend-card" bindtap="onRecommendTap">
-        <view class="recommend-content">
-          <image class="recommend-icon" src="../../assets/images/推荐.png" mode="aspectFit"></image>
-          <view class="recommend-text-container">
-            <text class="recommend-text">今日推荐</text>
-            <text class="recommend-description">点击获取专属美食推荐</text>
+      <view class="card-row">
+        <view class="recommend-card" bindtap="onRecommendTap">
+          <view class="recommend-content">
+            <image class="recommend-icon" src="../../assets/images/推荐.png" mode="aspectFit"></image>
+            <view class="recommend-text-container">
+              <text class="recommend-text">今日推荐</text>
+              <text class="recommend-description">点击获取专属美食推荐</text>
+            </view>
+          </view>
+          <image class="recommend-embedded-icon" src="../../assets/images/食物.png" mode="aspectFit"></image>
+        </view>
+        <view class="card-column">
+          <view class="small-card publish-card" bindtap="onPublishTap">
+            <image class="small-card-icon" src="../../assets/images/发布.png" mode="aspectFit"></image>
+            <text class="small-card-text">发布</text>
+          </view>
+          <view class="small-card collection-card" bindtap="onCollectionTap">
+            <text class="small-card-text">收藏库</text>
+            <text class="small-card-text">点击说出你的收藏</text>
+            <image class="small-card-icon" src="../../assets/images/食物.png" mode="aspectFit"></image>
           </view>
         </view>
-        <image class="recommend-embedded-icon" src="../../assets/images/食物.png" mode="aspectFit"></image>
       </view>
       <view class="health-tips" bindtap="getTips">
         <text class="tips-title">健康小知识</text>

@@ -164,6 +164,18 @@ Component({
         selectedCategory: "菜品", // 设置为默认值
       });
     },
+
+    onPublishTap() {
+      // 处理发布卡片的点击事件
+      console.log('发布卡片被点击');
+      // 这里可以添加导航到发布页面的逻辑
+    },
+
+    onCollectionTap() {
+      // 处理收藏库卡片的点击事件
+      console.log('收藏库卡片被点击');
+      // 这里可以添加导航到收藏库页面的逻辑
+    }
   },
 
   ready: function () {
