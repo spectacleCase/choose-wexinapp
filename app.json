@@ -9,7 +9,10 @@
     "pages/myself/about-us/about-us",
     "pages/test/test",
     "pages/recommendation-result/recommendation-result",
-    "pages/myself/notifications/notifications"
+    "pages/myself/notifications/notifications",
+    "pages/publish/publish",
+    "pages/collect/collect",
+    "page/ranking/ranking"
   ],
   "window": {
     "navigationBarTextStyle": "black",

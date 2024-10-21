@@ -22,14 +22,25 @@ Component({
         url: "/pages/index/index",
       },
       {
+        icon: "../../assets/images/功能排行榜.png",
+        text: "排行榜",
+        url: "/pages/ranking/ranking",
+      },
+      {
+        icon: "../../assets/images/发布.png",
+        text: "发布",
+        url: "/pages/publish/publish",
+      },
+
+      {
+        icon: "../../assets/images/收藏.png",
+        text: "收藏库",
+        url: "/pages/collect/collect",
+      },
+      {
         icon: "../../assets/images/我的.png",
         text: "我的",
         url: "/pages/myself/user/user",
-      },
-      {
-        icon: "../../assets/images/设置.png",
-        text: "设置",
-        url: "/pages/settings/settings",
       },
     ],
     userInfo: {},

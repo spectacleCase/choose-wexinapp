@@ -52,7 +52,7 @@
     </view>
   </view>
   <view class="scrollable-content">
-    <text class="recommendation-title">推荐</text>
+    <text class="recommendation-title">推荐  🎉</text>
     <view class="results-container">
       <view wx:for="{{recommendationResults}}" wx:key="index" class="result-item">
         <image class="result-image" src="{{item.image}}" mode="aspectFill"></image>

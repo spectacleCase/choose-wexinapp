@@ -1,10 +1,21 @@
 import Common from "../../services/api/common";
 import RequestUtil from "../../utils/request_util";
+
 Component({
   properties: {
     currentPage: {
       type: String,
       value: "index",
+    },
+    // 添加一个事件监听器
+    navigateToPageEvent: {
+      type: String,
+      value: "",
+      observer: function (newVal) {
+        if (newVal) {
+          this.navigateTo(newVal);
+        }
+      },
     },
   },
 
@@ -13,7 +24,9 @@ Component({
     pageAnimation: {},
     pages: {
       index: { url: "/pages/index/index", title: "首页" },
-      settings: { url: "/pages/settings/settings", title: "设置" },
+      publish: { url: "/pages/publish/publish", title: "发布" },
+      collect: { url: "/pages/collect/collect", title: "收藏" },
+      ranking: { url: "/pages/ranking/ranking", title: "排行榜" },
       user: { url: "/pages/myself/user/user", title: "我的" },
     },
     weather: {
@@ -30,6 +43,10 @@ Component({
   },
 
   methods: {
+    onNavigateToPage: function (event) {
+      const { url } = event.detail;
+      this.navigateTo(url);
+    },
     toggleTabbar: function () {
       const isOpen = !this.data.isTabbarOpen;
       this.setData({ isTabbarOpen: isOpen });
@@ -40,6 +57,7 @@ Component({
       const { url } = e.detail;
       this.navigateTo(url);
     },
+
     navigateToNotifications: function () {
       wx.navigateTo({
         url: "/pages/myself/notifications/notifications",
@@ -55,6 +73,11 @@ Component({
         this.setData({ currentPage: page });
       }
       this.toggleTabbar();
+    },
+
+    // 公共方法，用于外部调用
+    navigateToPage: function (url) {
+      this.navigateTo(url);
     },
 
     animatePage: function (isOpen) {
@@ -122,6 +145,7 @@ Component({
       }
       this.setData({ moveX: 0, canSlide: false });
     },
+
     getWeather: async function () {
       console.log("到了导航栏 ");
       const data = await RequestUtil.request(Common.common.getWeather);
@@ -129,9 +153,10 @@ Component({
         weather: data.data,
       });
       console.log("结果");
-      console.log(this.data.weathar);
+      console.log(this.data.weather);
     },
   },
+
   attached: async function () {
     this.getWeather();
   },

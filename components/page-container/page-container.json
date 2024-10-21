@@ -4,6 +4,9 @@
     "side-tabbar": "/components/side-tabbar/side-tabbar",
     "index-page": "/pages/index/index",
     "settings-page": "/pages/settings/settings",
-    "user": "/pages/myself/user/user"
+    "user": "/pages/myself/user/user",
+    "publish": "/pages/publish/publish",
+    "collect": "/pages/collect/collect",
+    "ranking": "/pages/ranking/ranking"
   }
 }

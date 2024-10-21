@@ -17,13 +17,15 @@ Component({
     selectedCategory: "菜品",
     recommendationResults: [
       {
-        image: "../../assets/images/食物.png",
+        image:
+          "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
         tag: "主菜",
         name: "红烧肉",
         distance: "20km",
       },
       {
-        image: "../../assets/images/食物1.png",
+        image:
+          "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
         tag: "甜品",
         name: "水果沙拉",
         distance: "10km",
@@ -166,16 +168,12 @@ Component({
     },
 
     onPublishTap() {
-      // 处理发布卡片的点击事件
-      console.log('发布卡片被点击');
-      // 这里可以添加导航到发布页面的逻辑
+      this.triggerEvent("navigateToPage", { url: "/pages/publish/publish" });
     },
 
     onCollectionTap() {
-      // 处理收藏库卡片的点击事件
-      console.log('收藏库卡片被点击');
-      // 这里可以添加导航到收藏库页面的逻辑
-    }
+      this.triggerEvent("navigateToPage", { url: "/pages/collect/collect" });
+    },
   },
 
   ready: function () {
