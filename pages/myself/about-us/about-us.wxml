@@ -1,0 +1,21 @@
+<view class="container">
+    <!-- 项目名称卡片 -->
+    <view class="card project-name">
+        <text class="title">WeChoice</text>
+    </view>
+    <!-- 简介卡片 -->
+    <view class="card introduction">
+        <text class="subtitle">项目简介</text>
+        <view class="content">"WeChoice"一款面向高校学生的智能餐饮推荐小程序，旨在帮助解决选择困难和日常饮食决策问题。</view>
+        <view class="content">"WeChoice"通过用户偏好设置和浏览历史，提供个性化的餐饮推荐，同时融入健康知识分享和社交互动功能。</view>
+        <text class="subtitle">数据来源</text>
+        <view class="content">我们的数据来自权威的营养学数据库和用户反馈，确保推荐的准确性和实用性。</view>
+        <text class="subtitle">开发贡献</text>
+        <view class="contributors">
+            <view class="contributor" wx:for="{{contributors}}" wx:key="index">
+                <image class="avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+                <text class="name">{{item.name}}</text>
+            </view>
+        </view>
+    </view>
+</view>

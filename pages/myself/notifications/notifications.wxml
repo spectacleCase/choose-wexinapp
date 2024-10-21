@@ -1,0 +1,15 @@
+<view class="container">
+    <view class="section">
+        <view class="section-title">通知信息</view>
+        <view class="notification-list">
+            <view class="notification-item" wx:for="{{notifications}}" wx:key="index">
+                <image class="avatar" src="{{item.avatar || '../../../assets/images/通知.png'}}" mode="aspectFill"></image>
+                <view class="notification-content">
+                    <view class="username" wx:if="{{item.username}}">{{item.username}}</view>
+                    <view class="message">{{item.message}}</view>
+                    <view class="time">{{item.time}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

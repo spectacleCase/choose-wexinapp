@@ -40,6 +40,11 @@ Component({
       const { url } = e.detail;
       this.navigateTo(url);
     },
+    navigateToNotifications: function () {
+      wx.navigateTo({
+        url: "/pages/myself/notifications/notifications",
+      });
+    },
 
     navigateTo: function (url) {
       const page = Object.keys(this.data.pages).find(

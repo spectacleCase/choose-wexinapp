@@ -1,6 +1,6 @@
 // components/index-component/index-component.js
 import RequestUtils from "../../utils/request_util";
-import User from "../../services/api/user"
+import User from "../../services/api/user";
 const toast = require("../../companies/toast.js").default;
 Component({
   properties: {
@@ -45,6 +45,48 @@ Component({
         tag: "甜品",
         name: "水果沙拉",
         distance: "10km",
+      },
+      {
+        image: "../../assets/images/食物1.png",
+        tag: "糕点",
+        name: "蛋糕",
+        distance: "5km",
+      },
+      {
+        image: "../../assets/images/食物1.png",
+        tag: "糕点",
+        name: "蛋糕",
+        distance: "5km",
+      },
+      {
+        image: "../../assets/images/食物1.png",
+        tag: "糕点",
+        name: "蛋糕",
+        distance: "5km",
+      },
+      {
+        image: "../../assets/images/食物1.png",
+        tag: "糕点",
+        name: "蛋糕",
+        distance: "5km",
+      },
+      {
+        image: "../../assets/images/食物1.png",
+        tag: "糕点",
+        name: "蛋糕",
+        distance: "5km",
+      },
+      {
+        image: "../../assets/images/食物1.png",
+        tag: "糕点",
+        name: "蛋糕",
+        distance: "5km",
+      },
+      {
+        image: "../../assets/images/食物1.png",
+        tag: "糕点",
+        name: "蛋糕",
+        distance: "5km",
       },
       {
         image: "../../assets/images/食物1.png",

@@ -50,7 +50,7 @@ Component({
     navigateToAboutUs: function () {
       // 跳转到关于我们页面
       wx.navigateTo({
-        url: "/pages/about_us/about_us",
+        url: "/pages/myself/about-us/about-us",
       });
     },
 

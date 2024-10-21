@@ -1,40 +1,44 @@
 <!-- pages/index.wxml -->
 <view class="container">
-  <view class="header">
-    <view class="location-info">
-      <image class="location-icon" src="../../assets/images/地点.png"></image>
-      <text class="location-name">{{locationName}}</text>
-    </view>
-  </view>
-  <text class="main-title">你今天想吃什么?</text>
-  <view class="search-section">
-    <view class="search-bar">
-      <view class="search-input-container">
-        <icon type="search" size="14" color="#999" />
-        <input class="search-input" placeholder="搜索美食..." bindinput="onSearchInput" />
-      </view>
-      <view class="filter-button" bindtap="showFilterOptions">
-        <image style="width: 60rpx; height: 60rpx;" src="../../assets/images/更多.png" mode="aspectFill"></image>
+  <view class="fixed-content">
+    <view class="search-section">
+      <view class="search-bar">
+        <view class="search-input-container">
+          <icon type="search" size="14" color="#999" />
+          <input class="search-input" placeholder="搜索美食..." bindinput="onSearchInput" />
+        </view>
+        <view class="filter-button" bindtap="showFilterOptions">
+          <image style="width: 60rpx; height: 60rpx;" src="../../assets/images/更多.png" mode="aspectFill"></image>
+        </view>
       </view>
     </view>
-  </view>
-  <view class="recommend-card" bindtap="onRecommendTap">
-    <view class="recommend-content">
-      <image class="recommend-icon" src="../../assets/images/推荐.png" mode="aspectFit"></image>
-      <view class="recommend-text-container">
-        <text class="recommend-text">今日推荐</text>
-        <text class="recommend-description">点击获取专属美食推荐</text>
+    <view class="header">
+      <view class="location-info">
+        <image class="location-icon" src="../../assets/images/地点.png"></image>
+        <text class="location-name">{{locationName}}</text>
       </view>
     </view>
-    <image class="recommend-embedded-icon" src="../../assets/images/食物.png" mode="aspectFit"></image>
-    <view class="recommend-decoration"></view>
+    <text class="main-title">你今天想吃什么?</text>
+    <view class="recommendation-section">
+      <view class="recommend-card" bindtap="onRecommendTap">
+        <view class="recommend-content">
+          <image class="recommend-icon" src="../../assets/images/推荐.png" mode="aspectFit"></image>
+          <view class="recommend-text-container">
+            <text class="recommend-text">今日推荐</text>
+            <text class="recommend-description">点击获取专属美食推荐</text>
+          </view>
+        </view>
+        <image class="recommend-embedded-icon" src="../../assets/images/食物.png" mode="aspectFit"></image>
+        <view class="recommend-decoration"></view>
+      </view>
+      <view class="health-tips" bindtap="getTips">
+        <text class="tips-title">健康小知识</text>
+        <text class="tips-content">{{healthTip}}</text>
+      </view>
+    </view>
   </view>
-  <view class="health-tips" bindtap="getTips">
-    <text class="tips-title">健康小知识</text>
-    <text class="tips-content">{{healthTip}}</text>
-  </view>
-  <text class="recommendation-title">推荐</text>
-  <view class="recommendation-results">
+  <view class="scrollable-content">
+    <text class="recommendation-title">推荐</text>
     <scroll-view class="results-scroll" scroll-y="true">
       <view class="results-container">
         <view wx:for="{{recommendationResults}}" wx:key="index" class="result-item">

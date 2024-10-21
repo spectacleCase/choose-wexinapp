@@ -9,7 +9,7 @@
                 <text>温度：{{weather.temperature}}</text>
                 <text>风力：{{weather.windpower}}</text>
             </view>
-            <button class="icon-button notification-button">🔔</button>
+            <button class="icon-button notification-button" bindtap="navigateToNotifications">🔔</button>
         </view>
         <view class="main-content">
             <index-page wx:if="{{currentPage === 'index'}}"></index-page>

@@ -3,12 +3,17 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 40rpx 0;
-  /* 移除左右padding，让背景色延伸到边缘 */
-  box-sizing: border-box;
-  min-height: 100vh;
-  max-height: 100vh;
-  background-color: #ffffff;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.fixed-content {
+  flex-shrink: 0;
+}
+
+.scrollable-content {
+  flex: 1;
+  overflow: hidden;
   position: relative;
 }
 
@@ -52,7 +57,7 @@
 }
 
 .health-tips {
-  width: calc(100% - 120rpx);
+  width: calc(80% - 120rpx);
   /* 减去左右padding */
   background-color: #FFF5E6;
   padding: 20rpx;
@@ -65,7 +70,7 @@
 }
 
 .tips-title {
-  font-size: 26rpx;
+  font-size: 28rpx;
   font-weight: bold;
   color: #F55A00;
   margin-bottom: 10rpx;
@@ -73,9 +78,14 @@
 }
 
 .tips-content {
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #666;
   line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .recommendation-options {
@@ -108,7 +118,7 @@
 }
 
 .recommend-text {
-  font-size: 28rpx;
+  font-size: 40rpx;
   color: white;
   font-weight: bold;
 }
@@ -135,15 +145,12 @@
 }
 
 .recommendation-results {
-  width: 100%;
-  height: 700rpx;
-  /* 增加高度 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: #ffffff;
-  padding: 20rpx 0;
-  box-sizing: border-box;
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
-  position: relative;
 }
 
 .recommendation-title {
@@ -156,8 +163,7 @@
 }
 
 .results-scroll {
-  height: calc(100% - 52rpx);
-  /* 减去标题的高度 */
+  height: 100%;
 }
 
 .results-container {
@@ -466,17 +472,15 @@
 }
 
 .recommend-card {
-  width: 75%;  /* 稍微减小宽度 */
-  height: 110rpx;  /* 减小高度 */
-  background: linear-gradient(135deg, #FFE4B5, #FFA07A);
-  border-radius: 15rpx;
-  display: flex;
-  align-items: center;
-  margin: 25rpx auto;
-  padding: 12rpx 15rpx;  /* 减小内边距 */
-  box-shadow: 0 4rpx 12rpx rgba(255, 165, 0, 0.2);
+  width: 75%; /* 调整宽度 */
+  height: 180rpx;
+  background: linear-gradient(135deg, #FF8C00, #FFA500);
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 10rpx rgba(255, 140, 0, 0.3);
   position: relative;
   overflow: hidden;
+  margin: 0 auto 20rpx;
 }
 
 .recommend-content {
@@ -501,19 +505,15 @@
 }
 
 .recommend-text {
-  font-size: 28rpx;
-  color: #8B4513;
+  font-size: 32rpx; /* 增大字体大小 */
+  color: #FFFFFF;
   font-weight: bold;
-  margin-bottom: 2rpx;
 }
 
 .recommend-description {
-  font-size: 20rpx;  /* 减小字体大小 */
-  color: #A0522D;
+  font-size: 24rpx; /* 稍微增大描述文字大小 */
+  color: #FFF5E6;
   opacity: 0.9;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .recommend-decoration {
@@ -552,5 +552,201 @@
   position: relative;
   z-index: 2;
 }
-
 /* 其他现有样式保持不变 */
+
+/* 添加或修改以下样式 */
+.recommendation-row {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 20rpx auto;
+}
+
+.recommend-card {
+  width: 48%; /* 调整宽度以适应并排布局 */
+  height: 160rpx;
+  background: linear-gradient(135deg, #FF8C00, #FFA500);
+  border-radius: 20rpx;
+  padding: 15rpx;
+  box-shadow: 0 4rpx 10rpx rgba(255, 140, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.recommend-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.recommend-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-bottom: 5rpx;
+}
+
+.recommend-text {
+  font-size: 28rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.recommend-description {
+  font-size: 20rpx;
+  color: #FFF5E6;
+  opacity: 0.9;
+}
+
+.recommend-embedded-icon {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -10rpx;
+  bottom: -10rpx;
+  opacity: 0.3;
+}
+
+.health-tips {
+  width: 48%; /* 调整宽度以适应并排布局 */
+  height: 160rpx;
+  background-color: #FFF5E6;
+  padding: 15rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tips-title {
+  font-size: 28rpx; /* 增大标题字体 */
+  font-weight: bold;
+  color: #F55A00;
+}
+
+.tips-content {
+  font-size: 22rpx; /* 稍微增大内容字体 */
+  color: #666;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 保持其他现有样式不变 */
+
+/* 修改推荐卡片和健康小知识的样式 */
+.recommendation-section {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 20rpx auto;
+}
+
+.recommend-card {
+  width: 80%;
+  height: 180rpx;
+  background: linear-gradient(135deg, #FF8C00, #FFA500);
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 10rpx rgba(255, 140, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+
+.recommend-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.recommend-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.recommend-text-container {
+  flex: 1;
+}
+
+.recommend-text {
+  font-size: 36rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.recommend-description {
+  font-size: 24rpx;
+  color: #FFF5E6;
+  opacity: 0.9;
+}
+
+.recommend-embedded-icon {
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  right: 10rpx;
+  bottom: 10rpx;
+  opacity: 0.3;
+}
+
+.health-tips {
+  width: 100%;
+  height: 140rpx;
+  background-color: #FFF5E6;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tips-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #F55A00;
+}
+
+.tips-content {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 修改推荐列表样式 */
+.recommendation-results {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.recommendation-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin: 20rpx 0 10rpx 40rpx;
+}
+
+.results-scroll {
+  flex: 1;
+}
+
+.results-container {
+  padding: 0 40rpx;
+}
+
+/* 其他样式保持不变 */
+

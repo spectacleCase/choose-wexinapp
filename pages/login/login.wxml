@@ -3,7 +3,7 @@
   <view class="background-decoration"></view>
   <view class="content">
     <image class="floating-icon" src="../../assets/images/coke.png" mode="aspectFit"></image>
-    <text class="title">WeChoose</text>
+    <text class="title">WeChoice</text>
     <text class="subtitle">发现你的专属美食推荐</text>
     <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">微信登录</button>
   </view>

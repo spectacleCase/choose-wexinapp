@@ -6,12 +6,14 @@
     "pages/settings/settings",
     "pages/myself/user/user",
     "pages/myself/edit_user_info/edit_user_info",
+    "pages/myself/about-us/about-us",
     "pages/test/test",
-    "pages/recommendation-result/recommendation-result"
+    "pages/recommendation-result/recommendation-result",
+    "pages/myself/notifications/notifications"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "WeChoose",
+    "navigationBarTitleText": "WeChoice",
     "navigationBarBackgroundColor": "#ffffff"
   },
   "style": "v2",
