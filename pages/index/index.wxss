@@ -3,8 +3,9 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
+  padding-bottom: 20rpx;
 }
 
 .fixed-content {
@@ -57,36 +58,21 @@
 }
 
 .health-tips {
-  width: calc(80% - 120rpx);
-  /* 减去左右padding */
+  width: 100%;
+  height: 140rpx;
   background-color: #FFF5E6;
   padding: 20rpx;
-  box-sizing: border-box;
-  border-radius: 15rpx;
+  border-radius: 20rpx;
   box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
   margin: 20rpx auto;
   position: relative;
   z-index: 2;
 }
 
-.tips-title {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #F55A00;
-  margin-bottom: 10rpx;
-  display: block;
-}
-
-.tips-content {
-  font-size: 22rpx;
-  color: #666;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 .recommendation-options {
   width: 100%;
@@ -117,11 +103,6 @@
   transition: all 0.3s ease;
 }
 
-.recommend-text {
-  font-size: 40rpx;
-  color: white;
-  font-weight: bold;
-}
 
 .recommend-button:active {
   transform: scale(0.95);
@@ -153,27 +134,19 @@
   background-color: #ffffff;
 }
 
-.recommendation-title {
-  font-size: 40rpx;
-  font-weight: bold;
-  color: #333;
-  margin-left: 70rpx;
-  margin-top: 20rpx;
-  margin-bottom: -20rpx;
-}
-
 .results-scroll {
   height: 100%;
 }
 
 .results-container {
+  padding: 0 40rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .result-item {
-  width: 80%;
+  width: 90%;
   background-color: #F7F8FC;
   border-radius: 10rpx;
   padding: 15rpx;
@@ -186,17 +159,13 @@
 
 .result-image {
   width: 120rpx;
-  /* 调整图片宽度 */
   height: 120rpx;
-  /* 调整图片高度 */
   border-radius: 8rpx;
   margin-right: 15rpx;
-  /* 添加右边距 */
 }
 
 .result-info {
   flex: 1;
-  /* 让信息占据剩余空间 */
   display: flex;
   margin-left: 10rpx;
   flex-direction: column;
@@ -350,14 +319,13 @@
   left: 0;
   width: 100%;
   background-color: #f9f9f9;
-  /* 弹出层背景色 */
   border-top-left-radius: 30rpx;
   border-top-right-radius: 30rpx;
   transform: translateY(100%);
   transition: transform 0.3s ease-out;
   z-index: 1000;
   box-shadow: 0 -4rpx 10rpx rgba(0, 0, 0, 0.1);
-  /* 添加顶部阴影 */
+
 }
 
 .popup.show {
@@ -367,7 +335,6 @@
 .popup-content {
   padding: 40rpx;
   background-color: #f9f9f9;
-  /* 确保内容区域也是相同的背景色 */
 }
 
 .popup-option {
@@ -395,11 +362,8 @@
   margin: 5rpx;
   height: 60rpx;
   background-color: #f5f5f5;
-  /* 浅灰色背景 */
   color: #666;
-  /* 深灰色字体 */
   border: 2rpx solid #e0e0e0;
-  /* 浅灰色边框 */
   border-radius: 30rpx;
   font-size: 24rpx;
   display: flex;
@@ -410,31 +374,9 @@
 .count-button.selected,
 .category-button.selected {
   background-color: #FFF5E6;
-  /* 浅橙色背景 */
   color: #F55A00;
-  /* 橙色字体 */
   border: 2rpx solid #F55A00;
-  /* 橙色边框 */
   font-weight: bold;
-}
-
-.confirm-button {
-  width: 100%;
-  height: 70rpx;
-  background-color: #F55A00;
-  color: #fff;
-  border: none;
-  border-radius: 35rpx;
-  font-size: 28rpx;
-  margin-top: 30rpx;
-}
-
-.popup-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20rpx;
-  display: block;
 }
 
 .popup-description {
@@ -452,6 +394,8 @@
 }
 
 .popup-title {
+  margin-bottom: 20rpx;
+  display: block;
   font-size: 32rpx;
   font-weight: bold;
   color: #333;
@@ -472,171 +416,47 @@
 }
 
 .recommend-card {
-  width: 75%; /* 调整宽度 */
   height: 180rpx;
-  background: linear-gradient(135deg, #FF8C00, #FFA500);
   border-radius: 20rpx;
-  padding: 20rpx;
   box-shadow: 0 4rpx 10rpx rgba(255, 140, 0, 0.3);
-  position: relative;
   overflow: hidden;
   margin: 0 auto 20rpx;
+  width: 90%;
+  background: linear-gradient(135deg, #FF8C00, #FFA500);
+  padding: 20rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .recommend-content {
   display: flex;
   align-items: center;
   z-index: 2;
-  width: 100%;
-}
-
-.recommend-icon {
-  width: 60rpx;  /* 减小图标大小 */
-  height: 60rpx;
-  margin-right: 12rpx;  /* 减小右边距 */
-  flex-shrink: 0;
 }
 
 .recommend-text-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   flex: 1;
 }
 
-.recommend-text {
-  font-size: 32rpx; /* 增大字体大小 */
-  color: #FFFFFF;
-  font-weight: bold;
-}
-
-.recommend-description {
-  font-size: 24rpx; /* 稍微增大描述文字大小 */
-  color: #FFF5E6;
-  opacity: 0.9;
-}
-
-.recommend-decoration {
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
-  transform: rotate(45deg);
-  z-index: 1;
-}
-
-.recommend-card:active {
-  transform: scale(0.98);
-  box-shadow: 0 4rpx 10rpx rgba(255, 165, 0, 0.2);
-}
-
-.recommend-card:active .recommend-decoration {
-  transform: rotate(45deg) scale(1.1);
-}
-
 .recommend-embedded-icon {
+  width: 160rpx; 
+  height: 160rpx;
+  opacity: 0.6;
   position: absolute;
-  right: 00rpx;
-  bottom: -20rpx;
-  width: 150rpx;
-  height: 150rpx;
-  opacity: 0.3;
-  transform: rotate(15deg);
-  z-index: 1;
+  right: 20rpx;
+  bottom: 10rpx;
 }
 
-.recommend-content {
-  /* 保持现有样式 */
-  position: relative;
-  z-index: 2;
-}
-/* 其他现有样式保持不变 */
-
-/* 添加或修改以下样式 */
 .recommendation-row {
   display: flex;
   justify-content: space-between;
   width: 90%;
   margin: 20rpx auto;
 }
-
-.recommend-card {
-  width: 48%; /* 调整宽度以适应并排布局 */
-  height: 160rpx;
-  background: linear-gradient(135deg, #FF8C00, #FFA500);
-  border-radius: 20rpx;
-  padding: 15rpx;
-  box-shadow: 0 4rpx 10rpx rgba(255, 140, 0, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.recommend-content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.recommend-icon {
-  width: 40rpx;
-  height: 40rpx;
-  margin-bottom: 5rpx;
-}
-
-.recommend-text {
-  font-size: 28rpx;
-  color: #FFFFFF;
-  font-weight: bold;
-}
-
-.recommend-description {
-  font-size: 20rpx;
-  color: #FFF5E6;
-  opacity: 0.9;
-}
-
-.recommend-embedded-icon {
-  width: 80rpx;
-  height: 80rpx;
-  position: absolute;
-  right: -10rpx;
-  bottom: -10rpx;
-  opacity: 0.3;
-}
-
-.health-tips {
-  width: 48%; /* 调整宽度以适应并排布局 */
-  height: 160rpx;
-  background-color: #FFF5E6;
-  padding: 15rpx;
-  border-radius: 20rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.tips-title {
-  font-size: 28rpx; /* 增大标题字体 */
-  font-weight: bold;
-  color: #F55A00;
-}
-
-.tips-content {
-  font-size: 22rpx; /* 稍微增大内容字体 */
-  color: #666;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* 保持其他现有样式不变 */
 
 /* 修改推荐卡片和健康小知识的样式 */
 .recommendation-section {
@@ -646,32 +466,12 @@
   margin: 20rpx auto;
 }
 
-.recommend-card {
-  width: 80%;
-  height: 180rpx;
-  background: linear-gradient(135deg, #FF8C00, #FFA500);
-  border-radius: 20rpx;
-  padding: 20rpx;
-  box-shadow: 0 4rpx 10rpx rgba(255, 140, 0, 0.3);
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 20rpx;
-}
-
-.recommend-content {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
 .recommend-icon {
-  width: 60rpx;
-  height: 60rpx;
+  width: 120rpx;
+  height: 120rpx;
   margin-right: 20rpx;
-}
-
-.recommend-text-container {
-  flex: 1;
+    flex-shrink: 0;
+      margin-bottom: 5rpx;
 }
 
 .recommend-text {
@@ -686,31 +486,12 @@
   opacity: 0.9;
 }
 
-.recommend-embedded-icon {
-  width: 100rpx;
-  height: 100rpx;
-  position: absolute;
-  right: 10rpx;
-  bottom: 10rpx;
-  opacity: 0.3;
-}
-
-.health-tips {
-  width: 100%;
-  height: 140rpx;
-  background-color: #FFF5E6;
-  padding: 20rpx;
-  border-radius: 20rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .tips-title {
   font-size: 30rpx;
   font-weight: bold;
   color: #F55A00;
+  margin-bottom: 10rpx;
+  display: block;
 }
 
 .tips-content {
@@ -734,6 +515,9 @@
 }
 
 .recommendation-title {
+  margin-left: 70rpx;
+  margin-top: 20rpx;
+  margin-bottom: -20rpx;
   font-size: 36rpx;
   font-weight: bold;
   color: #333;
@@ -743,10 +527,4 @@
 .results-scroll {
   flex: 1;
 }
-
-.results-container {
-  padding: 0 40rpx;
-}
-
-/* 其他样式保持不变 */
 
