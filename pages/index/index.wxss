@@ -421,7 +421,7 @@
   box-shadow: 0 4rpx 10rpx rgba(255, 140, 0, 0.3);
   overflow: hidden;
   margin: 0 auto 20rpx;
-    width: 65%; /* 缩小推荐卡片的宽度 */
+  width: 65%; /* 缩小推荐卡片的宽度 */
   background: linear-gradient(135deg, #FF8C00, #FFA500);
   padding: 20rpx;
   position: relative;
@@ -482,7 +482,7 @@
 
 .recommend-description {
   font-size: 24rpx;
-  color: #FFF5E6;
+  color: #fcf6ee;
   opacity: 0.9;
 }
 
@@ -552,27 +552,37 @@
   padding: 10rpx;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
   padding-top: 18rpx;
+  background: linear-gradient(135deg, #FFA040, #e2ab4b);
 }
 
 .publish-card {
-background: linear-gradient(135deg, #FFB366, #FFC966);
+background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
 }
 
-.collection-card {
-background: linear-gradient(135deg, #FFA040, #FFB840);
-}
 
 .small-card-icon {
-  width: 40rpx;
-  height: 40rpx;
+  width: 160rpx;
+  height: 160rpx;
+  flex:1;
+  text-align: right;
 }
 
 
 .small-card-text {
-  font-size: 24rpx;
-  color: #FFFFFF;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 20rpx;
+  margin-left: 10rpx;
+}
+.small-card-text-title {
   font-weight: bold;
+  font-size: 30rpx;
+  color: #070000;
+}
+.small-card-text-description {
+  font-size: 20rpx;
+  color: #fffafa;
 }
