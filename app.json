@@ -15,6 +15,12 @@
     "page/ranking/ranking",
     "pages/publish/publish-shop/publish-shop"
   ],
+  "subPackages": [
+    {
+      "root": "pages/shop",
+      "pages": ["shop/shop", "dishes/dishes"]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "WeChoice",

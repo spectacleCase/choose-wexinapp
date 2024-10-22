@@ -1,0 +1,92 @@
+<!-- pages/shop/shop/shop.wxml -->
+<view class="shop-container">
+    <!-- 头部图片蒙版 -->
+    <view class="header-image">
+        <image src="../../../assets/images/OIP-C.jpg" mode="aspectFill"></image>
+        <view class="mask"></view>
+    </view>
+    <view class="content-wrapper">
+        <!-- 店铺信息 -->
+        <view class="shop-info">
+            <view class="shop-logo">
+                <image src="https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain" mode="aspectFill"></image>
+            </view>
+            <view class="shop-details">
+                <text class="shop-title">店铺名称</text>
+                <!-- 店铺评分 -->
+                <view class="shop-rating">
+                    <text class="rating-score">{{shopRating}}</text>
+                    <view class="rating-stars">
+                        <block wx:for="{{5}}" wx:key="index">
+                            <image src="{{index <  shopRating ? '/assets/images/星星.png' : '/assets/images/星星_透明.png'}}" class="star-icon"></image>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 地址信息 -->
+        <view class="address-info">
+            <view class="address-details">
+                <text class="address-text">店铺地址描述</text>
+                <text class="distance">距您500米</text>
+            </view>
+            <image class="navigation-icon" src="../../../assets/images/导航.png" bindtap="navigate"></image>
+        </view>
+        <!-- 选项卡 -->
+        <view class="sticky-wrapper">
+            <view class="tab-bar" id="originalTabBar">
+                <view class="tab {{activeTab === 'dishes' ? 'active' : ''}}" bindtap="switchTab" data-tab="dishes">
+                    菜品
+                </view>
+                <view class="tab {{activeTab === 'reviews' ? 'active' : ''}}" bindtap="switchTab" data-tab="reviews">
+                    评价
+                </view>
+            </view>
+        </view>
+        <!-- 菜品部分 -->
+        <view class="section" id="dishes-section">
+            <view class="section-header">菜品</view>
+            <view class="section-content">
+                <view class="dishes-list">
+                    <view class="dish-item" wx:for="{{dishes}}" wx:key="id">
+                        <image class="dish-image" src="{{item.image}}" mode="aspectFill"></image>
+                        <view class="dish-info">
+                            <view class="dish-title">{{item.title}}</view>
+                            <view class="dish-tags">
+                                <view class="tag" wx:for="{{item.tags}}" wx:key="*this">
+                                    {{item}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 评价部分 -->
+        <view class="section" id="reviews-section">
+            <view class="section-header">评价</view>
+            <view class="section-content">
+                <view class="reviews-list">
+                    <view class="review-item" wx:for="{{reviews}}" wx:key="id" wx:for-item="outerItem">
+                        <image class="reviewer-avatar" src="{{outerItem.avatar}}" mode="aspectFill"></image>
+                        <view class="review-content">
+                            <view class="reviewer-info">
+                                <text class="reviewer-name">{{outerItem.name}}</text>
+                                <!-- 评价部分的评分 -->
+                                <view class="review-rating">
+                                    <view class="rating-stars">
+                                        <block wx:for="{{5}}" wx:key="index">
+                                            <image src="{{index <  outerItem.rating ? '/assets/images/星星.png' : '/assets/images/星星_透明.png'}}" class="star-icon"></image>
+                                        </block>
+                                    </view>
+                                </view>
+                            </view>
+                            <text class="review-text">{{outerItem.content}}</text>
+                        </view>
+                        <text class="review-date">{{outerItem.date}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

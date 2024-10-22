@@ -1,0 +1,340 @@
+/* pages/shop/shop/shop.wxss */
+.shop-container {
+  position: relative;
+  background-color: #F6F6F6;
+}
+
+.header-image {
+  position: relative;
+  height: 400rpx;
+  overflow: hidden;
+}
+
+.header-image image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(5px);
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.content-wrapper {
+  position: relative;
+  margin-top: -200rpx;
+  background-color: #f5f5f5;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  padding: 30rpx 20rpx;
+}
+
+.shop-info {
+  display: flex;
+  margin-bottom: 30rpx;
+}
+
+.shop-logo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  border: 4rpx solid #fff;
+  overflow: hidden;
+}
+
+.shop-logo image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shop-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.address {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.navigation-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+
+.tab-bar {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #fff;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.tab {
+  font-size: 28rpx;
+  color: #333;
+  padding: 10rpx 30rpx;
+  position: relative;
+  margin-right: 20rpx;
+}
+
+.tab.active {
+  color: #FFA500;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1rpx;
+  left: 0;
+  width: 100%;
+  height: 4rpx;
+  background-color: #FFA500;
+}
+
+.section {
+  margin-top: 20rpx;
+}
+
+.section-header {
+  padding: 20rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  background-color: #f5f5f5;
+  border-bottom: 2rpx solid #e0e0e0;
+}
+
+.section-header.active {
+  color: #FFA500;
+  border-bottom: 2rpx solid #FFA500;
+}
+
+.section-content {
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.dishes-list, .reviews-list {
+  margin-top: 0;
+}
+
+.dish-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.dish-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.dish-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.dish-info {
+  flex: 1;
+}
+
+.dish-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.dish-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tag {
+  font-size: 24rpx;
+  color: #FFA500;
+  background-color: #FFF5E6;
+  padding: 2rpx 8rpx;
+  margin-right: 10rpx;
+  margin-bottom: 6rpx;
+  border-radius: 4rpx;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.reviewer-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.review-item {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  align-items: flex-start;
+}
+
+.review-content {
+  flex: 1;
+}
+
+.reviewer-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rpx;
+}
+
+.reviewer-name {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.review-rating {
+  margin-top: 5rpx;
+}
+
+.rating-text {
+  font-size: 24rpx;
+  color: #FFA500;
+}
+
+.review-text {
+  font-size: 26rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.review-date {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: auto;
+  align-self: flex-start;
+}
+
+/* 在文件中添加以下样式 */
+.sticky-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+}
+
+/* 其他 tab-bar 相关样式保持不变 */
+
+/* 保留之前的样式，添加或修改以下样式 */
+
+.shop-rating {
+    display: flex;
+    align-items: center;
+    margin-top: 10rpx;
+}
+
+.rating-score {
+    font-size: 28rpx;
+    color: #FFA500;
+    margin-right: 10rpx;
+}
+
+.rating-stars {
+    display: flex;
+    align-items: center;
+}
+
+.rating-stars image {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 4rpx;
+}
+
+.address-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #e0e0e0;
+}
+
+.address-details {
+    flex: 1;
+}
+
+.address-text {
+    font-size: 28rpx;
+    color: #333;
+}
+
+.distance {
+    font-size: 24rpx;
+    color: #999;
+    display: block;
+    margin-top: 6rpx;
+}
+
+.navigation-icon {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+/* 其他样式保持不变 */
+
+.rating-stars {
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    font-size: 24rpx;
+    margin-right: 2rpx;
+}
+
+.star.full {
+    color: #FFA500;
+}
+
+.star.half {
+    color: #FFA500;
+}
+
+.star.empty {
+    color: #D1D1D1;
+}
+
+.rating-stars {
+    display: flex;
+    align-items: center;
+}
+
+.star-icon {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 4rpx;
+}
+
+.rating-score {
+    font-size: 28rpx;
+    color: #FFA500;
+    margin-right: 10rpx;
+}
