@@ -89,6 +89,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {},
+  navigateToDishes() {
+    wx.navigateTo({
+      url: "/pages/shop/dishes/dishes",
+    });
+  },
 
   switchTab(e) {
     const tab = e.currentTarget.dataset.tab;
@@ -147,5 +152,11 @@ Page({
     });
   },
 
-  methods: {},
+  methods: {
+    navigateToDishes: function () {
+      wx.navigateTo({
+        url: "/pages/shop/dishes/dishes",
+      });
+    },
+  },
 });

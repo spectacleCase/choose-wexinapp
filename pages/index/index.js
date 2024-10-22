@@ -174,6 +174,11 @@ Component({
     onCollectionTap() {
       this.triggerEvent("navigateToPage", { url: "/pages/collect/collect" });
     },
+    navigateToShop() {
+      wx.navigateTo({
+        url: "/pages/shop/shop/shop",
+      });
+    },
   },
 
   ready: function () {
