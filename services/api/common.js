@@ -13,11 +13,18 @@ const common = {
 
   // 获取当前的天气情况
   getWeather: {
-      url:BASE_URL + "/v1/getWeather",
-      method:"POST",
-      auth:true,
-      data:null,
-  }
+    url: BASE_URL + "/v1/getWeather",
+    method: "POST",
+    auth: true,
+    data: null,
+  },
+  // 获取全部标签
+  getTag: {
+    url: BASE_URL + "/v1/getTag",
+    method: "POST",
+    auth: true,
+    data: null,
+  },
 };
 
 export default {

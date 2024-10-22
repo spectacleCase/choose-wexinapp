@@ -1,57 +1,29 @@
 // pages/publish/publish-shop/publish-shop.js
+import util from "../../../utils/util";
+const toast = require("../../../companies/toast.js").default;
+import RequestUtil from "../../../utils/request_util.js";
+import Dishes from "../../../services/api/dishes.js";
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    shopName: "",
     shopImages: [],
-    location: "",
+    location: {
+      lat: "",
+      lng: "",
+      address: "",
+    },
+    shop: {
+      shopName: "",
+      image: "",
+      coordinate: "",
+    },
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {},
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
 
   onShopNameInput(e) {
     this.setData({
-      shopName: e.detail.value,
+      "shop.shopName": e.detail.value,
     });
   },
 
@@ -62,12 +34,18 @@ Page({
       count: maxImages - currentCount,
       sizeType: ["compressed"],
       sourceType: ["album", "camera"],
-      success: (res) => {
-        const newImages = res.tempFilePaths;
-        const shopImages = this.data.shopImages.concat(newImages);
+      success: async (res) => {
+        wx.showLoading({
+          title: "正在上传中",
+        });
+        const tempFilePaths = res.tempFilePaths;
+        console.log(tempFilePaths);
+        const fileData = await util.uploadFileUitl(tempFilePaths[0]);
+        const shopImages = this.data.shopImages.concat(fileData.fileName);
         this.setData({
           shopImages: shopImages.slice(0, maxImages),
         });
+        toast.showToast("保存成功", "success");
       },
     });
   },
@@ -82,15 +60,20 @@ Page({
   chooseLocation() {
     wx.chooseLocation({
       success: (res) => {
+        console.log(res);
+
         this.setData({
-          location: res.address,
+          "location.address": res.address,
+          "location.lat": res.latitude,
+          "location.lng": res.longitude,
         });
+        console.log(this.data.location);
       },
     });
   },
 
-  publishShop() {
-    if (!this.data.shopName) {
+  async publishShop() {
+    if (!this.data.shop.shopName) {
       wx.showToast({
         title: "请输入店铺名称",
         icon: "none",
@@ -106,7 +89,7 @@ Page({
       return;
     }
 
-    if (!this.data.location) {
+    if (!this.data.location.lat && !this.data.location.lng) {
       wx.showToast({
         title: "请选择店铺位置",
         icon: "none",
@@ -116,6 +99,22 @@ Page({
 
     // 这里添加发布店铺的逻辑
     console.log("发布店铺", this.data);
+    let images = "";
+    this.data.shopImages.forEach((item) => {
+      images += item + ",";
+    });
+
+    // 删除最后一个逗号
+    if (images.length > 0) {
+      images = images.slice(0, -1);
+    }
+
+    Dishes.dishes.addShop.data = {
+      shopName: this.data.shop.shopName,
+      image: images,
+      coordinate: this.data.location.lat + "," + this.data.location.lng,
+    };
+    await RequestUtil.request(Dishes.dishes.addShop);
     wx.showToast({
       title: "店铺发布成功",
       icon: "success",

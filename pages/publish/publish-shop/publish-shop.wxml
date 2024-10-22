@@ -1,9 +1,8 @@
-<!--pages/publish/publish-shop/publish-shop.wxml-->
+<!-- pages/publish/publish-shop/publish-shop.wxml -->
 <view class="container">
   <view class="input-group">
     <input class="input shop-name" placeholder="店铺名称" bindinput="onShopNameInput" />
   </view>
-
   <view class="upload-image">
     <view class="image-list">
       <view class="image-item" wx:for="{{shopImages}}" wx:key="index">
@@ -16,13 +15,12 @@
       </view>
     </view>
   </view>
-
   <view class="input-group">
     <view class="location-picker" bindtap="chooseLocation">
       <text class="location-label">选择店铺位置</text>
-      <text class="location-value">{{location || '点击选择'}}</text>
+      <text class="location-value">{{location.address || '点击选择'}}</text>
     </view>
   </view>
-
   <button class="publish-btn" bindtap="publishShop">发布店铺</button>
+  <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
 </view>

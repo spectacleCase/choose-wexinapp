@@ -1,7 +1,7 @@
 <!-- pages/publish/publish-dishes/publish-dishes.wxml -->
 <view class="container">
     <view class="header">
-        <input class="input dish-name" placeholder="菜品名称" />
+        <input class="input dish-name" placeholder="菜品名称"  bindinput="onDishesNameInput"/>
         <view class="add-shop-btn" bindtap="addNewShop">
             <text class="add-icon">+</text>
             <text class="add-text">新店铺</text>
@@ -17,16 +17,16 @@
             <view class="add-image" wx:if="{{tempFilePaths.length < 5}}">+</view>
         </view>
     </view>
-    <picker class="picker" mode="selector" range="{{categories}}" bindchange="onCategoryChange">
+    <picker class="picker" mode="selector" range="{{categories}}" range-key="columnName" bindchange="onCategoryChange">
         <view class="picker-content">
             <text class="picker-label">栏目</text>
-            <text class="picker-value">{{selectedCategory || '请选择'}}</text>
+            <text class="picker-value">{{selectedCategory.columnName || '请选择'}}</text>
         </view>
     </picker>
-    <picker class="picker" mode="selector" range="{{shops}}" bindchange="onShopChange">
+    <picker class="picker" mode="selector" range="{{shops}}" range-key="shopName" bindchange="onShopChange">
         <view class="picker-content">
             <text class="picker-label">店铺</text>
-            <text class="picker-value">{{selectedShop || '请选择'}}</text>
+            <text class="picker-value">{{selectedShop.shopName || '请选择'}}</text>
         </view>
     </picker>
     <view class="tag-selector" bindtap="showTagSelector">
@@ -56,4 +56,5 @@
         <button bindtap="hideTagSelector" class="cancel-btn">取消</button>
         <button bindtap="confirmTags" class="confirm-btn">确认</button>
     </view>
+          <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
 </view>

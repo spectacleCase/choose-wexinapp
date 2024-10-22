@@ -1,13 +1,31 @@
 // pages/publish/publish-dishes/publish-dishes.js
-Page({
+
+import util from "../../../utils/util";
+import RequestUtil from "../../../utils/request_util.js";
+import Dishes from "../../../services/api/dishes.js";
+import Ranking from "../../../services/api/ranking.js";
+import Common from "../../../services/api/common.js";
+const toast = require("../../../companies/toast.js").default;
+Component({
+  properties: {},
   /**
    * 页面的初始数据
    */
   data: {
-    categories: ["中餐", "西餐", "日料", "韩餐"],
-    shops: ["店铺1", "店铺2", "店铺3"],
-    selectedCategory: "",
-    selectedShop: "",
+    categories: [
+      { id: 1, columnName: "中餐" },
+      { id: 2, columnName: "西餐" },
+      { id: 3, columnName: "日料" },
+      { id: 4, columnName: "韩餐" },
+      { id: 5, columnName: "中餐" },
+    ],
+    shops: [
+      { id: 1, shopName: "店铺1" },
+      { id: 2, shopName: "店铺2" },
+      { id: 3, shopName: "店铺3" },
+    ],
+    selectedCategory: null,
+    selectedShop: null,
     selectedTags: [],
     showTagSelector: false,
     allTags: [
@@ -27,141 +45,234 @@ Page({
       { id: 14, tag: "小吃" },
     ],
     tempFilePaths: [],
+    DishesName: "",
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {},
+  methods: {
+    onDishesNameInput(e) {
+      this.setData({
+        dishesName: e.detail.value,
+      });
+    },
+    showTagSelector() {
+      this.setData({
+        showTagSelector: true,
+      });
+    },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
+    hideTagSelector() {
+      this.setData({
+        showTagSelector: false,
+      });
+    },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
+    toggleTag(e) {
+      const tagId = e.currentTarget.dataset.id;
+      let selectedTags = this.data.selectedTags;
+      const index = selectedTags.findIndex((item) => item.id === tagId);
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
+      if (index > -1) {
+        selectedTags.splice(index, 1);
+      } else if (selectedTags.length < 5) {
+        const tag = this.data.allTags.find((item) => item.id === tagId);
+        selectedTags.push(tag);
+      } else {
+        wx.showToast({
+          title: "最多只能选择5个标签",
+          icon: "none",
+        });
+      }
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
+      this.setData({ selectedTags });
+    },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
+    confirmTags() {
+      this.hideTagSelector();
+    },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
+    async publishDish() {
+      console.log(this.data);
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
+      if (!this.data.dishesName) {
+        wx.showToast({
+          title: "请输入菜品名称",
+          icon: "none",
+        });
+        return;
+      }
 
-  showTagSelector() {
-    this.setData({
-      showTagSelector: true,
-    });
+      if (this.data.tempFilePaths.length === 0) {
+        wx.showToast({
+          title: "请上传至少一张店铺图片",
+          icon: "none",
+        });
+        return;
+      }
+
+      if (!this.data.selectedCategory) {
+        wx.showToast({
+          title: "请选择一个栏目",
+          icon: "none",
+        });
+        return;
+      }
+
+      if (!this.data.selectedShop) {
+        wx.showToast({
+          title: "请选择所属店铺",
+          icon: "none",
+        });
+        return;
+      }
+
+      if (this.data.selectedTags.length === 0) {
+        wx.showToast({
+          title: "请选择相关标签",
+          icon: "none",
+        });
+        return;
+      }
+      let images = "";
+      this.data.tempFilePaths.forEach((item) => {
+        images += item + ",";
+      });
+
+      // 删除最后一个逗号
+      if (images.length > 0) {
+        images = images.slice(0, -1);
+      }
+      let ids = [];
+      this.data.selectedTags.forEach((item) => {
+        ids.push(String(item.id));
+      });
+      console.log(this.data.dishesName);
+      console.log(images);
+
+      Dishes.dishes.addMark.data = {
+        dishesName: this.data.dishesName,
+        image: images,
+        columId: this.data.selectedCategory.id,
+        shop: this.data.selectedShop.id,
+        tagIds: ids,
+      };
+      await RequestUtil.request(Dishes.dishes.addMark);
+      toast.showToast("发布成功", "success");
+      this.setData({
+        dishesName: "",
+        tempFilePaths: [],
+        selectedCategory: null,
+        selectedShop: null,
+        selectedTags: [],
+      });
+    },
+
+    onCategoryChange(e) {
+      const index = e.detail.value;
+      const selectedCategory = this.data.categories[index];
+      this.setData({
+        selectedCategory: selectedCategory,
+      });
+    },
+
+    onShopChange(e) {
+      const index = e.detail.value;
+      const selectedShop = this.data.shops[index];
+      this.setData({
+        selectedShop: selectedShop,
+      });
+    },
+
+    addNewShop() {
+      wx.navigateTo({
+        url: "/pages/publish/publish-shop/publish-shop",
+      });
+    },
+
+    chooseImage: function () {
+      const maxImages = 5; // 将最大图片数量改为5
+      const currentCount = this.data.tempFilePaths.length;
+      wx.chooseImage({
+        count: maxImages - currentCount,
+        sizeType: ["original", "compressed"],
+        sourceType: ["album", "camera"],
+        success: async (res) => {
+          wx.showLoading({
+            title: "正在上传中",
+          });
+          const tempFilePaths = res.tempFilePaths;
+          console.log(tempFilePaths);
+          const fileData = await util.uploadFileUitl(tempFilePaths[0]);
+          const shopImages = this.data.tempFilePaths.concat(fileData.fileName);
+          this.setData({
+            tempFilePaths: shopImages.slice(0, maxImages),
+          });
+          wx.showToast({
+            title: "菜品发布成功",
+            icon: "success",
+            duration: 2000,
+          });
+        },
+      });
+    },
+
+    previewImage: function (e) {
+      wx.previewImage({
+        current: e.currentTarget.id,
+        urls: this.data.tempFilePaths,
+      });
+    },
+
+    deleteImage: function (e) {
+      const index = e.currentTarget.dataset.index;
+      let tempFilePaths = this.data.tempFilePaths;
+      tempFilePaths.splice(index, 1);
+      this.setData({
+        tempFilePaths: tempFilePaths,
+      });
+    },
   },
 
-  hideTagSelector() {
-    this.setData({
-      showTagSelector: false,
-    });
-  },
+  attached: async function () {
+    console.log("进入");
+    try {
+      const columnList = await RequestUtil.request(
+        Ranking.ranking.getColumnList
+      );
+      const shopList = await RequestUtil.request(Dishes.dishes.getShopList);
+      const tagList = await RequestUtil.request(Common.common.getTag);
+      let formattedShopList = [];
+      let formattedColumnList = [];
+      let formattedTagList = [];
+      formattedShopList = shopList.data.list.map((shop) => ({
+        id: shop.id,
+        shopName: shop.shopName,
+      }));
+      formattedColumnList = columnList.data.list.map((column) => ({
+        id: column.id,
+        columnName: column.columnName,
+      }));
+      formattedTagList = tagList.data.list
+        .map((tag) => {
+          if (tag.tag !== "口味" && tag.tag !== "距离") {
+            return {
+              id: tag.id,
+              tag: tag.tag,
+            };
+          }
+        })
+        .filter(Boolean);
 
-  toggleTag(e) {
-    const tagId = e.currentTarget.dataset.id;
-    let selectedTags = this.data.selectedTags;
-    const index = selectedTags.findIndex((item) => item.id === tagId);
-
-    if (index > -1) {
-      selectedTags.splice(index, 1);
-    } else if (selectedTags.length < 5) {
-      const tag = this.data.allTags.find((item) => item.id === tagId);
-      selectedTags.push(tag);
-    } else {
+      this.setData({
+        shops: formattedShopList,
+        categories: formattedColumnList,
+        allTags: formattedTagList,
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
       wx.showToast({
-        title: "最多只能选择5个标签",
+        title: "获取数据失败",
         icon: "none",
       });
     }
-
-    this.setData({ selectedTags });
-  },
-
-  confirmTags() {
-    this.hideTagSelector();
-  },
-
-  publishDish() {
-    console.log("发布菜品");
-    // 实现发布逻辑
-  },
-
-  onCategoryChange(e) {
-    const index = e.detail.value;
-    this.setData({
-      selectedCategory: this.data.categories[index],
-    });
-  },
-
-  onShopChange(e) {
-    const index = e.detail.value;
-    this.setData({
-      selectedShop: this.data.shops[index],
-    });
-  },
-
-  addNewShop() {
-    wx.navigateTo({
-      url: "/pages/publish/publish-shop/publish-shop",
-    });
-  },
-
-  chooseImage: function () {
-    const maxImages = 5; // 将最大图片数量改为5
-    const currentCount = this.data.tempFilePaths.length;
-    wx.chooseImage({
-      count: maxImages - currentCount,
-      sizeType: ["original", "compressed"],
-      sourceType: ["album", "camera"],
-      success: (res) => {
-        // 将新选择的图片添加到数组的开头
-        const newTempFilePaths = res.tempFilePaths.concat(
-          this.data.tempFilePaths
-        );
-        this.setData({
-          tempFilePaths: newTempFilePaths.slice(0, maxImages),
-        });
-      },
-    });
-  },
-
-  previewImage: function (e) {
-    wx.previewImage({
-      current: e.currentTarget.id, // 当前显示图片的http链接
-      urls: this.data.tempFilePaths, // 需要预览的图片http链接列表
-    });
-  },
-
-  deleteImage: function (e) {
-    const index = e.currentTarget.dataset.index;
-    let tempFilePaths = this.data.tempFilePaths;
-    tempFilePaths.splice(index, 1);
-    this.setData({
-      tempFilePaths: tempFilePaths,
-    });
   },
 });
