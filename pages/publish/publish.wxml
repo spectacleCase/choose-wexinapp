@@ -1,2 +1,59 @@
-<!--pages/publish/publish.wxml-->
-<text>这个是发布页面</text>
+<!-- pages/publish/publish.wxml -->
+<view class="container">
+    <view class="header">
+        <input class="input dish-name" placeholder="菜品名称" />
+        <view class="add-shop-btn" bindtap="addNewShop">
+            <text class="add-icon">+</text>
+            <text class="add-text">新店铺</text>
+        </view>
+    </view>
+    <view class="upload-image" bindtap="chooseImage">
+        <text class="upload-text" wx:if="{{tempFilePaths.length === 0}}">上传图片</text>
+        <view class="image-list" wx:else>
+            <view class="image-item" wx:for="{{tempFilePaths}}" wx:key="index">
+                <image src="{{item}}" mode="aspectFill" bindtap="previewImage" id="{{item}}"></image>
+                <view class="delete-btn" catchtap="deleteImage" data-index="{{index}}">×</view>
+            </view>
+            <view class="add-image" wx:if="{{tempFilePaths.length < 5}}">+</view>
+        </view>
+    </view>
+    <picker class="picker" mode="selector" range="{{categories}}" bindchange="onCategoryChange">
+        <view class="picker-content">
+            <text class="picker-label">栏目</text>
+            <text class="picker-value">{{selectedCategory || '请选择'}}</text>
+        </view>
+    </picker>
+    <picker class="picker" mode="selector" range="{{shops}}" bindchange="onShopChange">
+        <view class="picker-content">
+            <text class="picker-label">店铺</text>
+            <text class="picker-value">{{selectedShop || '请选择'}}</text>
+        </view>
+    </picker>
+    <view class="tag-selector" bindtap="showTagSelector">
+        <text class="tag-selector-text">选择标签</text>
+    </view>
+    <view class="selected-tags">
+        <text wx:for="{{selectedTags}}" wx:key="index" class="tag">{{item.tag}}</text>
+    </view>
+    <button class="publish-btn" bindtap="publishDish">发布</button>
+</view>
+<!-- 标签选择器半页面 -->
+<view class="tag-selector-modal {{showTagSelector ? 'show' : ''}}">
+    <view class="tag-selector-header">
+        <text>选择标签（最多5个）</text>
+    </view>
+    <view class="tag-selector-content">
+        <view class="tag-list">
+            <view wx:for="{{allTags}}" wx:key="id" class="tag-item" bindtap="toggleTag" data-id="{{item.id}}">
+                {{item.tag}}
+            </view>
+        </view>
+        <view class="selected-tags-top">
+            <view wx:for="{{selectedTags}}" wx:key="id" class="selected-tag">{{item.tag}}</view>
+        </view>
+    </view>
+    <view class="tag-selector-footer">
+        <button bindtap="hideTagSelector" class="cancel-btn">取消</button>
+        <button bindtap="confirmTags" class="confirm-btn">确认</button>
+    </view>
+</view>
