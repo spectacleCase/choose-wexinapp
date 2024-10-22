@@ -1,4 +1,4 @@
-// pages/publish/publish.js
+// pages/publish/publish-dishes/publish-dishes.js
 Page({
   /**
    * 页面的初始数据
@@ -125,9 +125,9 @@ Page({
   },
 
   addNewShop() {
-    // 这里添加新店铺的逻辑
-    console.log("添加新店铺");
-    // 可能需要打开一个新页面或显示一个模态框来输入新店铺信息
+    wx.navigateTo({
+      url: "/pages/publish/publish-shop/publish-shop",
+    });
   },
 
   chooseImage: function () {
@@ -139,9 +139,11 @@ Page({
       sourceType: ["album", "camera"],
       success: (res) => {
         // 将新选择的图片添加到数组的开头
-        const newTempFilePaths = res.tempFilePaths.concat(this.data.tempFilePaths);
+        const newTempFilePaths = res.tempFilePaths.concat(
+          this.data.tempFilePaths
+        );
         this.setData({
-          tempFilePaths: newTempFilePaths.slice(0, maxImages)
+          tempFilePaths: newTempFilePaths.slice(0, maxImages),
         });
       },
     });

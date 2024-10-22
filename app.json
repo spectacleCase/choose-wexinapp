@@ -10,9 +10,10 @@
     "pages/test/test",
     "pages/recommendation-result/recommendation-result",
     "pages/myself/notifications/notifications",
-    "pages/publish/publish",
+    "pages/publish/publish-dishes/publish-dishes",
     "pages/collect/collect",
-    "page/ranking/ranking"
+    "page/ranking/ranking",
+    "pages/publish/publish-shop/publish-shop"
   ],
   "window": {
     "navigationBarTextStyle": "black",

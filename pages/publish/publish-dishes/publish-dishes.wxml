@@ -1,4 +1,4 @@
-<!-- pages/publish/publish.wxml -->
+<!-- pages/publish/publish-dishes/publish-dishes.wxml -->
 <view class="container">
     <view class="header">
         <input class="input dish-name" placeholder="菜品名称" />

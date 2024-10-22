@@ -5,7 +5,7 @@
     "index-page": "/pages/index/index",
     "settings-page": "/pages/settings/settings",
     "user": "/pages/myself/user/user",
-    "publish": "/pages/publish/publish",
+    "publish": "/pages/publish/publish-dishes/publish-dishes",
     "collect": "/pages/collect/collect",
     "ranking": "/pages/ranking/ranking"
   }
