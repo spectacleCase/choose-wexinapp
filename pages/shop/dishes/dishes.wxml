@@ -1,2 +1,52 @@
-<!--pages/shop/dishes/dishes.wxml-->
-<text>pages/shop/dishes/dishes.wxml</text>
+<!-- pages/shop/dishes/dishes.wxml -->
+<view class="container">
+  <!-- 选项卡 -->
+  <view class="nav-container">
+    <scroll-view scroll-x class="nav" scroll-with-animation enable-flex>
+      <view class="nav-item {{currentCategory === item.id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="id" bindtap="switchCategory" data-id="{{item.id}}">
+        {{item.name}}
+      </view>
+    </scroll-view>
+    <view class="nav-dropdown" bindtap="toggleCategoryDropdown">
+      <image class="dropdown-icon" src="../../../assets/images/推荐.png" mode="aspectFit"></image>
+    </view>
+  </view>
+  <!-- 下拉菜单 -->
+  <view class="dropdown-menu {{isDropdownVisible ? 'visible' : ''}}">
+    <view class="dropdown-overlay" bindtap="toggleCategoryDropdown"></view>
+    <view class="dropdown-content">
+      <view class="dropdown-title">全部分类</view>
+      <view class="dropdown-list">
+        <view class="dropdown-item {{currentCategory === item.id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="id" bindtap="selectCategory" data-id="{{item.id}}">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 菜品详情卡片 -->
+  <view class="card dish-details">
+    <text class="dish-title">{{currentDish.title}}</text>
+    <image class="dish-image" src="{{currentDish.image}}" mode="aspectFill"></image>
+    <view class="dish-tags">
+      <text class="tag" wx:for="{{currentDish.tags}}" wx:key="*this">{{item}}</text>
+    </view>
+    <text class="dish-description">{{currentDish.description}}</text>
+  </view>
+  <!-- 评论区卡片 -->
+  <view class="card comments-section">
+    <text class="section-title">评论</text>
+    <view class="comment" wx:for="{{comments}}" wx:key="id">
+      <image class="user-avatar" src="{{item.userAvatar}}"></image>
+      <view class="comment-content">
+        <view class="comment-header">
+          <text class="user-name">{{item.userName}}</text>
+          <text class="comment-time">{{item.time}}</text>
+        </view>
+        <view class="rating">
+          <text class="iconfont icon-star" wx:for="{{item.rating}}" wx:key="*this"></text>
+        </view>
+        <text class="comment-text">{{item.content}}</text>
+      </view>
+    </view>
+  </view>
+</view>

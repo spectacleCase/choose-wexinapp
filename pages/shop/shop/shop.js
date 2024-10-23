@@ -23,7 +23,13 @@ Page({
           "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
         tags: ["热销", "推荐"],
       },
-      { id: 2, title: "示例菜品2", image: "path/to/dish2.jpg", tags: ["新品"] },
+      {
+        id: 2,
+        title: "示例菜品2",
+        image:
+          "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
+        tags: ["新品"],
+      },
     ],
     reviews: [
       // 示例评价数据
@@ -49,41 +55,6 @@ Page({
     ],
     shopRating: 2, // 店铺总评分
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {},
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
