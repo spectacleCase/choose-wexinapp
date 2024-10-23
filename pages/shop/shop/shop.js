@@ -1,34 +1,28 @@
+import RequestUtils from "../../../utils/request_util";
+import Dishes from "../../../services/api/dishes";
+
 // pages/shop/shop/shop.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    shopId: null,
     activeTab: "dishes",
     scrollIntoView: "",
+    iamge: "",
+    coordinate: "",
+    shopName: "",
+    mark: null,
     dishes: [
       // 示例菜品数据
 
       {
         id: 1,
-        title: "示例菜品1",
-        image:
+        dishesNmae: "示例菜品1",
+        dishesImage:
           "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
-        tags: ["热销", "推荐"],
-      },
-      {
-        id: 1,
-        title: "示例菜品1",
-        image:
-          "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
-        tags: ["热销", "推荐"],
-      },
-      {
-        id: 2,
-        title: "示例菜品2",
-        image:
-          "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
-        tags: ["新品"],
+        dishesTags: ["热销", "推荐"],
       },
     ],
     reviews: [
@@ -53,7 +47,6 @@ Page({
           "这些修改实现了以下效果：选项卡（tab-bar）不再平分整行，而是从左到右排列，右边留白。！菜品部分的布局调整为图片在左，标题和标签在右。标题字体变大。",
       },
     ],
-    shopRating: 2, // 店铺总评分
   },
 
   /**
@@ -88,11 +81,13 @@ Page({
   },
 
   navigate() {
+    let location = this.data.coordinate.split(",");
+
     // 实现导航功能
     wx.openLocation({
-      latitude: 0, // 替换为实际纬度
-      longitude: 0, // 替换为实际经度
-      name: "店铺名称",
+      latitude: Number(location[1]),
+      longitude: Number(location[0]),
+      name: this.data.shopName,
       address: "店铺地址",
     });
   },
@@ -120,6 +115,27 @@ Page({
       ) {
         this.setData({ activeTab: "reviews" });
       }
+    });
+  },
+
+  onLoad: async function (options) {
+    // 获取传递的参数
+    const shopId = options.shopId;
+    console.log(options);
+    console.log("Shop ID:", shopId);
+    Dishes.dishes.getShopDetails.data = {
+      shopId: shopId,
+    };
+    const data = await RequestUtils.request(Dishes.dishes.getShopDetails);
+    console.log(data);
+
+    this.setData({
+      shopId: shopId,
+      dishes: data.data.dishesDetailsList,
+      image: data.data.image,
+      coordinate: data.data.coordinate,
+      shopName: data.data.shopName,
+      mark: data.data.mark,
     });
   },
 

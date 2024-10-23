@@ -33,6 +33,14 @@ const dishes = {
     data: null,
     auth: true,
   },
+
+  // 根据id获取菜品的详情
+  getShopDetails: {
+    url: BASE_URL + "/v1/getShopDetails",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
 };
 
 export default {

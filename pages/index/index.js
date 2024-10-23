@@ -18,6 +18,7 @@ Component({
     selectedCategory: "菜品",
     recommendationResults: [
       {
+        id: 1,
         image:
           "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
         shopName: "门店",
@@ -25,7 +26,7 @@ Component({
         coordinate: "20km",
       },
     ],
-    locationName: "北京市", // 添加这一行
+    locationName: "茂名市", // 添加这一行
   },
 
   methods: {
@@ -125,9 +126,11 @@ Component({
     onCollectionTap() {
       this.triggerEvent("navigateToPage", { url: "/pages/collect/collect" });
     },
-    navigateToShop() {
+    navigateToShop(event) {
+      const shopId = event.currentTarget.dataset.shopid;
+      console.log(shopId);
       wx.navigateTo({
-        url: "/pages/shop/shop/shop",
+        url: "/pages/shop/shop/shop?shopId=" + shopId,
       });
     },
   },
