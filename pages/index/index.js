@@ -1,6 +1,7 @@
 // components/index-component/index-component.js
 import RequestUtils from "../../utils/request_util";
 import User from "../../services/api/user";
+import Dishes from "../../services/api/dishes";
 const toast = require("../../companies/toast.js").default;
 Component({
   properties: {
@@ -19,82 +20,9 @@ Component({
       {
         image:
           "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
-        tag: "主菜",
-        name: "红烧肉",
-        distance: "20km",
-      },
-      {
-        image:
-          "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
-        tag: "甜品",
-        name: "水果沙拉",
-        distance: "10km",
-      },
-      {
-        image: "../../assets/images/食物.png",
-        tag: "糕点",
-        name: "蛋糕",
-        distance: "5km",
-      },
-      {
-        image: "../../assets/images/食物1.png",
-        tag: "主菜",
-        name: "红烧肉",
-        distance: "20km",
-      },
-      {
-        image: "../../assets/images/食物.png",
-        tag: "甜品",
-        name: "水果沙拉",
-        distance: "10km",
-      },
-      {
-        image: "../../assets/images/食物1.png",
-        tag: "糕点",
-        name: "蛋糕",
-        distance: "5km",
-      },
-      {
-        image: "../../assets/images/食物1.png",
-        tag: "糕点",
-        name: "蛋糕",
-        distance: "5km",
-      },
-      {
-        image: "../../assets/images/食物1.png",
-        tag: "糕点",
-        name: "蛋糕",
-        distance: "5km",
-      },
-      {
-        image: "../../assets/images/食物1.png",
-        tag: "糕点",
-        name: "蛋糕",
-        distance: "5km",
-      },
-      {
-        image: "../../assets/images/食物1.png",
-        tag: "糕点",
-        name: "蛋糕",
-        distance: "5km",
-      },
-      {
-        image: "../../assets/images/食物1.png",
-        tag: "糕点",
-        name: "蛋糕",
-        distance: "5km",
-      },
-      {
-        image: "../../assets/images/食物1.png",
-        tag: "糕点",
-        name: "蛋糕",
-        distance: "5km",
-      },
-      {
-        image: "../../assets/images/食物1.png",
-        tag: "糕点",
-        name: "蛋糕",
-        distance: "5km",
+        shopName: "门店",
+        mark: "4.5",
+        coordinate: "20km",
       },
     ],
     locationName: "北京市", // 添加这一行
@@ -105,6 +33,29 @@ Component({
       const helData = await RequestUtils.request(User.user.healthTips);
       this.setData({
         healthTip: helData.data.tips,
+      });
+    },
+
+    getRecommendShops: async function () {
+      console.log("进入了推荐门店");
+
+      const shopList = await RequestUtils.request(
+        Dishes.dishes.getRecommendShops
+      );
+
+      let List = shopList.data.list
+        .map((item) => {
+          return {
+            id: item.id,
+            image: item.image,
+            shopName: item.shopName,
+            coordinate: item.coordinate,
+            mark: item.mark,
+          };
+        })
+        .filter(Boolean);
+      this.setData({
+        recommendationResults: List,
       });
     },
 
@@ -184,5 +135,6 @@ Component({
   ready: function () {
     console.log("Index component ready");
     this.getTips();
+    this.getRecommendShops();
   },
 });

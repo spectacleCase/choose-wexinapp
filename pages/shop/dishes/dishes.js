@@ -18,10 +18,10 @@ Page({
     // 模拟获取分类数据
     this.setData({
       categories: [
-        { id: 1, name: "热门" },
-        { id: 2, name: "主食" },
-        { id: 3, name: "小吃" },
-        { id: 4, name: "饮品" },
+        { id: 1, name: "红烧肉" },
+        { id: 2, name: "红烧肉1" },
+        { id: 3, name: "红烧肉2" },
+        { id: 4, name: "红烧肉3" },
       ],
     });
 
@@ -115,7 +115,7 @@ Page({
       currentCategory: categoryId,
       isDropdownVisible: false
     });
-    // 这里应该根据分类 ID 获取对应的菜品数据
+    // 
     console.log('选择并切换到分类：', categoryId);
   }
 });

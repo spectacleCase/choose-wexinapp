@@ -173,7 +173,7 @@
 
 .result-tag {
   font-size: 20rpx;
-  color: #128FAE;
+  color: #FF8C00;
   margin-bottom: 5rpx;
 }
 

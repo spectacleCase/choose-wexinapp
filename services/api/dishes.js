@@ -25,6 +25,14 @@ const dishes = {
     data: null,
     auth: true,
   },
+
+  // 首页获取推荐店铺
+  getRecommendShops: {
+    url: BASE_URL + "/v1/getRecommendShops",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
 };
 
 export default {
