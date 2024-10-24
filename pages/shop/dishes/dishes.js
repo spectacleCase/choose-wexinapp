@@ -1,3 +1,7 @@
+import RequestUtil from "../../../utils/request_util";
+import Dishes from "../../../services/api/dishes";
+import dishes from "../../../services/api/dishes";
+
 // pages/shop/dishes/dishes.js
 Page({
   /**
@@ -8,32 +12,30 @@ Page({
     currentCategory: 1,
     currentDish: {},
     comments: [],
-    isDropdownVisible: false
+    isDropdownVisible: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    // 模拟获取分类数据
-    this.setData({
-      categories: [
-        { id: 1, name: "红烧肉" },
-        { id: 2, name: "红烧肉1" },
-        { id: 3, name: "红烧肉2" },
-        { id: 4, name: "红烧肉3" },
-      ],
-    });
+  async onLoad(options) {
+    console.log(options);
+    let dishesList = options.data;
+    dishesList = JSON.parse(decodeURIComponent(dishesList));
+    Dishes.dishes.getDishesDetails.data = {
+      dishesId: options.id,
+    };
+    console.log(dishesList);
 
-    // 模拟获取当前菜品数据
+    const data = await RequestUtil.request(Dishes.dishes.getDishesDetails);
     this.setData({
       currentDish: {
-        title: "红烧肉",
-        image:
-          "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
-        tags: ["热门", "肉类", "家常菜"],
+        title: data.data.dishesName,
+        image: data.data.image,
+        tags: data.data.tags,
         description: "红烧肉是一道著名的中国菜，口感软糯，味道浓郁。",
       },
+      categories: dishesList,
     });
 
     // 模拟获取评论数据
@@ -94,28 +96,52 @@ Page({
    */
   onShareAppMessage() {},
 
-  switchCategory(e) {
+  async switchCategory(e) {
     const categoryId = e.currentTarget.dataset.id;
     this.setData({
-      currentCategory: categoryId
+      currentCategory: categoryId,
     });
     // 这里应该根据分类 ID 获取对应的菜品数据
-    console.log('切换到分类：', categoryId);
+    console.log("切换到分类：", categoryId);
+    Dishes.dishes.getDishesDetails.data = {
+      dishesId: categoryId,
+    };
+    const data = await RequestUtil.request(Dishes.dishes.getDishesDetails);
+    this.setData({
+      currentDish: {
+        title: data.data.dishesName,
+        image: data.data.image,
+        tags: data.data.tags,
+        description: "红烧肉是一道著名的中国菜，口感软糯，味道浓郁。",
+      },
+    });
   },
 
   toggleCategoryDropdown() {
     this.setData({
-      isDropdownVisible: !this.data.isDropdownVisible
+      isDropdownVisible: !this.data.isDropdownVisible,
     });
   },
 
-  selectCategory(e) {
+  async selectCategory(e) {
     const categoryId = e.currentTarget.dataset.id;
     this.setData({
       currentCategory: categoryId,
-      isDropdownVisible: false
+      isDropdownVisible: false,
     });
-    // 
-    console.log('选择并切换到分类：', categoryId);
-  }
+    //
+    console.log("选择并切换到分类：", categoryId);
+    Dishes.dishes.getDishesDetails.data = {
+      dishesId: categoryId,
+    };
+    const data = await RequestUtil.request(Dishes.dishes.getDishesDetails);
+    this.setData({
+      currentDish: {
+        title: data.data.dishesName,
+        image: data.data.image,
+        tags: data.data.tags,
+        description: "红烧肉是一道著名的中国菜，口感软糯，味道浓郁。",
+      },
+    });
+  },
 });

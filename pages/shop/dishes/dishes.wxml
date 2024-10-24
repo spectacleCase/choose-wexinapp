@@ -4,7 +4,7 @@
   <view class="nav-container">
     <scroll-view scroll-x class="nav" scroll-with-animation enable-flex>
       <view class="nav-item {{currentCategory === item.id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="id" bindtap="switchCategory" data-id="{{item.id}}">
-        {{item.name}}
+        {{item.dishesName}}
       </view>
     </scroll-view>
     <view class="nav-dropdown" bindtap="toggleCategoryDropdown">
@@ -18,7 +18,7 @@
       <view class="dropdown-title">全部分类</view>
       <view class="dropdown-list">
         <view class="dropdown-item {{currentCategory === item.id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="id" bindtap="selectCategory" data-id="{{item.id}}">
-          {{item.name}}
+          {{item.dishesName}}
         </view>
       </view>
     </view>

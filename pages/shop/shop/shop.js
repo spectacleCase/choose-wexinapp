@@ -53,9 +53,23 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {},
-  navigateToDishes() {
+  navigateToDishes(event) {
+    let id = event.currentTarget.dataset.dishesid;
+    let dishesList = this.data.dishes
+      .map((item) => {
+        return {
+          id: item.id,
+          dishesName: item.dishesName,
+          iamge: item.dishesImage,
+          dishesTag: item.dishesTags,
+        };
+      })
+      .filter(Boolean);
+    dishesList = JSON.stringify(dishesList);
     wx.navigateTo({
-      url: "/pages/shop/dishes/dishes",
+      url: `/pages/shop/dishes/dishes?id=${id}&data=${encodeURIComponent(
+        dishesList
+      )}`,
     });
   },
 

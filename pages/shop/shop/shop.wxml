@@ -48,7 +48,7 @@
             <view class="section-header">菜品</view>
             <view class="section-content">
                 <view class="dishes-list">
-                    <view class="dish-item" wx:for="{{dishes}}" wx:key="id" bindtap="navigateToDishes">
+                    <view class="dish-item" wx:for="{{dishes}}" wx:key="id" bindtap="navigateToDishes" data-dishesId="{{item.id}}">
                         <image class="dish-image" src="{{item.dishesImage}}" mode="aspectFill"></image>
                         <view class="dish-info">
                             <view class="dish-title">{{item.dishesName}}</view>
