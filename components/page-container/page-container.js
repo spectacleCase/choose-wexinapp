@@ -1,4 +1,5 @@
 import Common from "../../services/api/common";
+import Comment from "../../services/api/comment";
 import RequestUtil from "../../utils/request_util";
 import config from "../../config/config";
 
@@ -62,6 +63,7 @@ Component({
     },
 
     navigateToNotifications: function () {
+      RequestUtil.request(Comment.comment.read);
       this.setData({ notificationCount: 0 });
       wx.setStorageSync("isReadNum", 0);
       wx.navigateTo({
@@ -236,6 +238,8 @@ Component({
 
   attached: async function () {
     this.getWeather();
+    const data = await RequestUtil.request(Comment.comment.getIsReadNum);
+    wx.setStorageSync("isReadNum", data.data.num);
     console.log("att触发");
     this.setData({
       notificationCount: wx.getStorageSync("isReadNum")

@@ -3,13 +3,16 @@
         <view class="section-title">通知信息</view>
         <view class="notification-list">
             <view class="notification-item" wx:for="{{notifications}}" wx:key="index">
-                <image class="avatar" src="{{item.avatar || '../../../assets/images/通知.png'}}" mode="aspectFill"></image>
+                <image class="avatar" src="{{item.userAvatar || '../../../assets/images/通知.png'}}" mode="aspectFill"></image>
                 <view class="notification-content">
-                    <view class="username" wx:if="{{item.username}}">{{item.username}}</view>
-                    <view class="message">{{item.message}}</view>
-                    <view class="time">{{item.time}}</view>
+                    <view class="username" wx:if="{{item.userName}}">{{item.userName}}</view>
+                    <view class="message">{{item.content}}</view>
+                    <view class="time">{{item.createTimeText}}</view>
                 </view>
             </view>
         </view>
+        <view class="loading" wx:if="{{isLoading}}">正在加载...</view>
+        <view class="no-more" wx:if="{{!hasMore && notifications.length > 0}}">没有更多数据</view>
+        <view class="empty" wx:if="{{!hasMore && notifications.length === 0}}">暂无通知</view>
     </view>
 </view>

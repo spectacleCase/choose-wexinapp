@@ -1,6 +1,5 @@
 .container {
   padding: 20rpx;
-  background-color: #f5f5f5;
 }
 
 .section {
@@ -10,7 +9,6 @@
 .section-title {
   font-size: 32rpx;
   font-weight: bold;
-  color: #333;
   margin-bottom: 20rpx;
 }
 
@@ -57,4 +55,43 @@
 .time {
   font-size: 24rpx;
   color: #999;
+}
+
+.loading, .no-more, .empty {
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.loading {
+  /* 可以添加一个加载动画 */
+}
+
+.no-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-more::before,
+.no-more::after {
+  content: "";
+  display: inline-block;
+  height: 1px;
+  flex-grow: 1;
+  background-color: #e0e0e0;
+}
+
+.no-more::before {
+  margin-right: 20rpx;
+}
+
+.no-more::after {
+  margin-left: 20rpx;
+}
+
+.empty {
+  padding: 40rpx 0;
+  font-size: 30rpx;
 }
