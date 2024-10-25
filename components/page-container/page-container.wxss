@@ -53,7 +53,28 @@
 }
 
 .notification-button {
+  position: relative;
   margin-left: auto;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 5rpx;
+  right: 55rpx;
+  min-width: 20rpx;
+  height: 28rpx;
+  background-color: red;
+  border-radius: 16rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 6rpx;
+}
+
+.notification-badge text {
+  color: white;
+  font-size: 20rpx;
+  font-weight: bold;
 }
 
 .main-content {

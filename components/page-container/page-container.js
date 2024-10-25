@@ -1,5 +1,6 @@
 import Common from "../../services/api/common";
 import RequestUtil from "../../utils/request_util";
+import config from "../../config/config";
 
 Component({
   properties: {
@@ -40,6 +41,8 @@ Component({
     moveY: 0,
     canSlide: false,
     someData: null,
+    hasNewNotification: false, // 将初始值设置为 false
+    notificationCount: 0,
   },
 
   methods: {
@@ -59,6 +62,8 @@ Component({
     },
 
     navigateToNotifications: function () {
+      this.setData({ notificationCount: 0 });
+      wx.setStorageSync("isReadNum", 0);
       wx.navigateTo({
         url: "/pages/myself/notifications/notifications",
       });
@@ -155,9 +160,95 @@ Component({
       console.log("结果");
       console.log(this.data.weather);
     },
+
+    createWebSocket: function () {
+      const user = wx.getStorageSync("userInfo");
+      let url = `ws://${config.ip}/choose-websocket?userId=${user.id}`;
+      console.log(url);
+
+      // 创建 WebSocket 连接
+      this.data.socketTask = wx.connectSocket({
+        url: url,
+        success: (res) => {
+          console.log("WebSocket 连接成功", res);
+        },
+        fail: (err) => {
+          console.error("WebSocket 连接失败", err);
+        },
+      });
+
+      // 监听 WebSocket 连接打开事件
+      wx.onSocketOpen((res) => {
+        console.log("WebSocket 连接已打开", res);
+      });
+
+      // 监听 WebSocket 消息事件
+      wx.onSocketMessage((res) => {
+        console.log("收到 WebSocket 消息", res.data);
+        wx.setStorageSync("isReadNum");
+        this.setData({
+          notificationCount: this.data.notificationCount + 1,
+        });
+        wx.setStorageSync("isReadNum", this.data.notificationCount);
+        console.log("notificationCount 增加到", this.data.notificationCount);
+      });
+
+      // 监听 WebSocket 错误事件
+      wx.onSocketError((err) => {
+        console.error("WebSocket 错误", err);
+      });
+
+      // 监听 WebSocket 关闭事件
+      wx.onSocketClose((res) => {
+        console.log("WebSocket 连接已关闭", res);
+      });
+    },
+
+    // 发送消息
+    sendMessage: function () {
+      if (this.data.socketTask) {
+        this.data.socketTask.send({
+          data: "Hello, WebSocket!",
+          success: (res) => {
+            console.log("消息发送成功", res);
+          },
+          fail: (err) => {
+            console.error("消息发送失败", err);
+          },
+        });
+      }
+    },
+
+    // 关闭 WebSocket 连接
+    closeWebSocket: function () {
+      if (this.data.socketTask) {
+        this.data.socketTask.close({
+          success: (res) => {
+            console.log("WebSocket 连接已关闭", res);
+          },
+          fail: (err) => {
+            console.error("WebSocket 关闭失败", err);
+          },
+        });
+      }
+    },
   },
 
   attached: async function () {
     this.getWeather();
+    console.log("att触发");
+    this.setData({
+      notificationCount: wx.getStorageSync("isReadNum")
+        ? wx.getStorageSync("isReadNum")
+        : 0,
+    });
+    this.createWebSocket();
+  },
+  moved: function () {
+    console.log("moved触发");
+    this.createWebSocket();
+  },
+  detached: function () {
+    this.closeWebSocket();
   },
 });

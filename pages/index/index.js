@@ -2,6 +2,7 @@
 import RequestUtils from "../../utils/request_util";
 import User from "../../services/api/user";
 import Dishes from "../../services/api/dishes";
+import config from "../../config/config.js";
 const toast = require("../../companies/toast.js").default;
 Component({
   properties: {
@@ -9,6 +10,7 @@ Component({
   },
 
   data: {
+    webSocket: null,
     showFilter: false,
     showRecommend: false,
     healthTip: "多吃水果蔬菜,少吃油炸食品。",

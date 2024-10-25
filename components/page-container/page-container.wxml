@@ -11,6 +11,9 @@
             </view>
             <button class="icon-button notification-button" bindtap="navigateToNotifications">
                 🔔
+                <view class="notification-badge" wx:if="{{notificationCount > 0}}">
+                    <text>{{notificationCount}}</text>
+                </view>
             </button>
         </view>
         <view class="main-content">
