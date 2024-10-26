@@ -13,7 +13,9 @@
     "pages/publish/publish-dishes/publish-dishes",
     "pages/collect/collect",
     "page/ranking/ranking",
-    "pages/publish/publish-shop/publish-shop"
+    "pages/publish/publish-shop/publish-shop",
+    "pages/write-review/write-review",
+    "pages/all-reviews/all-reviews"
   ],
   "subPackages": [
     {
