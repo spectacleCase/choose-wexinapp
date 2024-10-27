@@ -27,9 +27,33 @@ const comment = {
     auth: true,
   },
 
-  // 获取店铺的全部评论
+  // 获取店铺首页的部分评论
   getShopCommentList: {
     url: BASE_URL + "/v1/getShopCommentList",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
+
+  // 获取店铺的全部评论
+  getShopAllCommentList: {
+    url: BASE_URL + "/v1/getShopAllCommentList",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
+
+  // 获取店铺评论的详情
+  getShpCommentDetails: {
+    url: BASE_URL + "/v1/getShpCommentDetails",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
+
+  // 添加店铺评论
+  addShopComment: {
+    url: BASE_URL + "/v1/addShopComment",
     method: "POST",
     data: null,
     auth: true,

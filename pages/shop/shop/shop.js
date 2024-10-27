@@ -218,23 +218,15 @@ Page({
 
   navigateToReviews: function () {
     wx.navigateTo({
-      url: `/pages/reviews/all-reviews/all-reviews`,
+      url: `/pages/reviews/all-reviews/all-reviews?shopId=${this.data.shopId}`,
     });
-  },
-
-  methods: {
-    navigateToDishes: function () {
-      wx.navigateTo({
-        url: "/pages/shop/dishes/dishes",
-      });
-    },
   },
 
   // 在 Page 对象中添加以下方法
   goToReview: function () {
     // 跳转到评论页面的逻辑
     wx.navigateTo({
-      url: `/pages/reviews/write-review/write-review?shopId=${this.data.shopId}`,
+      url: `/pages/reviews/write-review/write-review?shopId=${this.data.shopId}&shopName=${this.data.shopName}`,
     });
   },
 });

@@ -3,30 +3,28 @@
     <view class="review-header">
       <view class="user-info">
         <image class="avatar" src="{{review.avatar}}" mode="aspectFill"></image>
-        <text class="username">{{review.username}}</text>
+        <view class="username">{{review.userName}}</view>
       </view>
-      <text class="review-time">{{review.time}}</text>
+      <view class="review-time">{{review.createTime}}</view>
     </view>
-    <text class="review-content">{{review.content}}</text>
+    <view class="review-content">{{review.content}}</view>
     <view class="review-images" wx:if="{{review.images && review.images.length > 0}}">
       <image wx:for="{{review.images}}" wx:key="*this" src="{{item}}" mode="aspectFill" class="review-image" bindtap="previewImage" data-url="{{item}}"></image>
     </view>
   </view>
-
   <view class="sub-comments">
     <block wx:for="{{review.subComments}}" wx:key="id">
       <view class="sub-comment">
         <view class="review-header">
           <view class="user-info">
             <image class="avatar" src="{{item.avatar}}" mode="aspectFill"></image>
-            <text class="username">{{item.username}}</text>
-            <text class="reply-to" wx:if="{{item.replyTo}}">回复</text>
-            <text class="username" wx:if="{{item.replyTo}}">{{item.replyTo}}</text>
+            <view class="username">{{item.userName}}</view>
+            <view class="reply-to" wx:if="{{item.replyToName}}">回复</view>
+            <view class="username" wx:if="{{item.replyToName}}">{{item.replyToName}}</view>
           </view>
-          <text class="review-time">{{item.time}}</text>
+          <text class="review-time">{{item.createTime}}</text>
         </view>
         <text class="review-content">{{item.content}}</text>
-        
         <!-- 嵌套子评论 -->
         <view class="nested-comments" wx:if="{{item.subComments && item.subComments.length > 0}}">
           <block wx:for="{{item.subComments}}" wx:for-item="nestedItem" wx:key="id">
@@ -34,11 +32,13 @@
               <view class="review-header">
                 <view class="user-info">
                   <image class="avatar" src="{{nestedItem.avatar}}" mode="aspectFill"></image>
-                  <text class="username">{{nestedItem.username}}</text>
-                  <text class="reply-to" wx:if="{{nestedItem.replyTo}}">回复</text>
-                  <text class="username" wx:if="{{nestedItem.replyTo}}">{{nestedItem.replyTo}}</text>
+                  <view class="username">{{nestedItem.userName}}</view>
+                  <view class="reply-to" wx:if="{{nestedItem.replyToName}}">回复</view>
+                  <view class="username" wx:if="{{nestedItem.replyToName}}">
+                    {{nestedItem.replyToName}}
+                  </view>
                 </view>
-                <text class="review-time">{{nestedItem.time}}</text>
+                <text class="review-time">{{nestedItem.createTime}}</text>
               </view>
               <text class="review-content">{{nestedItem.content}}</text>
             </view>
@@ -47,9 +47,8 @@
       </view>
     </block>
   </view>
-
   <view class="comment-input">
-    <input type="text" placeholder="说点什么吧..." bindinput="onCommentInput" value="{{commentText}}"/>
+    <input type="text" placeholder="说点什么吧..." bindinput="onCommentInput" value="{{commentText}}" />
     <button class="publish-button" bindtap="publishComment">发布</button>
   </view>
 </view>

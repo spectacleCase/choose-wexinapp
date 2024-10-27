@@ -12,4 +12,5 @@
     </view>
   </view>
   <button class="submit-btn" bindtap="submitReview">发布评论</button>
+  <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
 </view>

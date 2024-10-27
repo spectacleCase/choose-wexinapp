@@ -1,5 +1,8 @@
+import Comment from "../../../services/api/comment";
+import RequestUtils from "../../../utils/request_util";
 Page({
   data: {
+    shopId: null,
     reviews: [],
     searchQuery: "",
     showCommentInput: false,
@@ -7,8 +10,26 @@ Page({
     currentReviewId: null,
   },
 
-  onLoad: function () {
-    this.loadReviews();
+  onLoad: async function (options) {
+    Comment.comment.getShopAllCommentList.data = {
+      shopId: options.shopId,
+      page: 1,
+      size: 3,
+    };
+
+    const shopList = await RequestUtils.request(
+      Comment.comment.getShopAllCommentList
+    );
+    shopList.data.list.forEach((item) => {
+      if (item.images) {
+        item.images = item.images.split(",");
+      }
+    });
+    this.setData({
+      shopId: options.shopId,
+      reviews: shopList.data.list,
+    });
+    // this.loadReviews();
   },
 
   loadReviews: function () {
@@ -25,16 +46,16 @@ Page({
           "https://example.com/image1.jpg",
           "https://example.com/image2.jpg",
         ],
-        subComments: [
-          { 
+        subComment: [
+          {
             username: "回复用户1",
             avatar: "https://example.com/avatar2.png",
-            content: "我也觉得很不错,下次一起去吃吧!"
+            content: "我也觉得很不错,下次一起去吃吧!",
           },
-          { 
+          {
             username: "回复用户2",
             avatar: "https://example.com/avatar3.png",
-            content: "价格如何?"
+            content: "价格如何?",
           },
         ],
       },
@@ -48,7 +69,7 @@ Page({
         images: [
           "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
         ],
-        subComments: [{ username: "回复用户3", content: "同意" }],
+        subComment: [{ username: "回复用户3", content: "同意" }],
       },
     ];
 
