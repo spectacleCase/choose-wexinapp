@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="shop-name">{{shopName}}</view>
+  <textarea class="review-content" placeholder="亲，请分享一下您的用餐体验吧~" bindinput="onContentInput" value="{{content}}"></textarea>
+  <view class="image-uploader">
+    <view class="image-item" wx:for="{{imagePaths}}" wx:key="*this">
+      <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-src="{{item}}"></image>
+      <view class="delete-btn" catchtap="deleteImage" data-index="{{index}}">×</view>
+    </view>
+    <view class="upload-btn" bindtap="chooseImage" wx:if="{{imagePaths.length < 9}}">
+      <text class="plus">+</text>
+      <text class="upload-text">上传图片</text>
+    </view>
+  </view>
+  <button class="submit-btn" bindtap="submitReview">发布评论</button>
+</view>

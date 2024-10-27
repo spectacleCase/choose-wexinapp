@@ -10,7 +10,14 @@
       "list": [
         {
           "name": "测试",
-          "pathName": "pages/shop/dishes/dishes",
+          "pathName": "pages/reviews/all-reviews/all-reviews",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "测试2",
+          "pathName": "pages/reviews/write-review/write-review",
           "query": "",
           "launchMode": "default",
           "scene": null

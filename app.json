@@ -12,15 +12,21 @@
     "pages/myself/notifications/notifications",
     "pages/publish/publish-dishes/publish-dishes",
     "pages/collect/collect",
-    "page/ranking/ranking",
-    "pages/publish/publish-shop/publish-shop",
-    "pages/write-review/write-review",
-    "pages/all-reviews/all-reviews"
+    "pages/ranking/ranking",
+    "pages/publish/publish-shop/publish-shop"
   ],
   "subPackages": [
     {
       "root": "pages/shop",
       "pages": ["shop/shop", "dishes/dishes"]
+    },
+    {
+      "root": "pages/reviews",
+      "pages": [
+        "all-reviews/all-reviews",
+        "write-review/write-review",
+        "review-detail/review-detail"
+      ]
     }
   ],
   "window": {

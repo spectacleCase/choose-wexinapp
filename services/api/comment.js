@@ -26,6 +26,14 @@ const comment = {
     data: null,
     auth: true,
   },
+
+  // 获取店铺的全部评论
+  getShopCommentList: {
+    url: BASE_URL + "/v1/getShopCommentList",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
 };
 
 export default {

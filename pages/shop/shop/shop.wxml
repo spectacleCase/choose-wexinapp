@@ -66,24 +66,50 @@
         <view class="section" id="reviews-section">
             <view class="section-header">评价</view>
             <view class="section-content">
+                <view class="review-header">
+                    <view class="review-header-left">
+                        <image class="review-header-icon" src="../../../assets/images/评论.png" mode="aspectFit"></image>
+                        <text class="review-header-text">评论 ({{reviews.length}})</text>
+                    </view>
+                    <button class="go-review-btn" bindtap="goToReview">写评论</button>
+                </view>
                 <view class="reviews-list">
-                    <view class="review-item" wx:for="{{reviews}}" wx:key="id" wx:for-item="outerItem">
-                        <image class="reviewer-avatar" src="{{outerItem.avatar}}" mode="aspectFill"></image>
-                        <view class="review-content">
-                            <view class="reviewer-info">
-                                <text class="reviewer-name">{{outerItem.name}}</text>
-                                <!-- 评价部分的评分 -->
-                                <view class="review-rating">
-                                    <view class="rating-stars">
-                                        <block wx:for="{{5}}" wx:key="index">
-                                            <image src="{{index <  outerItem.rating ? '/assets/images/星星.png' : '/assets/images/星星_透明.png'}}" class="star-icon"></image>
-                                        </block>
+                    <block wx:if="{{reviews.length > 0}}">
+                        <view class="review-item" wx:for="{{reviews}}" wx:key="id" bindtap="navigateToReviews">
+                            <image class="reviewer-avatar" src="{{item.userAvatar}}" mode="aspectFill"></image>
+                            <view class="review-content">
+                                <view class="reviewer-info">
+                                    <text class="reviewer-name">{{item.userName}}</text>
+                                </view>
+                                <text class="review-text">{{item.content}}</text>
+                                <text class="review-date">{{item.createTime}}</text>
+                                <!-- 子评论 -->
+                                <view class="sub-reviews" wx:if="{{item.children && item.children.length > 0}}">
+                                    <view class="sub-review-item" wx:for="{{item.children}}" wx:for-item="subItem" wx:key="id">
+                                        <image class="sub-reviewer-avatar" src="{{subItem.userAvatar}}" mode="aspectFill"></image>
+                                        <view class="sub-review-content">
+                                            <view class="sub-reviewer-info">
+                                                <view class="sub-reviewer-name">
+                                                    {{subItem.userName}}
+                                                </view>
+                                            </view>
+                                            <view class="sub-review-text-wrapper">
+                                                <text class="sub-review-text">
+                                                    {{subItem.content}}
+                                                </text>
+                                                <text class="sub-review-date">
+                                                    {{subItem.createTime}}
+                                                </text>
+                                            </view>
+                                        </view>
                                     </view>
                                 </view>
                             </view>
-                            <text class="review-text">{{outerItem.content}}</text>
                         </view>
-                        <text class="review-date">{{outerItem.date}}</text>
+                    </block>
+                    <view wx:else class="no-reviews">
+                        <image src="../../../assets/images/暂无评论.png" mode="aspectFit" class="no-reviews-image"></image>
+                        <text class="no-reviews-text">暂无评论</text>
                     </view>
                 </view>
             </view>

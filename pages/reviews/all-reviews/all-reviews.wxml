@@ -1,0 +1,51 @@
+<view class="container" bindtap="hideCommentInput">
+  <view class="search-bar">
+    <image class="search-icon" src="../../../assets/images/搜索.png" mode="aspectFit"></image>
+    <input type="text" placeholder="搜索评论" bindinput="onSearchInput" />
+  </view>
+  <view class="reviews-list">
+    <view class="review-card" wx:for="{{reviews}}" wx:key="id" bindtap="goToReviewDetail" data-review-id="{{item.id}}">
+      <view class="review-header">
+        <view class="user-info">
+          <image class="avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+          <text class="username">{{item.username}}</text>
+        </view>
+        <text class="review-time">{{item.time}}</text>
+      </view>
+      <text class="review-content">{{item.content || '无评论内容'}}</text>
+      <view class="review-images {{item.images.length === 1 ? 'single-image' : ''}}" wx:if="{{item.images && item.images.length > 0}}">
+        <image wx:for="{{item.images}}" wx:for-item="image" wx:key="*this" src="{{image}}" mode="aspectFill" class="review-image {{item.images.length === 1 ? 'large-image' : ''}}" bindtap="previewImage" data-url="{{image}}" data-urls="{{item.images}}"></image>
+      </view>
+      <view class="review-footer">
+        <image class="comment-icon" src="../../../assets/images/3.1 评论.png" mode="aspectFit" catchtap="showCommentInput" data-review-id="{{item.id}}"></image>
+      </view>
+      <view class="sub-comments" wx:if="{{item.subComments && item.subComments.length > 0}}">
+        <view class="sub-comment-preview">
+          <view class="sub-comment-user">
+            <image class="sub-avatar" src="{{item.subComments[0].avatar}}" mode="aspectFill"></image>
+            <text class="sub-comment-username">{{item.subComments[0].username}}：</text>
+          </view>
+          <view class="sub-comment-content">
+            <text>{{item.subComments[0].content.length > 10 ? item.subComments[0].content.substring(0, 9) + '...' : item.subComments[0].content}}</text>
+          </view>
+          <text class="sub-comment-count" wx:if="{{item.subComments.length > 1}}">
+            全部{{item.subComments.length}}条评论 >
+          </text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="sticky-comment-card {{showCommentInput ? 'expanded' : ''}}">
+    <view class="comment-prompt" wx:if="{{!showCommentInput}}" catchtap="goToWriteReview">
+      <view class="avatar-container">
+        <image class="avatar" src="../../../assets/images/评论.png" mode="aspectFill"></image>
+        <view>快来评论吧</view>
+      </view>
+      <button class="comment-button">去评论</button>
+    </view>
+    <view class="comment-input" wx:else catchtap="stopPropagation">
+      <input type="text" placeholder="写评论..." bindinput="onCommentInput" value="{{commentText}}" focus="{{showCommentInput}}" />
+      <button class="publish-button" bindtap="publishComment">发布</button>
+    </view>
+  </view>
+</view>

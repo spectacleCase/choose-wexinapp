@@ -1,5 +1,6 @@
 import RequestUtils from "../../../utils/request_util";
 import Dishes from "../../../services/api/dishes";
+import Comment from "../../../services/api/comment";
 
 // pages/shop/shop/shop.js
 Page({
@@ -26,25 +27,78 @@ Page({
       },
     ],
     reviews: [
-      // 示例评价数据
-
       {
-        id: 1,
-        name: "用户1",
-        avatar: "../../../assets/images/OIP-C.jpg",
-        date: "2023-04-01",
-        rating: 4.5,
-        content: "很好吃！",
+        id: "1849642654176563202",
+        userId: "1795446000771051522",
+        shopId: "1848368549850701826",
+        parentId: null,
+        content: "4",
+        imageUrl: null,
+        userAvatar: "2024/10/18/8640c61d45424c8b9fe0506409f32902.png",
+        userName: "桌角的眼镜",
+        createTime: "2024-10-25 10:42:28",
+        children: [
+          {
+            id: "1849668238390816769",
+            userId: "1795446000771051522",
+            shopId: "1848368549850701826",
+            parentId: "1849642654176563202",
+            content: "44",
+            imageUrl: null,
+            userAvatar: "2024/10/18/8640c61d45424c8b9fe0506409f32902.png",
+            userName: "桌角的眼镜",
+            createTime: "2024-10-25 12:24:08",
+            children: [],
+          },
+          {
+            id: "1849668234880184321",
+            userId: "1795446000771051522",
+            shopId: "1848368549850701826",
+            parentId: "1849642654176563202",
+            content: "43",
+            imageUrl: null,
+            userAvatar: "2024/10/18/8640c61d45424c8b9fe0506409f32902.png",
+            userName: "桌角的眼镜",
+            createTime: "2024-10-25 12:24:07",
+            children: [],
+          },
+        ],
       },
-
       {
-        id: 2,
-        name: "用户2",
-        avatar: "../../../assets/images/功能排行榜.png",
-        date: "2023-03-30",
-        rating: 3,
-        content:
-          "这些修改实现了以下效果：选项卡（tab-bar）不再平分整行，而是从左到右排列，右边留白。！菜品部分的布局调整为图片在左，标题和标签在右。标题字体变大。",
+        id: "1849642333832400897",
+        userId: "1795446000771051522",
+        shopId: "1848368549850701826",
+        parentId: null,
+        content: "3",
+        imageUrl: null,
+        userAvatar: "2024/10/18/8640c61d45424c8b9fe0506409f32902.png",
+        userName: "桌角的眼镜",
+        createTime: "2024-10-25 10:41:12",
+        children: [],
+      },
+      {
+        id: "1849635806291603457",
+        userId: "1795446000771051522",
+        shopId: "1848368549850701826",
+        parentId: null,
+        content: "2",
+        imageUrl: null,
+        userAvatar: "2024/10/18/8640c61d45424c8b9fe0506409f32902.png",
+        userName: "桌角的眼镜",
+        createTime: "2024-10-25 10:15:15",
+        children: [],
+      },
+      {
+        id: "1849635789275312129",
+        userId: "1795446000771051522",
+        shopId: "1848368549850701826",
+        parentId: null,
+        content: "1",
+        imageUrl: null,
+        userAvatar: "2024/10/18/8640c61d45424c8b9fe0506409f32902.png",
+        userName: "桌角的眼镜",
+        createTime: "2024-10-25 10:15:11",
+        children: [],
       },
     ],
   },
@@ -140,6 +194,14 @@ Page({
     Dishes.dishes.getShopDetails.data = {
       shopId: shopId,
     };
+    Comment.comment.getShopCommentList.data = {
+      shopId: shopId,
+      page: 1,
+    };
+
+    const shopList = await RequestUtils.request(
+      Comment.comment.getShopCommentList
+    );
     const data = await RequestUtils.request(Dishes.dishes.getShopDetails);
     console.log(data);
 
@@ -150,6 +212,13 @@ Page({
       coordinate: data.data.coordinate,
       shopName: data.data.shopName,
       mark: data.data.mark,
+      reviews: shopList.data.list,
+    });
+  },
+
+  navigateToReviews: function () {
+    wx.navigateTo({
+      url: `/pages/reviews/all-reviews/all-reviews`,
     });
   },
 
@@ -159,5 +228,13 @@ Page({
         url: "/pages/shop/dishes/dishes",
       });
     },
+  },
+
+  // 在 Page 对象中添加以下方法
+  goToReview: function () {
+    // 跳转到评论页面的逻辑
+    wx.navigateTo({
+      url: `/pages/reviews/write-review/write-review?shopId=${this.data.shopId}`,
+    });
   },
 });

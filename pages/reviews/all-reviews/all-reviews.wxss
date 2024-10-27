@@ -1,0 +1,226 @@
+.container {
+  padding: 20rpx;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+  padding-bottom: 160rpx; /* 为粘性卡片留出更多空间 */
+}
+
+.search-bar {
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 30rpx;
+  padding: 10rpx 20rpx;
+}
+
+.search-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.search-bar input {
+  flex: 1;
+  height: 60rpx;
+  border: none;
+  background-color: transparent;
+}
+
+.review-card {
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.review-time {
+  font-size: 24rpx;
+  color: #888;
+}
+
+.review-content {
+  margin-bottom: 20rpx;
+}
+
+.review-images {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 30rpx;
+}
+
+.review-image {
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.single-image {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.large-image {
+  width: 300rpx;
+  height: 300rpx;
+  padding-top: 10rpx;
+  border-radius: 15rpx;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.comment-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.sub-comments {
+  background-color: #f8f8f8;
+  padding: 10rpx;
+  border-radius: 6rpx;
+  margin-top: 10rpx;
+}
+
+.sub-comment-preview {
+  display: flex;
+  flex-direction: column;
+  font-size: 24rpx;
+}
+
+.sub-comment-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5rpx;
+}
+
+.sub-avatar {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.sub-comment-username {
+  font-weight: bold;
+}
+
+.sub-comment-content {
+  margin-left: 50rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sub-comment-count {
+  color: #888;
+  margin-top: 5rpx;
+  align-self: flex-end;
+}
+
+.sticky-comment-card {
+  position: fixed;
+  bottom: 20rpx; /* 向上移动一些 */
+  left: 20rpx;
+  right: 20rpx;
+  background-color: #ffffff;
+  padding: 20rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.1);
+  border-radius: 15rpx;
+  transition: all 0.3s ease;
+}
+
+.sticky-comment-card.expanded {
+  bottom: 40rpx; /* 展开时更靠上 */
+  height: 100rpx; /* 展开时更高 */
+}
+
+.comment-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80rpx; /* 增加高度 */
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  flex: 5;
+}
+
+.avatar-container .avatar {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.comment-button {
+  flex: 2;
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: #ffffff;
+  color: #FFA500;
+  border: 2rpx solid #FFA500;
+  border-radius: 30rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.comment-input {
+  display: flex;
+  align-items: center;
+  height: 80rpx; /* 与 comment-prompt 一致 */
+}
+
+.comment-input input {
+  flex: 1;
+  height: 60rpx;
+  border: 2rpx solid #cccccc;
+  border-radius: 30rpx;
+  padding: 0 20rpx;
+  margin-right: 20rpx;
+}
+
+.publish-button {
+  flex: 0.3;
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: #FFA500;
+  color: #ffffff;
+  border: none;
+  border-radius: 30rpx;
+  padding: 0;
+  font-size: 28rpx;
+}

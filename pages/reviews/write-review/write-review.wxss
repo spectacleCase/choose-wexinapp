@@ -1,0 +1,89 @@
+.container {
+  padding: 30rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.shop-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  color: #333;
+}
+
+.review-content {
+  width: 100%;
+  height: 200rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 30rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.image-uploader {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40rpx;
+}
+
+.image-item, .upload-btn {
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-item image {
+  width: 100%;
+  height: 100%;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 24rpx;
+}
+
+.upload-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2rpx dashed #ccc;
+}
+
+.plus {
+  font-size: 60rpx;
+  color: #ccc;
+  margin-bottom: 10rpx;
+}
+
+.upload-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.submit-btn {
+  width: 80%;
+  height: 80rpx;
+  background-color: #FFA500;
+  color: #fff;
+  border: none;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  margin-top: 40rpx;
+}

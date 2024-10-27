@@ -130,6 +130,7 @@
   border-radius: 10rpx;
   padding: 20rpx;
   box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 20rpx; /* 添加底部间距 */
 }
 
 .dishes-list, .reviews-list {
@@ -337,4 +338,133 @@
     font-size: 28rpx;
     color: #FFA500;
     margin-right: 10rpx;
+}
+
+/* 在文件末尾添加以下样式 */
+
+.sub-reviews {
+    margin-left: 60rpx; /* 增加子评论的左边距 */
+    margin-top: 15rpx; /* 增加与父评论的间距 */
+    padding-top: 15rpx; /* 添加顶部内边距 */
+    border-top: 1rpx solid #f0f0f0; /* 添加顶部边框 */
+}
+
+.sub-review-item {
+    display: flex;
+    margin-bottom: 15rpx; /* 增加子评论之间的间距 */
+}
+
+.sub-review-item:last-child {
+    margin-bottom: 0; /* 移除最后一个子评论的底部间距 */
+}
+
+.sub-reviewer-avatar {
+    width: 40rpx;   /* 减小头像尺寸 */
+    height: 40rpx;
+    border-radius: 20rpx;
+    margin-right: 10rpx;  /* 减小右边距 */
+}
+
+.sub-review-content {
+    flex: 1;
+}
+
+.sub-reviewer-name {
+    font-weight: bold;
+    font-size: 24rpx;  /* 减小字体大小 */
+}
+
+.sub-review-text-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-review-text {
+    font-size: 24rpx;
+    color: #333;
+    flex: 1;  /* 允许文本占据剩余空间 */
+    margin-right: 10rpx;  /* 在文本和日期之间添加一些间距 */
+}
+
+.sub-review-date {
+    font-size: 22rpx;
+    color: #999;
+    white-space: nowrap;  /* 防止日期行 */
+}
+
+.review-date {
+    font-size: 24rpx;
+    color: #999;
+    margin-top: 10rpx;
+    display: block;
+}
+
+/* 在文件末尾添加以下样式 */
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+    padding: 10rpx 0;
+}
+
+.review-header-left {
+    display: flex;
+    align-items: center;
+    flex: 6; /* 让左侧占据5份空间 */
+}
+
+.review-header-icon {
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 8rpx;
+}
+
+.review-header-text {
+    font-size: 24rpx;
+    color: #666;
+}
+
+.go-review-btn {
+    flex: 1.5; /* 让按钮占据3份空间 */
+    background-color: transparent;
+    color: #FFA500;
+    font-size: 22rpx;
+    padding: 4rpx 12rpx;
+    border-radius: 20rpx;
+    border: 1rpx solid #FFA500;
+    line-height: 1.5;
+    margin: 0;
+    min-width: 0;
+    min-height: 0;
+    white-space: nowrap; /* 防止文字换行 */
+    text-align: center; /* 确保按钮文字居中 */
+}
+
+/* 确保按钮在点击时没有默认的背景色变化 */
+.go-review-btn::after {
+    border: none;
+}
+
+/* 其他样式保持不变 */
+
+.no-reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60rpx 0; /* 增加上下内边距 */
+}
+
+.no-reviews-image {
+    width: 240rpx; /* 稍微增大图片尺寸 */
+    height: 240rpx;
+    margin-bottom: 30rpx; /* 增加图片与文字的间距 */
+}
+
+.no-reviews-text {
+    font-size: 30rpx; /* 稍微增大字体大小 */
+    color: #999;
 }

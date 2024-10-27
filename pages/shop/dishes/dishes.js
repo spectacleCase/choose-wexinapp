@@ -1,6 +1,7 @@
 import RequestUtil from "../../../utils/request_util";
 import Dishes from "../../../services/api/dishes";
 import dishes from "../../../services/api/dishes";
+import Comment from "../../../services/api/comment";
 
 // pages/shop/dishes/dishes.js
 Page({
@@ -106,7 +107,7 @@ Page({
     Dishes.dishes.getDishesDetails.data = {
       dishesId: categoryId,
     };
-    const data = await RequestUtil.request(Dishes.dishes.getDishesDetails);
+
     this.setData({
       currentDish: {
         title: data.data.dishesName,
