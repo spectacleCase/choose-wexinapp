@@ -1,1 +1,83 @@
-/* pages/collect/collect.wxss */
+.container {
+  padding: 20rpx;
+  background-color: #f8f8f8;
+}
+
+.header {
+  padding: 30rpx 0;
+  text-align: center;
+}
+
+.header text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ff6b00;
+}
+
+.collect-list {
+  width: 100%;
+}
+
+.collect-item {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.collect-info {
+  margin-bottom: 20rpx;
+}
+
+.collect-name {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.collect-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.collect-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 15rpx;
+}
+
+.collect-actions button {
+  flex: 1;
+  font-size: 26rpx;
+  padding: 12rpx 0;
+  background: #fff;
+  color: #ff6b00;
+  border: 1px solid #ff6b00;
+  border-radius: 8rpx;
+}
+
+.collect-actions button:active {
+  background: #ff6b00;
+  color: #fff;
+}
+
+.footer {
+  margin-top: 40rpx;
+  padding: 0 30rpx;
+}
+
+.footer button {
+  width: 100%;
+  background: #ff6b00;
+  color: #fff;
+  font-size: 32rpx;
+  padding: 20rpx 0;
+  border-radius: 8rpx;
+}
+
+.footer button:active {
+  background: #e66000;
+}

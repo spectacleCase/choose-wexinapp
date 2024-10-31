@@ -1,2 +1,34 @@
 <!--pages/collect/collect.wxml-->
-<text>这个是收藏页面</text>
+<view class="container">
+  <view class="header">
+    <text>我的收藏</text>
+  </view>
+  <view class="collect-list">
+    <block wx:for="{{collections}}" wx:key="id">
+      <view class="collect-item">
+        <view class="collect-info">
+          <text class="collect-name">{{item.name}}</text>
+          <text class="collect-time">创建时间: {{item.createTime}}</text>
+        </view>
+        <view class="collect-actions">
+          <button bindtap="changeCollection" data-id="{{item.collectid}}" data-name="{{item.name}}">修改</button>
+          <button bindtap="deleteCollection" data-id="{{item.collectid}}">删除</button>
+          <button bindtap="checknchilren" data-id="{{item.collectid}}" data-name="{{item.name}}">展开</button>
+        </view>
+      </view>
+      <view wx:if="{{item.showChildren}}" class="children-list">
+        <block wx:for="{{item.children}}" wx:key="id" wx:for-item="child">
+          <view class="child-item">
+            <image src="{{child.dishesImage}}" mode="aspectFill"></image>
+            <text>{{child.dishesName}}</text>
+            <text>{{child.coordinate}}</text>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+  <view class="footer">
+    <button bindtap="addCollection">添加收藏</button>
+  </view>
+</view>
+
