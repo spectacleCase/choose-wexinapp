@@ -1,0 +1,2200 @@
+{
+    "api": "mtop.relationrecommend.tinyapprecommend.recommend",
+    "data": {
+        "result": [
+            {
+                "guideTrack": "{\"search_ab_bucket\":\"a\",\"search_tpp_buckets\":\"22816#0#268764#27_22816#25246#477169#2_22816#38690#494356#7_18536#0#411366#2_18536#11865#444408#16_18536#11759#444202#242_18536#10700#439646#1_18536#24773#475749#4_18536#13832#453013#14\",\"search_app_id\":22816,\"alscJointAbTag\":\"unknow\",\"search_trace_id\":\"213c6a6e17304487755643980ea59b\",\"quantumTag\":{\"EU00003330\":\"1\"},\"personalizedDisable\":false,\"elemAbTest\":{\"sugBackwardSkipMiddlePageCache\":false,\"isFEOptimization\":\"true\"},\"search_rank_id\":\"a9cfff78261240b7b2e28c3ac1996bff\",\"pageAlgoExtend\":\"%7B%22enterMiddle%22%3A%22%22%2C%22kw%22%3A%22%E5%A5%B6%E8%8C%B6%22%7D\"}",
+                "rankId": "a9cfff78261240b7b2e28c3ac1996bff",
+                "meta": {
+                    "styleType": 2,
+                    "bgStyle": {
+                        "image": ""
+                    },
+                    "elemAbTest": {
+                        "sugBackwardSkipMiddlePageCache": false,
+                        "isFEOptimization": "true"
+                    },
+                    "barStyle": {
+                        "rgbFrom": "29C9FF",
+                        "rgbTo": "00ABF5"
+                    }
+                },
+                "blocks": [
+                    {
+                        "code": "HISTORY",
+                        "meta": {
+                            "fold": true,
+                            "title": "历史搜索"
+                        },
+                        "index": 1
+                    },
+                    {
+                        "code": "SEARCH_HOT_WORDS",
+                        "entities": [
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"蜜雪冰城奶茶\",\"searchKeyword\":\"蜜雪冰城奶茶\"}"
+                                },
+                                "score": 0.018900752067565918,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "蜜雪冰城奶茶",
+                                    "showKeyword": "蜜雪冰城奶茶",
+                                    "searchKeyword": "蜜雪冰城奶茶"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "蜜雪冰城奶茶",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "蜜雪冰城奶茶"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"古茗奶茶\",\"searchKeyword\":\"古茗奶茶\"}"
+                                },
+                                "score": 0.010090768337249756,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "古茗奶茶",
+                                    "showKeyword": "古茗奶茶",
+                                    "searchKeyword": "古茗奶茶"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "古茗奶茶",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "古茗奶茶"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"潮汕砂锅粥\",\"searchKeyword\":\"潮汕砂锅粥\"}"
+                                },
+                                "score": 0.007969588041305542,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "潮汕砂锅粥",
+                                    "showKeyword": "潮汕砂锅粥",
+                                    "searchKeyword": "潮汕砂锅粥"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "潮汕砂锅粥",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "潮汕砂锅粥"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"奶茶\",\"searchKeyword\":\"奶茶\"}"
+                                },
+                                "score": 0.0049114227294921875,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "奶茶",
+                                    "showKeyword": "奶茶",
+                                    "searchKeyword": "奶茶"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "奶茶",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "奶茶"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"海南鸡饭\",\"searchKeyword\":\"海南鸡饭\"}"
+                                },
+                                "score": 0.004184126853942871,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "海南鸡饭",
+                                    "showKeyword": "海南鸡饭",
+                                    "searchKeyword": "海南鸡饭"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "海南鸡饭",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "海南鸡饭"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"沪上阿姨奶茶\",\"searchKeyword\":\"沪上阿姨奶茶\"}"
+                                },
+                                "score": 0.0038803815841674805,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "沪上阿姨奶茶",
+                                    "showKeyword": "沪上阿姨奶茶",
+                                    "searchKeyword": "沪上阿姨奶茶"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "沪上阿姨奶茶",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "沪上阿姨奶茶"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"生腌\",\"searchKeyword\":\"生腌\"}"
+                                },
+                                "score": 0.0038543343544006348,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "生腌",
+                                    "showKeyword": "生腌",
+                                    "searchKeyword": "生腌"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "生腌",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "生腌"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"窑鸡\",\"searchKeyword\":\"窑鸡\"}"
+                                },
+                                "score": 0.0037308931350708008,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "窑鸡",
+                                    "showKeyword": "窑鸡",
+                                    "searchKeyword": "窑鸡"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "窑鸡",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "窑鸡"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"手抓饼\",\"searchKeyword\":\"手抓饼\"}"
+                                },
+                                "score": 0.0035773515701293945,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "手抓饼",
+                                    "showKeyword": "手抓饼",
+                                    "searchKeyword": "手抓饼"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "手抓饼",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "手抓饼"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"水果捞\",\"searchKeyword\":\"水果捞\"}"
+                                },
+                                "score": 0.003285735845565796,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "水果捞",
+                                    "showKeyword": "水果捞",
+                                    "searchKeyword": "水果捞"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "水果捞",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "水果捞"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"螺蛳粉\",\"searchKeyword\":\"螺蛳粉\"}"
+                                },
+                                "score": 0.0032781362533569336,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "螺蛳粉",
+                                    "showKeyword": "螺蛳粉",
+                                    "searchKeyword": "螺蛳粉"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "螺蛳粉",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "螺蛳粉"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"肠粉\",\"searchKeyword\":\"肠粉\"}"
+                                },
+                                "score": 0.0032137036323547363,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "肠粉",
+                                    "showKeyword": "肠粉",
+                                    "searchKeyword": "肠粉"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "肠粉",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "肠粉"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"一点点\",\"searchKeyword\":\"一点点\"}"
+                                },
+                                "score": 0.0030623674392700195,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "一点点",
+                                    "showKeyword": "一点点",
+                                    "searchKeyword": "一点点"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "一点点",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "一点点"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"炒田螺\",\"searchKeyword\":\"炒田螺\"}"
+                                },
+                                "score": 0.0027737021446228027,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "炒田螺",
+                                    "showKeyword": "炒田螺",
+                                    "searchKeyword": "炒田螺"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "炒田螺",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "炒田螺"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"砂锅粥\",\"searchKeyword\":\"砂锅粥\"}"
+                                },
+                                "score": 0.0024833381175994873,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "砂锅粥",
+                                    "showKeyword": "砂锅粥",
+                                    "searchKeyword": "砂锅粥"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "砂锅粥",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "砂锅粥"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"虾滑\",\"searchKeyword\":\"虾滑\"}"
+                                },
+                                "score": 0.0023292899131774902,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "虾滑",
+                                    "showKeyword": "虾滑",
+                                    "searchKeyword": "虾滑"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "虾滑",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "虾滑"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"新加坡\",\"searchKeyword\":\"新加坡\"}"
+                                },
+                                "score": 0.0020113587379455566,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "新加坡",
+                                    "showKeyword": "新加坡",
+                                    "searchKeyword": "新加坡"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "新加坡",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "新加坡"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"海鲜粥\",\"searchKeyword\":\"海鲜粥\"}"
+                                },
+                                "score": 0.0018055438995361328,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "海鲜粥",
+                                    "showKeyword": "海鲜粥",
+                                    "searchKeyword": "海鲜粥"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "海鲜粥",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "海鲜粥"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"生日蛋糕\",\"searchKeyword\":\"生日蛋糕\"}"
+                                },
+                                "score": 0.001776278018951416,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "生日蛋糕",
+                                    "showKeyword": "生日蛋糕",
+                                    "searchKeyword": "生日蛋糕"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "生日蛋糕",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "生日蛋糕"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"西瓜汁\",\"searchKeyword\":\"西瓜汁\"}"
+                                },
+                                "score": 0.001564115285873413,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "西瓜汁",
+                                    "showKeyword": "西瓜汁",
+                                    "searchKeyword": "西瓜汁"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "西瓜汁",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "西瓜汁"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"果茶\",\"searchKeyword\":\"果茶\"}"
+                                },
+                                "score": 0.001541733741760254,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "果茶",
+                                    "showKeyword": "果茶",
+                                    "searchKeyword": "果茶"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "果茶",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "果茶"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"炸鸡\",\"searchKeyword\":\"炸鸡\"}"
+                                },
+                                "score": 0.0015010535717010498,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "炸鸡",
+                                    "showKeyword": "炸鸡",
+                                    "searchKeyword": "炸鸡"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "炸鸡",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "炸鸡"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"三明治\",\"searchKeyword\":\"三明治\"}"
+                                },
+                                "score": 0.001480698585510254,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "三明治",
+                                    "showKeyword": "三明治",
+                                    "searchKeyword": "三明治"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "三明治",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "三明治"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"米粉\",\"searchKeyword\":\"米粉\"}"
+                                },
+                                "score": 0.0014692842960357666,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "米粉",
+                                    "showKeyword": "米粉",
+                                    "searchKeyword": "米粉"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "米粉",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "米粉"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"汉堡\",\"searchKeyword\":\"汉堡\"}"
+                                },
+                                "score": 0.0014663934707641602,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "汉堡",
+                                    "showKeyword": "汉堡",
+                                    "searchKeyword": "汉堡"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "汉堡",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "汉堡"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"炒饭\",\"searchKeyword\":\"炒饭\"}"
+                                },
+                                "score": 0.0014356672763824463,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "炒饭",
+                                    "showKeyword": "炒饭",
+                                    "searchKeyword": "炒饭"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "炒饭",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "炒饭"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"蛋包饭\",\"searchKeyword\":\"蛋包饭\"}"
+                                },
+                                "score": 0.0013607144355773926,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "蛋包饭",
+                                    "showKeyword": "蛋包饭",
+                                    "searchKeyword": "蛋包饭"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "蛋包饭",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "蛋包饭"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"臭豆腐\",\"searchKeyword\":\"臭豆腐\"}"
+                                },
+                                "score": 0.0013223588466644287,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "臭豆腐",
+                                    "showKeyword": "臭豆腐",
+                                    "searchKeyword": "臭豆腐"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "臭豆腐",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "臭豆腐"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"咖啡\",\"searchKeyword\":\"咖啡\"}"
+                                },
+                                "score": 0.0012425482273101807,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "咖啡",
+                                    "showKeyword": "咖啡",
+                                    "searchKeyword": "咖啡"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "咖啡",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "咖啡"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"冒菜\",\"searchKeyword\":\"冒菜\"}"
+                                },
+                                "score": 0.001176983118057251,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "冒菜",
+                                    "showKeyword": "冒菜",
+                                    "searchKeyword": "冒菜"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "冒菜",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "冒菜"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"烤鸭\",\"searchKeyword\":\"烤鸭\"}"
+                                },
+                                "score": 0.0011428594589233398,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "烤鸭",
+                                    "showKeyword": "烤鸭",
+                                    "searchKeyword": "烤鸭"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "烤鸭",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "烤鸭"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"甜品\",\"searchKeyword\":\"甜品\"}"
+                                },
+                                "score": 0.0011108815670013428,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "甜品",
+                                    "showKeyword": "甜品",
+                                    "searchKeyword": "甜品"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "甜品",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "甜品"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"烤肉\",\"searchKeyword\":\"烤肉\"}"
+                                },
+                                "score": 0.0010528862476348877,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "烤肉",
+                                    "showKeyword": "烤肉",
+                                    "searchKeyword": "烤肉"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "烤肉",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "烤肉"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"面包\",\"searchKeyword\":\"面包\"}"
+                                },
+                                "score": 0.0009922385215759277,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "面包",
+                                    "showKeyword": "面包",
+                                    "searchKeyword": "面包"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "面包",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "面包"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"茶百道\",\"searchKeyword\":\"茶百道\"}"
+                                },
+                                "score": 0.0009612441062927246,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "茶百道",
+                                    "showKeyword": "茶百道",
+                                    "searchKeyword": "茶百道"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "茶百道",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "茶百道"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"蛋糕\",\"searchKeyword\":\"蛋糕\"}"
+                                },
+                                "score": 0.0009562075138092041,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "蛋糕",
+                                    "showKeyword": "蛋糕",
+                                    "searchKeyword": "蛋糕"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "蛋糕",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "蛋糕"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"酸奶\",\"searchKeyword\":\"酸奶\"}"
+                                },
+                                "score": 0.0009201765060424805,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "酸奶",
+                                    "showKeyword": "酸奶",
+                                    "searchKeyword": "酸奶"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "酸奶",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "酸奶"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"喜茶\",\"searchKeyword\":\"喜茶\"}"
+                                },
+                                "score": 0.0009098649024963379,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "喜茶",
+                                    "showKeyword": "喜茶",
+                                    "searchKeyword": "喜茶"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "喜茶",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "喜茶"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"肯德基\",\"searchKeyword\":\"肯德基\"}"
+                                },
+                                "score": 0.0008296668529510498,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "肯德基",
+                                    "showKeyword": "肯德基",
+                                    "searchKeyword": "肯德基"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "肯德基",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "肯德基"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"冰激凌\",\"searchKeyword\":\"冰激凌\"}"
+                                },
+                                "score": 0.0008140206336975098,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "冰激凌",
+                                    "showKeyword": "冰激凌",
+                                    "searchKeyword": "冰激凌"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "冰激凌",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "冰激凌"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"胡辣汤\",\"searchKeyword\":\"胡辣汤\"}"
+                                },
+                                "score": 0.0008138716220855713,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "胡辣汤",
+                                    "showKeyword": "胡辣汤",
+                                    "searchKeyword": "胡辣汤"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "胡辣汤",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "胡辣汤"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"麻辣烫\",\"searchKeyword\":\"麻辣烫\"}"
+                                },
+                                "score": 0.0007291436195373535,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "麻辣烫",
+                                    "showKeyword": "麻辣烫",
+                                    "searchKeyword": "麻辣烫"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "麻辣烫",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "麻辣烫"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"猪脚饭\",\"searchKeyword\":\"猪脚饭\"}"
+                                },
+                                "score": 0.0006434497190639377,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "猪脚饭",
+                                    "showKeyword": "猪脚饭",
+                                    "searchKeyword": "猪脚饭"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "猪脚饭",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "猪脚饭"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"烧烤\",\"searchKeyword\":\"烧烤\"}"
+                                },
+                                "score": 0.0006418824195861816,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "烧烤",
+                                    "showKeyword": "烧烤",
+                                    "searchKeyword": "烧烤"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "烧烤",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "烧烤"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"沙县小吃\",\"searchKeyword\":\"沙县小吃\"}"
+                                },
+                                "score": 0.0006279349327087402,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "沙县小吃",
+                                    "showKeyword": "沙县小吃",
+                                    "searchKeyword": "沙县小吃"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "沙县小吃",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "沙县小吃"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"霸王茶姬\",\"searchKeyword\":\"霸王茶姬\"}"
+                                },
+                                "score": 0.000550687313079834,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "霸王茶姬",
+                                    "showKeyword": "霸王茶姬",
+                                    "searchKeyword": "霸王茶姬"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "霸王茶姬",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "霸王茶姬"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"煲仔饭\",\"searchKeyword\":\"煲仔饭\"}"
+                                },
+                                "score": 0.0005398690700531006,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "煲仔饭",
+                                    "showKeyword": "煲仔饭",
+                                    "searchKeyword": "煲仔饭"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "煲仔饭",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "煲仔饭"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"益禾堂\",\"searchKeyword\":\"益禾堂\"}"
+                                },
+                                "score": 0.0005272626876831055,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "益禾堂",
+                                    "showKeyword": "益禾堂",
+                                    "searchKeyword": "益禾堂"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "益禾堂",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "益禾堂"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"塔斯汀\",\"searchKeyword\":\"塔斯汀\"}"
+                                },
+                                "score": 0.0004850924015045166,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "塔斯汀",
+                                    "showKeyword": "塔斯汀",
+                                    "searchKeyword": "塔斯汀"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "塔斯汀",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "塔斯汀"
+                            },
+                            {
+                                "searchExtraParams": {
+                                    "referTrack": "{\"sgWordType\":\"00000\",\"showKeyword\":\"牛肉粿条\",\"searchKeyword\":\"牛肉粿条\"}"
+                                },
+                                "score": 0.00047773122787475586,
+                                "algoExtend": {},
+                                "trackParams": {
+                                    "sgWordType": "00000",
+                                    "label": "牛肉粿条",
+                                    "showKeyword": "牛肉粿条",
+                                    "searchKeyword": "牛肉粿条"
+                                },
+                                "isHighlight": 0,
+                                "sgWordType": "00000",
+                                "label": "牛肉粿条",
+                                "strategyFactors": {
+                                    "regularParams": {}
+                                },
+                                "type": 0,
+                                "word": "牛肉粿条"
+                            }
+                        ],
+                        "meta": {
+                            "fold": false,
+                            "subTitleStyle": {
+                                "color": "FF4B33",
+                                "bgColor": "FFEDEB"
+                            },
+                            "title": "搜索发现"
+                        },
+                        "index": 2
+                    },
+                    {
+                        "code": "HOT_BOARDS",
+                        "meta": {
+                            "fold": false,
+                            "compact": false
+                        },
+                        "blocks": [
+                            {
+                                "code": "TOP_RESTAURANTS",
+                                "entities": [
+                                    {
+                                        "scheme": "https://h5.ele.me/2021001185671035/pages/ele-takeout-index/ele-takeout-index?trace_id=213c6a6e17304487755643980ea59b&cartTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22type%22%3A1%2C%22scheme_type%22%3A%22SHOP_SCHEME%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&geohash=ws4uz5puq008&brandId=5242&storeTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&shopId=E4118534575496378043&type=1&scheme_type=SHOP_SCHEME&subsubchannel=mobile.default.alsc-rec-data-center%3ATpp-22816",
+                                        "icon": "https://img.alicdn.com/imgextra/i4/2211887937853/O1CN01lm1wxz27sjI2er3eb_!!2211887937853-0-koubei.jpg",
+                                        "isShop": "1",
+                                        "title": "蜜雪冰城(跃进路店)",
+                                        "type": 4,
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB15Iwu2.Y1gK0jSZFCXXcwqXXa-42-42.png",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "400减50 I 200减20",
+                                        "trackBoardTitle": "4",
+                                        "subTitleStyle": {
+                                            "color": "FF4B33",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "id": "E4118534575496378043",
+                                        "extraInfoStyle": {
+                                            "color": "999999",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "shopId": "E4118534575496378043",
+                                        "sgTags": [
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "400减50"
+                                            },
+                                            {
+                                                "color": "CCCCCC",
+                                                "name": " I "
+                                            },
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "200减20"
+                                            }
+                                        ],
+                                        "extraInfo": "905m"
+                                    },
+                                    {
+                                        "scheme": "https://h5.ele.me/2021001185671035/pages/ele-takeout-index/ele-takeout-index?trace_id=213c6a6e17304487755643980ea59b&cartTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22type%22%3A1%2C%22scheme_type%22%3A%22SHOP_SCHEME%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&geohash=ws4uz5puq008&brandId=974995&storeTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&shopId=E10111503850960958183&type=1&scheme_type=SHOP_SCHEME&subsubchannel=mobile.default.alsc-rec-data-center%3ATpp-22816",
+                                        "icon": "https://img.alicdn.com/imgextra/i4/2217840316824/O1CN01dChJ2g20HRhwvY0Ta_!!2217840316824-2-koubei.png",
+                                        "isShop": "1",
+                                        "title": "古御贡茶●柠檬茶●咖啡●奶茶小吃●手抓饼(汕头龙湖店)",
+                                        "type": 4,
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB1a63jp6MZ7e4jSZFOXXX7epXa-42-42.png",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "88减4 I 58减3",
+                                        "trackBoardTitle": "4",
+                                        "subTitleStyle": {
+                                            "color": "FF4B33",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "id": "E10111503850960958183",
+                                        "extraInfoStyle": {
+                                            "color": "999999",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "shopId": "E10111503850960958183",
+                                        "sgTags": [
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "88减4"
+                                            },
+                                            {
+                                                "color": "CCCCCC",
+                                                "name": " I "
+                                            },
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "58减3"
+                                            }
+                                        ],
+                                        "extraInfo": "7.2km"
+                                    },
+                                    {
+                                        "scheme": "https://h5.ele.me/2021001185671035/pages/ele-takeout-index/ele-takeout-index?trace_id=213c6a6e17304487755643980ea59b&cartTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22type%22%3A1%2C%22scheme_type%22%3A%22SHOP_SCHEME%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&geohash=ws4uz5puq008&brandId=0&storeTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&shopId=E4570423225053233014&type=1&scheme_type=SHOP_SCHEME&subsubchannel=mobile.default.alsc-rec-data-center%3ATpp-22816",
+                                        "icon": "https://img.alicdn.com/imgextra/i4/2218085548236/O1CN01CMBYKE2Ai901DJXIW_!!2218085548236-0-koubei.jpg",
+                                        "isShop": "1",
+                                        "title": "潮汕海鲜砂锅粥(万象城店)",
+                                        "type": 4,
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB1jc3E2.T1gK0jSZFrXXcNCXXa-42-42.png",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "49减1 I 首次光顾减1",
+                                        "trackBoardTitle": "4",
+                                        "subTitleStyle": {
+                                            "color": "FF4B33",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "id": "E4570423225053233014",
+                                        "extraInfoStyle": {
+                                            "color": "999999",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "shopId": "E4570423225053233014",
+                                        "sgTags": [
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "49减1"
+                                            },
+                                            {
+                                                "color": "CCCCCC",
+                                                "name": " I "
+                                            },
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "首次光顾减1"
+                                            }
+                                        ],
+                                        "extraInfo": "3.7km"
+                                    },
+                                    {
+                                        "scheme": "https://h5.ele.me/2021001185671035/pages/ele-takeout-index/ele-takeout-index?trace_id=213c6a6e17304487755643980ea59b&cartTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22type%22%3A1%2C%22scheme_type%22%3A%22SHOP_SCHEME%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&geohash=ws4uz5puq008&brandId=1331803&storeTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&shopId=E14486028162866457263&type=1&scheme_type=SHOP_SCHEME&subsubchannel=mobile.default.alsc-rec-data-center%3ATpp-22816",
+                                        "icon": "https://img.alicdn.com/imgextra/i3/2216857219118/O1CN015UKdMl2HE6Kg8jbk9_!!2216857219118-0-koubei.jpg",
+                                        "isShop": "1",
+                                        "title": "新加坡可斯克鲜奶茶(龙眼店)",
+                                        "type": 4,
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "根据你的浏览推荐",
+                                        "trackBoardTitle": "4",
+                                        "subTitleStyle": {
+                                            "color": "FE7100"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "id": "E14486028162866457263",
+                                        "extraInfoStyle": {
+                                            "color": "999999",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "shopId": "E14486028162866457263",
+                                        "sgTags": [
+                                            {
+                                                "color": "FE7100",
+                                                "name": "根据你的浏览推荐"
+                                            }
+                                        ],
+                                        "extraInfo": "3.3km"
+                                    },
+                                    {
+                                        "scheme": "https://h5.ele.me/2021001185671035/pages/ele-takeout-index/ele-takeout-index?trace_id=213c6a6e17304487755643980ea59b&cartTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22type%22%3A1%2C%22scheme_type%22%3A%22SHOP_SCHEME%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&geohash=ws4uz5puq008&brandId=1323747&storeTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&shopId=E8792519848806070242&type=1&scheme_type=SHOP_SCHEME&subsubchannel=mobile.default.alsc-rec-data-center%3ATpp-22816",
+                                        "icon": "https://img.alicdn.com/imgextra/i3/2217728334701/O1CN01cMPKb71kb6qbq5kse_!!2217728334701-2-koubei.png",
+                                        "isShop": "1",
+                                        "title": "粤少肠粉皇·炒粉·炒饭·粥(汕头店)",
+                                        "type": 4,
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "68减6 I 48减4",
+                                        "trackBoardTitle": "4",
+                                        "subTitleStyle": {
+                                            "color": "FF4B33",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "id": "E8792519848806070242",
+                                        "extraInfoStyle": {
+                                            "color": "999999",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "shopId": "E8792519848806070242",
+                                        "sgTags": [
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "68减6"
+                                            },
+                                            {
+                                                "color": "CCCCCC",
+                                                "name": " I "
+                                            },
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "48减4"
+                                            }
+                                        ],
+                                        "extraInfo": "3.8km"
+                                    },
+                                    {
+                                        "scheme": "https://h5.ele.me/2021001185671035/pages/ele-takeout-index/ele-takeout-index?trace_id=213c6a6e17304487755643980ea59b&cartTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22type%22%3A1%2C%22scheme_type%22%3A%22SHOP_SCHEME%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&geohash=ws4uz5puq008&brandId=4451&storeTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&shopId=E4462592341909459691&type=1&scheme_type=SHOP_SCHEME&subsubchannel=mobile.default.alsc-rec-data-center%3ATpp-22816",
+                                        "icon": "https://img.alicdn.com/imgextra/i1/2201120623179/O1CN01dHQYq41ZM23tzYObF_!!2201120623179-0-koubei.jpg",
+                                        "isShop": "1",
+                                        "title": "华莱士·全鸡汉堡(跃进店)",
+                                        "type": 4,
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "90减22 I 60减16",
+                                        "trackBoardTitle": "4",
+                                        "subTitleStyle": {
+                                            "color": "FF4B33",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "id": "E4462592341909459691",
+                                        "extraInfoStyle": {
+                                            "color": "999999",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "shopId": "E4462592341909459691",
+                                        "sgTags": [
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "90减22"
+                                            },
+                                            {
+                                                "color": "CCCCCC",
+                                                "name": " I "
+                                            },
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "60减16"
+                                            }
+                                        ],
+                                        "extraInfo": "669m"
+                                    },
+                                    {
+                                        "scheme": "https://h5.ele.me/2021001185671035/pages/ele-takeout-index/ele-takeout-index?trace_id=213c6a6e17304487755643980ea59b&cartTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22type%22%3A1%2C%22scheme_type%22%3A%22SHOP_SCHEME%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&geohash=ws4uz5puq008&brandId=742074&storeTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&shopId=E11717731616175867605&type=1&scheme_type=SHOP_SCHEME&subsubchannel=mobile.default.alsc-rec-data-center%3ATpp-22816",
+                                        "icon": "https://img.alicdn.com/imgextra/i2/2212859850526/O1CN01oTeZ7n1FkxG13sMXM_!!2212859850526-0-koubei.jpg",
+                                        "isShop": "1",
+                                        "title": "塔斯汀·中国汉堡(金凤坛店)",
+                                        "type": 4,
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "30减1",
+                                        "trackBoardTitle": "4",
+                                        "subTitleStyle": {
+                                            "color": "FF4B33",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "id": "E11717731616175867605",
+                                        "extraInfoStyle": {
+                                            "color": "999999",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "shopId": "E11717731616175867605",
+                                        "sgTags": [
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "30减1"
+                                            }
+                                        ],
+                                        "extraInfo": "1.2km"
+                                    },
+                                    {
+                                        "scheme": "https://h5.ele.me/2021001185671035/pages/ele-takeout-index/ele-takeout-index?trace_id=213c6a6e17304487755643980ea59b&cartTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22type%22%3A1%2C%22scheme_type%22%3A%22SHOP_SCHEME%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&geohash=ws4uz5puq008&brandId=0&storeTransmit=%7B%22trace_id%22%3A%22213c6a6e17304487755643980ea59b%22%2C%22subsubchannel%22%3A%22mobile.default.alsc-rec-data-center%3ATpp-22816%22%7D&shopId=E3849635020006271268&type=1&scheme_type=SHOP_SCHEME&subsubchannel=mobile.default.alsc-rec-data-center%3ATpp-22816",
+                                        "icon": "https://img.alicdn.com/imgextra/i3/2215782212884/O1CN01EfZioh1XAv5c6KJty_!!2215782212884-0-koubei.jpg",
+                                        "isShop": "1",
+                                        "title": "潮香炸鸡翅(跃进路店)",
+                                        "type": 4,
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "99减1",
+                                        "trackBoardTitle": "4",
+                                        "subTitleStyle": {
+                                            "color": "FF4B33",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "id": "E3849635020006271268",
+                                        "extraInfoStyle": {
+                                            "color": "999999",
+                                            "delimiterColor": "CCCCCC"
+                                        },
+                                        "shopId": "E3849635020006271268",
+                                        "sgTags": [
+                                            {
+                                                "color": "FF4B33",
+                                                "name": "99减1"
+                                            }
+                                        ],
+                                        "extraInfo": "990m"
+                                    }
+                                ],
+                                "meta": {
+                                    "fold": false,
+                                    "bgStyle": {
+                                        "border": "CDF1FF",
+                                        "rgbFrom": "99DFF5FF",
+                                        "rgbTo": "00DFF5FF"
+                                    },
+                                    "compact": false,
+                                    "subTitleStyle": {
+                                        "color": "FF4B33",
+                                        "delimiterColor": "CCCCCC"
+                                    },
+                                    "titleStyle": {
+                                        "color": "00ACF0"
+                                    },
+                                    "title": "专属好店"
+                                },
+                                "index": 0
+                            },
+                            {
+                                "code": "HOT_LIST",
+                                "entities": [
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1hN3cvz39YK4jSZPcXXXrUFXa-150-124.jpg",
+                                        "isShop": "0",
+                                        "title": "蜜雪冰城奶茶",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB15Iwu2.Y1gK0jSZFCXXcwqXXa-42-42.png",
+                                        "searchText": "蜜雪冰城奶茶",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 198266",
+                                        "trackBoardTitle": "0",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/imgextra/i1/O1CN01cMxhBC20Mw9PgzOpm_!!6000000006836-0-tps-150-124.jpg",
+                                        "isShop": "0",
+                                        "title": "优选潮汕砂锅粥",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB1a63jp6MZ7e4jSZFOXXX7epXa-42-42.png",
+                                        "searchText": "潮汕砂锅粥",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 87503",
+                                        "trackBoardTitle": "0",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1zAHS41H2gK0jSZJnXXaT1FXa-150-124.jpg",
+                                        "isShop": "0",
+                                        "title": "海南鸡饭不错哦",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB1jc3E2.T1gK0jSZFrXXcNCXXa-42-42.png",
+                                        "searchText": "海南鸡饭",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 88245",
+                                        "trackBoardTitle": "0",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": "爆"
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/imgextra/i4/O1CN01nNIMiM1RpK9B1H2E5_!!6000000002160-0-tps-150-124.jpg",
+                                        "isShop": "0",
+                                        "title": "大家都爱生腌",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "生腌",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 84748",
+                                        "trackBoardTitle": "0",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/imgextra/i2/O1CN01vBzS0W1skHPZ7Up5V_!!6000000005804-0-tps-150-124.jpg",
+                                        "isShop": "0",
+                                        "title": "窑鸡卖疯啦",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "窑鸡",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 159827",
+                                        "trackBoardTitle": "0",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1MejP42b2gK0jSZK9XXaEgFXa-150-124.jpg",
+                                        "isShop": "0",
+                                        "title": "精选手抓饼",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "手抓饼",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 153462",
+                                        "trackBoardTitle": "0",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://fuss10.elemecdn.com/e/63/1b8afaabd01cc97ab43faf7e3126fjpeg.jpeg",
+                                        "isShop": "0",
+                                        "title": "必买的水果捞",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "水果捞",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 167563",
+                                        "trackBoardTitle": "0",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1WCDN41L2gK0jSZPhXXahvXXa-150-124.jpg",
+                                        "isShop": "0",
+                                        "title": "必吃螺蛳粉",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "螺蛳粉",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 183298",
+                                        "trackBoardTitle": "0",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    }
+                                ],
+                                "meta": {
+                                    "fold": false,
+                                    "bgStyle": {
+                                        "border": "CDF1FF",
+                                        "rgbFrom": "99DFF5FF",
+                                        "rgbTo": "00DFF5FF"
+                                    },
+                                    "compact": false,
+                                    "titleStyle": {
+                                        "color": "00ACF0"
+                                    },
+                                    "title": "周边热搜",
+                                    "desc": "*人气值由词的热度、增速等综合计算出"
+                                },
+                                "index": 1
+                            },
+                            {
+                                "code": "HOT_RETAIL_LIST",
+                                "entities": [
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1WVgt34z1gK0jSZSgXXavwpXa-150-150.jpg",
+                                        "isShop": "0",
+                                        "title": "水饺",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB15Iwu2.Y1gK0jSZFCXXcwqXXa-42-42.png",
+                                        "searchText": "水饺",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 168086",
+                                        "trackBoardTitle": "1",
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1W2Z9tGNj0u4jSZFyXXXgMVXa-150-150.jpg",
+                                        "isShop": "0",
+                                        "title": "柠檬",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB1a63jp6MZ7e4jSZFOXXX7epXa-42-42.png",
+                                        "searchText": "柠檬",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 75647",
+                                        "trackBoardTitle": "1",
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1H6sF37L0gK0jSZFAXXcA9pXa-150-150.jpg",
+                                        "isShop": "0",
+                                        "title": "山楂",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB1jc3E2.T1gK0jSZFrXXcNCXXa-42-42.png",
+                                        "searchText": "山楂",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 12159",
+                                        "trackBoardTitle": "1",
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1SVUL34v1gK0jSZFFXXb0sXXa-150-150.jpg",
+                                        "isShop": "0",
+                                        "title": "铜锣烧",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "铜锣烧",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 83503",
+                                        "trackBoardTitle": "1",
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1GzXDtDM11u4jSZPxXXahcXXa-150-150.jpg",
+                                        "isShop": "0",
+                                        "title": "百香果",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "百香果",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 69007",
+                                        "trackBoardTitle": "1",
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1aYK4tQ9l0K4jSZFKXXXFjpXa-150-150.jpg",
+                                        "isShop": "0",
+                                        "title": "鸡爪",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "鸡爪",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 85661",
+                                        "trackBoardTitle": "1",
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1V6IE3VT7gK0jSZFpXXaTkpXa-150-150.jpg",
+                                        "isShop": "0",
+                                        "title": "鸭脖",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "鸭脖",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 92954",
+                                        "trackBoardTitle": "1",
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://gw.alicdn.com/tfs/TB1kvzosLzO3e4jSZFxXXaP_FXa-150-150.jpg",
+                                        "isShop": "0",
+                                        "title": "番茄",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "番茄",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "人气值 72555",
+                                        "trackBoardTitle": "1",
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    }
+                                ],
+                                "meta": {
+                                    "fold": false,
+                                    "bgStyle": {
+                                        "border": "CDF1FF",
+                                        "rgbFrom": "99DFF5FF",
+                                        "rgbTo": "00DFF5FF"
+                                    },
+                                    "compact": false,
+                                    "subTitleStyle": {
+                                        "color": "FF4B33",
+                                        "delimiterColor": "CCCCCC"
+                                    },
+                                    "titleStyle": {
+                                        "color": "00ACF0"
+                                    },
+                                    "title": "好货榜",
+                                    "desc": "*人气值由词的热度、增速等综合计算出"
+                                },
+                                "index": 2
+                            },
+                            {
+                                "code": "HOT_TOP_BRAND_LIST",
+                                "entities": [
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://cube.elemecdn.com/A/4E/A36865A614C5990811AFCA47E1B9Djpeg.jpeg",
+                                        "isShop": "0",
+                                        "title": "茶百道",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB15Iwu2.Y1gK0jSZFCXXcwqXXa-42-42.png",
+                                        "searchText": "茶百道",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "🔥 752.4 W 人买过",
+                                        "trackBoardTitle": "2",
+                                        "subTitleStyle": {
+                                            "color": "ED0000"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://cube.elemecdn.com/B/00/82E74AF594ED99D80389D285A094Cjpeg.jpeg",
+                                        "isShop": "0",
+                                        "title": "肯德基",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB1a63jp6MZ7e4jSZFOXXX7epXa-42-42.png",
+                                        "searchText": "肯德基",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "🔥 512.2 W 人推荐",
+                                        "trackBoardTitle": "2",
+                                        "subTitleStyle": {
+                                            "color": "ED0000"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": ""
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://cube.elemecdn.com/5/90/844aafdbde249397a18af78143bb4jpeg.jpeg",
+                                        "isShop": "0",
+                                        "title": "沙县小吃",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "indexIcon": "https://img.alicdn.com/tfs/TB1jc3E2.T1gK0jSZFrXXcNCXXa-42-42.png",
+                                        "searchText": "沙县小吃",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "🔥 59.0 W 人点赞",
+                                        "trackBoardTitle": "2",
+                                        "subTitleStyle": {
+                                            "color": "ED0000"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": "爆"
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://cube.elemecdn.com/9/BA/64E8FEB2D466EAE167C2629331C19jpeg.jpeg",
+                                        "isShop": "0",
+                                        "title": "霸王茶姬",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "霸王茶姬",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "🔥 199.9 W 人推荐",
+                                        "trackBoardTitle": "2",
+                                        "subTitleStyle": {
+                                            "color": "ED0000"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": "爆"
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://cube.elemecdn.com/9/C5/92D731465416F9769C3F30C3409B2png.png",
+                                        "isShop": "0",
+                                        "title": "益禾堂",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "益禾堂",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "446.7 W 人推荐",
+                                        "trackBoardTitle": "2",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": "爆"
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://cube.elemecdn.com/5/b0/7b1b84b5eb7ac71c5730e6a3850a8jpeg.jpeg",
+                                        "isShop": "0",
+                                        "title": "包道",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "包道",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "2.9 W 人买过",
+                                        "trackBoardTitle": "2",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": "热"
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://cube.elemecdn.com/a/38/9b7a56d73c8c4455451cc5b12e9bdpng.png",
+                                        "isShop": "0",
+                                        "title": "杨国福麻辣烫",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "杨国福麻辣烫",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "🔥 614.7 W 人点赞",
+                                        "trackBoardTitle": "2",
+                                        "subTitleStyle": {
+                                            "color": "ED0000"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": "爆"
+                                    },
+                                    {
+                                        "tagStyle": {
+                                            "color": "FF4B33",
+                                            "bgColor": "FFEDEB"
+                                        },
+                                        "icon": "https://cube.elemecdn.com/3/61/44F4FC89740F88D38062596999BE9jpeg.jpeg",
+                                        "isShop": "0",
+                                        "title": "华莱士",
+                                        "type": 0,
+                                        "factors": "{}",
+                                        "searchExtraParams": {
+                                            "referTrack": "{\"hotListSequence\":\"000000000000\"}"
+                                        },
+                                        "passThrough": "%7B%7D",
+                                        "searchText": "华莱士",
+                                        "trackParams": {
+                                            "board_type": 0,
+                                            "hotListSequence": "000000000000"
+                                        },
+                                        "subTitle": "4003.5 W 人推荐",
+                                        "trackBoardTitle": "2",
+                                        "subTitleStyle": {
+                                            "color": "999999"
+                                        },
+                                        "trackEntryCode": "10",
+                                        "tag": "爆"
+                                    }
+                                ],
+                                "meta": {
+                                    "fold": false,
+                                    "bgStyle": {
+                                        "border": "CDF1FF",
+                                        "rgbFrom": "99DFF5FF",
+                                        "rgbTo": "00DFF5FF"
+                                    },
+                                    "compact": false,
+                                    "titleStyle": {
+                                        "color": "00ACF0"
+                                    },
+                                    "title": "大牌榜",
+                                    "desc": "*人气值由词的热度、增速等综合计算出"
+                                },
+                                "index": 3
+                            }
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "code": "CHANNEL_ITEMS",
+                        "entities": [
+                            {
+                                "bgColorSmall": "F0F8FE",
+                                "scheme": "http://h5.ele.me/newretail/p/emart/?hideNavbar=1",
+                                "bgColorBig": "ECF5FF",
+                                "iconBig": "https://img.alicdn.com/tfs/TB1TSRw3AY2gK0jSZFgXXc5OFXa-450-450.jpg",
+                                "title": "商超便利",
+                                "iconSmall": "2d87c9956d19affea17293876951e663jpeg",
+                                "desc": "配送0元起 菜肉鲜到家"
+                            },
+                            {
+                                "bgColorSmall": "FFF5EB",
+                                "scheme": "http://h5.ele.me/newretail/p/channel/?channel=fresh&hideNavbar=1",
+                                "bgColorBig": "FFF7EF",
+                                "iconBig": "https://img.alicdn.com/tfs/TB1_cXhqzMZ7e4jSZFOXXX7epXa-114-114.png",
+                                "title": "水果",
+                                "iconSmall": "103f5ac4872fdd939414e6c9a7126eb3jpeg",
+                                "desc": "天天有特价"
+                            },
+                            {
+                                "bgColorSmall": "F7FEF3",
+                                "scheme": "http://h5.ele.me/newretail/p/channel/?channel=kitchen&hideNavbar=1",
+                                "bgColorBig": "FFF1ED",
+                                "iconBig": "https://img.alicdn.com/tfs/TB1IKtp3uH2gK0jSZJnXXaT1FXa-114-114.png",
+                                "title": "买菜",
+                                "iconSmall": "278d159d21aa696a1f5c9360136d3a69jpeg",
+                                "desc": "平价食材一站购"
+                            },
+                            {
+                                "bgColorSmall": "EAFDFD",
+                                "scheme": "http://h5.ele.me/newretail/p/ehealth/?hideNavbar=1",
+                                "bgColorBig": "F8F5FF",
+                                "iconBig": "https://img.alicdn.com/tfs/TB1.Qxs3rr1gK0jSZFDXXb9yVXa-132-132.jpg",
+                                "title": "送药",
+                                "iconSmall": "8fcc39474199af94d7d7a943efaa62ccjpeg",
+                                "desc": "用药咨询 24h在线"
+                            }
+                        ],
+                        "meta": {
+                            "title": "宝藏生活"
+                        },
+                        "index": 4
+                    }
+                ],
+                "enableEKFusion": false
+            }
+        ],
+        "pvid": "a992dd01-b25b-41bc-8c01-ad0968b15173",
+        "scm": "1007.32816.268764.0",
+        "version": 1.0,
+        "tpp_trace": "213c6a6e17304487755643980ea59b",
+        "isSuccess": true,
+        "tpp_buckets": "22816#0#268764#27_22816#25246#477169#2_22816#38690#494356#7"
+    },
+    "ret": [
+        "SUCCESS::调用成功"
+    ],
+    "traceId": "213c6a6e17304487755643980ea59b",
+    "v": "1.0"
+}

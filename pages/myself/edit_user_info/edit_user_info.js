@@ -38,6 +38,7 @@ Page({
           "userInfo.avatar": fileData.fileName,
           filePath: fileData.filePath,
         });
+        wx.setStorageSync("userInfo", this.data.userInfo);
         toast.showToast("保存成功", "success");
       },
     });
