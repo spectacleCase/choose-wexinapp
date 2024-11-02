@@ -23,7 +23,12 @@
   },
   "appid": "wx35a18052d7d3cca6",
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      {
+        "value": ".history",
+        "type": "folder"
+      }
+    ],
     "include": []
   }
 }
