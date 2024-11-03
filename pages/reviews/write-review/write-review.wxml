@@ -11,6 +11,12 @@
       <text class="upload-text">上传图片</text>
     </view>
   </view>
-  <button class="submit-btn" bindtap="submitReview">发布评论</button>
+  <button 
+    class="submit-btn {{isSubmitting ? 'submitting' : ''}}" 
+    bindtap="submitReview" 
+    disabled="{{isSubmitting}}"
+  >
+    {{isSubmitting ? '发布中...' : '发布评论'}}
+  </button>
   <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
 </view>

@@ -2,7 +2,7 @@
     <view class="section">
         <view class="section-title">通知信息</view>
         <view class="notification-list">
-            <view class="notification-item" wx:for="{{notifications}}" wx:key="index">
+            <view class="notification-item" wx:for="{{notifications}}" wx:key="index" bindtap="goToPostDetail" data-id="{{item.commentId}}">
                 <image class="avatar" src="{{item.userAvatar || '../../../assets/images/通知.png'}}" mode="aspectFill"></image>
                 <view class="notification-content">
                     <view class="username" wx:if="{{item.userName}}">{{item.userName}}</view>

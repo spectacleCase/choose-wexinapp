@@ -217,4 +217,22 @@
   width: 32rpx;
   height: 32rpx;
   margin-right: 8rpx;
+}
+
+/* 添加回复对象的样式 */
+.reply-to {
+  color: #999;
+  font-size: 24rpx;
+  margin-right: 8rpx;
+}
+
+.reply-content {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+  padding: 10rpx 0;
 } 

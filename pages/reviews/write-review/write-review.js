@@ -2,12 +2,14 @@ import util from "../../../utils/util";
 const toast = require("../../../companies/toast.js").default;
 import RequestUtil from "../../../utils/request_util.js";
 import Comment from "../../../services/api/comment.js";
+
 Page({
   data: {
     shopName: "",
     shopId: null,
     content: "",
     imagePaths: [],
+    isSubmitting: false,
   },
 
   onLoad: function (options) {
@@ -18,6 +20,8 @@ Page({
       shopName: options.shopName || "未知店铺",
       shopId: options.shopId,
     });
+
+    this.submitReview = this.debounce(this._submitReview.bind(this), 500);
   },
 
   onContentInput: function (e) {
@@ -63,7 +67,21 @@ Page({
     });
   },
 
-  submitReview: async function () {
+  debounce(fn, delay = 500) {
+    let timer = null;
+    return function (...args) {
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(() => {
+        fn.apply(this, args);
+      }, delay);
+    };
+  },
+
+  async _submitReview() {
+    if (this.data.isSubmitting) return;
+
     if (!this.data.content.trim()) {
       wx.showToast({
         title: "请输入评论内容",
@@ -72,33 +90,38 @@ Page({
       return;
     }
 
-    // 这里添加提交评论的逻辑
-    console.log("提交评论:", {
-      content: this.data.content,
-      images: this.data.imagePaths,
-    });
+    this.setData({ isSubmitting: true });
 
-    let images = "";
-    this.data.imagePaths.forEach((item) => {
-      images = item + ",";
-    });
-    if (images.length > 0) {
-      images = images.slice(0, -1);
+    try {
+      let images = "";
+      this.data.imagePaths.forEach((item) => {
+        images = item + ",";
+      });
+      if (images.length > 0) {
+        images = images.slice(0, -1);
+      }
+      let user = wx.getStorageSync("userInfo");
+      Comment.comment.addShopComment.data = {
+        shopId: this.data.shopId,
+        content: this.data.content,
+        imageUrl: images,
+        sendAvatar: user.avatar,
+        senderName: user.nickname,
+        parentId: "",
+        senderId: "",
+      };
+      await RequestUtil.request(Comment.comment.addShopComment);
+      toast.showToast("评论提交成功", "success");
+      setTimeout(() => {
+        wx.navigateBack();
+      }, 2000);
+    } catch (error) {
+      console.error('提交评论失败:', error);
+      toast.showToast("评论提交失败，请重试", "error");
+    } finally {
+      this.setData({ isSubmitting: false });
     }
-    let user = wx.getStorageSync("userInfo");
-    Comment.comment.addShopComment.data = {
-      shopId: this.data.shopId,
-      content: this.data.content,
-      imageUrl: images,
-      sendAvatar: user.avatar,
-      senderName: user.nickname,
-      parentId: "",
-      senderId: "",
-    };
-    await RequestUtil.request(Comment.comment.addShopComment);
-    toast.showToast("评论提交成功", "success");
-    setTimeout(() => {
-      wx.navigateBack();
-    }, 2000);
   },
+
+  submitReview: null,
 });

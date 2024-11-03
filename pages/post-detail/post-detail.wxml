@@ -27,21 +27,22 @@
                 <view class="comment-item">
                     <image class="comment-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
                     <view class="comment-right">
-                        <text class="comment-username">{{item.userName}}</text>
-                        <text class="comment-content" bindtap="onCommentTap" data-id="{{item.id}}" data-name="{{item.userName}}">
+                        <view class="comment-username">{{item.userName}}</view>
+                        <view class="comment-content" bindtap="onCommentTap" data-id="{{item.id}}" data-name="{{item.userName}}">
                             {{item.content}}
-                        </text>
-                        <text class="comment-time">{{item.createTime}}</text>
+                        </view>
+                        <view class="comment-time">{{item.createTime}}</view>
                         <!-- 子评论 -->
                         <view class="reply-list" wx:if="{{item.subComments && item.subComments.length > 0}}">
                             <view class="reply-item" wx:for="{{item.subComments}}" wx:for-item="reply" wx:key="id">
                                 <image class="reply-avatar" src="{{reply.avatar}}" mode="aspectFill"></image>
                                 <view class="reply-right">
-                                    <text class="reply-username">{{reply.userName}}</text>
-                                    <text class="reply-content" bindtap="onCommentTap" data-id="{{reply.id}}" data-name="{{reply.userName}}">
-                                        {{reply.content}}
-                                    </text>
-                                    <text class="reply-time">{{reply.createTime}}</text>
+                                    <view class="reply-username">{{reply.userName}}</view>
+                                    <view class="reply-content" bindtap="onCommentTap" data-id="{{reply.id}}" data-name="{{reply.userName}}">
+                                        <text class="reply-to" wx:if="{{reply.replyToName}}">回复 {{reply.replyToName}}：</text>
+                                        <text>{{reply.content}}</text>
+                                    </view>
+                                    <view class="reply-time">{{reply.createTime}}</view>
                                 </view>
                             </view>
                         </view>

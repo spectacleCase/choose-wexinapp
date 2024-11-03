@@ -6,11 +6,18 @@ Page({
     page: 1,
     notifications: [],
     isLoading: false,
-    hasMore: true
+    hasMore: true,
   },
 
   onLoad: function () {
     this.getUserComment();
+  },
+
+  goToPostDetail: function (e) {
+    const postId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `/pages/post-detail/post-detail?id=${postId}&focus=comment`,
+    });
   },
 
   getUserComment: async function () {
@@ -22,17 +29,17 @@ Page({
       page: this.data.page,
     };
     const data = await RequestUtil.request(Comment.comment.getUserComment);
-    
+
     const newNotifications = data.data.list || [];
     this.setData({
       notifications: [...this.data.notifications, ...newNotifications],
       page: this.data.page + 1,
       isLoading: false,
-      hasMore: newNotifications.length > 0
+      hasMore: newNotifications.length > 0,
     });
   },
 
-  onReachBottom: function() {
+  onReachBottom: function () {
     this.getUserComment();
-  }
+  },
 });

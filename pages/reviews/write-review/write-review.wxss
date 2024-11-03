@@ -87,3 +87,9 @@
   font-size: 32rpx;
   margin-top: 40rpx;
 }
+
+/* 添加提交按钮状态样式 */
+.submit-btn.submitting {
+  opacity: 0.7;
+  background-color: #ccc;
+}
