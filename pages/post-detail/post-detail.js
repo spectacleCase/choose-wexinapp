@@ -41,11 +41,11 @@ Page({
     console.log("j上打分");
 
     const postId = options.id;
-    await this.loadPostDetail(postId);
+    await this.loadPostDetail(postId, true);
     this.loadComments(postId);
   },
 
-  async loadPostDetail(postId) {
+  async loadPostDetail(postId, isPost) {
     comment.comment.getShpCommentDetails.data = {
       commentId: postId,
     };
@@ -56,8 +56,12 @@ Page({
     if (data.data.images) {
       data.data.images = data.data.images.split(",");
     }
+    if (isPost) {
+      this.setData({
+        post: data.data,
+      });
+    }
     this.setData({
-      post: data.data,
       subComments: data.data.subComments,
       totalComments: data.data.subComments.length,
     });
@@ -113,19 +117,22 @@ Page({
     if (!this.data.commentText.trim()) {
       return;
     }
+    const userInfo = wx.getStorageSync("userInfo");
 
     try {
-      const params = {
-        commentId: this.data.post.id,
+      comment.comment.addShopComment.data = {
+        shopId: "1848368549850701826",
         content: this.data.commentText,
-        parentId: this.data.replyId || 0, // 如果是回复则带上父评论ID
+        imageUrl: "",
+        sendAvatar: userInfo.avatar,
+        senderName: userInfo.nickname,
+        senderId: userInfo.id,
+        parentId: this.data.replyId || this.data.post.id, // 如果是回复则带上父评论ID
       };
-
-      comment.comment.addShpComment.data = params;
-      await request_util.request(comment.comment.addShpComment);
+      await request_util.request(comment.comment.addShopComment);
 
       // 发送成功后刷新评论列表
-      await this.loadPostDetail(this.data.post.id);
+      await this.loadPostDetail(this.data.post.id, false);
 
       // 清空输入框
       this.setData({

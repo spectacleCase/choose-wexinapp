@@ -28,7 +28,9 @@
                     <image class="comment-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
                     <view class="comment-right">
                         <text class="comment-username">{{item.userName}}</text>
-                        <text class="comment-content" bindtap="onCommentTap" data-id="{{item.id}}" data-name="{{item.userName}}">{{item.content}}</text>
+                        <text class="comment-content" bindtap="onCommentTap" data-id="{{item.id}}" data-name="{{item.userName}}">
+                            {{item.content}}
+                        </text>
                         <text class="comment-time">{{item.createTime}}</text>
                         <!-- 子评论 -->
                         <view class="reply-list" wx:if="{{item.subComments && item.subComments.length > 0}}">
@@ -36,7 +38,9 @@
                                 <image class="reply-avatar" src="{{reply.avatar}}" mode="aspectFill"></image>
                                 <view class="reply-right">
                                     <text class="reply-username">{{reply.userName}}</text>
-                                    <text class="reply-content" bindtap="onCommentTap" data-id="{{reply.id}}" data-name="{{reply.userName}}">{{reply.content}}</text>
+                                    <text class="reply-content" bindtap="onCommentTap" data-id="{{reply.id}}" data-name="{{reply.userName}}">
+                                        {{reply.content}}
+                                    </text>
                                     <text class="reply-time">{{reply.createTime}}</text>
                                 </view>
                             </view>
@@ -48,21 +52,15 @@
     </view>
     <!-- 底部操作栏 -->
     <view class="bottom-bar">
-        <view class="input-wrapper">
-            <input 
-                class="comment-input" 
-                placeholder="{{replyTo ? '回复 ' + replyTo + '：' : '说点什么...'}}"
-                value="{{commentText}}" 
-                bindinput="onInputChange"
-                focus="{{inputFocus}}"
-            />
-            <view class="send-btn {{commentText.length > 0 ? 'active' : ''}}" bindtap="onSendComment">
-                发送
-            </view>
-        </view>
         <view class="share-btn" bindtap="onShareTap">
             <image class="share-icon" src="../../assets/images/分享.png" mode="aspectFit"></image>
             <text>分享</text>
+        </view>
+        <view class="input-wrapper">
+            <input class="comment-input" placeholder="{{replyTo ? '回复 ' + replyTo + '：' : '说点什么...'}}" value="{{commentText}}" bindinput="onInputChange" focus="{{inputFocus}}" />
+            <view class="send-btn {{commentText.length > 0 ? 'active' : ''}}" bindtap="onSendComment">
+                发送
+            </view>
         </view>
     </view>
 </view>
