@@ -2,5 +2,5 @@
   "usingComponents": {
     "custom-toast": "/components/custom-toast/custom-toast"
   },
-  "navigationBarTitleText": "发布新店铺"
+  "navigationBarTitleText": "关于我们"
 }

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "custom-toast": "/components/custom-toast/custom-toast"
-  }
+  },
+  "navigationBarTitleText": "用户详情"
 }

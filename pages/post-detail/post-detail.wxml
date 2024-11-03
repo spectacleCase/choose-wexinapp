@@ -2,10 +2,10 @@
     <!-- 帖子内容卡片 -->
     <view class="post-card">
         <view class="author-info">
-            <image class="avatar" src="{{post.avatarUrl}}" mode="aspectFill"></image>
+            <image class="avatar" src="{{post.avatar}}" mode="aspectFill"></image>
             <view class="info-right">
-                <text class="username">{{post.username}}</text>
-                <text class="time">{{post.time}}</text>
+                <text class="username">{{post.userName}}</text>
+                <text class="time">{{post.createTime}}</text>
             </view>
         </view>
         <view class="post-content">
@@ -22,22 +22,22 @@
         </view>
         <!-- 评论列表 -->
         <view class="comments-list">
-            <block wx:for="{{comments}}" wx:key="id">
+            <block wx:for="{{subComments}}" wx:key="id">
                 <!-- 父评论 -->
                 <view class="comment-item">
-                    <image class="comment-avatar" src="{{item.avatarUrl}}" mode="aspectFill"></image>
+                    <image class="comment-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
                     <view class="comment-right">
-                        <text class="comment-username">{{item.username}}</text>
-                        <text class="comment-content">{{item.content}}</text>
-                        <text class="comment-time">{{item.time}}</text>
+                        <text class="comment-username">{{item.userName}}</text>
+                        <text class="comment-content" bindtap="onCommentTap" data-id="{{item.id}}" data-name="{{item.userName}}">{{item.content}}</text>
+                        <text class="comment-time">{{item.createTime}}</text>
                         <!-- 子评论 -->
-                        <view class="reply-list" wx:if="{{item.replies && item.replies.length > 0}}">
-                            <view class="reply-item" wx:for="{{item.replies}}" wx:for-item="reply" wx:key="id">
-                                <image class="reply-avatar" src="{{reply.avatarUrl}}" mode="aspectFill"></image>
+                        <view class="reply-list" wx:if="{{item.subComments && item.subComments.length > 0}}">
+                            <view class="reply-item" wx:for="{{item.subComments}}" wx:for-item="reply" wx:key="id">
+                                <image class="reply-avatar" src="{{reply.avatar}}" mode="aspectFill"></image>
                                 <view class="reply-right">
-                                    <text class="reply-username">{{reply.username}}</text>
-                                    <text class="reply-content">{{reply.content}}</text>
-                                    <text class="reply-time">{{reply.time}}</text>
+                                    <text class="reply-username">{{reply.userName}}</text>
+                                    <text class="reply-content" bindtap="onCommentTap" data-id="{{reply.id}}" data-name="{{reply.userName}}">{{reply.content}}</text>
+                                    <text class="reply-time">{{reply.createTime}}</text>
                                 </view>
                             </view>
                         </view>
@@ -49,7 +49,16 @@
     <!-- 底部操作栏 -->
     <view class="bottom-bar">
         <view class="input-wrapper">
-            <input class="comment-input" placeholder="说点什么..." value="{{commentText}}" bindinput="onInputChange" />
+            <input 
+                class="comment-input" 
+                placeholder="{{replyTo ? '回复 ' + replyTo + '：' : '说点什么...'}}"
+                value="{{commentText}}" 
+                bindinput="onInputChange"
+                focus="{{inputFocus}}"
+            />
+            <view class="send-btn {{commentText.length > 0 ? 'active' : ''}}" bindtap="onSendComment">
+                发送
+            </view>
         </view>
         <view class="share-btn" bindtap="onShareTap">
             <image class="share-icon" src="../../assets/images/分享.png" mode="aspectFit"></image>

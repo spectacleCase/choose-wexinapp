@@ -66,6 +66,20 @@ const comment = {
     data: null,
     auth: true,
   },
+  // 获取最热门的评论
+  getHotCommentList: {
+    url: BASE_URL + "/v1/getHotCommentList",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
+  // 获取评论的详情
+  getShpCommentDetails: {
+    url: BASE_URL + "/v1/getShpCommentDetails",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
 };
 
 export default {

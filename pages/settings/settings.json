@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "custom-toast": "/components/custom-toast/custom-toast"
+  },
+  "navigationBarTitleText": "设置"
 }

@@ -1,54 +1,66 @@
+import request_util from "../../utils/request_util";
+import comment from "../../services/api/comment";
+
 Page({
   data: {
     post: {
       id: 1,
-      avatarUrl:
-        "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/11/01/38794909df0046a282e3cd6c2370cb99.png",
-      username: "用户名",
-      time: "2小时前",
-      content: "这是一条示例帖子内容，展示详细的帖子信息...",
-      images: [
-        "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/11/01/38794909df0046a282e3cd6c2370cb99.png",
-        "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/11/01/20d354d551aa4f3cb0212951a9565ec4.png",
-        "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/11/01/20d354d551aa4f3cb0212951a9565ec4.png",
-        "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/11/01/20d354d551aa4f3cb0212951a9565ec4.png",
-        "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/11/01/20d354d551aa4f3cb0212951a9565ec4.png",
-      ],
+      avatar: "",
+      userName: "",
+      createTime: "",
+      content: "",
+      images: [],
     },
-    totalComments: 56,
-    comments: [
+    totalComments: 0,
+    subComments: [
       {
         id: 1,
-        avatarUrl:
-          "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/11/01/38794909df0046a282e3cd6c2370cb99.png",
-        username: "评论用户1",
-        content: "这是一条父评论",
-        time: "1小时前",
-        replies: [
+        avatar: "",
+        userName: "",
+        content: "",
+        createTime: "",
+        subComments: [
           {
             id: 11,
-            avatarUrl:
-              "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/11/01/38794909df0046a282e3cd6c2370cb99.png",
-            username: "回复用户1",
-            content: "这是一条子评论",
-            time: "30分钟前",
+            avatar: "",
+            userName: "",
+            content: "",
+            createTime: "",
           },
         ],
       },
-      // 更多评论...
     ],
     commentText: "",
+    replyTo: "",
+    replyId: null,
+    inputFocus: false,
   },
 
-  onLoad(options) {
+  async onLoad(options) {
     // 获取帖子ID并加载数据
+    console.log("j上打分");
+
     const postId = options.id;
-    this.loadPostDetail(postId);
+    await this.loadPostDetail(postId);
     this.loadComments(postId);
   },
 
-  loadPostDetail(postId) {
+  async loadPostDetail(postId) {
+    comment.comment.getShpCommentDetails.data = {
+      commentId: postId,
+    };
     // 加载帖子详情
+    const data = await request_util.request(
+      comment.comment.getShpCommentDetails
+    );
+    if (data.data.images) {
+      data.data.images = data.data.images.split(",");
+    }
+    this.setData({
+      post: data.data,
+      subComments: data.data.subComments,
+      totalComments: data.data.subComments.length,
+    });
   },
 
   loadComments(postId) {
@@ -86,5 +98,52 @@ Page({
       path: `/pages/post-detail/post-detail?id=${post.id}`,
       imageUrl: post.images?.[0] || "",
     };
+  },
+
+  onCommentTap(e) {
+    const { id, name } = e.currentTarget.dataset;
+    this.setData({
+      replyTo: name,
+      replyId: id,
+      inputFocus: true,
+    });
+  },
+
+  async onSendComment() {
+    if (!this.data.commentText.trim()) {
+      return;
+    }
+
+    try {
+      const params = {
+        commentId: this.data.post.id,
+        content: this.data.commentText,
+        parentId: this.data.replyId || 0, // 如果是回复则带上父评论ID
+      };
+
+      comment.comment.addShpComment.data = params;
+      await request_util.request(comment.comment.addShpComment);
+
+      // 发送成功后刷新评论列表
+      await this.loadPostDetail(this.data.post.id);
+
+      // 清空输入框
+      this.setData({
+        commentText: "",
+        replyTo: "",
+        replyId: null,
+      });
+
+      wx.showToast({
+        title: "评论成功",
+        icon: "success",
+      });
+    } catch (error) {
+      console.error("发送评论失败:", error);
+      wx.showToast({
+        title: "评论失败，请重试",
+        icon: "none",
+      });
+    }
   },
 });

@@ -1,6 +1,6 @@
 <view class="container">
   <view class="shop-name">请写下您的过往</view>
-  <textarea class="review-content" placeholder="亲，请分享一下您的用餐体验吧~" bindinput="onContentInput" value="{{content}}"></textarea>
+  <textarea class="review-content" placeholder="笔墨间自带过往~" bindinput="onContentInput" value="{{content}}"></textarea>
   <view class="image-uploader">
     <view class="image-item" wx:for="{{imagePaths}}" wx:key="*this">
       <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-src="{{item}}"></image>
