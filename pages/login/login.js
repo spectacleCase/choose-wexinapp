@@ -58,18 +58,6 @@ Page({
             wx.showLoading({
               title: "登录中",
             });
-            // const token = {
-            //   token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjkzNTY3NzQsInVzZXJJZCI6IjE3OTU0NDYwMDA3NzEwNTE1MjIifQ.1xYB_fSJgU0QtklbAu6lrO5QmAbf90ugL4Ujfwrk6JA",
-            //   tokenTimeout: "2024-12-22 00:52:54",
-            // };
-            // wx.setStorageSync("token", token);
-            // wx.hideLoading();
-            // toast.showToast("登录成功", "success");
-            // setTimeout(() => {
-            //   wx.reLaunch({
-            //     url: "/pages/main/main",
-            //   });
-            // }, 500);
             RequestUtils.request(Auth.auth.login)
               .then((data) => {
                 const token = {

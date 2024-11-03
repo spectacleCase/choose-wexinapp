@@ -1,0 +1,59 @@
+<view class="post-detail">
+    <!-- 帖子内容卡片 -->
+    <view class="post-card">
+        <view class="author-info">
+            <image class="avatar" src="{{post.avatarUrl}}" mode="aspectFill"></image>
+            <view class="info-right">
+                <text class="username">{{post.username}}</text>
+                <text class="time">{{post.time}}</text>
+            </view>
+        </view>
+        <view class="post-content">
+            <text class="text-content">{{post.content}}</text>
+            <view class="image-grid" wx:if="{{post.images.length > 0}}">
+                <image wx:for="{{post.images}}" wx:key="index" src="{{item}}" mode="aspectFill" class="post-image" bindtap="previewImage" data-index="{{index}}"></image>
+            </view>
+        </view>
+    </view>
+    <!-- 评论区卡片 -->
+    <view class="comments-card">
+        <view class="comments-header">
+            <text class="comments-title">全部评论 ({{totalComments}})</text>
+        </view>
+        <!-- 评论列表 -->
+        <view class="comments-list">
+            <block wx:for="{{comments}}" wx:key="id">
+                <!-- 父评论 -->
+                <view class="comment-item">
+                    <image class="comment-avatar" src="{{item.avatarUrl}}" mode="aspectFill"></image>
+                    <view class="comment-right">
+                        <text class="comment-username">{{item.username}}</text>
+                        <text class="comment-content">{{item.content}}</text>
+                        <text class="comment-time">{{item.time}}</text>
+                        <!-- 子评论 -->
+                        <view class="reply-list" wx:if="{{item.replies && item.replies.length > 0}}">
+                            <view class="reply-item" wx:for="{{item.replies}}" wx:for-item="reply" wx:key="id">
+                                <image class="reply-avatar" src="{{reply.avatarUrl}}" mode="aspectFill"></image>
+                                <view class="reply-right">
+                                    <text class="reply-username">{{reply.username}}</text>
+                                    <text class="reply-content">{{reply.content}}</text>
+                                    <text class="reply-time">{{reply.time}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <!-- 底部操作栏 -->
+    <view class="bottom-bar">
+        <view class="input-wrapper">
+            <input class="comment-input" placeholder="说点什么..." value="{{commentText}}" bindinput="onInputChange" />
+        </view>
+        <view class="share-btn" bindtap="onShareTap">
+            <image class="share-icon" src="../../assets/images/分享.png" mode="aspectFit"></image>
+            <text>分享</text>
+        </view>
+    </view>
+</view>

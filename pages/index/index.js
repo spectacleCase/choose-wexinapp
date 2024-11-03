@@ -122,7 +122,10 @@ Component({
     },
 
     onPublishTap() {
-      this.triggerEvent("navigateToPage", { url: "/pages/publish/publish" });
+      // this.triggerEvent("navigateToPage", { url: "/pages/publish/publish" });
+      wx.navigateTo({
+        url: "/pages/publish/publish-dishes/publish-dishes",
+      });
     },
 
     onCollectionTap() {

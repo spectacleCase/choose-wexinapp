@@ -10,7 +10,7 @@
       "list": [
         {
           "name": "测试",
-          "pathName": "pages/reviews/all-reviews/all-reviews",
+          "pathName": "pages/forum/forum",
           "query": "",
           "launchMode": "default",
           "scene": null

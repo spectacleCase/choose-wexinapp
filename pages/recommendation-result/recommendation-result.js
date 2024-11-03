@@ -133,6 +133,12 @@ Page({
       address: dishesName,
     });
   },
+  goShop: function (event) {
+    const shopId = event.currentTarget.dataset.shopid;
+    wx.navigateTo({
+      url: "/pages/shop/shop/shop?shopId=" + shopId,
+    });
+  },
 
   generateStars: function (mark) {
     const fullStars = Math.floor(mark);

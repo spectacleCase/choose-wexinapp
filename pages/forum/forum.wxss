@@ -1,0 +1,212 @@
+.forum-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, 
+    rgba(255, 107, 0, 0.1) 0%, 
+    rgba(255, 243, 224, 0.3) 30%, 
+    rgba(255, 255, 255, 0.95) 100%
+  );
+}
+
+.tab-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  padding: 20rpx 0;
+  z-index: 100;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  font-size: 30rpx;
+  color: #666;
+  position: relative;
+  padding: 10rpx 0;
+}
+
+.tab-item.active {
+  color: #FF6B00;
+  font-weight: bold;
+}
+
+.tab-item.active:after {
+  content: '';
+  position: absolute;
+  bottom: -4rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background-color: #FF6B00;
+  border-radius: 2rpx;
+}
+
+.post-list {
+  position: fixed;
+  top: 88rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.post-card {
+  background-color: rgba(255, 255, 255, 0.98);
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.03);
+}
+
+.first-card {
+  border-radius: 30rpx 30rpx 16rpx 16rpx;
+  background: #ffffff;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.post-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.text-content {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+}
+
+.post-image.three-columns {
+  width: 100%;
+  height: 100%;
+}
+
+.post-footer {
+  display: flex;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  margin-right: 40rpx;
+
+}
+
+.action-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 8rpx;
+}
+
+.action-count {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.image-wrapper {
+  position: relative;
+  width: calc((100% - 20rpx) / 3);
+  height: 220rpx;
+}
+
+.image-count {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  margin: 8rpx;
+}
+
+/* 修改悬浮球相关样式 */
+.float-ball {
+  position: fixed;
+  right: 30rpx;
+  bottom: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: rgba(54, 199, 232, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 4rpx 16rpx rgba(255, 107, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.float-ball.hide {
+  transform: translateX(100rpx);
+  opacity: 0.6;
+}
+
+.float-ball-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/* 添加加载状态样式 */
+.loading-status {
+  padding: 20rpx 0;
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-more {
+  color: #999;
+}

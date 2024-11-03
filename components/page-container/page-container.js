@@ -26,7 +26,7 @@ Component({
     pageAnimation: {},
     pages: {
       index: { url: "/pages/index/index", title: "首页" },
-      publish: { url: "/pages/publish/publish", title: "发布" },
+      forum: { url: "/pages/forum/forum", title: "今日" },
       collect: { url: "/pages/collect/collect", title: "收藏" },
       ranking: { url: "/pages/ranking/ranking", title: "排行榜" },
       user: { url: "/pages/myself/user/user", title: "我的" },
@@ -75,6 +75,8 @@ Component({
       const page = Object.keys(this.data.pages).find(
         (key) => this.data.pages[key].url === url
       );
+      console.log(url);
+
       console.log("结果是", page);
       if (page) {
         this.setData({ currentPage: page });

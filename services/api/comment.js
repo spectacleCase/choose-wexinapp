@@ -58,6 +58,14 @@ const comment = {
     data: null,
     auth: true,
   },
+
+  // 获取最新的评论
+  getLatestCommentList: {
+    url: BASE_URL + "/v1/getLatestCommentList",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
 };
 
 export default {

@@ -28,8 +28,8 @@ Component({
       },
       {
         icon: "../../assets/images/发布.png",
-        text: "发布",
-        url: "/pages/publish/publish",
+        text: "今日",
+        url: "/pages/forum/forum",
       },
 
       {

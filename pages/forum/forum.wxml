@@ -1,0 +1,83 @@
+<view class="forum-container">
+    <!-- 顶部选项卡 -->
+    <view class="tab-header">
+        <view class="tab-item {{activeTab === 'hot' ? 'active' : ''}}" bindtap="switchTab" data-tab="hot">
+            热点
+        </view>
+        <view class="tab-item {{activeTab === 'new' ? 'active' : ''}}" bindtap="switchTab" data-tab="new">
+            最新发布
+        </view>
+    </view>
+    
+    <!-- 使用scroll-view替换原来的view -->
+    <scroll-view 
+        class="post-list" 
+        scroll-y="true"
+        bindscrolltolower="onScrollToLower"
+        bindscroll="onScroll"
+        lower-threshold="50"
+        scroll-anchoring="true"
+    >
+        <view class="post-card {{index === 0 ? 'first-card' : ''}}" 
+              wx:for="{{currentPosts}}" 
+              wx:key="id" 
+              bindtap="onPostTap" 
+              data-id="{{item.id}}">
+            <!-- 保持卡片内容不变 -->
+            <view class="post-header">
+                <image class="avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+                <view class="user-info">
+                    <text class="username">{{item.name}}</text>
+                    <text class="time">{{item.createTimeText}}</text>
+                </view>
+            </view>
+            <view class="post-content">
+                <text class="text-content">{{item.content}}</text>
+                <view class="image-list" wx:if="{{item.images.length > 0}}">
+                    <block wx:for="{{item.images}}" wx:for-item="image" wx:key="index">
+                        <view class="image-wrapper" wx:if="{{index < 3}}">
+                            <image src="{{image}}" 
+                                   mode="aspectFill" 
+                                   class="post-image {{item.images.length >= 3 ? 'three-columns' : ''}}">
+                            </image>
+                            <view class="image-count" 
+                                  wx:if="{{index === 2 && item.images.length > 3}}">
+                                +{{item.images.length - 3}}
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <view class="post-footer">
+                <view class="action-item" 
+                      catchtap="onShareTap" 
+                      data-id="{{item.id}}" 
+                      open-type="share">
+                    <image class="action-icon" src="../../assets/images/分享.png" mode="aspectFit"></image>
+                    <text class="action-count">{{item.shareCount}}</text>
+                </view>
+                <view class="action-item" 
+                      catchtap="onCommentTap" 
+                      data-id="{{item.id}}">
+                    <image class="action-icon" src="../../assets/images/3.1 评论.png" mode="aspectFit"></image>
+                    <text class="action-count">{{item.nums}}</text>
+                </view>
+            </view>
+        </view>
+
+        <!-- 加载状态 -->
+        <view class="loading-status" wx:if="{{currentPosts.length > 0}}">
+            <view wx:if="{{isLoading}}" class="loading">
+                <text>加载中...</text>
+            </view>
+            <view wx:elif="{{!hasMore}}" class="no-more">
+                <text>没有更多内容了</text>
+            </view>
+        </view>
+    </scroll-view>
+
+    <!-- 悬浮球 -->
+    <view class="float-ball {{isScrolling ? 'hide' : ''}}" bindtap="onFloatBallTap">
+        <image class="float-ball-icon" src="../../assets/images/评论.png" mode="aspectFit"></image>
+    </view>
+</view>
