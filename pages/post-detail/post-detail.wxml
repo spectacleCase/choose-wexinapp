@@ -32,19 +32,45 @@
                             {{item.content}}
                         </view>
                         <view class="comment-time">{{item.createTime}}</view>
-                        <!-- 子评论 -->
+                        <!-- 子评论列表 -->
                         <view class="reply-list" wx:if="{{item.subComments && item.subComments.length > 0}}">
-                            <view class="reply-item" wx:for="{{item.subComments}}" wx:for-item="reply" wx:key="id">
-                                <image class="reply-avatar" src="{{reply.avatar}}" mode="aspectFill"></image>
-                                <view class="reply-right">
-                                    <view class="reply-username">{{reply.userName}}</view>
-                                    <view class="reply-content" bindtap="onCommentTap" data-id="{{reply.id}}" data-name="{{reply.userName}}">
-                                        <text class="reply-to" wx:if="{{reply.replyToName}}">回复 {{reply.replyToName}}：</text>
-                                        <text>{{reply.content}}</text>
+                            <block wx:for="{{item.subComments}}" wx:for-item="reply" wx:key="id">
+                                <view class="reply-item">
+                                    <image class="reply-avatar" src="{{reply.avatar}}" mode="aspectFill"></image>
+                                    <view class="reply-right">
+                                        <view class="reply-username">{{reply.userName}}</view>
+                                        <view class="reply-content" bindtap="onCommentTap" data-id="{{reply.id}}" data-name="{{reply.userName}}">
+                                            <view class="reply-to" wx:if="{{reply.replyToName}}">
+                                                回复 {{reply.replyToName}}：
+                                            </view>
+                                            <view>{{reply.content}}</view>
+                                        </view>
+                                        <view class="reply-time">{{reply.createTime}}</view>
+                                        <!-- 递归显示更深层的子评论 -->
+                                        <view class="reply-list" wx:if="{{reply.subComments && reply.subComments.length > 0}}">
+                                            <block wx:for="{{reply.subComments}}" wx:for-item="subReply" wx:key="id">
+                                                <view class="reply-item">
+                                                    <image class="reply-avatar" src="{{subReply.avatar}}" mode="aspectFill"></image>
+                                                    <view class="reply-right">
+                                                        <view class="reply-username">
+                                                            {{subReply.userName}}
+                                                        </view>
+                                                        <view class="reply-content" bindtap="onCommentTap" data-id="{{subReply.id}}" data-name="{{subReply.userName}}">
+                                                            <view class="reply-to" wx:if="{{subReply.replyToName}}">
+                                                                回复 {{subReply.replyToName}}：
+                                                            </view>
+                                                            <view>{{subReply.content}}</view>
+                                                        </view>
+                                                        <view class="reply-time">
+                                                            {{subReply.createTime}}
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                            </block>
+                                        </view>
                                     </view>
-                                    <view class="reply-time">{{reply.createTime}}</view>
                                 </view>
-                            </view>
+                            </block>
                         </view>
                     </view>
                 </view>

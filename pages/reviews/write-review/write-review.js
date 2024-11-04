@@ -9,6 +9,7 @@ Page({
     shopId: null,
     content: "",
     imagePaths: [],
+    imageNames: [],
     isSubmitting: false,
   },
 
@@ -44,8 +45,10 @@ Page({
         console.log(tempFilePaths);
         const fileData = await util.uploadFileUitl(tempFilePaths[0]);
         const shopImages = this.data.imagePaths.concat(fileData.fileName);
+        const imageNames = this.data.imageNames.concat(fileData.filePath);
         this.setData({
           imagePaths: shopImages.slice(0, maxImages),
+          imageNames: imageNames,
         });
         toast.showToast("保存成功", "success");
       },
@@ -55,8 +58,10 @@ Page({
   deleteImage: function (e) {
     const index = e.currentTarget.dataset.index;
     const imagePaths = this.data.imagePaths;
+    const imageNames = this.data.imageNames;
     imagePaths.splice(index, 1);
-    this.setData({ imagePaths });
+    imageNames.splice(index, 1);
+    this.setData({ imagePaths, imageNames });
   },
 
   previewImage: function (e) {
@@ -94,12 +99,15 @@ Page({
 
     try {
       let images = "";
-      this.data.imagePaths.forEach((item) => {
-        images = item + ",";
+      this.data.imageNames.forEach((item) => {
+        images += item + ",";
       });
       if (images.length > 0) {
         images = images.slice(0, -1);
       }
+      console.log(this.data.imageNames);
+      console.log(images);
+
       let user = wx.getStorageSync("userInfo");
       Comment.comment.addShopComment.data = {
         shopId: this.data.shopId,
@@ -116,7 +124,7 @@ Page({
         wx.navigateBack();
       }, 2000);
     } catch (error) {
-      console.error('提交评论失败:', error);
+      console.error("提交评论失败:", error);
       toast.showToast("评论提交失败，请重试", "error");
     } finally {
       this.setData({ isSubmitting: false });
