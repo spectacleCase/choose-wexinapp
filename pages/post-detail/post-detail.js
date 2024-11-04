@@ -121,7 +121,7 @@ Page({
 
     try {
       comment.comment.addShopComment.data = {
-        shopId: "1848368549850701826",
+        topId: this.data.post.id,
         content: this.data.commentText,
         imageUrl: "",
         sendAvatar: userInfo.avatar,

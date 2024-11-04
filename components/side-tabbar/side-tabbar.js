@@ -21,11 +21,11 @@ Component({
         text: "首页",
         url: "/pages/index/index",
       },
-      {
-        icon: "../../assets/images/功能排行榜.png",
-        text: "排行榜",
-        url: "/pages/ranking/ranking",
-      },
+      // {
+      //   icon: "../../assets/images/功能排行榜.png",
+      //   text: "排行榜",
+      //   url: "/pages/ranking/ranking",
+      // },
       {
         icon: "../../assets/images/发布.png",
         text: "今日",

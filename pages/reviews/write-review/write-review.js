@@ -110,7 +110,7 @@ Page({
 
       let user = wx.getStorageSync("userInfo");
       Comment.comment.addShopComment.data = {
-        shopId: this.data.shopId,
+        topId: "",
         content: this.data.content,
         imageUrl: images,
         sendAvatar: user.avatar,

@@ -38,9 +38,9 @@
                 <view class="tab {{activeTab === 'dishes' ? 'active' : ''}}" bindtap="switchTab" data-tab="dishes">
                     菜品
                 </view>
-                <view class="tab {{activeTab === 'reviews' ? 'active' : ''}}" bindtap="switchTab" data-tab="reviews">
+                <!-- <view class="tab {{activeTab === 'reviews' ? 'active' : ''}}" bindtap="switchTab" data-tab="reviews">
                     评价
-                </view>
+                </view> -->
             </view>
         </view>
         <!-- 菜品部分 -->
@@ -63,7 +63,7 @@
             </view>
         </view>
         <!-- 评价部分 -->
-        <view class="section" id="reviews-section">
+        <!-- <view class="section" id="reviews-section">
             <view class="section-header">评价</view>
             <view class="section-content">
                 <view class="review-header">
@@ -83,7 +83,6 @@
                                 </view>
                                 <text class="review-text">{{item.content}}</text>
                                 <text class="review-date">{{item.createTime}}</text>
-                                <!-- 子评论 -->
                                 <view class="sub-reviews" wx:if="{{item.children && item.children.length > 0}}">
                                     <view class="sub-review-item" wx:for="{{item.children}}" wx:for-item="subItem" wx:key="id">
                                         <image class="sub-reviewer-avatar" src="{{subItem.userAvatar}}" mode="aspectFill"></image>
@@ -112,7 +111,7 @@
                         <text class="no-reviews-text">暂无评论</text>
                     </view>
                 </view>
-            </view>
-        </view>
+            </view> -->
+        <!-- </view> -->
     </view>
 </view>

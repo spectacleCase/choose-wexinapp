@@ -14,9 +14,9 @@ Page({
   },
 
   goToPostDetail: function (e) {
-    const postId = e.currentTarget.dataset.id;
+    const topId = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `/pages/post-detail/post-detail?id=${postId}&focus=comment`,
+      url: `/pages/post-detail/post-detail?id=${topId}&focus=comment`,
     });
   },
 
