@@ -1,34 +1,52 @@
-<!--pages/collect/collect.wxml-->
 <view class="container">
   <view class="header">
-    <text>我的收藏</text>
+    <view class="header-spacer"></view>
+    <text class="header-title">我的收藏</text>
+    <view class="header-spacer right">
+      <view class="add-icon" bindtap="addCollection">+</view>
+    </view>
   </view>
-  <view class="collect-list">
+
+  <view wx:if="{{collections.length > 0}}" class="collect-list">
     <block wx:for="{{collections}}" wx:key="id">
-      <view class="collect-item">
-        <view class="collect-info">
-          <text class="collect-name">{{item.name}}</text>
-          <text class="collect-time">创建时间: {{item.createTime}}</text>
-        </view>
-        <view class="collect-actions">
-          <button bindtap="changeCollection" data-id="{{item.collectid}}" data-name="{{item.name}}">修改</button>
-          <button bindtap="deleteCollection" data-id="{{item.collectid}}">删除</button>
-          <button bindtap="checknchilren" data-id="{{item.collectid}}" data-name="{{item.name}}">展开</button>
-        </view>
-      </view>
-      <view wx:if="{{item.showChildren}}" class="children-list">
-        <block wx:for="{{item.children}}" wx:key="id" wx:for-item="child">
-          <view class="child-item">
-            <image src="{{child.dishesImage}}" mode="aspectFill"></image>
-            <text>{{child.dishesName}}</text>
-            <text>{{child.coordinate}}</text>
+      <view class="folder-item">
+        <view class="folder-header"  bindtap="checkchilrenCollect" data-id="{{item.collectid}}" data-name="{{item.name}}" >
+          <view class="folder-left">
+            <view class="folder-icon">📁</view>
+            <text class="folder-name">{{item.name}}</text>
           </view>
-        </block>
+          <view class="folder-right">
+            <image class="more-icon" src="../../assets/images/选项.png" catchtap="showActionSheet" data-id="{{item.collectid}}" data-name="{{item.name}}"></image>
+            <view class="arrow {{item.showChildren ? 'arrow-down' : ''}}"></view>
+          </view>
+        </view>
+        <view class="folder-content {{item.showChildren ? 'show' : ''}}">
+          <block wx:if="{{item.children && item.children.length > 0}}">
+            <block wx:for="{{item.children}}" wx:key="id" wx:for-item="child">
+              <view class="file-card">
+                <image class="file-image" src="{{child.dishesImage}}" mode="aspectFill"></image>
+                <view class="file-info">
+                  <text class="file-name">{{child.dishesName}}</text>
+                  <view class="tags">
+                    <text class="tag" wx:for="{{child.tags}}" wx:key="*this">{{item}}</text>
+                  </view>
+                </view>
+                <view class="location">
+                  <image class="location-icon" src="/assets/images/location.png"></image>
+                  <text class="location-text">{{child.coordinate}}</text>
+                </view>
+              </view>
+            </block>
+          </block>
+          <view wx:else class="empty-folder">
+            <text>暂无内容</text>
+          </view>
+        </view>
       </view>
     </block>
   </view>
-  <view class="footer">
-    <button bindtap="addCollection">添加收藏</button>
+
+  <view wx:else class="empty-state">
+    <text class="empty-text">暂无收藏内容</text>
   </view>
 </view>
-
