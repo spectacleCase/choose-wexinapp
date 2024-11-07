@@ -10,7 +10,7 @@
   <view wx:if="{{collections.length > 0}}" class="collect-list">
     <block wx:for="{{collections}}" wx:key="id">
       <view class="folder-item">
-        <view class="folder-header"  bindtap="checkchilrenCollect" data-id="{{item.collectid}}" data-name="{{item.name}}" >
+        <view class="folder-header" bindtap="checkchilrenCollect" data-id="{{item.collectid}}" data-name="{{item.name}}">
           <view class="folder-left">
             <view class="folder-icon">📁</view>
             <text class="folder-name">{{item.name}}</text>
@@ -35,6 +35,10 @@
                   <image class="location-icon" src="/assets/images/location.png"></image>
                   <text class="location-text">{{child.coordinate}}</text>
                 </view>
+                <!-- 添加间距 -->
+                <view class="spacer"></view>
+                <!-- 添加删除图标 -->
+                <image class="delete-icon" src="../../assets/images/选项.png" bindtap="deleteChildren" data-id="{{item.collectid}}" data-child-id="{{child.id}}"></image>
               </view>
             </block>
           </block>

@@ -11,6 +11,7 @@
       <image class="dropdown-icon" src="../../../assets/images/推荐.png" mode="aspectFit"></image>
     </view>
   </view>
+  
   <!-- 下拉菜单 -->
   <view class="dropdown-menu {{isDropdownVisible ? 'visible' : ''}}">
     <view class="dropdown-overlay" bindtap="toggleCategoryDropdown"></view>
@@ -23,30 +24,77 @@
       </view>
     </view>
   </view>
+  
   <!-- 菜品详情卡片 -->
   <view class="card dish-details">
-    <text class="dish-title">{{currentDish.title}}</text>
+    <view class="dish-header">
+      <text class="dish-title">{{currentDish.title}}</text>
+      <image 
+        class="favorite-icon" 
+        src="{{isCollected ? '../../../assets/images/已收藏.png' : '../../../assets/images/收藏.png'}}" 
+        bindtap="getCollections"
+      ></image>
+    </view>
     <image class="dish-image" src="{{currentDish.image}}" mode="aspectFill"></image>
     <view class="dish-tags">
       <text class="tag" wx:for="{{currentDish.tags}}" wx:key="*this">{{item}}</text>
     </view>
     <text class="dish-description">{{currentDish.description}}</text>
   </view>
+  
   <!-- 评论区卡片 -->
   <view class="card comments-section">
     <text class="section-title">评论</text>
-    <view class="comment" wx:for="{{comments}}" wx:key="id">
-      <image class="user-avatar" src="{{item.userAvatar}}"></image>
-      <view class="comment-content">
-        <view class="comment-header">
-          <text class="user-name">{{item.userName}}</text>
-          <text class="comment-time">{{item.time}}</text>
+    <view class="comments-list">
+      <block wx:if="{{comments.length > 0}}">
+        <view class="comment" wx:for="{{comments}}" wx:key="id">
+          <image class="user-avatar" src="{{item.userAvatar}}"></image>
+          <view class="comment-content">
+            <view class="comment-header">
+              <text class="user-name">{{item.userName}}</text>
+              <text class="comment-time">{{item.time}}</text>
+            </view>
+            <view class="rating">
+              <text class="iconfont icon-star" wx:for="{{item.rating}}" wx:key="*this"></text>
+            </view>
+            <text class="comment-text">{{item.content}}</text>
+          </view>
         </view>
-        <view class="rating">
-          <text class="iconfont icon-star" wx:for="{{item.rating}}" wx:key="*this"></text>
-        </view>
-        <text class="comment-text">{{item.content}}</text>
+      </block>
+      <view wx:else class="no-comments">
+        <text>暂无评论</text>
       </view>
     </view>
   </view>
-</view>
+
+  <!-- 收藏弹窗 -->
+  <view class="collect-picker {{showPicker ? 'show' : ''}}">
+    <view class="collect-mask" bindtap="hideCollections"></view>
+    <view class="collect-content">
+      <view class="collect-header">
+        <text class="collect-title">选择收藏夹</text>
+      </view>
+      <scroll-view scroll-y class="collect-list">
+        <view class="collect-item {{item.selected ? 'selected' : ''}}" 
+              wx:for="{{collections}}" 
+              wx:key="id" 
+              data-id="{{item.id}}" 
+              bindtap="selectCollection">
+          <view class="collect-item-left">
+            <view class="folder-icon">📁</view>
+            <text class="folder-name">{{item.name}}</text>
+          </view>
+          <view class="collect-check {{item.selected ? 'show' : ''}}">
+            <image src="/assets/images/选中.png" mode="aspectFit"></image>
+          </view>
+        </view>
+      </scroll-view>
+      <view class="collect-footer">
+        <button class="cancel-btn" bindtap="hideCollections">取消</button>
+        <button class="confirm-btn {{!hasSelected ? 'disabled' : ''}}" 
+                bindtap="confirmCollect"
+                disabled="{{!hasSelected}}">确定</button>
+      </view>
+    </view>
+  </view>
+</view> 

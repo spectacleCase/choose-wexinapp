@@ -164,3 +164,15 @@
   text-align: center;
   color: #999;
 }
+
+.spacer {
+  height: 10px; /* 调整间距大小 */
+}
+
+
+.delete-icon {
+  width: 20px; /* 调整图标大小 */
+  height: 20px; /* 调整图标大小 */
+  margin-left: 10px; /* 调整图标与地址之间的间距 */
+  cursor: pointer; /* 鼠标悬停时显示手型 */
+}

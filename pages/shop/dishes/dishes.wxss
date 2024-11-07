@@ -216,3 +216,176 @@ page {
   color: #ff6b00;
   background-color: #fff5e6;
 }
+
+/* 收藏弹窗样式 */
+.collect-picker {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: all 0.3s;
+}
+
+.collect-picker.show {
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.collect-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.collect-content {
+  position: relative;
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.collect-header {
+  padding: 30rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.collect-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.collect-list {
+  max-height: 60vh;
+  padding: 0 30rpx;
+}
+
+.collect-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+  transition: all 0.3s;
+}
+
+.collect-item.selected {
+  background-color: #fff5eb;
+}
+
+.collect-item-left {
+  display: flex;
+  align-items: center;
+}
+
+.folder-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+
+.folder-name {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.collect-check {
+  width: 40rpx;
+  height: 40rpx;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.collect-check.show {
+  opacity: 1;
+}
+
+.collect-check image {
+  width: 100%;
+  height: 100%;
+}
+
+.collect-footer {
+  display: flex;
+  padding: 20rpx 30rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.cancel-btn, .confirm-btn {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  margin: 0 10rpx;
+}
+
+.cancel-btn {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.confirm-btn {
+  background: #ff6b00;
+  color: #fff;
+}
+
+.confirm-btn.disabled {
+  background: #ccc;
+  opacity: 0.6;
+  color: #fff;
+}
+
+/* 去除按钮默认边框 */
+.cancel-btn::after,
+.confirm-btn::after {
+  border: none;
+}
+
+/* 添加点击反馈效果 */
+.collect-item:active {
+  background-color: #f5f5f5;
+}
+
+.collect-item.selected:active {
+  background-color: #ffe4cc;
+}
+
+/* 添加或修改以下样式 */
+.dish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.dish-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.favorite-icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 20rpx;
+  flex-shrink: 0;
+}
+
+.dish-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 移除之前的 action-buttons 相关样式 */

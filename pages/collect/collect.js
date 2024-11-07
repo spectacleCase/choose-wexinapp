@@ -243,6 +243,7 @@ Component({
     // 删除收藏子项
     async deleteChildren(e) {
       const { id, childId } = e.currentTarget.dataset;
+      console.log('删除子项的参数:', id, childId);
       const res = await wx.showModal({
         title: '确认删除',
         content: '确定要删除这个子项吗？'
@@ -250,8 +251,8 @@ Component({
       
       if (res.confirm) {
         Collect.collect.deleteChildren.data = {
-          collectid: id,
-          childId: childId
+          collectId: id,
+          collectChildrenId: childId
         }
         await RequestUtils.request(Collect.collect.deleteChildren);
         await wx.showToast({
@@ -270,30 +271,47 @@ Component({
     // 添加新方法
     async showActionSheet(e) {
       const { id, name } = e.currentTarget.dataset;
-      const res = await wx.showActionSheet({
-        itemList: ['修改名称', '删除收藏'],
-        itemColor: '#ff6b00'
-      });
-      
+      console.log('showActionSheet的参数:', id, name);
       try {
+        const res = await wx.showActionSheet({
+          itemList: ['修改名称', '删除收藏'],
+          itemColor: '#ff6b00'
+        });
+    
+        // 检查用户是否点击了取消或蒙层
+        if (res.cancel) {
+          console.log('用户取消操作');
+          return; // 直接返回，不再执行后续代码
+        }
+    
         switch (res.tapIndex) {
           case 0: // 修改名称
-            await this.changeCollection({
-              currentTarget: {
-                dataset: { id, name }
-              }
+            const res = await wx.showModal({
+              title: '修改收藏夹名称',
+              editable: true,
+              placeholderText: '请输入'
             });
+            Collect.collect.changeCollection.data = {
+              collectId: id,
+              name: res.content
+            };
+            await RequestUtils.request(Collect.collect.changeCollection);
+            await this.getCollections(); // 刷新数据   
             break;
           case 1: // 删除收藏
-            await this.deleteCollection({
-              currentTarget: {
-                dataset: { id }
-              }
-            });
+            Collect.collect.deleteCollection.data = {
+              collectId: id,
+              name: name
+            };
+            await RequestUtils.request(Collect.collect.deleteCollection);
+            await this.getCollections(); // 刷新数据
+            break;
+          default:
+            console.log('用户点击取消');
             break;
         }
-      } catch (err) {
-        console.log('用户取消操作');
+      } catch (error) {
+        console.error('操作失败:', error);
       }
     }
   }
