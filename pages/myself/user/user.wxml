@@ -18,10 +18,10 @@
   <view class="user-section">
     <view class="user-section-header">
       <text class="user-section-title">近期推荐</text>
-      <text class="user-more-link">查看全部</text>
+      <text class="user-more-link" bindtap="viewAllRecommendations">查看全部</text>
     </view>
     <scroll-view class="user-recommendation-list" scroll-y="true" bindscrolltolower="loadMore">
-      <view class="user-recommendation-item" wx:for="{{recommendations}}" wx:key="index">
+      <view class="user-recommendation-item" wx:for="{{recommendations}}" wx:key="index" bindtap="goShop" data-shop-id="{{item.shopId}}">
         <image class="user-recommendation-image" src="{{item.image}}" mode="aspectFill"></image>
         <view class="user-recommendation-info">
           <text class="user-recommendation-tag">{{item.dishesName}}</text>

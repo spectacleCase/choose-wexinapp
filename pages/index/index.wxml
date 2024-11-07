@@ -80,14 +80,14 @@
         </button>
       </view>
     </view>
-    <view class="popup-option">
+    <!-- <view class="popup-option">
       <text>推荐类型</text>
       <view class="category-buttons">
         <button wx:for="{{recommendationCategories}}" wx:key="index" class="category-button {{selectedCategory === item ? 'selected' : ''}}" bindtap="onCategorySelect" data-category="{{item}}">
           {{item}}
         </button>
       </view>
-    </view>
+    </view> -->
     <button class="confirm-button" bindtap="confirmFilter">确认</button>
   </view>
 </view>

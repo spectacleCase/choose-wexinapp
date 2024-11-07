@@ -109,7 +109,7 @@ Component({
       });
       setTimeout(() => {
         wx.navigateTo({
-          url: "/pages/recommendation-result/recommendation-result",
+          url: `/pages/recommendation-result/recommendation-result?selectedCount=${this.data.selectedCount}`,
         });
       }, 1000);
     },

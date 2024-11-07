@@ -101,6 +101,7 @@ Page({
         children: [],
       },
     ],
+    swiperList: [], // 添加轮播图数组
   },
 
   /**
@@ -163,26 +164,20 @@ Page({
   onPageScroll(e) {
     const query = wx.createSelectorQuery();
     query.select("#dishes-section").boundingClientRect();
-    query.select("#reviews-section").boundingClientRect();
     query.selectViewport().scrollOffset();
     query.exec((res) => {
-      const [dishesSection, reviewsSection, scrollOffset] = res;
+        const [dishesSection, scrollOffset] = res;
 
-      // 更新活动标签
-      const scrollTop = scrollOffset.scrollTop;
-      const windowHeight = wx.getWindowInfo().windowHeight;
+        // 更新活动标签
+        const scrollTop = scrollOffset.scrollTop;
+        const windowHeight = wx.getWindowInfo().windowHeight;
 
-      if (
-        dishesSection.top <= windowHeight / 2 &&
-        dishesSection.bottom >= windowHeight / 2
-      ) {
-        this.setData({ activeTab: "dishes" });
-      } else if (
-        reviewsSection.top <= windowHeight / 2 &&
-        reviewsSection.bottom >= windowHeight / 2
-      ) {
-        this.setData({ activeTab: "reviews" });
-      }
+        if (dishesSection && 
+            dishesSection.top <= windowHeight / 2 && 
+            dishesSection.bottom >= windowHeight / 2
+        ) {
+            this.setData({ activeTab: "dishes" });
+        }
     });
   },
 
@@ -213,6 +208,11 @@ Page({
       shopName: data.data.shopName,
       mark: data.data.mark,
       reviews: shopList.data.list,
+      swiperList: [
+        data.data.image,
+        data.data.image,
+        data.data.image
+      ]
     });
   },
 

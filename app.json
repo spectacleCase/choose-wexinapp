@@ -15,7 +15,8 @@
     "pages/ranking/ranking",
     "pages/publish/publish-shop/publish-shop",
     "pages/forum/forum",
-    "pages/post-detail/post-detail"
+    "pages/post-detail/post-detail",
+    "pages/myself/all-recommendations/all-recommendations"
   ],
   "subPackages": [
     {

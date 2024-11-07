@@ -92,6 +92,26 @@ Component({
       });
       wx.hideLoading();
     },
+
+    viewAllRecommendations: function() {
+      wx.navigateTo({
+        url: '/pages/myself/all-recommendations/all-recommendations'
+      });
+    },
+
+    goShop: function(e) {
+        const shopId = e.currentTarget.dataset.shopId;
+        if (shopId) {
+            wx.navigateTo({
+                url: "/pages/shop/shop/shop?shopId=" + shopId
+            });
+        } else {
+            wx.showToast({
+                title: '商铺信息不存在',
+                icon: 'none'
+            });
+        }
+    },
   },
 
   attached: async function () {

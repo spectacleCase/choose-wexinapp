@@ -18,12 +18,22 @@
                     <text class="rating-score">{{mark}}</text>
                     <view class="rating-stars">
                         <block wx:for="{{5}}" wx:key="index">
-                            <image src="{{index <    mark ? '/assets/images/星星.png' : '/assets/images/星星_透明.png'}}" class="star-icon"></image>
+                            <image src="{{index < mark ? '/assets/images/星星.png' : '/assets/images/星星_透明.png'}}" class="star-icon"></image>
                         </block>
                     </view>
                 </view>
             </view>
         </view>
+
+        <!-- 轮播图部分 -->
+        <view class="swiper-container">
+            <swiper class="shop-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}" circular="{{true}}" indicator-color="rgba(255, 255, 255, 0.6)" indicator-active-color="#FFA500">
+                <swiper-item wx:for="{{swiperList}}" wx:key="index">
+                    <image src="{{item}}" mode="aspectFill" class="swiper-image"></image>
+                </swiper-item>
+            </swiper>
+        </view>
+
         <!-- 地址信息 -->
         <view class="address-info">
             <view class="address-details">
@@ -32,6 +42,7 @@
             </view>
             <image class="navigation-icon" src="../../../assets/images/导航.png" bindtap="navigate"></image>
         </view>
+
         <!-- 选项卡 -->
         <view class="sticky-wrapper">
             <view class="tab-bar" id="originalTabBar">

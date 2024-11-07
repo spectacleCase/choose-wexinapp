@@ -96,6 +96,11 @@ Page({
     });
     // 这里可以添加开启/关闭通知的逻辑
   },
+  goUs: function () {
+    wx.navigateTo({
+      url: "/pages/myself/about-us/about-us",
+    });
+  },
 
   logout: function () {
     wx.showModal({

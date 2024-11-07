@@ -37,7 +37,8 @@
 
 .shop-info {
   display: flex;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
 }
 
 .shop-logo {
@@ -276,6 +277,10 @@
     align-items: center;
     padding: 20rpx 0;
     border-bottom: 1rpx solid #e0e0e0;
+    margin: 0 20rpx;
+    padding: 24rpx 0;
+    border-top: 1rpx solid #eee;
+    border-bottom: 1rpx solid #eee;
 }
 
 .address-details {
@@ -465,6 +470,24 @@
 }
 
 .no-reviews-text {
-    font-size: 30rpx; /* 稍微增大字体大小 */
+    font-size: 30rpx; /* 稍微增字体大小 */
     color: #999;
+}
+
+/* 添加轮播图样式 */
+.swiper-container {
+    margin: 20rpx 20rpx 30rpx;
+    border-radius: 12rpx;
+    overflow: hidden;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.shop-swiper {
+    width: 100%;
+    height: 320rpx;
+}
+
+.swiper-image {
+    width: 100%;
+    height: 100%;
 }

@@ -1,0 +1,68 @@
+.recommendations-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 30rpx;
+}
+
+.page-header {
+  margin-bottom: 30rpx;
+  padding: 20rpx 0;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.recommendations-list {
+  height: calc(100vh);
+}
+
+.recommendation-item {
+  display: flex;
+  padding: 30rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.recommendation-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 16rpx;
+  margin-right: 30rpx;
+}
+
+.recommendation-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recommendation-title {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.recommendation-tag {
+  font-size: 28rpx;
+  color: #007aff;
+  margin-bottom: 10rpx;
+}
+
+.recommendation-distance {
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.loading-more {
+  text-align: center;
+  padding: 30rpx 0;
+  color: #999999;
+  font-size: 26rpx;
+} 

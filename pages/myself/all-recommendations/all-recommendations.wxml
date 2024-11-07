@@ -1,0 +1,16 @@
+<view class="recommendations-page">
+    <!-- <view class="page-header">
+    <text class="header-title">全部推荐</text>
+  </view> -->
+    <scroll-view class="recommendations-list" scroll-y="true" bindscrolltolower="loadMore" enhanced="true" show-scrollbar="false">
+        <view class="recommendation-item" wx:for="{{recommendations}}" wx:key="index" bindtap="goShop" data-shop-id="{{item.shopId}}">
+            <image class="recommendation-image" src="{{item.image}}" mode="aspectFill"></image>
+            <view class="recommendation-info">
+                <text class="recommendation-tag">{{item.dishesName}}</text>
+                <text class="recommendation-title">{{item.tagName}}</text>
+                <text class="recommendation-distance">{{item.distance}}</text>
+            </view>
+        </view>
+        <view class="loading-more" wx:if="{{!hasMore}}">- 没有更多了 -</view>
+    </scroll-view>
+</view>

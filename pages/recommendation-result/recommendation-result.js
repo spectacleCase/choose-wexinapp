@@ -32,14 +32,22 @@ Page({
       },
     ],
     currentIndex: 0,
+    selectedCount: 1,
     bubbleColors: ["#FDF1E7", "#F07A10", "#FDF3E8", "#FDF3E8", "#FDF3E8"],
   },
 
-  onLoad: function () {
+  onLoad: function (options) {
+    let index = options.selectedCount.split("个")[0];
+    this.setData({
+      selectedCount: index,
+    });
     this.generateBubbles();
     this.generateStarsForRecommendations();
   },
   recommend: function () {
+    Recommend.recommend.recommend.data = {
+      num: 1,
+    };
     const data = RequestUtils.request(Recommend.recommend.recommend);
     console.log("推荐结果", data);
   },
@@ -102,10 +110,14 @@ Page({
 
   generateStarsForRecommendations: async function () {
     let List = [];
+    Recommend.recommend.recommend.data = {
+      num: this.data.selectedCount,
+    };
     const data = await RequestUtils.request(Recommend.recommend.recommend);
-    List.push(data.data);
-    console.log(data.data);
-    console.log(List);
+    List = data.data.list;
+    // List.push(data.data);
+    // console.log(data.data);
+    // console.log(List);
 
     // this.setData({ recommendations: List });
     const updatedRecommendations = List.map((item) => {
