@@ -115,7 +115,7 @@ Page({
         return {
           id: item.id,
           dishesName: item.dishesName,
-          iamge: item.dishesImage,
+          image: item.dishesImage,
           dishesTag: item.dishesTags,
         };
       })
@@ -166,18 +166,19 @@ Page({
     query.select("#dishes-section").boundingClientRect();
     query.selectViewport().scrollOffset();
     query.exec((res) => {
-        const [dishesSection, scrollOffset] = res;
+      const [dishesSection, scrollOffset] = res;
 
-        // 更新活动标签
-        const scrollTop = scrollOffset.scrollTop;
-        const windowHeight = wx.getWindowInfo().windowHeight;
+      // 更新活动标签
+      const scrollTop = scrollOffset.scrollTop;
+      const windowHeight = wx.getWindowInfo().windowHeight;
 
-        if (dishesSection && 
-            dishesSection.top <= windowHeight / 2 && 
-            dishesSection.bottom >= windowHeight / 2
-        ) {
-            this.setData({ activeTab: "dishes" });
-        }
+      if (
+        dishesSection &&
+        dishesSection.top <= windowHeight / 2 &&
+        dishesSection.bottom >= windowHeight / 2
+      ) {
+        this.setData({ activeTab: "dishes" });
+      }
     });
   },
 
@@ -208,11 +209,7 @@ Page({
       shopName: data.data.shopName,
       mark: data.data.mark,
       reviews: shopList.data.list,
-      swiperList: [
-        data.data.image,
-        data.data.image,
-        data.data.image
-      ]
+      swiperList: [data.data.image, data.data.image, data.data.image],
     });
   },
 

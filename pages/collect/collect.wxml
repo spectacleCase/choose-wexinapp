@@ -6,13 +6,15 @@
       <view class="add-icon" bindtap="addCollection">+</view>
     </view>
   </view>
-
   <view wx:if="{{collections.length > 0}}" class="collect-list">
     <block wx:for="{{collections}}" wx:key="id">
       <view class="folder-item">
         <view class="folder-header" bindtap="checkchilrenCollect" data-id="{{item.collectid}}" data-name="{{item.name}}">
           <view class="folder-left">
-            <view class="folder-icon">📁</view>
+            <view class="folder-icon">
+              <!-- 📁 -->
+              <image src="../../assets/images/收藏夹.png" alt="" style="width: 90rpx;height: 90rpx;" />
+            </view>
             <text class="folder-name">{{item.name}}</text>
           </view>
           <view class="folder-right">
@@ -49,7 +51,6 @@
       </view>
     </block>
   </view>
-
   <view wx:else class="empty-state">
     <text class="empty-text">暂无收藏内容</text>
   </view>
