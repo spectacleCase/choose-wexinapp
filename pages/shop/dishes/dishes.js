@@ -27,6 +27,7 @@ Page({
     console.log(options);
     let dishesList = options.data;
     dishesList = JSON.parse(decodeURIComponent(dishesList));
+    console.log("这个是参数",dishesList);
     Dishes.dishes.getDishesDetails.data = {
       dishesId: options.id,
     };
@@ -92,7 +93,8 @@ Page({
         dishesId: categoryId,
         title: data.dishesName,
         image: data.image,
-        tags: data.tags,
+        // tags: data.tags,
+        tags: data.dishesTag,
         description: "红烧肉是一道著名的中国菜，口感软糯，味道浓郁。",
       },
     });
