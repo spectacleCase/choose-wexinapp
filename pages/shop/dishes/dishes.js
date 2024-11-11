@@ -146,6 +146,8 @@ Page({
             icon: "success",
           });
         }
+        this.setData({ isCollected: false });
+        await this.checkCollectChildren();
         return;
       }
       const res = await RequestUtils.request(Collect.collect.checkCollection);
