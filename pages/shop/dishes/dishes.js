@@ -27,7 +27,7 @@ Page({
     console.log(options);
     let dishesList = options.data;
     dishesList = JSON.parse(decodeURIComponent(dishesList));
-    console.log("这个是参数",dishesList);
+    console.log('dishesList的数据',dishesList);
     Dishes.dishes.getDishesDetails.data = {
       dishesId: options.id,
     };
@@ -145,8 +145,8 @@ Page({
             title: "删除成功",
             icon: "success",
           });
-          return;
         }
+        return;
       }
       const res = await RequestUtils.request(Collect.collect.checkCollection);
       console.log("获取到的收藏列表数据:", res.data.list);

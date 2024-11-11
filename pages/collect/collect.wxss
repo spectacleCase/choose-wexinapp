@@ -141,22 +141,18 @@
 .location {
   display: flex;
   align-items: center;
-  padding-left: 20rpx;
+  margin-top: 10rpx;
 }
 
 .location-icon {
-  width: 32rpx;
-  height: 32rpx;
-  margin-right: 8rpx;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
 }
 
 .location-text {
   font-size: 24rpx;
   color: #999;
-  max-width: 160rpx;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .empty-state {

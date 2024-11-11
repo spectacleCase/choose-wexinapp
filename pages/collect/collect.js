@@ -52,7 +52,7 @@ Component({
       const res = await wx.showModal({
         title: '添加收藏',
         editable: true,
-        placeholderText: '请输入收藏名称'
+        placeholderText: '请输入收藏名称(不能超过12个字)'
       });
       
       if (res.confirm && res.content) {
@@ -195,12 +195,12 @@ Component({
           title: '添加成功',
           icon: 'success'
         });
-        await this.checkchilren({currentTarget: {dataset: {id}}});
+        await this.getCollections();
       }
     },
 
-    // 修改收藏子项
-    async changeChildren(e) {
+    // 修改收藏子项（看看还要不要）
+   /* async changeChildren(e) {
       const { id, childId } = e.currentTarget.dataset;
       const collections = this.data.collections;
       const collection = collections.find(item => item.collectid === id);
@@ -238,7 +238,7 @@ Component({
           icon: 'none'
         });
       }
-    },
+    },*/
 
     // 删除收藏子项
     async deleteChildren(e) {
@@ -259,7 +259,7 @@ Component({
           title: '删除成功',
           icon: 'success'
         });
-        await this.checkchilren({currentTarget: {dataset: {id}}});
+        await this.getCollections();
       }
     },
 
@@ -313,6 +313,39 @@ Component({
       } catch (error) {
         console.error('操作失败:', error);
       }
-    }
+    },
+
+    // 跳转到菜品详情页面
+    navigateToDish(e) {
+      const dishId = e.currentTarget.dataset.id; // 获取菜品ID
+      console.log('跳转到菜品详情页面的参数:', dishId);
+      let dishesList = [
+        {
+          dishesTag: "",
+          id:dishId,
+          image: ""
+        }
+      ];
+      dishesList = JSON.stringify(dishesList);
+      wx.navigateTo({
+        url: `/pages/shop/dishes/dishes?id=${dishId}&data=${encodeURIComponent(
+          dishesList
+        )}`,
+      });
+    },
+
+    // 导航到子项的坐标
+    navigateToLocation(e) {
+      const { coordinate } = e.currentTarget.dataset; // 获取坐标信息
+      const location = coordinate.split(","); // 假设坐标是以逗号分隔的字符串
+
+      // 实现导航功能
+      wx.openLocation({
+        latitude: Number(location[1]), // 纬度
+        longitude: Number(location[0]), // 经度
+        name: "子项位置", // 可以根据需要修改
+        address: "子项地址", // 可以根据需要修改
+      });
+    },
   }
 })
