@@ -98,6 +98,7 @@ Page({
         description: "红烧肉是一道著名的中国菜，口感软糯，味道浓郁。",
       },
     });
+    await this.checkCollectChildren();
   },
 
   toggleCategoryDropdown() {
@@ -126,6 +127,7 @@ Page({
         description: "红烧肉是一道著名的中国菜，口感软糯，味道浓郁。",
       },
     });
+    await this.checkCollectChildren();
   },
 
   // 判断收藏还是取消
@@ -146,7 +148,6 @@ Page({
             icon: "success",
           });
         }
-        this.setData({ isCollected: false });
         await this.checkCollectChildren();
         return;
       }
@@ -269,6 +270,8 @@ Page({
     }
   },
 
+
+  //这里不知道为什么第2次的时候
   // 修改检查收藏状态的方法
   async checkCollectChildren() {
     try {
@@ -278,9 +281,9 @@ Page({
       const childrenRes = await RequestUtils.request(
         Collect.collect.checkCollectChildren
       );
-      console.log("检查到的收藏状态:", childrenRes.data);
-      if (childrenRes && childrenRes.data && childrenRes.data.isCollect) {
-        this.setData({ isCollected: childrenRes.data.isCollect });
+      console.log("检查到的收藏状态:", childrenRes.data.isCollect);
+      if (childrenRes && childrenRes.data) {
+        this.setData({isCollected: childrenRes.data.isCollect});
       }
     } catch (err) {
       console.error("检查收藏状态失败:", err);

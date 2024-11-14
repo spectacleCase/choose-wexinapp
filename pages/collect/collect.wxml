@@ -24,21 +24,23 @@
         </view>
         <view class="folder-content {{item.showChildren ? 'show' : ''}}">
           <block wx:if="{{item.children && item.children.length > 0}}">
-            <block wx:for="{{item.children}}" wx:key="id" wx:for-item="child">
-              <view class="file-card" bindtap="navigateToDish" data-id="{{child.dishId}}">
-                <image class="file-image" src="{{child.dishesImage}}" mode="aspectFill"></image>
-                <view class="file-info">
-                  <text class="file-name">{{child.dishesName}}</text>
+            <scroll-view scroll-y="true" bindscrolltolower="loadMore" data-collectid="{{item.collectid}}" style="height:100vh">
+              <block wx:for="{{item.children}}" wx:key="id" wx:for-item="child">
+                <view class="file-card" bindtap="navigateToDish" data-id="{{child.dishId}}">
+                  <image class="file-image" src="{{child.dishesImage}}" mode="aspectFill"></image>
+                  <view class="file-info">
+                    <text class="file-name">{{child.dishesName}}</text>
+                  </view>
+                  <view class="location" catchtap="navigateToLocation" data-coordinate="{{child.coordinate}}">
+                    <image class="location-icon" src="../../assets/images/导航.png"></image>
+                  </view>
+                  <!-- 添加间距 -->
+                  <view class="spacer"></view>
+                  <!-- 添加删除图标 -->
+                  <image class="delete-icon" src="../../assets/images/选项.png" catchtap="deleteChildren" data-id="{{item.collectid}}" data-child-id="{{child.id}}"></image>
                 </view>
-                <view class="location" catchtap="navigateToLocation" data-coordinate="{{child.coordinate}}">
-                  <image class="location-icon" src="../../assets/images/导航.png"></image>
-                </view>
-                <!-- 添加间距 -->
-                <view class="spacer"></view>
-                <!-- 添加删除图标 -->
-                <image class="delete-icon" src="../../assets/images/选项.png" catchtap="deleteChildren" data-id="{{item.collectid}}" data-child-id="{{child.id}}"></image>
-              </view>
-            </block>
+              </block>
+            </scroll-view>
           </block>
           <view wx:else class="empty-folder">
             <text>暂无内容</text>

@@ -5,12 +5,14 @@ import RequestUtils from "../../utils/request_util";
 Component({
   data: {
     collections: [],  // 初始为空数组
+    currentPage: {},  // 用于存储每个收藏夹的当前页码
+    itemsPerPage: 10, // 每页显示的子项数量
+    collectId:null, //父文件id
   },
 
   lifetimes: {
     attached: function() {
-      // 在组件实例进入页面节点树时执行
-      this. getCollections();
+      this.getCollections();
     }
   },
 
@@ -24,7 +26,8 @@ Component({
             collectid: item.id,
             name: item.name,
             showChildren: false,
-            children: item.chilren || []
+            children: item.children || [],
+            currentPage: 1, // 初始化当前页码
           }));
           this.setData({
             collections: collectionsWithShowChildren
@@ -115,65 +118,68 @@ Component({
 
     // 查看收藏详情
     async checkchilrenCollect(e) {
-      const { id,name} = e.currentTarget.dataset;
+      const { id, name } = e.currentTarget.dataset;
       let { collections } = this.data;
       const itemIndex = collections.findIndex(item => item.collectid == id);
-      if (collections[itemIndex].showChildren){
-        collections[itemIndex].showChildren = false;
+      
+      // 切换显示状态
+      collections[itemIndex].showChildren = !collections[itemIndex].showChildren;
+      this.setData({
+        collections
+      });
+
+      if (collections[itemIndex].showChildren) {
+        // 如果要显示子项，进行请求
+        Collect.collect.checkChildren.data = {
+          name: name,
+          collectId: id,
+          pageNum: 1, // 使用当前页码
+        };
+        
+        const res = await RequestUtils.request(Collect.collect.checkChildren);
+        console.log('获取到的子项数据:', res.data);
+        
+        // 更新子项数据
+        collections[itemIndex].children = res.data.children || [];
         this.setData({
           collections
         });
-        return;
       }
-      Collect.collect.checkChildren.data = {
-        name: name,
-        collectId: id,
-        pageNum: 1,
-      }
-      const res = await RequestUtils.request(Collect.collect.checkChildren);
-      console.log('获取到的子项数据:', res.data);
-      // 创建新的数组，避免直接修改 data
-      const newCollections = collections.map(item => {
-        if (item.collectid === id) {
-          return {
-            ...item,
-            showChildren: !item.showChildren,
-            children: res.data.children
-          };
-        }
-        return item;
-      });
-      console.log('修改后的数组:', newCollections);
-      this.setData({
-        collections: newCollections
-      });
     },
 
     // 加载更多子项
-    async loadMoreChildren(e) {
-      const { id } = e.currentTarget.dataset;
+    async loadMore(e) {
+      console.log("进入家在数据");
+      console.log(e.currentTarget);
+      
+      const collectid = e.currentTarget.dataset.collectid;
+      // const id = 1;
       const collections = this.data.collections;
-      const index = collections.findIndex(item => item.collectid === id);
+      const index = collections.findIndex(item => item.collectid === collectid);
+      console.log("进入家在数据");
 
-      if (index !== -1 && collections[index].hasMore) {
-        const nextPage = collections[index].currentPage + 1;
+        console.log(collectid,index);
+        // 增加当前页码
+        collections[index].currentPage += 1;
+
+        // 请求新的子项数据
         Collect.collect.checkChildren.data = {
-          collectid: id,
-          pageNum: nextPage,
-        }
+          collectId: collectid,
+          pageNum: collections[index].currentPage,
+        };
+        
         const res = await RequestUtils.request(Collect.collect.checkChildren);
-        console.log('获取到的子项数据:', res.data);
-        const newCollections = [...collections];
-        newCollections[index].children = [
-          ...newCollections[index].children,
-          ...res.data.list
+        console.log('获取到的更多子项数据:', res.data);
+        
+        // 更新子项数据
+        collections[index].children = [
+          ...collections[index].children,
+          ...(res.data.children || [])
         ];
-        newCollections[index].currentPage = nextPage;
-        newCollections[index].hasMore = res.data.hasMore;
         this.setData({
-          collections: newCollections
+          collections
         });
-      }
+      
     },
 
     // 添加收藏子项
@@ -190,6 +196,7 @@ Component({
           collectid: id,
           name: res.content
         }
+        
         await RequestUtils.request(Collect.collect.addChildren);
         await wx.showToast({
           title: '添加成功',
