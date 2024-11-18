@@ -1,0 +1,128 @@
+.search-container {
+    padding: 10px;
+    height: 100vh;
+    background-color: #f9f9f9; /* 更柔和的背景颜色 */
+}
+
+.search-input-container {
+    display: flex;
+    align-items: center; /* 垂直居中对齐 */
+}
+
+.search-input {
+    flex: 1; /* 使输入框占据剩余空间 */
+    height: 35px; /* 调整高度 */
+    border: 1px solid #ff8c00; /* 橙色边框 */
+    border-radius: 20px; /* 圆角 */
+    padding: 0 10px; /* 调整内边距 */
+    box-sizing: border-box; /* 包含内边距和边框 */
+    background-color: #fff; /* 输入框背景颜色 */
+}
+
+.search-button {
+    flex: 0.2;
+    margin-left: 10px; /* 按钮与输入框之间的间距 */
+    background-color: #ff8c00; /* 橙色背景 */
+    color: white;
+    border: none;
+    border-radius: 20px; /* 圆角 */
+    padding: 5px; /* 减小内边距 */
+    cursor: pointer;
+}
+
+.history-container {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+}
+
+.history-capsule {
+    background-color: #e0e0e0; /* 胶囊背景颜色更柔和 */
+    border-radius: 20px; /* 圆角 */
+    padding: 5px 10px; /* 内边距 */
+    margin: 5px; /* 胶囊之间的间距 */
+    display: flex;
+    align-items: center; /* 垂直居中对齐 */
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+}
+
+.delete-icon {
+    width: 25rpx; /* 减小图标大小 */
+    height: 25rpx; /* 减小图标大小 */
+    cursor: pointer;
+}
+
+/* 省略文本样式 */
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.history-title {
+    display: flex;
+    justify-content: space-between; /* 左右对齐 */
+    align-items: center; /* 垂直居中对齐 */
+    margin-bottom: 10px; /* 标题与历史记录之间的间距 */
+    margin-top: 30rpx;
+}
+
+.title {
+ font-weight: 900;
+ font-size: 35rpx;
+}
+
+.delete-all-icon {
+    width: 25rpx; /* 垃圾桶图标大小 */
+    height: 25rpx; /* 垃圾桶图标大小 */
+    cursor: pointer;
+}
+
+.show-more {
+    display: flex;
+    justify-content: center; /* 水平居中对齐 */
+    margin-top: 10px; /* 与历史记录的间距 */
+}
+
+.show-more-icon {
+    width: 30rpx; /* 图标大小 */
+    height: 30rpx; /* 图标大小 */
+    cursor: pointer;
+}
+
+.rotated {
+    transform: rotate(180deg); /* 旋转180度 */
+    transition: transform 0.3s; /* 添加过渡效果 */
+}
+
+.suggestions-container {
+    background-color: #fff; /* 建议项背景颜色 */
+    border: 1px solid #ccc; /* 边框 */
+    border-radius: 5px; /* 圆角 */
+    margin-top: 5px; /* 与输入框的间距 */
+    z-index: 1000; /* 确保在其他元素之上 */
+}
+
+.suggestion-item {
+    padding: 10px; /* 内边距 */
+    cursor: pointer; /* 鼠标指针样式 */
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0; /* 悬停时的背景颜色 */
+}
+
+.overlay {
+    position: fixed; /* 固定定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明白色 */
+    z-index: 999; /* 确保在其他元素之上 */
+}
+

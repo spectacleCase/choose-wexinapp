@@ -138,6 +138,12 @@ Component({
         url: "/pages/shop/shop/shop?shopId=" + shopId,
       });
     },
+
+    goToSearch() {
+        wx.navigateTo({
+            url: '/pages/search/search' // 跳转到搜索页面
+        });
+    }
   },
 
   ready: function () {

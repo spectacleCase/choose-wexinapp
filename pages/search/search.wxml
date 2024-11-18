@@ -1,0 +1,29 @@
+<!-- pages/search/search.wxml -->
+<view class="search-container">
+    <view class="search-input-container">
+        <input class="search-input" placeholder="搜索美食..." bindinput="handleInput" />
+        <button class="search-button">搜索</button>
+    </view>
+    <view class="suggestions-container" wx:if="{{suggestions.length}}">
+        <view class="suggestion-item" wx:for="{{suggestions}}" wx:key="index">
+            <text>{{item}}</text>
+        </view>
+    </view>
+    <view class="history-title">
+        <view class="title">搜索历史</view>
+        <image class="delete-all-icon" src="../../assets/images/垃圾桶.png" bindtap="deleteAllHistory" />
+    </view>
+    <view class="history-container">
+        <view class="history-item" wx:for="{{displayedHistory}}" wx:key="index">
+            <view class="history-capsule">
+                <view class="ellipsis">
+                    {{item.length > 10 ? item.substring(0, 10) + '...' : item}}
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{showMoreButton}}" class="show-more" bindtap="showAllHistory">
+            <image class="show-more-icon" src="../../assets/images/箭头.png" />
+        </view>
+    </view>
+    <view class="overlay" wx:if="{{showOverlay}}"></view>
+</view>

@@ -16,12 +16,16 @@
     "pages/publish/publish-shop/publish-shop",
     "pages/forum/forum",
     "pages/post-detail/post-detail",
-    "pages/myself/all-recommendations/all-recommendations"
+    "pages/myself/all-recommendations/all-recommendations",
+    "pages/search/search"
   ],
   "subPackages": [
     {
       "root": "pages/shop",
-      "pages": ["shop/shop", "dishes/dishes"]
+      "pages": [
+        "shop/shop",
+        "dishes/dishes"
+      ]
     },
     {
       "root": "pages/reviews",
@@ -46,7 +50,11 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "requiredPrivateInfos": ["getLocation", "chooseLocation", "chooseAddress"],
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation",
+    "chooseAddress"
+  ],
   "tabBar": {
     "custom": true,
     "list": [
