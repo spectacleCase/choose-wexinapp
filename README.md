@@ -1,5 +1,3 @@
-Initial commit
-
 # 🍽️ WeChoice 🌟
 
 ## 简介
