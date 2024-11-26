@@ -10,8 +10,7 @@ Component({
 
   data: {
     userInfo: {
-      avatar:
-        "http://119.91.145.137:9001/choose/2024/06/03/7595dce18c3440208c55204af85b8430.png",
+      avatar: "",
       nickname: "用户名",
       description: "简约而不简单",
     },
@@ -20,8 +19,7 @@ Component({
     healthTip: "每天喝8杯水有助于保持身体水分平衡，促进新陈代谢。",
     recommendations: [
       {
-        image:
-          "http://119.91.145.137:9001/choose/2024/06/03/7595dce18c3440208c55204af85b8430.png",
+        image: "",
         tagName: "店铺",
         dishesName: "红烧肉",
         distance: "20km",
@@ -93,24 +91,24 @@ Component({
       wx.hideLoading();
     },
 
-    viewAllRecommendations: function() {
+    viewAllRecommendations: function () {
       wx.navigateTo({
-        url: '/pages/myself/all-recommendations/all-recommendations'
+        url: "/pages/myself/all-recommendations/all-recommendations",
       });
     },
 
-    goShop: function(e) {
-        const shopId = e.currentTarget.dataset.shopId;
-        if (shopId) {
-            wx.navigateTo({
-                url: "/pages/shop/shop/shop?shopId=" + shopId
-            });
-        } else {
-            wx.showToast({
-                title: '商铺信息不存在',
-                icon: 'none'
-            });
-        }
+    goShop: function (e) {
+      const shopId = e.currentTarget.dataset.shopId;
+      if (shopId) {
+        wx.navigateTo({
+          url: "/pages/shop/shop/shop?shopId=" + shopId,
+        });
+      } else {
+        wx.showToast({
+          title: "商铺信息不存在",
+          icon: "none",
+        });
+      }
     },
   },
 

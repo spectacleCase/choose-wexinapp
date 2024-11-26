@@ -9,8 +9,7 @@ Page({
         aiDescription: "还行",
         columnId: 0,
         id: 1847894023606030300,
-        image:
-          "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/10/19/87829ec592bb44778ee4886505a17290.png",
+        image: "",
         mark: 1.2,
         shopId: 9,
         shopName: "中文店铺4",
@@ -22,8 +21,7 @@ Page({
         aiDescription: "还行",
         columnId: 0,
         id: 1847894023606030301,
-        image:
-          "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/10/19/87829ec592bb44778ee4886505a17290.png",
+        image: "",
         mark: 4.4,
         shopId: 9,
         shopName: "中文店铺4",

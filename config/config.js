@@ -1,4 +1,4 @@
 export default {
-  ip: "192.168.182.2:12150",
-  apiBaseUrl: "http://192.168.182.2:12150/choose",
+  ip: "localhost:12150",
+  apiBaseUrl: "http://localhost:12150/choose",
 };

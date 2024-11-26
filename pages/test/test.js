@@ -4,8 +4,8 @@ const app = getApp();
 
 Page({
   data: {
-    latitude: 21.682233,
-    longitude: 110.921815,
+    latitude:0,
+    longitude: 0,
     markers: [],
     destinationName: "目的地名称"
   },

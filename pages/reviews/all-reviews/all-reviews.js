@@ -62,7 +62,7 @@ Page({
       {
         id: 2,
         avatar:
-          "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/10/18/8640c61d45424c8b9fe0506409f32902.png",
+          "",
         username: "用户2",
         time: "2023-04-19 18:45",
         content: "价格有点贵,但是质量确实不错。",
