@@ -39,6 +39,21 @@ const common = {
     auth: true,
     data: null,
   },
+  // 删除全部的搜索词
+  delSearch: {
+    url: BASE_URL + "/v1/delSearch",
+    method: "POST",
+    auth: true,
+    data: null,
+  },
+
+  // 搜索结果
+  search: {
+    url: BASE_URL + "/v1/search?keyword=",
+    method: "POST",
+    auth: true,
+    data: null,
+  },
 };
 
 export default {

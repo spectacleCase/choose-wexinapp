@@ -1,0 +1,35 @@
+<view class="result-container">
+    <view class="search-bar">
+        <input class="search-input" placeholder="搜索美食..." bindinput="handleInputs" bindconfirm="handleInput" value="{{searchTerm}}" />
+    </view>
+    <view class="suggestions-overlay" wx:if="{{suggestions.length}}">
+        <scroll-view class="suggestions-scroll" scroll-y="true">
+            <view class="suggestions-container">
+                <view class="suggestion-item" wx:for="{{suggestions}}" wx:key="index" bindtap="handleSearch" data-search="{{item}}">
+                    <text>{{item}}</text>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="result-item" wx:for="{{results}}" wx:for-item="item" wx:for-index="index" wx:key="index" bindtap="viewDetail" data-index="{{index}}">
+        <view class="shop-info">
+            <image class="shop-image" src="{{item.shopImage}}" mode="aspectFill" />
+            <view class="shop-details">
+                <text class="shop-name">{{item.shopName}}</text>
+                <view class="shop-rating">
+                    <text>评分: {{item.rating}}</text>
+                    <text class="review-count">({{item.reviewCount}}条评论)</text>
+                    <image class="address-icon" src="../../../assets/images/导航.png" mode="aspectFit" bindtap="goToShop" data-index="{{item.shopId}}" />
+                    <image class="address-icon" src="../../../assets/images/店铺.png" mode="aspectFit" bindtap="goToShop" data-index="{{item.shopId}}" />
+                </view>
+            </view>
+        </view>
+        <view class="item-images">
+            <view wx:for="{{item.dishesList}}" wx:for-item="dishes" wx:key="index">
+                <image class="item-image" src="{{dishes.image}}" mode="aspectFill" />
+                <view class="item-name">{{dishes.name}}</view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{results.length === 0}}" class="no-results">没有找到相关结果</view>
+</view>

@@ -103,8 +103,6 @@
     background-color: #fff; /* 建议项背景颜色 */
     border: 1px solid #ccc; /* 边框 */
     border-radius: 5px; /* 圆角 */
-    margin-top: 5px; /* 与输入框的间距 */
-    z-index: 1000; /* 确保在其他元素之上 */
 }
 
 .suggestion-item {
@@ -124,5 +122,13 @@
     height: 100%;
     background-color: rgba(255, 255, 255, 0.8); /* 半透明白色 */
     z-index: 999; /* 确保在其他元素之上 */
+}
+
+.suggestions-overlay {
+    position: absolute; /* 绝对定位 */
+    top: 60px; /* 根据输入框的位置调整 */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* 确保在其他元素之上 */
 }
 

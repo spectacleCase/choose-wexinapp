@@ -113,7 +113,8 @@ Page({
   },
 
   // 删除所有历史记录
-  deleteAllHistory() {
+  async deleteAllHistory() {
+    await request_util.request(common.common.delSearch);
     this.setData(
       {
         searchHistory: [],
@@ -122,5 +123,27 @@ Page({
       },
       this.updateDisplayedHistory
     );
+  },
+
+  // 处理搜索按钮点击事件
+  handleSearch(e) {
+    let searchInput = "";
+    if (e.currentTarget.dataset.search) {
+      searchInput = e.currentTarget.dataset.search;
+    } else {
+      searchInput = this.data.searchInput;
+    }
+    // const { searchInput } = this.data;
+    console.log("搜索输入:", searchInput);
+    if (searchInput) {
+      wx.navigateTo({
+        url: `/pages/search/result/result?term=${searchInput}`,
+      });
+    } else {
+      wx.showToast({
+        title: "请输入搜索内容",
+        icon: "none",
+      });
+    }
   },
 });
