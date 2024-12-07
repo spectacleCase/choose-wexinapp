@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "im",
+          "pathName": "pages/chat/chat",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "测试",
           "pathName": "pages/test/test",
           "query": "",

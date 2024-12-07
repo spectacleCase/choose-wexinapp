@@ -4,20 +4,15 @@
     "pages/main/main",
     "pages/index/index",
     "pages/settings/settings",
-    "pages/myself/user/user",
-    "pages/myself/edit_user_info/edit_user_info",
-    "pages/myself/about-us/about-us",
+    "pages/user/user",
     "pages/test/test",
     "pages/recommendation-result/recommendation-result",
-    "pages/myself/notifications/notifications",
     "pages/publish/publish-dishes/publish-dishes",
     "pages/collect/collect",
     "pages/ranking/ranking",
     "pages/publish/publish-shop/publish-shop",
     "pages/forum/forum",
     "pages/post-detail/post-detail",
-    "pages/myself/all-recommendations/all-recommendations",
-    "pages/myself/qrcode/qrcode",
     "pages/search/search",
     "pages/search/result/result",
     "pages/chat/chat"
@@ -25,10 +20,7 @@
   "subPackages": [
     {
       "root": "pages/shop",
-      "pages": [
-        "shop/shop",
-        "dishes/dishes"
-      ]
+      "pages": ["shop/shop", "dishes/dishes"]
     },
     {
       "root": "pages/reviews",
@@ -36,6 +28,20 @@
         "all-reviews/all-reviews",
         "write-review/write-review",
         "review-detail/review-detail"
+      ]
+    },
+    {
+      "root": "pages/im",
+      "pages": ["chat-detail/chat-detail", "new-friends/new-friends"]
+    },
+    {
+      "root": "pages/myself",
+      "pages": [
+        "all-recommendations/all-recommendations",
+        "qrcode/qrcode",
+        "notifications/notifications",
+        "about-us/about-us",
+        "edit_user_info/edit_user_info"
       ]
     }
   ],
@@ -53,11 +59,7 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "requiredPrivateInfos": [
-    "getLocation",
-    "chooseLocation",
-    "chooseAddress"
-  ],
+  "requiredPrivateInfos": ["getLocation", "chooseLocation", "chooseAddress"],
   "tabBar": {
     "custom": true,
     "list": [

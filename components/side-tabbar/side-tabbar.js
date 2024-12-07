@@ -40,7 +40,7 @@ Component({
       {
         icon: "../../assets/images/我的.png",
         text: "我的",
-        url: "/pages/myself/user/user",
+        url: "/pages/user/user",
       },
     ],
     userInfo: {},

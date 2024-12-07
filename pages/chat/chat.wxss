@@ -1,1 +1,141 @@
 /* pages/chat/chat.wxss */
+.chat-container {
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    background: #fff;
+    padding: 20rpx 40rpx;
+    z-index: 100;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.tab-item {
+    padding: 20rpx 40rpx;
+    font-size: 28rpx;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.tab-item.active {
+    color: #333;
+    font-size: 34rpx;
+    font-weight: 600;
+    position: relative;
+}
+
+.tab-item.active:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 40rpx;
+    right: 40rpx;
+    height: 4rpx;
+    background-color: #FF6B00;
+    border-radius: 2rpx;
+}
+
+/* 聊天列表样式 */
+.chat-list {
+    margin-top: 120rpx;
+    padding: 0 30rpx;
+}
+
+.chat-item {
+    display: flex;
+    padding: 30rpx 0;
+    border-bottom: 1rpx solid #eee;
+    background: #fff;
+}
+
+.avatar {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.chat-info {
+    flex: 1;
+}
+
+.top-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10rpx;
+}
+
+.username {
+    font-size: 32rpx;
+    color: #333;
+    font-weight: 500;
+}
+
+.time {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.last-message {
+    font-size: 28rpx;
+    color: #666;
+}
+
+/* 联系人列表样式 */
+.contacts-container {
+    margin-top: 80rpx;
+    padding: 0 30rpx;
+}
+
+.quick-actions {
+    display: flex;
+    padding: 30rpx;
+    background: #fff;
+    border-bottom: 1rpx solid #f5f5f5;
+    margin-bottom: 20rpx;
+}
+
+.action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 60rpx;
+}
+
+.action-icon {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin-bottom: 10rpx;
+    background-color: rgba(64, 196, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-icon image {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.action-item text {
+    font-size: 28rpx;
+    color: #333;
+}
+
+.contact-list {
+    background: #fff;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #eee;
+}

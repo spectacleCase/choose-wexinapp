@@ -29,7 +29,7 @@ Component({
       forum: { url: "/pages/forum/forum", title: "今日" },
       collect: { url: "/pages/collect/collect", title: "收藏" },
       chat: { url: "/pages/chat/chat", title: "搭子" },
-      user: { url: "/pages/myself/user/user", title: "我的" },
+      user: { url: "/pages/user/user", title: "我的" },
     },
     weather: {
       weather: "",

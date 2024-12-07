@@ -1,7 +1,7 @@
-import RequestUtils from "../../../utils/request_util";
-import Recommend from "../../../services/api/recommend";
-import User from "../../../services/api/user";
-const toast = require("../../../companies/toast.js").default;
+import RequestUtils from "../../utils/request_util.js";
+import Recommend from "../../services/api/recommend.js";
+import User from "../../services/api/user.js";
+const toast = require("../../companies/toast.js").default;
 // user.js
 Component({
   properties: {
