@@ -110,6 +110,13 @@ Component({
         });
       }
     },
+    showQRCode: function (e) {
+      // 阻止事件冒泡
+      // e.stopPropagation();
+      wx.navigateTo({
+        url: "/pages/myself/qrcode/qrcode",
+      });
+    },
   },
 
   attached: async function () {

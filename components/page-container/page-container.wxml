@@ -22,6 +22,7 @@
             <user wx:elif="{{currentPage === 'user'}}"></user>
             <!-- <publish wx:elif="{{currentPage === 'publish'}}"></publish> -->
             <collect wx:elif="{{currentPage === 'collect'}}"></collect>
+            <chat wx:elif="{{currentPage === 'chat'}}"></chat>
             <ranking wx:elif="{{currentPage === 'ranking'}}"></ranking>
             <forum wx:elif="{{currentPage === 'forum'}}"></forum>
         </view>

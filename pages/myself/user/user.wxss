@@ -307,3 +307,18 @@
   height: 200rpx;
   opacity: 0.6;
 }
+.qr-code-icon {
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  opacity: 0.8;
+  z-index: 3;
+}
+
+/* 调整hover效果 */
+.qr-code-icon:active {
+  opacity: 1;
+  transform: scale(1.1);
+}

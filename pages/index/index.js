@@ -67,6 +67,44 @@ Component({
       console.log("Search input:", e.detail.value);
       // 这里可以添加搜索逻辑
     },
+    goToScan() {
+      // wx.navigateTo({
+      //   url: "/pages/scan/scan",
+      // });
+      // 调用微信扫码API
+      wx.scanCode({
+        onlyFromCamera: true, // 只允许从相机扫码
+        scanType: ["qrCode", "barCode"], // 扫码类型
+        success: (res) => {
+          this.setData({
+            result: res.result,
+            isScanning: false,
+          });
+
+          // 扫描成功后的处理逻辑
+          wx.showModal({
+            title: "扫描成功",
+            content: "是否跳转到相应页面？",
+            success: (res) => {
+              if (res.confirm) {
+                // 这里可以根据扫描结果进行相应跳转
+                console.log(res);
+                console.log(this.data.result);
+
+                // this.handleScanResult(this.data.result);
+              }
+            },
+          });
+        },
+        fail: (err) => {
+          this.setData({ isScanning: false });
+          wx.showToast({
+            title: "扫描失败",
+            icon: "none",
+          });
+        },
+      });
+    },
 
     showFilterOptions() {
       this.setData({ showFilter: true });
@@ -140,10 +178,10 @@ Component({
     },
 
     goToSearch() {
-        wx.navigateTo({
-            url: '/pages/search/search' // 跳转到搜索页面
-        });
-    }
+      wx.navigateTo({
+        url: "/pages/search/search", // 跳转到搜索页面
+      });
+    },
   },
 
   ready: function () {

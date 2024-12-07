@@ -1,13 +1,5 @@
-<!-- test.wxml -->
-<view class="container">
-  <map id="map" class="map" markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}"></map>
-  <view class="destination-card">
-    <view class="card-content">
-      <text class="destination-name">{{destinationName}}</text>
-      <view class="navigation-button" bindtap="nav">
-        <image src="../../assets/images/导航.png" mode="aspectFit"></image>
-        <text>导航</text>
-      </view>
-    </view>
-  </view>
+<view class='camera'>
+  <image src="/images/border.png" mode="widthFix"></image>
+  <camera wx:if="{{isAuth}}" device-position="back" flash="off" binderror="error"></camera>
 </view>
+<button class="takePhoto" type="primary" bindtap="takePhoto">拍照</button>

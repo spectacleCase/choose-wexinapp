@@ -10,6 +10,9 @@
         <view class="filter-button" bindtap="showFilterOptions">
           <image style="width: 50rpx; height: 50rpx;" src="../../assets/images/更多.png" mode="aspectFit"></image>
         </view>
+        <view class="filter-button" style="margin-left: 10rpx;" bindtap="goToScan">
+          <image style="width: 50rpx; height: 50rpx;" src="../../assets/images/扫描.png" mode="aspectFit"></image>
+        </view>
       </view>
     </view>
     <view class="header">

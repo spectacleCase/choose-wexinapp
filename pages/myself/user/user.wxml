@@ -14,6 +14,7 @@
       <image class="user-decoration-icon" src="../../../assets/images/食物&器皿－酒.png" mode="aspectFit"></image>
       <image class="user-decoration-icon" src="../../../assets/images/食物&器皿－披萨.png" mode="aspectFit"></image>
     </view>
+    <image class="qr-code-icon" src="../../../assets/images/二维码.png" mode="aspectFit" catchtap="showQRCode"></image>
   </view>
   <view class="user-section">
     <view class="user-section-header">

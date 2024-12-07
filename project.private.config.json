@@ -9,16 +9,16 @@
     "miniprogram": {
       "list": [
         {
-          "name": "测试2",
-          "pathName": "pages/search/result/result",
-          "query": "term=美味披萨",
+          "name": "测试",
+          "pathName": "pages/test/test",
+          "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "测试",
-          "pathName": "pages/forum/forum",
-          "query": "",
+          "name": "测试2",
+          "pathName": "pages/search/result/result",
+          "query": "term=美味披萨",
           "launchMode": "default",
           "scene": null
         }
