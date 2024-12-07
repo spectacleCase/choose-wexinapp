@@ -22,7 +22,7 @@ Component({
         url: "/pages/index/index",
       },
       {
-        icon: "../../assets/images/功能排行榜.png",
+        icon: "../../assets/images/聊天.png",
         text: "搭子",
         url: "/pages/chat/chat",
       },

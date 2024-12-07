@@ -1,3 +1,5 @@
+import request_util from "../../../utils/request_util";
+import im from "../../../services/api/im";
 Page({
   data: {
     // 新朋友数据，按时间分组
@@ -66,9 +68,12 @@ Page({
   },
 
   // 同意好友请求
-  agreeFriend(e) {
+  async agreeFriend(e) {
     const { id } = e.currentTarget.dataset;
     // 这里添加同意好友的逻辑
+    im.im.updateFriend.data = { id: id, status: 1 };
+    await request_util.request(im.im.updateFriend);
+    this.getNewFriendList();
     wx.showToast({
       title: "已同意",
       icon: "success",
@@ -80,5 +85,17 @@ Page({
     const searchValue = e.detail.value;
     console.log("搜索：", searchValue);
     // 这里添加搜索逻辑
+  },
+  async getNewFriendList() {
+    const data = await request_util.request(im.im.getNewFriendList);
+    this.setData({
+      friendGroups: data.data.list,
+    });
+    console.log(data);
+
+    console.log(this.data.friendGroups);
+  },
+  async onLoad() {
+    this.getNewFriendList();
   },
 });

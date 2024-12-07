@@ -16,9 +16,9 @@
             <view class="chat-info">
                 <view class="top-line">
                     <text class="username">{{item.username}}</text>
-                    <text class="time">{{item.lastTime}}</text>
+                    <text class="time">{{item.createTime}}</text>
                 </view>
-                <text class="last-message">{{item.lastMessage}}</text>
+                <text class="last-message">{{item.chat}}</text>
             </view>
         </view>
     </view>

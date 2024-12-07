@@ -1,4 +1,6 @@
 // pages/chat/chat.js
+import request_util from "../../utils/request_util";
+import im from "../../services/api/im";
 Component({
   /**
    * 页面的初始数据
@@ -105,8 +107,16 @@ Component({
     // 跳转到新的朋友页面
     gotoNewFriends() {
       wx.navigateTo({
-        url: '/pages/im/new-friends/new-friends',
+        url: "/pages/im/new-friends/new-friends",
       });
     },
+  },
+  attached: async function () {
+    const data = await request_util.request(im.im.getFriendList);
+    const chatList = await request_util.request(im.im.getChatUserList);
+    this.setData({
+      contactGroups: data.data.list,
+      chatList: chatList.data.list,
+    });
   },
 });
