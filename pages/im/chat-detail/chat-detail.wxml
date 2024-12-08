@@ -8,7 +8,12 @@
             <view class="message-item {{item.isSelf ? 'self' : ''}}">
                 <image class="avatar" src="{{item.isSelf ? userInfo.avatar : secondUser.avatar}}" mode="aspectFill"></image>
                 <view class="message-content">
-                    <view class="message-bubble">{{item.content}}</view>
+                    <view class="message-bubble">{{item.content}}
+                        <view wx:if="{{item.sendFailed}}" 
+                              class="error-icon"
+                              catchtap="resendMessage"
+                              data-id="{{item.id}}">!</view>
+                    </view>
                 </view>
             </view>
         </block>
@@ -16,8 +21,8 @@
     <!-- 底部输入区域 -->
     <view class="input-area">
         <view class="input-box">
-            <input type="text" value="{{inputValue}}" bindinput="onInput" confirm-type="send" bindconfirm="send" placeholder="请输入消息" />
+            <input type="text" value="{{inputValue}}" bindinput="onInput" confirm-type="send" bindconfirm="sendMessage" placeholder="请输入消息" />
         </view>
-        <view class="send-btn {{inputValue ? 'active' : ''}}" bindtap="send">发送</view>
+        <view class="send-btn {{inputValue ? 'active' : ''}}" bindtap="sendMessage">发送</view>
     </view>
 </view>

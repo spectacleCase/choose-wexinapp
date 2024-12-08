@@ -26,13 +26,13 @@ Page({
       socket: app.globalData.socket,
     });
 
-    this.sendMessage = function (message) {
-      wx.sendSocketMessage({
-        data: JSON.stringify(message),
-        success: () => console.log("消息发送成功"),
-        fail: (error) => console.error("消息发送失败", error),
-      });
-    };
+    // this.sendMessage = function (message) {
+    //   wx.sendSocketMessage({
+    //     data: JSON.stringify(message),
+    //     success: () => console.log("消息发送成功"),
+    //     fail: (error) => console.error("消息发送失败", error),
+    //   });
+    // };
 
     wx.onSocketMessage((res) => {
       const message = JSON.parse(res.data);
@@ -127,7 +127,7 @@ Page({
     return `${hours}:${minutes}`;
   },
 
-  async send() {
+  async sendMessage() {
     if (!this.data.inputValue.trim()) return;
 
     const newMessage = {
@@ -136,14 +136,16 @@ Page({
       sender: this.data.userInfo.id,
       receiver: this.data.secondUser.id,
       type: 0,
+      sendFailed: false,
     };
 
     const formattedMessage = {
       id: Date.now(),
       content: newMessage.content,
       time: this.formatTime(newMessage.createTime),
-      showTime: false,
+      showTime: true,
       isSelf: true,
+      sendFailed: false,
     };
 
     this.setData({
@@ -154,7 +156,18 @@ Page({
     this.scrollToBottom();
 
     try {
-      this.sendMessage(newMessage);
+      wx.sendSocketMessage({
+        data: JSON.stringify(newMessage),
+        fail: () => {
+          const messageList = this.data.messageList.map((msg) => {
+            if (msg.id === formattedMessage.id) {
+              return { ...msg, sendFailed: true };
+            }
+            return msg;
+          });
+          this.setData({ messageList });
+        },
+      });
     } catch (error) {
       console.error("发送消息失败：", error);
     }
@@ -178,5 +191,33 @@ Page({
         })
         .exec();
     }, 200);
+  },
+
+  resendMessage(e) {
+    console.log("进入");
+
+    const messageId = e.currentTarget.dataset.id;
+    const message = this.data.messageList.find((msg) => msg.id === messageId);
+
+    if (!message) return;
+
+    wx.sendSocketMessage({
+      data: JSON.stringify({
+        content: message.content,
+        createTime: new Date().toISOString(),
+        sender: this.data.userInfo.id,
+        receiver: this.data.secondUser.id,
+        type: 0,
+      }),
+      success: () => {
+        const messageList = this.data.messageList.map((msg) => {
+          if (msg.id === messageId) {
+            return { ...msg, sendFailed: false };
+          }
+          return msg;
+        });
+        this.setData({ messageList });
+      },
+    });
   },
 });
