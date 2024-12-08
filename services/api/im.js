@@ -24,8 +24,16 @@ const im = {
     data: null,
     auth: true,
   },
+  // 获取在线聊天的用户
   getChatUserList: {
     url: BASE_URL + "/v1/getChatUserList",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
+  // 获取聊天记录
+  getChatList: {
+    url: BASE_URL + "/v1/getChatList",
     method: "POST",
     data: null,
     auth: true,

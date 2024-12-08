@@ -248,11 +248,11 @@ Component({
         ? wx.getStorageSync("isReadNum")
         : 0,
     });
-    this.createWebSocket();
+    // this.createWebSocket();
   },
   moved: function () {
     console.log("moved触发");
-    this.createWebSocket();
+    // this.createWebSocket();
   },
   detached: function () {
     this.closeWebSocket();

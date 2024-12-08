@@ -1,6 +1,7 @@
 // app.js
 // 引入 toast 模块
 const toast = require("./companies/toast.js").default;
+import config from "./config/config";
 
 App({
   onLaunch: function () {
@@ -10,7 +11,51 @@ App({
       // });
     }
     // 拦截页面跳转
+    this.createWebSocket()
     this.interceptPageNavigation();
+  },
+
+  createWebSocket: function () {
+    const user = wx.getStorageSync("userInfo");
+    let url = `ws://${config.ip}/choose-websocket?userId=${user.id}`;
+    console.log(url);
+
+    // 创建 WebSocket 连接
+   wx.connectSocket({
+      url: url,
+      success: (res) => {
+        console.log("WebSocket 连接成功", res);
+      },
+      fail: (err) => {
+        console.error("WebSocket 连接失败", err);
+      },
+    });
+
+    // 监听 WebSocket 连接打开事件
+    wx.onSocketOpen((res) => {
+      console.log("WebSocket 连接已打开", res);
+    });
+
+    // 监听 WebSocket 消息事件
+    wx.onSocketMessage((res) => {
+      console.log("收到 WebSocket 消息", res.data);
+      // wx.setStorageSync("isReadNum");
+      // this.setData({
+      //   notificationCount: this.data.notificationCount + 1,
+      // });
+      // wx.setStorageSync("isReadNum", this.data.notificationCount);
+      // console.log("notificationCount 增加到", this.data.notificationCount);
+    });
+
+    // 监听 WebSocket 错误事件
+    wx.onSocketError((err) => {
+      console.error("WebSocket 错误", err);
+    });
+
+    // 监听 WebSocket 关闭事件
+    wx.onSocketClose((res) => {
+      console.log("WebSocket 连接已关闭", res);
+    });
   },
 
   interceptPageNavigation: function () {
@@ -94,6 +139,7 @@ App({
 
   globalData: {
     isLoggedIn: false,
+    socket: null,
   },
 
   // 使用引入的 showToast 方法
