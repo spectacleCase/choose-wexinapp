@@ -1,5 +1,6 @@
 import request_util from "../../../utils/request_util";
 import im from "../../../services/api/im";
+import util from "../../../utils/util";
 Page({
   data: {
     // 新朋友数据，按时间分组
@@ -56,15 +57,16 @@ Page({
 
   // 扫描二维码
   scanQRCode() {
-    wx.scanCode({
-      success(res) {
-        console.log("扫描结果：", res);
-        // 处理扫描结果
-      },
-      fail(err) {
-        console.error("扫描失败：", err);
-      },
-    });
+    util.scanQRCode("addFriend");
+    // wx.scanCode({
+    //   success(res) {
+    //     console.log("扫描结果：", res);
+    //     // 处理扫描结果
+    //   },
+    //   fail(err) {
+    //     console.error("扫描失败：", err);
+    //   },
+    // });
   },
 
   // 同意好友请求

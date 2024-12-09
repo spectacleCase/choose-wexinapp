@@ -4,6 +4,15 @@ const toast = require("./companies/toast.js").default;
 import config from "./config/config";
 
 App({
+  globalData: {
+    isLoggedIn: false,
+    socket: null,
+    reconnectAttempts: 0,
+    maxReconnectAttempts: 3,
+  },
+
+  // 使用引入的 showToast 方法
+  showToast: toast.showToast,
   onLaunch: function () {
     if (wx.getStorageSync("token")) {
       // wx.reLaunch({
@@ -11,7 +20,7 @@ App({
       // });
     }
     // 拦截页面跳转
-    this.createWebSocket()
+    this.createWebSocket();
     this.interceptPageNavigation();
   },
 
@@ -21,13 +30,15 @@ App({
     console.log(url);
 
     // 创建 WebSocket 连接
-   wx.connectSocket({
+    this.globalData.socket = wx.connectSocket({
       url: url,
       success: (res) => {
         console.log("WebSocket 连接成功", res);
+        this.globalData.reconnectAttempts = 0; // 重置重连次数
       },
       fail: (err) => {
         console.error("WebSocket 连接失败", err);
+        this.reconnectWebSocket();
       },
     });
 
@@ -55,7 +66,21 @@ App({
     // 监听 WebSocket 关闭事件
     wx.onSocketClose((res) => {
       console.log("WebSocket 连接已关闭", res);
+      this.reconnectWebSocket();
     });
+  },
+  reconnectWebSocket: function () {
+    if (
+      this.globalData.reconnectAttempts < this.globalData.maxReconnectAttempts
+    ) {
+      this.globalData.reconnectAttempts++;
+      console.log(`尝试重新连接，第 ${this.globalData.reconnectAttempts} 次`);
+      setTimeout(() => {
+        this.createWebSocket();
+      }, 2000); // 2秒后尝试重新连接
+    } else {
+      console.error("WebSocket 重连失败，已达最大重连次数");
+    }
   },
 
   interceptPageNavigation: function () {
@@ -136,12 +161,4 @@ App({
     }
     return false;
   },
-
-  globalData: {
-    isLoggedIn: false,
-    socket: null,
-  },
-
-  // 使用引入的 showToast 方法
-  showToast: toast.showToast,
 });

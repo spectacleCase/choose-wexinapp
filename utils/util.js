@@ -69,7 +69,35 @@ const uploadFileUitl = async (filePath, formData = {}) => {
   }
 };
 
+const scanQRCode = (type) => {
+  wx.scanCode({
+    success(res) {
+      console.log("扫描结果：", res);
+      // 处理扫描结果
+      const codeData = JSON.parse(res.result);
+      console.log(codeData);
+
+      switch (codeData.type) {
+        case "addFriend":
+          console.log(codeData);
+          wx.navigateTo({
+            url: `/pages/myself/edit_user_info/edit_user_info?isAdd=ture&id=${codeData.id}`,
+          });
+          console.log("这个是addFriend");
+          break;
+
+        default:
+          break;
+      }
+    },
+    fail(err) {
+      console.error("扫描失败：", err);
+    },
+  });
+};
+
 module.exports = {
   formatTime,
   uploadFileUitl,
+  scanQRCode,
 };

@@ -1,11 +1,11 @@
 .chat-detail {
-    min-height: 100vh;
+    min-height: 90vh;
     background: #f5f5f5;
     padding-bottom: 120rpx;
 }
 
 .message-list {
-    padding: 20rpx;
+    /* padding: 20rpx; */
 }
 
 .message-item {

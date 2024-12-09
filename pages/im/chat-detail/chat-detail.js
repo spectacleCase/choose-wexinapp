@@ -186,11 +186,11 @@ Page({
         .boundingClientRect((rect) => {
           wx.pageScrollTo({
             scrollTop: rect.height,
-            duration: 300,
+            duration:0,
           });
         })
         .exec();
-    }, 200);
+    }, 50);
   },
 
   resendMessage(e) {

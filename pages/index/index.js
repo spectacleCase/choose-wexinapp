@@ -2,6 +2,7 @@
 import RequestUtils from "../../utils/request_util";
 import User from "../../services/api/user";
 import Dishes from "../../services/api/dishes";
+import util from "../../utils/util.js";
 import config from "../../config/config.js";
 const toast = require("../../companies/toast.js").default;
 Component({
@@ -68,42 +69,7 @@ Component({
       // 这里可以添加搜索逻辑
     },
     goToScan() {
-      // wx.navigateTo({
-      //   url: "/pages/scan/scan",
-      // });
-      // 调用微信扫码API
-      wx.scanCode({
-        onlyFromCamera: true, // 只允许从相机扫码
-        scanType: ["qrCode", "barCode"], // 扫码类型
-        success: (res) => {
-          this.setData({
-            result: res.result,
-            isScanning: false,
-          });
-
-          // 扫描成功后的处理逻辑
-          wx.showModal({
-            title: "扫描成功",
-            content: "是否跳转到相应页面？",
-            success: (res) => {
-              if (res.confirm) {
-                // 这里可以根据扫描结果进行相应跳转
-                console.log(res);
-                console.log(this.data.result);
-
-                // this.handleScanResult(this.data.result);
-              }
-            },
-          });
-        },
-        fail: (err) => {
-          this.setData({ isScanning: false });
-          wx.showToast({
-            title: "扫描失败",
-            icon: "none",
-          });
-        },
-      });
+      util.scanQRCode();
     },
 
     showFilterOptions() {

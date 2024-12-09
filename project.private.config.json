@@ -9,15 +9,15 @@
     "miniprogram": {
       "list": [
         {
-          "name": "im",
-          "pathName": "pages/chat/chat",
-          "query": "",
+          "name": "添加好友",
+          "pathName": "pages/myself/edit_user_info/edit_user_info",
+          "query": "isAdd=ture&id=1865954472691900417",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "测试",
-          "pathName": "pages/test/test",
+          "name": "im",
+          "pathName": "pages/chat/chat",
           "query": "",
           "launchMode": "default",
           "scene": null
