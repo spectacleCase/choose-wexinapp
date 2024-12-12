@@ -34,4 +34,17 @@ Page({
       console.log("Page changed to:", options.page);
     }
   },
+  onPullDownRefresh() {
+    // 触发 Component 中的刷新逻辑
+    // this.selectComponent('#myComponent').refreshData();
+        // 获取当前显示的组件实例
+        const currentComponent = this.selectComponent("#" + this.data.currentPage);
+        if (currentComponent) {
+          // 调用组件的刷新方法
+          currentComponent.refreshData();
+        }
+    console.log("开始刷新");
+    // 停止下拉刷新
+    wx.stopPullDownRefresh();
+  }
 });

@@ -19,20 +19,21 @@ Component({
     recommendationCategories: ["菜品", "下午茶", "糕点"],
     selectedCount: "3个",
     selectedCategory: "菜品",
-    recommendationResults: [
-      {
-        id: 1,
-        image:
-          "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
-        shopName: "门店",
-        mark: "4.5",
-        coordinate: "20km",
-      },
-    ],
+    recommendationResults: [{
+      id: 1,
+      image: "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
+      shopName: "门店",
+      mark: "4.5",
+      coordinate: "20km",
+    }, ],
     locationName: "茂名市", // 添加这一行
   },
 
   methods: {
+    refreshData() {
+      console.log("index 组件正在刷新数据...");
+      // 在这里实现你的刷新逻辑
+    },
     getTips: async function () {
       const helData = await RequestUtils.request(User.user.healthTips);
       this.setData({
@@ -73,30 +74,42 @@ Component({
     },
 
     showFilterOptions() {
-      this.setData({ showFilter: true });
+      this.setData({
+        showFilter: true
+      });
     },
 
     showRecommendOptions() {
-      this.setData({ showRecommend: true });
+      this.setData({
+        showRecommend: true
+      });
     },
 
     onCountSelect(e) {
       const selectedCount = e.currentTarget.dataset.count;
-      this.setData({ selectedCount });
+      this.setData({
+        selectedCount
+      });
     },
 
     onCategorySelect(e) {
       const selectedCategory = e.currentTarget.dataset.category;
-      this.setData({ selectedCategory });
+      this.setData({
+        selectedCategory
+      });
     },
 
     confirmFilter() {
-      this.setData({ showFilter: false });
+      this.setData({
+        showFilter: false
+      });
       // 这里可以添加筛选后的逻辑,如更新推荐列表
     },
 
     confirmRecommend() {
-      this.setData({ showRecommend: false });
+      this.setData({
+        showRecommend: false
+      });
       this.getRecommendations();
     },
 
@@ -133,7 +146,9 @@ Component({
     },
 
     onCollectionTap() {
-      this.triggerEvent("navigateToPage", { url: "/pages/collect/collect" });
+      this.triggerEvent("navigateToPage", {
+        url: "/pages/collect/collect"
+      });
     },
     navigateToShop(event) {
       const shopId = event.currentTarget.dataset.shopid;

@@ -62,6 +62,17 @@ Page({
 
     this.getChatDetail(options);
   },
+  onUnload: function() {
+    // 页面卸载时触发
+    console.log('Page onUnload');
+    // 在这里可以进行一些清理工作，比如取消定时器、清除缓存等
+    im.im.readMessage.data = {
+      id: this.data.receiverId,
+      lastCreateTime: null,
+    };
+    request_util.request(im.im.readMessage);
+
+  },
 
   async getChatDetail(options) {
     im.im.getChatList.data = {

@@ -115,8 +115,9 @@ Page({
         duration: 2000,
       });
       console.log(res.data);
-      if (!res.data) {
-        wx.getStorageSync("userInfo", res.data);
+      if (res.data) {
+        console.log("进入1356");
+        wx.setStorageSync("userInfo", res.data);
       }
       toast.showToast("保存成功", "success");
       setTimeout(() => {

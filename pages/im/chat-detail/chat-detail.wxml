@@ -8,11 +8,11 @@
             <view class="message-item {{item.isSelf ? 'self' : ''}}">
                 <image class="avatar" src="{{item.isSelf ? userInfo.avatar : secondUser.avatar}}" mode="aspectFill"></image>
                 <view class="message-content">
-                    <view class="message-bubble">{{item.content}}
-                        <view wx:if="{{item.sendFailed}}" 
-                              class="error-icon"
-                              catchtap="resendMessage"
-                              data-id="{{item.id}}">!</view>
+                    <view class="message-bubble">
+                        {{item.content}}
+                        <view wx:if="{{item.sendFailed}}" class="error-icon" catchtap="resendMessage" data-id="{{item.id}}">
+                            !
+                        </view>
                     </view>
                 </view>
             </view>

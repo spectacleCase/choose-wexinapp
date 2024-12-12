@@ -38,6 +38,13 @@ const im = {
     data: null,
     auth: true,
   },
+  // 已读全部聊天记录
+  readMessage: {
+    url: BASE_URL + "/v1/readMessage",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
   // 添加好友
   addFriend: {
     url: BASE_URL + "/v1/addFriend",

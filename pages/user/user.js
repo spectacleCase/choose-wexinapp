@@ -7,6 +7,13 @@ Component({
   properties: {
     // 定义属性
   },
+  pageLifetimes: {
+    // 页面显示时触发
+    show() {
+      const userInfo = wx.getStorageSync("userInfo");
+      this.setData({ userInfo });
+    },
+  },
 
   data: {
     userInfo: {

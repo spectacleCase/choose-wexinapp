@@ -12,7 +12,10 @@
     <!-- 聊天列表 -->
     <view class="chat-list" wx:if="{{activeTab === 'chat'}}">
         <view class="chat-item" wx:for="{{chatList}}" wx:key="id" bindtap="gotoChat" data-id="{{item.id}}">
-            <image class="avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+            <view class="avatar-container">
+                <image class="avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+                <view class="badge" wx:if="{{item.notReadCount > 0}}">{{item.notReadCount}}</view>
+            </view>
             <view class="chat-info">
                 <view class="top-line">
                     <text class="username">{{item.username}}</text>

@@ -11,8 +11,8 @@
     <view class="info-item">
         <text class="label">性别</text>
         <radio-group class="radio-group" bindchange="onGenderChange">
-            <radio value="male" checked="{{userInfo.gender === '2'}}" disabled="{{isAdd}}">男</radio>
-            <radio value="female" checked="{{userInfo.gender === '1'}}" disabled="{{isAdd}}">
+            <radio value="1" checked="{{userInfo.gender === '1'}}" disabled="{{isAdd}}">男</radio>
+            <radio value="2" checked="{{userInfo.gender === '2'}}" disabled="{{isAdd}}">
                 女
             </radio>
         </radio-group>
@@ -21,7 +21,7 @@
         <text class="label">个性签名</text>
         <input class="input" value="{{userInfo.description}}" bindinput="onDescriptionChange" placeholder="请输入个性签名" disabled="{{isAdd}}" />
     </view>
-    <view class="info-item ">
+    <view class="info-item " wx:if="{{idAdd}}">
         <text class="label">添加备注</text>
         <textarea placeholder="请输入内容" value="{{remark}}" disabled="{{!isAdd}}" bindinput="onInput" />
     </view>
