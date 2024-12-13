@@ -7,6 +7,7 @@ App({
   globalData: {
     isLoggedIn: false,
     socket: null,
+    subscribeMap: {}, // 订阅者映射表
     reconnectAttempts: 0,
     maxReconnectAttempts: 3,
   },
@@ -20,8 +21,113 @@ App({
       // });
     }
     // 拦截页面跳转
-    this.createWebSocket();
+    // this.createWebSocket();
+    const user = wx.getStorageSync("userInfo");
+    let url = `ws://${config.ip}/choose-websocket?userId=${user.id}`;
+    this.initWebsocket(url);
+
     this.interceptPageNavigation();
+  },
+  /* TODO 单例websocket */
+  initWebsocket(url) {
+    const { socket, subscribeMap } = this.globalData;
+
+    if (socket) {
+      console.log("Websocket 已实例");
+      return;
+    }
+
+    this.globalData.socket = wx.connectSocket({
+      url: url,
+      success: () => {
+        console.log("Websocket 链接成功");
+      },
+      fail: (err) => {
+        console.error("websocket 链接错误", err);
+      },
+    });
+
+    // 监听Websocket 信息
+    wx.onSocketMessage((res) => {
+      console.log("app.js收到信息", res.data);
+      this.notifySubscribers(res.data);
+    });
+
+    wx.onSocketClose(() => {
+      console.log("webSocket 链接关闭");
+      // todo 设置心跳
+      this.globalData.socket = null;
+    });
+
+    wx.onSocketError((err) => {
+      console.log("WebSocket 连接错误", err);
+    });
+  },
+
+  // 发送消息
+  sendMessage(data, successCallback, failCallback) {
+    const { socket } = this.globalData;
+    if (!socket) {
+      console.log("WebSocket 未连接");
+      failCallback && failCallback("WebSocket 未连接");
+      return;
+    }
+
+    wx.sendSocketMessage({
+      data: data,
+      success: () => {
+        console.log("消息发送成功");
+        successCallback && successCallback();
+      },
+      fail: (err) => {
+        console.error("消息发送失败", err);
+        failCallback && failCallback(err);
+      },
+    });
+  },
+
+  // 订阅消息
+  subscribe(eventName, callback) {
+    const { subscribeMap } = this.globalData;
+    if (!subscribeMap[eventName]) {
+      subscribeMap[eventName] = [];
+    }
+    subscribeMap[eventName].push(callback);
+  },
+
+  // 取消订阅
+  unsubscribe(eventName, callback) {
+    const { subscribeMap } = this.globalData;
+    console.log(eventName);
+
+    if (subscribeMap[eventName]) {
+      subscribeMap[eventName] = subscribeMap[eventName].filter(
+        (cb) => cb !== callback
+      );
+      console.log("卸载之后的", subscribeMap);
+    }
+  },
+
+  // 通知订阅者
+  notifySubscribers(data) {
+    const { subscribeMap } = this.globalData;
+    console.log(subscribeMap);
+
+    const eventName = "message";
+    if (subscribeMap[eventName]) {
+      subscribeMap[eventName].forEach((callback) => {
+        callback(data);
+      });
+    }
+  },
+
+  // 关闭WebSocket 链接
+  closeWebsocket() {
+    const { socket } = this.globalData;
+    if (socket) {
+      wx.closeSocket();
+      this.globalData.socket = null;
+    }
   },
 
   createWebSocket: function () {
@@ -69,6 +175,7 @@ App({
       this.reconnectWebSocket();
     });
   },
+
   reconnectWebSocket: function () {
     if (
       this.globalData.reconnectAttempts < this.globalData.maxReconnectAttempts

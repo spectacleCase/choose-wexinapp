@@ -19,13 +19,16 @@ Component({
     recommendationCategories: ["菜品", "下午茶", "糕点"],
     selectedCount: "3个",
     selectedCategory: "菜品",
-    recommendationResults: [{
-      id: 1,
-      image: "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
-      shopName: "门店",
-      mark: "4.5",
-      coordinate: "20km",
-    }, ],
+    recommendationResults: [
+      {
+        id: 1,
+        image:
+          "https://tse3-mm.cn.bing.net/th/id/OIP-C.FE9NNGqPWChozbvboayLgwHaE8?rs=1&pid=ImgDetMain",
+        shopName: "门店",
+        mark: "4.5",
+        coordinate: "20km",
+      },
+    ],
     locationName: "茂名市", // 添加这一行
   },
 
@@ -42,8 +45,6 @@ Component({
     },
 
     getRecommendShops: async function () {
-      console.log("进入了推荐门店");
-
       const shopList = await RequestUtils.request(
         Dishes.dishes.getRecommendShops
       );
@@ -75,40 +76,40 @@ Component({
 
     showFilterOptions() {
       this.setData({
-        showFilter: true
+        showFilter: true,
       });
     },
 
     showRecommendOptions() {
       this.setData({
-        showRecommend: true
+        showRecommend: true,
       });
     },
 
     onCountSelect(e) {
       const selectedCount = e.currentTarget.dataset.count;
       this.setData({
-        selectedCount
+        selectedCount,
       });
     },
 
     onCategorySelect(e) {
       const selectedCategory = e.currentTarget.dataset.category;
       this.setData({
-        selectedCategory
+        selectedCategory,
       });
     },
 
     confirmFilter() {
       this.setData({
-        showFilter: false
+        showFilter: false,
       });
       // 这里可以添加筛选后的逻辑,如更新推荐列表
     },
 
     confirmRecommend() {
       this.setData({
-        showRecommend: false
+        showRecommend: false,
       });
       this.getRecommendations();
     },
@@ -147,7 +148,7 @@ Component({
 
     onCollectionTap() {
       this.triggerEvent("navigateToPage", {
-        url: "/pages/collect/collect"
+        url: "/pages/collect/collect",
       });
     },
     navigateToShop(event) {

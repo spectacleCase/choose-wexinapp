@@ -3,28 +3,54 @@ import request_util from "../../utils/request_util";
 import im from "../../services/api/im";
 const app = getApp();
 Component({
-  pageLifetimes: {
-    // 页面显示时触发
-    async show() {
-      const data = await request_util.request(im.im.getFriendList);
-      const chatList = await request_util.request(im.im.getChatUserList);
-      this.setData({
-        contactGroups: data.data.list,
-        chatList: chatList.data.list,
-        socket:app.globalData.socket
-      });
-    },
-  },
-  /**
-   * 页面的初始数据
-   */
   data: {
     activeTab: "chat",
     chatList: [],
     contactGroups: [],
-    socket:null
+    socket: null,
   },
+
+  pageLifetimes: {
+    // 页面显示时
+    async show() {
+      const data = await request_util.request(im.im.getFriendList);
+      const chatList = await request_util.request(im.im.getChatUserList);
+      this.boundHandleMessage = this.handleMessage.bind(this); 
+      app.subscribe("message", this.boundHandleMessage); 
+      this.setData({
+        contactGroups: data.data.list,
+        chatList: chatList.data.list,
+        socket: app.globalData.socket,
+      });
+    },
+
+    // 组件不显示
+    hide() {
+      app.unsubscribe("message", this.boundHandleMessage);
+    },
+  },
+
   methods: {
+    handleMessage(result) {
+      const message = JSON.parse(result);
+      console.log("这个是chat的 ", message);
+      if (this.data.chatList) {
+        let chatList = this.data.chatList;
+
+        chatList.forEach((chat) => {
+          if (chat.id === message.sender) {
+            chat.chat = message.content;
+            chat.createTime = this.formatTime(new Date().toISOString());
+            chat.notReadCount += 1;
+            this.setData({
+              chatList: chatList,
+            });
+            return;
+          }
+        });
+      }
+    },
+
     // 切换标签
     switchTab(e) {
       const tab = e.currentTarget.dataset.tab;
@@ -36,7 +62,6 @@ Component({
     // 跳转到聊天详情
     gotoChat(e) {
       const chatId = e.currentTarget.dataset.id;
-      // 找到对应的聊天信息
       const chat = this.data.chatList.find((item) => item.id === chatId);
       wx.navigateTo({
         url: `/pages/im/chat-detail/chat-detail?id=${chatId}&username=${chat.username}`,
@@ -49,6 +74,7 @@ Component({
         url: "/pages/im/new-friends/new-friends",
       });
     },
+
     formatTime(timeStr) {
       const date = new Date(timeStr);
       const hours = date.getHours().toString().padStart(2, "0");
@@ -56,35 +82,19 @@ Component({
       return `${hours}:${minutes}`;
     },
   },
+
   attached: async function () {
     const data = await request_util.request(im.im.getFriendList);
     const chatList = await request_util.request(im.im.getChatUserList);
+    this.boundHandleMessage = this.handleMessage.bind(this); // 缓存绑定结果
+    app.subscribe("message", this.boundHandleMessage); // 订阅消息
     this.setData({
       contactGroups: data.data.list,
       chatList: chatList.data.list,
-      socket:app.globalData.socket
     });
-    wx.onSocketMessage((result) => {
-      const message = JSON.parse(result.data);
-      console.log("这个是chat的 ",message);
-      if(this.data.chatList) {
-        console.log(this.data.chatList);
-        let chatList = this.data.chatList;
-        
-        chatList.forEach((chat) => {
-          if(chat.id === message.sender) {
-            console.log("进入");
-            chat.chat = message.content;
-            chat.createTime = this.formatTime(new Date().toISOString());
-            chat.notReadCount += 1;
-            this.setData({
-              chatList:chatList
-            })
-            console.log(this.data.chatList);
-            return
-          }
-        })
-      }
-    })
+  },
+
+  detached() {
+    app.unsubscribe("message", this.boundHandleMessage);
   },
 });

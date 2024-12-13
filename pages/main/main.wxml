@@ -1,1 +1,2 @@
+<!-- <message-popup show="{{showMessagePopup}}" avatar="{{newMessageAvatar}}" chatId="{{newMessageChatId}}" bind:popupClick="onPopupClick" /> -->
 <page-container current-page="{{currentPage}}"></page-container>

@@ -17,63 +17,26 @@ Page({
     messageList: [],
     inputValue: "",
     receiverId: "",
-    socket: null,
   },
 
   onLoad(options) {
-    this.setData({
-      receiverId: options.id,
-      socket: app.globalData.socket,
-    });
-
-    // this.sendMessage = function (message) {
-    //   wx.sendSocketMessage({
-    //     data: JSON.stringify(message),
-    //     success: () => console.log("消息发送成功"),
-    //     fail: (error) => console.error("消息发送失败", error),
-    //   });
-    // };
-
-    wx.onSocketMessage((res) => {
-      const message = JSON.parse(res.data);
-      const newMessage = {
-        content: message.content,
-        createTime: new Date().toISOString(),
-        sender: message.sender,
-        receiver: message.receiver,
-        type: message.type,
-      };
-
-      const formattedMessage = {
-        id: Date.now(),
-        content: newMessage.content,
-        time: this.formatTime(newMessage.createTime),
-        showTime: false,
-        isSelf: false,
-      };
-
-      this.setData({
-        messageList: [...this.data.messageList, formattedMessage],
-        inputValue: "",
-      });
-
-      this.scrollToBottom();
-    });
-
+    this.setData({ receiverId: options.id });
+    this.boundHandleMessage = this.handleMessage.bind(this);
+    app.subscribe("message", this.boundHandleMessage);
     this.getChatDetail(options);
   },
-  onUnload: function() {
-    // 页面卸载时触发
-    console.log('Page onUnload');
-    // 在这里可以进行一些清理工作，比如取消定时器、清除缓存等
+
+  // 页面卸载时触发
+  onUnload: function () {
+    app.unsubscribe("message", this.boundHandleMessage);
     im.im.readMessage.data = {
       id: this.data.receiverId,
       lastCreateTime: null,
     };
     request_util.request(im.im.readMessage);
-
   },
 
+  // 获取聊天详情
   async getChatDetail(options) {
     im.im.getChatList.data = {
       id: options.id,
@@ -100,13 +63,35 @@ Page({
       this.setData({
         messageList: formattedMessages,
       });
-
       wx.setNavigationBarTitle({
         title: data.seNickname,
       });
-
       this.scrollToBottom();
     }
+  },
+
+  handleMessage(result) {
+    const message = JSON.parse(result);
+    const newMessage = {
+      content: message.content,
+      createTime: new Date().toISOString(),
+      sender: message.sender,
+      receiver: message.receiver,
+      type: message.type,
+    };
+
+    const formattedMessage = {
+      id: Date.now(),
+      content: newMessage.content,
+      time: this.formatTime(newMessage.createTime),
+      showTime: false,
+      isSelf: false,
+    };
+    this.setData({
+      messageList: [...this.data.messageList, formattedMessage],
+      inputValue: "",
+    });
+    this.scrollToBottom();
   },
 
   formatMessageList(chatList) {
@@ -140,7 +125,6 @@ Page({
 
   async sendMessage() {
     if (!this.data.inputValue.trim()) return;
-
     const newMessage = {
       content: this.data.inputValue,
       createTime: new Date().toISOString(),
@@ -149,7 +133,6 @@ Page({
       type: 0,
       sendFailed: false,
     };
-
     const formattedMessage = {
       id: Date.now(),
       content: newMessage.content,
@@ -163,13 +146,13 @@ Page({
       messageList: [...this.data.messageList, formattedMessage],
       inputValue: "",
     });
-
     this.scrollToBottom();
 
     try {
-      wx.sendSocketMessage({
-        data: JSON.stringify(newMessage),
-        fail: () => {
+      app.sendMessage(
+        JSON.stringify(newMessage),
+        () => {},
+        () => {
           const messageList = this.data.messageList.map((msg) => {
             if (msg.id === formattedMessage.id) {
               return { ...msg, sendFailed: true };
@@ -177,8 +160,8 @@ Page({
             return msg;
           });
           this.setData({ messageList });
-        },
-      });
+        }
+      );
     } catch (error) {
       console.error("发送消息失败：", error);
     }
@@ -197,7 +180,7 @@ Page({
         .boundingClientRect((rect) => {
           wx.pageScrollTo({
             scrollTop: rect.height,
-            duration:0,
+            duration: 0,
           });
         })
         .exec();
@@ -205,22 +188,19 @@ Page({
   },
 
   resendMessage(e) {
-    console.log("进入");
-
     const messageId = e.currentTarget.dataset.id;
     const message = this.data.messageList.find((msg) => msg.id === messageId);
-
     if (!message) return;
-
-    wx.sendSocketMessage({
-      data: JSON.stringify({
+    
+    app.sendMessage(
+      JSON.stringify({
         content: message.content,
         createTime: new Date().toISOString(),
         sender: this.data.userInfo.id,
         receiver: this.data.secondUser.id,
         type: 0,
       }),
-      success: () => {
+      () => {
         const messageList = this.data.messageList.map((msg) => {
           if (msg.id === messageId) {
             return { ...msg, sendFailed: false };
@@ -229,6 +209,7 @@ Page({
         });
         this.setData({ messageList });
       },
-    });
+      () => {}
+    );
   },
 });

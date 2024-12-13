@@ -1,6 +1,12 @@
+const app = getApp();
 Page({
   data: {
     currentPage: "index",
+    showMessagePopup: false,
+    newMessageAvatar:
+      "https://choose-1326057669.cos.ap-guangzhou.myqcloud.com/2024/12/12/492bec4f80224d4f991c6c9299cde7fd.jpg",
+    newMessageChatId: "",
+    socket: null,
   },
 
   onLoad: function (options) {
@@ -23,28 +29,52 @@ Page({
       }
     } else {
       wx.removeStorageSync("userInfo");
-          wx.navigateTo({
-            url: "/pages/login/login",
-          });
+      wx.navigateTo({
+        url: "/pages/login/login",
+      });
     }
     if (options.page) {
       this.setData({
-        currentPage: options.page
+        currentPage: options.page,
       });
       console.log("Page changed to:", options.page);
     }
+    // this.setData({ socket: app.globalData.socket });
+    // wx.onSocketMessage((result) => {
+    //   const message = JSON.parse(result.data);
+    //   console.log("收到新的信息提示", message);
+
+    //   this.showNewMessagePopup(message.avatar, message.sender);
+    // });
   },
+  // 处理弹窗点击事件
+  onPopupClick() {
+    this.setData({
+      showMessagePopup: false,
+    });
+  },
+  // 显示新消息提示
+  showNewMessagePopup(avatar, chatId) {
+    console.log("进入信息提示");
+
+    this.setData({
+      showMessagePopup: true,
+      newMessageAvatar: avatar,
+      newMessageChatId: chatId,
+    });
+  },
+
   onPullDownRefresh() {
     // 触发 Component 中的刷新逻辑
     // this.selectComponent('#myComponent').refreshData();
-        // 获取当前显示的组件实例
-        const currentComponent = this.selectComponent("#" + this.data.currentPage);
-        if (currentComponent) {
-          // 调用组件的刷新方法
-          currentComponent.refreshData();
-        }
+    // 获取当前显示的组件实例
+    const currentComponent = this.selectComponent("#" + this.data.currentPage);
+    if (currentComponent) {
+      // 调用组件的刷新方法
+      currentComponent.refreshData();
+    }
     console.log("开始刷新");
     // 停止下拉刷新
     wx.stopPullDownRefresh();
-  }
+  },
 });

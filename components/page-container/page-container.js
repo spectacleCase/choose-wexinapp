@@ -2,6 +2,7 @@ import Common from "../../services/api/common";
 import Comment from "../../services/api/comment";
 import RequestUtil from "../../utils/request_util";
 import config from "../../config/config";
+const app = getApp();
 
 Component({
   properties: {
@@ -9,7 +10,7 @@ Component({
       type: String,
       value: "index",
     },
-    // 添加一个事件监听器
+
     navigateToPageEvent: {
       type: String,
       value: "",
@@ -51,6 +52,7 @@ Component({
       const { url } = event.detail;
       this.navigateTo(url);
     },
+
     toggleTabbar: function () {
       const isOpen = !this.data.isTabbarOpen;
       this.setData({ isTabbarOpen: isOpen });
@@ -75,9 +77,6 @@ Component({
       const page = Object.keys(this.data.pages).find(
         (key) => this.data.pages[key].url === url
       );
-      console.log(url);
-
-      console.log("结果是", page);
       if (page) {
         this.setData({ currentPage: page });
       }
@@ -94,13 +93,11 @@ Component({
         duration: 300,
         timingFunction: "ease",
       });
-
       if (isOpen) {
         animation.translateX(250).translateY(100).rotateZ(-15).step();
       } else {
         animation.translateX(0).translateY(0).rotateZ(0).step();
       }
-
       this.setData({
         pageAnimation: animation.export(),
       });
@@ -126,7 +123,6 @@ Component({
       if (absMoveX > absMoveY && !this.data.canSlide) {
         this.setData({ canSlide: true });
       }
-
       if (this.data.canSlide && moveX > 0 && moveX <= this.rpxToPx(250)) {
         const animation = wx.createAnimation({
           duration: 0,
@@ -156,85 +152,18 @@ Component({
     },
 
     getWeather: async function () {
-      console.log("到了导航栏 ");
       const data = await RequestUtil.request(Common.common.getWeather);
       this.setData({
         weather: data.data,
       });
-      console.log("结果");
-      console.log(this.data.weather);
     },
 
-    createWebSocket: function () {
-      const user = wx.getStorageSync("userInfo");
-      let url = `ws://${config.ip}/choose-websocket?userId=${user.id}`;
-      console.log(url);
-
-      // 创建 WebSocket 连接
-      this.data.socketTask = wx.connectSocket({
-        url: url,
-        success: (res) => {
-          console.log("WebSocket 连接成功", res);
-        },
-        fail: (err) => {
-          console.error("WebSocket 连接失败", err);
-        },
+    handleMessage(result) {
+      wx.setStorageSync("isReadNum");
+      this.setData({
+        notificationCount: this.data.notificationCount + 1,
       });
-
-      // 监听 WebSocket 连接打开事件
-      wx.onSocketOpen((res) => {
-        console.log("WebSocket 连接已打开", res);
-      });
-
-      // 监听 WebSocket 消息事件
-      wx.onSocketMessage((res) => {
-        console.log("收到 WebSocket 消息", res.data);
-        wx.setStorageSync("isReadNum");
-        this.setData({
-          notificationCount: this.data.notificationCount + 1,
-        });
-        wx.setStorageSync("isReadNum", this.data.notificationCount);
-        console.log("notificationCount 增加到", this.data.notificationCount);
-      });
-
-      // 监听 WebSocket 错误事件
-      wx.onSocketError((err) => {
-        console.error("WebSocket 错误", err);
-      });
-
-      // 监听 WebSocket 关闭事件
-      wx.onSocketClose((res) => {
-        console.log("WebSocket 连接已关闭", res);
-      });
-    },
-
-    // 发送消息
-    sendMessage: function () {
-      if (this.data.socketTask) {
-        this.data.socketTask.send({
-          data: "Hello, WebSocket!",
-          success: (res) => {
-            console.log("消息发送成功", res);
-          },
-          fail: (err) => {
-            console.error("消息发送失败", err);
-          },
-        });
-      }
-    },
-
-    // 关闭 WebSocket 连接
-    closeWebSocket: function () {
-      if (this.data.socketTask) {
-        this.data.socketTask.close({
-          success: (res) => {
-            console.log("WebSocket 连接已关闭", res);
-          },
-          fail: (err) => {
-            console.error("WebSocket 关闭失败", err);
-          },
-        });
-      }
+      wx.setStorageSync("isReadNum", this.data.notificationCount);
     },
   },
 
@@ -242,19 +171,15 @@ Component({
     this.getWeather();
     const data = await RequestUtil.request(Comment.comment.getIsReadNum);
     wx.setStorageSync("isReadNum", data.data.num);
-    console.log("att触发");
     this.setData({
       notificationCount: wx.getStorageSync("isReadNum")
         ? wx.getStorageSync("isReadNum")
         : 0,
     });
-    // this.createWebSocket();
-  },
-  moved: function () {
-    console.log("moved触发");
-    // this.createWebSocket();
+    this.boundHandleMessage = this.handleMessage.bind(this);
+    app.subscribe("message", this.boundHandleMessage);
   },
   detached: function () {
-    this.closeWebSocket();
+    app.unsubscribe("message", this.boundHandleMessage);
   },
 });
