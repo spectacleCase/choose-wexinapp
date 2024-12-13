@@ -39,6 +39,8 @@ Page({
       });
       console.log("Page changed to:", options.page);
     }
+    this.boundHandleMessage = this.handleMessage.bind(this);
+    app.subscribe("message", this.boundHandleMessage);
     // this.setData({ socket: app.globalData.socket });
     // wx.onSocketMessage((result) => {
     //   const message = JSON.parse(result.data);
@@ -47,21 +49,42 @@ Page({
     //   this.showNewMessagePopup(message.avatar, message.sender);
     // });
   },
+  onShow() {
+    // 页面显示时触发
+    console.log("页面显示");
+    // this.boundHandleMessage = this.handleMessage.bind(this);
+    app.subscribe("message", this.boundHandleMessage);
+  },
+  onHide() {
+    // 页面隐藏时触发
+    console.log("页面隐藏");
+    const app = getApp();
+    app.unsubscribe("message", this.boundHandleMessage);
+  },
+
   // 处理弹窗点击事件
   onPopupClick() {
     this.setData({
       showMessagePopup: false,
     });
   },
+
   // 显示新消息提示
   showNewMessagePopup(avatar, chatId) {
     console.log("进入信息提示");
-
     this.setData({
       showMessagePopup: true,
       newMessageAvatar: avatar,
       newMessageChatId: chatId,
     });
+  },
+
+  handleMessage(result) {
+    const message = JSON.parse(result);
+    console.log("收到新的信息提示", message);
+    console.log("现在的页面是", this.data.currentPage);
+
+    this.showNewMessagePopup(message.avatar, message.sender);
   },
 
   onPullDownRefresh() {
@@ -70,11 +93,9 @@ Page({
     // 获取当前显示的组件实例
     const currentComponent = this.selectComponent("#" + this.data.currentPage);
     if (currentComponent) {
-      // 调用组件的刷新方法
       currentComponent.refreshData();
     }
     console.log("开始刷新");
-    // 停止下拉刷新
     wx.stopPullDownRefresh();
   },
 });

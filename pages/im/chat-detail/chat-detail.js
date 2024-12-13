@@ -74,7 +74,7 @@ Page({
     const message = JSON.parse(result);
     const newMessage = {
       content: message.content,
-      createTime: new Date().toISOString(),
+      createTime: new Date().toISOString(), // ISO 格式，不会有问题
       sender: message.sender,
       receiver: message.receiver,
       type: message.type,
@@ -83,7 +83,7 @@ Page({
     const formattedMessage = {
       id: Date.now(),
       content: newMessage.content,
-      time: this.formatTime(newMessage.createTime),
+      time: this.formatTime(newMessage.createTime), // 修复日期格式
       showTime: false,
       isSelf: false,
     };
@@ -102,7 +102,7 @@ Page({
       return {
         id: msg.id,
         content: msg.content,
-        time: this.formatTime(msg.createTime),
+        time: this.formatTime(msg.createTime), // 修复日期格式
         showTime: showTime,
         isSelf: isSelf,
       };
@@ -111,13 +111,16 @@ Page({
 
   shouldShowTime(currentMsg, prevMsg) {
     if (!prevMsg) return true;
-    const currentTime = new Date(currentMsg.createTime).getTime();
-    const prevTime = new Date(prevMsg.createTime).getTime();
+    const currentTime = new Date(
+      currentMsg.createTime.replace(" ", "T")
+    ).getTime(); // 修复日期格式
+    const prevTime = new Date(prevMsg.createTime.replace(" ", "T")).getTime(); // 修复日期格式
     return currentTime - prevTime > 5 * 60 * 1000;
   },
 
   formatTime(timeStr) {
-    const date = new Date(timeStr);
+    const fixedTimeStr = timeStr.replace(" ", "T"); // 替换空格为 T
+    const date = new Date(fixedTimeStr);
     const hours = date.getHours().toString().padStart(2, "0");
     const minutes = date.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
@@ -126,8 +129,9 @@ Page({
   async sendMessage() {
     if (!this.data.inputValue.trim()) return;
     const newMessage = {
+      messageType: "message",
       content: this.data.inputValue,
-      createTime: new Date().toISOString(),
+      createTime: new Date().toISOString(), // ISO 格式，不会有问题
       sender: this.data.userInfo.id,
       receiver: this.data.secondUser.id,
       type: 0,
@@ -136,7 +140,7 @@ Page({
     const formattedMessage = {
       id: Date.now(),
       content: newMessage.content,
-      time: this.formatTime(newMessage.createTime),
+      time: this.formatTime(newMessage.createTime), // 修复日期格式
       showTime: true,
       isSelf: true,
       sendFailed: false,
@@ -191,11 +195,12 @@ Page({
     const messageId = e.currentTarget.dataset.id;
     const message = this.data.messageList.find((msg) => msg.id === messageId);
     if (!message) return;
-    
+
     app.sendMessage(
       JSON.stringify({
+        messageType: "message",
         content: message.content,
-        createTime: new Date().toISOString(),
+        createTime: new Date().toISOString(), // ISO 格式，不会有问题
         sender: this.data.userInfo.id,
         receiver: this.data.secondUser.id,
         type: 0,

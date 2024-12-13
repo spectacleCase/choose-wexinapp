@@ -9,7 +9,9 @@
   display: flex;
   align-items: center;
   z-index: 999;
-  animation: slideIn 0.3s ease;
+  touch-action: pan-x;
+  transition: transform 0.1s ease-out;
+  /* 添加过渡效果 */
 }
 
 .popup-avatar {

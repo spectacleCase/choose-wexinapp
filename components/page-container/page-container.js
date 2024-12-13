@@ -177,9 +177,9 @@ Component({
         : 0,
     });
     this.boundHandleMessage = this.handleMessage.bind(this);
-    app.subscribe("message", this.boundHandleMessage);
+    app.subscribe("notify", this.boundHandleMessage);
   },
   detached: function () {
-    app.unsubscribe("message", this.boundHandleMessage);
+    app.unsubscribe("notify", this.boundHandleMessage);
   },
 });
