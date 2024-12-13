@@ -10,6 +10,9 @@ App({
     subscribeMap: {}, // 订阅者映射表
     reconnectAttempts: 0,
     maxReconnectAttempts: 3,
+    heartbeatTimer: null, // 添加心跳定时器
+    reconnectTimer: null, // 添加重连定时器
+    currentPage: "index",
   },
 
   // 使用引入的 showToast 方法
@@ -30,7 +33,7 @@ App({
   },
   /* TODO 单例websocket */
   initWebsocket(url) {
-    const { socket, subscribeMap } = this.globalData;
+    const { socket } = this.globalData;
 
     if (socket) {
       console.log("Websocket 已实例");
@@ -39,12 +42,25 @@ App({
 
     this.globalData.socket = wx.connectSocket({
       url: url,
-      success: () => {
-        console.log("Websocket 链接成功");
-      },
       fail: (err) => {
-        console.error("websocket 链接错误", err);
+        console.error("websocket 链接创建失败", err);
+        this.reconnect(url);
       },
+    });
+
+    // 监听连接打开
+    wx.onSocketOpen(() => {
+      console.log("Websocket 链接成功");
+      this.startHeartbeat();
+      this.globalData.reconnectAttempts = 0;
+    });
+
+    // 监听连接错误
+    wx.onSocketError((err) => {
+      console.log("WebSocket 连接错误", err);
+      this.stopHeartbeat();
+      this.globalData.socket = null;
+      this.reconnect(url);
     });
 
     // 监听Websocket 信息
@@ -55,12 +71,9 @@ App({
 
     wx.onSocketClose(() => {
       console.log("webSocket 链接关闭");
-      // todo 设置心跳
+      this.stopHeartbeat(); // 停止心跳
       this.globalData.socket = null;
-    });
-
-    wx.onSocketError((err) => {
-      console.log("WebSocket 连接错误", err);
+      this.reconnect(url); // 连接关闭时尝试重连
     });
   },
 
@@ -124,11 +137,11 @@ App({
   closeWebsocket() {
     const { socket } = this.globalData;
     if (socket) {
+      this.stopHeartbeat();
       wx.closeSocket();
       this.globalData.socket = null;
     }
   },
-  
 
   interceptPageNavigation: function () {
     const originalNavigateTo = wx.navigateTo;
@@ -207,5 +220,48 @@ App({
       return true;
     }
     return false;
+  },
+
+  // 添加心跳机制
+  startHeartbeat() {
+    this.stopHeartbeat(); // 先清除可能存在的心跳定时器
+    this.globalData.heartbeatTimer = setInterval(() => {
+      this.sendMessage(
+        JSON.stringify({ messageType: "heartbeat" }),
+        null,
+        () => {
+          console.log("心跳发送失败，可能已断开连接");
+          this.closeWebsocket();
+        }
+      );
+    }, 30000); // 每30秒发送一次心跳
+  },
+
+  stopHeartbeat() {
+    if (this.globalData.heartbeatTimer) {
+      clearInterval(this.globalData.heartbeatTimer);
+      this.globalData.heartbeatTimer = null;
+    }
+  },
+
+  // 添加重连机制
+  reconnect(url) {
+    const { reconnectAttempts, maxReconnectAttempts, reconnectTimer } =
+      this.globalData;
+
+    if (reconnectTimer) {
+      clearTimeout(reconnectTimer);
+    }
+
+    if (reconnectAttempts < maxReconnectAttempts) {
+      console.log(`尝试第 ${reconnectAttempts + 1} 次重连`);
+      this.globalData.reconnectTimer = setTimeout(() => {
+        this.globalData.reconnectAttempts++;
+        this.initWebsocket(url);
+      }, 3000); // 3秒后尝试重连
+    } else {
+      console.log("重连次数已达上限，停止重连");
+      toast.showToast("网络连接失败，请检查网络后重试", "error");
+    }
   },
 });

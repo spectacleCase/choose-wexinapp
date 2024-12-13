@@ -9,6 +9,11 @@ Component({
     currentPage: {
       type: String,
       value: "index",
+      observer: function (newVal) {
+        // 将 currentPage 的值存储到全局变量中
+        // const app = getApp();
+        app.globalData.currentPage = newVal;
+      },
     },
 
     navigateToPageEvent: {
@@ -79,6 +84,7 @@ Component({
       );
       if (page) {
         this.setData({ currentPage: page });
+        // app.globalData.currentPage = page;
       }
       this.toggleTabbar();
     },

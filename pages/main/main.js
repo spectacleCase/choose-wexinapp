@@ -1,3 +1,4 @@
+// import page_container from "../../components/page-container";
 const app = getApp();
 Page({
   data: {
@@ -41,23 +42,12 @@ Page({
     }
     this.boundHandleMessage = this.handleMessage.bind(this);
     app.subscribe("message", this.boundHandleMessage);
-    // this.setData({ socket: app.globalData.socket });
-    // wx.onSocketMessage((result) => {
-    //   const message = JSON.parse(result.data);
-    //   console.log("收到新的信息提示", message);
-
-    //   this.showNewMessagePopup(message.avatar, message.sender);
-    // });
   },
+
   onShow() {
-    // 页面显示时触发
-    console.log("页面显示");
-    // this.boundHandleMessage = this.handleMessage.bind(this);
     app.subscribe("message", this.boundHandleMessage);
   },
   onHide() {
-    // 页面隐藏时触发
-    console.log("页面隐藏");
     const app = getApp();
     app.unsubscribe("message", this.boundHandleMessage);
   },
@@ -71,7 +61,6 @@ Page({
 
   // 显示新消息提示
   showNewMessagePopup(avatar, chatId) {
-    console.log("进入信息提示");
     this.setData({
       showMessagePopup: true,
       newMessageAvatar: avatar,
@@ -82,9 +71,9 @@ Page({
   handleMessage(result) {
     const message = JSON.parse(result);
     console.log("收到新的信息提示", message);
-    console.log("现在的页面是", this.data.currentPage);
-
-    this.showNewMessagePopup(message.avatar, message.sender);
+    if (app.globalData.currentPage !== "chat") {
+      this.showNewMessagePopup(message.avatar, message.sender);
+    }
   },
 
   onPullDownRefresh() {
