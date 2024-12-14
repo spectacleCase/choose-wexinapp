@@ -263,6 +263,8 @@ Page({
         shops: formattedShopList,
         categories: formattedColumnList,
         allTags: formattedTagList,
+        selectedShop:
+          formattedShopList.length > 0 ? formattedShopList[0] : null,
       });
     } catch (error) {
       console.error("Error fetching data:", error);

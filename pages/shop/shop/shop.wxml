@@ -24,7 +24,6 @@
                 </view>
             </view>
         </view>
-
         <!-- 轮播图部分 -->
         <view class="swiper-container">
             <swiper class="shop-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}" circular="{{true}}" indicator-color="rgba(255, 255, 255, 0.6)" indicator-active-color="#FFA500">
@@ -33,16 +32,14 @@
                 </swiper-item>
             </swiper>
         </view>
-
         <!-- 地址信息 -->
         <view class="address-info">
             <view class="address-details">
-                <text class="address-text">{{coordinate}}</text>
-                <text class="distance">距您500米</text>
+                <text class="address-text">{{addressName}}</text>
+                <text class="distance">{{distance}}</text>
             </view>
             <image class="navigation-icon" src="../../../assets/images/导航.png" bindtap="navigate"></image>
         </view>
-
         <!-- 选项卡 -->
         <view class="sticky-wrapper">
             <view class="tab-bar" id="originalTabBar">

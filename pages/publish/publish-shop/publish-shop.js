@@ -19,6 +19,7 @@ Page({
       image: "",
       coordinate: "",
     },
+    isAdd: false,
   },
 
   onShopNameInput(e) {
@@ -100,6 +101,9 @@ Page({
     // 这里添加发布店铺的逻辑
     console.log("发布店铺", this.data);
     let images = "";
+    this.setData({
+      isAdd: true,
+    });
     this.data.shopImages.forEach((item) => {
       images += item + ",";
     });

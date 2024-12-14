@@ -1,6 +1,7 @@
 import RequestUtils from "../../../utils/request_util";
 import Dishes from "../../../services/api/dishes";
 import Comment from "../../../services/api/comment";
+import common from "../../../services/api/common";
 
 // pages/shop/shop/shop.js
 Page({
@@ -15,6 +16,10 @@ Page({
     coordinate: "",
     shopName: "",
     mark: null,
+    distance: "",
+    addressName: "",
+    latitude: null, // 纬度
+    longitude: null, // 经度
     dishes: [
       // 示例菜品数据
 
@@ -160,6 +165,45 @@ Page({
       address: "店铺地址",
     });
   },
+  getUserLocation: function (coordinate) {
+    wx.getLocation({
+      type: "wgs84", // 坐标类型，wgs84 是 GPS 坐标，gcj02 是国测局坐标（适用于腾讯地图、高德地图）
+      success: async (res) => {
+        // 成功获取坐标
+        const latitude = res.latitude; // 纬度
+        const longitude = res.longitude; // 经度
+        console.log("纬度:", latitude);
+        console.log("经度:", longitude);
+
+        // 更新页面数据
+        this.setData({
+          latitude: latitude,
+          longitude: longitude,
+        });
+
+        common.common.getAddressDit.data = {
+          target: coordinate,
+          address: longitude + "," + latitude,
+        };
+        const addressDit = await RequestUtils.request(
+          common.common.getAddressDit
+        );
+
+        this.setData({
+          distance: addressDit.data.distance,
+          addressName: addressDit.data.addressName,
+        });
+      },
+      fail: (err) => {
+        // 获取坐标失败
+        console.error("获取坐标失败:", err);
+        wx.showToast({
+          title: "获取位置失败，请检查权限",
+          icon: "none",
+        });
+      },
+    });
+  },
 
   onPageScroll(e) {
     const query = wx.createSelectorQuery();
@@ -200,6 +244,8 @@ Page({
     );
     const data = await RequestUtils.request(Dishes.dishes.getShopDetails);
     console.log(data);
+
+    this.getUserLocation(data.data.coordinate);
 
     this.setData({
       shopId: shopId,
