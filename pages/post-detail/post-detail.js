@@ -153,4 +153,11 @@ Page({
       });
     }
   },
+
+  addFriend(e) {
+    const { id } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/myself/edit_user_info/edit_user_info?isAdd=ture&id=${id}`,
+    });
+  },
 });

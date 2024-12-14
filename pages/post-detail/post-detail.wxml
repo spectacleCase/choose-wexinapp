@@ -2,7 +2,7 @@
     <!-- 帖子内容卡片 -->
     <view class="post-card">
         <view class="author-info">
-            <image class="avatar" src="{{post.avatar}}" mode="aspectFill"></image>
+            <image class="avatar" src="{{post.avatar}}" mode="aspectFill" bindtap="addFriend" data-id="{{post.userId}}"></image>
             <view class="info-right">
                 <text class="username">{{post.userName}}</text>
                 <text class="time">{{post.createTime}}</text>
@@ -25,7 +25,7 @@
             <block wx:for="{{subComments}}" wx:key="id">
                 <!-- 父评论 -->
                 <view class="comment-item">
-                    <image class="comment-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+                    <image class="comment-avatar" src="{{item.avatar}}" mode="aspectFill" bindtap="addFriend" data-id="{{item.userId}}"></image>
                     <view class="comment-right">
                         <view class="comment-username">{{item.userName}}</view>
                         <view class="comment-content" bindtap="onCommentTap" data-id="{{item.id}}" data-name="{{item.userName}}">
@@ -36,7 +36,7 @@
                         <view class="reply-list" wx:if="{{item.subComments && item.subComments.length > 0}}">
                             <block wx:for="{{item.subComments}}" wx:for-item="reply" wx:key="id">
                                 <view class="reply-item">
-                                    <image class="reply-avatar" src="{{reply.avatar}}" mode="aspectFill"></image>
+                                    <image class="reply-avatar" src="{{reply.avatar}}" mode="aspectFill" bindtap="addFriend" data-id="{{reply.userId}}"></image>
                                     <view class="reply-right">
                                         <view class="reply-username">{{reply.userName}}</view>
                                         <view class="reply-content" bindtap="onCommentTap" data-id="{{reply.id}}" data-name="{{reply.userName}}">
@@ -50,7 +50,7 @@
                                         <view class="reply-list" wx:if="{{reply.subComments && reply.subComments.length > 0}}">
                                             <block wx:for="{{reply.subComments}}" wx:for-item="subReply" wx:key="id">
                                                 <view class="reply-item">
-                                                    <image class="reply-avatar" src="{{subReply.avatar}}" mode="aspectFill"></image>
+                                                    <image class="reply-avatar" src="{{subReply.avatar}}" mode="aspectFill" bindtap="addFriend" data-id="{{subReply.userId}}"></image>
                                                     <view class="reply-right">
                                                         <view class="reply-username">
                                                             {{subReply.userName}}

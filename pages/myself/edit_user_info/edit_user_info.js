@@ -127,12 +127,21 @@ Page({
 
     // 保存成功后返回上一页
   },
-  addFried() {
+  async addFried() {
     im.im.addFriend.data = {
       friendId: this.data.friedId,
       remark: this.data.remark,
     };
-    request_util.request(im.im.addFriend);
+    const data = await request_util.request(im.im.addFriend);
+    if (data.message === "好友已添加，请勿重复添加") {
+      toast.showToast(data.message, "error");
+    } else {
+      toast.showToast(data.message, "success");
+    }
+
+    setTimeout(() => {
+      wx.navigateBack();
+    }, 1500);
   },
   getUser: async function () {
     const userData = await RequestUtils.request(User.user.getUser);
