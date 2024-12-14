@@ -1,0 +1,4 @@
+<view class="message-popup {{show ? 'show' : ''}}" wx:if="{{show}}" bindtap="handleTap" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd" style="transform: translateX({{moveDistance}}px)">
+  <image class="popup-avatar" src="{{avatar}}" mode="aspectFill"></image>
+  <text class="popup-text">您有一条新信息</text>
+</view>

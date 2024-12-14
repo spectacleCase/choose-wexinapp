@@ -1,11 +1,18 @@
-import RequestUtils from "../../../utils/request_util";
-import Recommend from "../../../services/api/recommend";
-import User from "../../../services/api/user";
-const toast = require("../../../companies/toast.js").default;
+import RequestUtils from "../../utils/request_util.js";
+import Recommend from "../../services/api/recommend.js";
+import User from "../../services/api/user.js";
+const toast = require("../../companies/toast.js").default;
 // user.js
 Component({
   properties: {
     // 定义属性
+  },
+  pageLifetimes: {
+    // 页面显示时触发
+    show() {
+      const userInfo = wx.getStorageSync("userInfo");
+      this.setData({ userInfo });
+    },
   },
 
   data: {
@@ -109,6 +116,13 @@ Component({
           icon: "none",
         });
       }
+    },
+    showQRCode: function (e) {
+      // 阻止事件冒泡
+      // e.stopPropagation();
+      wx.navigateTo({
+        url: "/pages/myself/qrcode/qrcode",
+      });
     },
   },
 

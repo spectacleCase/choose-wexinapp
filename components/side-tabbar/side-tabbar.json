@@ -3,6 +3,6 @@
   "usingComponents": {
     "index-page": "/pages/index/index",
     "settings-page": "/pages/settings/settings",
-    "user": "/pages/myself/user/user"
+    "user": "/pages/user/user"
   }
 }

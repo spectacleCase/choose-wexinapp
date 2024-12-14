@@ -1,0 +1,28 @@
+<view class="chat-detail">
+    <!-- 聊天内容区域 -->
+    <scroll-view class="message-list" scroll-y id="message-list">
+        <block wx:for="{{messageList}}" wx:key="id">
+            <!-- 时间显示 -->
+            <view class="time-display" wx:if="{{item.showTime}}">{{item.time}}</view>
+            <!-- 消息内容 -->
+            <view class="message-item {{item.isSelf ? 'self' : ''}}">
+                <image class="avatar" src="{{item.isSelf ? userInfo.avatar : secondUser.avatar}}" mode="aspectFill"></image>
+                <view class="message-content">
+                    <view class="message-bubble">
+                        {{item.content}}
+                        <view wx:if="{{item.sendFailed}}" class="error-icon" catchtap="resendMessage" data-id="{{item.id}}">
+                            !
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+    <!-- 底部输入区域 -->
+    <view class="input-area">
+        <view class="input-box">
+            <input type="text" value="{{inputValue}}" bindinput="onInput" confirm-type="send" bindconfirm="sendMessage" placeholder="请输入消息" />
+        </view>
+        <view class="send-btn {{inputValue ? 'active' : ''}}" bindtap="sendMessage">发送</view>
+    </view>
+</view>

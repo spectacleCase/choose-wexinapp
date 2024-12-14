@@ -9,16 +9,23 @@
     "miniprogram": {
       "list": [
         {
-          "name": "测试2",
-          "pathName": "pages/search/result/result",
-          "query": "term=美味披萨",
+          "name": "添加好友",
+          "pathName": "pages/myself/edit_user_info/edit_user_info",
+          "query": "isAdd=ture&id=1865954472691900417",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "测试",
-          "pathName": "pages/forum/forum",
+          "name": "im",
+          "pathName": "pages/chat/chat",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "测试2",
+          "pathName": "pages/search/result/result",
+          "query": "term=美味披萨",
           "launchMode": "default",
           "scene": null
         }

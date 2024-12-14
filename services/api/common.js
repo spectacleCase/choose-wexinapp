@@ -54,6 +54,13 @@ const common = {
     auth: true,
     data: null,
   },
+  // 查询地址名称和距离
+  getAddressDit: {
+    url: BASE_URL + "/v1/getAddressDit",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
 };
 
 export default {

@@ -21,6 +21,6 @@
       <text class="location-value">{{location.address || '点击选择'}}</text>
     </view>
   </view>
-  <button class="publish-btn" bindtap="publishShop">发布店铺</button>
+  <button class="publish-btn" bindtap="publishShop"  disabled="{{isAdd}}">发布店铺</button>
   <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
 </view>

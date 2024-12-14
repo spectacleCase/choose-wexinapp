@@ -11,9 +11,10 @@
     </view>
     <view class="personal-info-tag">个人信息 ></view>
     <view class="user-decoration">
-      <image class="user-decoration-icon" src="../../../assets/images/食物&器皿－酒.png" mode="aspectFit"></image>
-      <image class="user-decoration-icon" src="../../../assets/images/食物&器皿－披萨.png" mode="aspectFit"></image>
+      <image class="user-decoration-icon" src="../../assets/images/食物&器皿－酒.png" mode="aspectFit"></image>
+      <image class="user-decoration-icon" src="../../assets/images/食物&器皿－披萨.png" mode="aspectFit"></image>
     </view>
+    <image class="qr-code-icon" src="../../assets/images/二维码.png" mode="aspectFit" catchtap="showQRCode"></image>
   </view>
   <view class="user-section">
     <view class="user-section-header">
@@ -38,11 +39,11 @@
   <view class="user-actions">
     <view class="user-action-item" bindtap="navigateToAboutUs">
       <text>关于我们</text>
-      <image class="user-action-arrow" src="../../../assets/images/我的.png" mode="aspectFit"></image>
+      <image class="user-action-arrow" src="../../assets/images/我的.png" mode="aspectFit"></image>
     </view>
     <view class="user-action-item" bindtap="navigateToSettings">
       <text>设置</text>
-      <image class="user-action-arrow" src="../../../assets/images/设置.png" mode="aspectFit"></image>
+      <image class="user-action-arrow" src="../../assets/images/设置.png" mode="aspectFit"></image>
     </view>
   </view>
   <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>

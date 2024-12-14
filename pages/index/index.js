@@ -2,6 +2,7 @@
 import RequestUtils from "../../utils/request_util";
 import User from "../../services/api/user";
 import Dishes from "../../services/api/dishes";
+import util from "../../utils/util.js";
 import config from "../../config/config.js";
 const toast = require("../../companies/toast.js").default;
 Component({
@@ -32,6 +33,10 @@ Component({
   },
 
   methods: {
+    refreshData() {
+      console.log("index 组件正在刷新数据...");
+      // 在这里实现你的刷新逻辑
+    },
     getTips: async function () {
       const helData = await RequestUtils.request(User.user.healthTips);
       this.setData({
@@ -40,8 +45,6 @@ Component({
     },
 
     getRecommendShops: async function () {
-      console.log("进入了推荐门店");
-
       const shopList = await RequestUtils.request(
         Dishes.dishes.getRecommendShops
       );
@@ -67,32 +70,47 @@ Component({
       console.log("Search input:", e.detail.value);
       // 这里可以添加搜索逻辑
     },
+    goToScan() {
+      util.scanQRCode();
+    },
 
     showFilterOptions() {
-      this.setData({ showFilter: true });
+      this.setData({
+        showFilter: true,
+      });
     },
 
     showRecommendOptions() {
-      this.setData({ showRecommend: true });
+      this.setData({
+        showRecommend: true,
+      });
     },
 
     onCountSelect(e) {
       const selectedCount = e.currentTarget.dataset.count;
-      this.setData({ selectedCount });
+      this.setData({
+        selectedCount,
+      });
     },
 
     onCategorySelect(e) {
       const selectedCategory = e.currentTarget.dataset.category;
-      this.setData({ selectedCategory });
+      this.setData({
+        selectedCategory,
+      });
     },
 
     confirmFilter() {
-      this.setData({ showFilter: false });
+      this.setData({
+        showFilter: false,
+      });
       // 这里可以添加筛选后的逻辑,如更新推荐列表
     },
 
     confirmRecommend() {
-      this.setData({ showRecommend: false });
+      this.setData({
+        showRecommend: false,
+      });
       this.getRecommendations();
     },
 
@@ -129,7 +147,9 @@ Component({
     },
 
     onCollectionTap() {
-      this.triggerEvent("navigateToPage", { url: "/pages/collect/collect" });
+      this.triggerEvent("navigateToPage", {
+        url: "/pages/collect/collect",
+      });
     },
     navigateToShop(event) {
       const shopId = event.currentTarget.dataset.shopid;
@@ -140,10 +160,10 @@ Component({
     },
 
     goToSearch() {
-        wx.navigateTo({
-            url: '/pages/search/search' // 跳转到搜索页面
-        });
-    }
+      wx.navigateTo({
+        url: "/pages/search/search", // 跳转到搜索页面
+      });
+    },
   },
 
   ready: function () {

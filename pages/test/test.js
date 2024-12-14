@@ -1,69 +1,89 @@
-// test.js
-// 获取应用实例
-const app = getApp();
-
 Page({
   data: {
-    latitude:0,
-    longitude: 0,
-    markers: [],
-    destinationName: "目的地名称"
+    isAuth: false,
+    src: ''
   },
-
-  onLoad: function (options) {
-    console.log("参数", options.latitude, options.longitude);
-    if (options.latitude && options.longitude) {
-      const lat = parseFloat(options.latitude);
-      const lng = parseFloat(options.longitude);
-      if (this.isValidLatitude(lat) && this.isValidLongitude(lng)) {
-        this.setMapMarker(lng, lat);
-      } else {
-        console.error("Invalid latitude or longitude");
-        // 使用默认值
-        this.setMapMarker(this.data.longitude, this.data.latitude);
+  onLoad() {
+    const _this = this
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.camera']) {
+          // 用户已经授权
+          _this.setData({
+            isAuth: true
+          })
+        } else {
+          // 用户还没有授权，向用户发起授权请求
+          wx.authorize({
+            scope: 'scope.camera',
+            success() { // 用户同意授权
+              _this.setData({
+                isAuth: true
+              })
+            },
+            fail() { // 用户不同意授权
+              _this.openSetting().then(res => {
+                _this.setData({
+                  isAuth: true
+                })
+              })
+            }
+          })
+        }
+      },
+      fail: res => {
+        console.log('获取用户授权信息失败')
       }
-    } else {
-      // 如果没有传入参数，使用默认值
-      this.setMapMarker(this.data.longitude, this.data.latitude);
-    }
-    // 假设我们从options中获取目的地名称，如果没有则使用默认值
-    this.setData({
-      destinationName: options.name || "目的地名称"
-    });
-  },
-
-  setMapMarker(lng, lat) {
-    const marker = {
-      id: 1,
-      latitude: lat,
-      longitude: lng,
-      iconPath: "../../assets/images/食物&器皿－披萨.png",
-      width: 30,
-      height: 30,
-    };
-
-    this.setData({
-      latitude: lat,
-      longitude: lng,
-      markers: [marker],
-    });
-  },
-
-  nav: function () {  
-    wx.openLocation({
-      latitude: this.data.latitude,
-      longitude: this.data.longitude,
-      name: this.data.destinationName,
-      scale: 15,
-      address: `${this.data.latitude},${this.data.longitude}`
     })
   },
 
-  isValidLatitude: function(lat) {
-    return lat >= -90 && lat <= 90;
+  // 打开授权设置界面
+  openSetting() {
+    const _this = this
+    let promise = new Promise((resolve, reject) => {
+      wx.showModal({
+        title: '授权',
+        content: '请先授权获取摄像头权限',
+        success(res) {
+          if (res.confirm) {
+            wx.openSetting({
+              success(res) {
+                if (res.authSetting['scope.camera']) { // 用户打开了授权开关
+                  resolve(true)
+                } else { // 用户没有打开授权开关， 继续打开设置页面
+                  _this.openSetting().then(res => {
+                    resolve(true)
+                  })
+                }
+              },
+              fail(res) {
+                console.log(res)
+              }
+            })
+          } else if (res.cancel) {
+            _this.openSetting().then(res => {
+              resolve(true)
+            })
+          }
+        }
+      })
+    })
+    return promise;
   },
 
-  isValidLongitude: function(lng) {
-    return lng >= -180 && lng <= 180;
+  takePhoto() {
+    const ctx = wx.createCameraContext()
+    ctx.takePhoto({
+      quality: 'high',
+      success: (res) => {
+        this.setData({
+          src: res.tempImagePath
+        })
+        wx.previewImage({
+          current: res.tempImagePath, // 当前显示图片的http链接
+          urls: [res.tempImagePath] // 需要预览的图片http链接列表
+        })
+      }
+    })
   }
-});
+})

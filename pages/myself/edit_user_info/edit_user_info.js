@@ -2,6 +2,8 @@
 import RequestUtils from "../../../utils/request_util";
 import User from "../../../services/api/user";
 import util from "../../../utils/util";
+import im from "../../../services/api/im.js";
+import request_util from "../../../utils/request_util";
 const toast = require("../../../companies/toast.js").default;
 
 Page({
@@ -14,12 +16,31 @@ Page({
       description: "",
     },
     filePath: "",
+    isAdd: false,
+    friedId: null,
+    remark: "",
   },
 
-  onLoad: function (options) {
+  onLoad: async function (options) {
+    console.log(options);
+    const addFried = options.isAdd;
+    console.log(addFried);
     const userInfo = wx.getStorageSync("userInfo");
-    console.log("Initial userInfo:", userInfo);
-    this.setData({ userInfo });
+    if (addFried && options.id !== userInfo.id) {
+      console.log("进入");
+      const url = User.user.getUser.url;
+      User.user.getUser.url = User.user.getUser.url + "?id=" + options.id;
+      const data = await request_util.request(User.user.getUser);
+      this.setData({
+        isAdd: options.isAdd,
+        friedId: options.id,
+        userInfo: data.data,
+      });
+      User.user.getUser.url = url;
+    } else {
+      console.log("Initial userInfo:", userInfo);
+      this.setData({ userInfo });
+    }
   },
 
   changeAvatar: function () {
@@ -68,6 +89,12 @@ Page({
       "userInfo.description": e.detail.value,
     });
   },
+  onInput: function (e) {
+    console.log("Signature changed:", e.detail.value);
+    this.setData({
+      remark: e.detail.value,
+    });
+  },
 
   saveUserInfo: function () {
     // 这里应该将修改后的用户信息保存到服务器
@@ -88,8 +115,9 @@ Page({
         duration: 2000,
       });
       console.log(res.data);
-      if (!res.data) {
-        wx.getStorageSync("userInfo", res.data);
+      if (res.data) {
+        console.log("进入1356");
+        wx.setStorageSync("userInfo", res.data);
       }
       toast.showToast("保存成功", "success");
       setTimeout(() => {
@@ -98,6 +126,22 @@ Page({
     });
 
     // 保存成功后返回上一页
+  },
+  async addFried() {
+    im.im.addFriend.data = {
+      friendId: this.data.friedId,
+      remark: this.data.remark,
+    };
+    const data = await request_util.request(im.im.addFriend);
+    if (data.message === "好友已添加，请勿重复添加") {
+      toast.showToast(data.message, "error");
+    } else {
+      toast.showToast(data.message, "success");
+    }
+
+    setTimeout(() => {
+      wx.navigateBack();
+    }, 1500);
   },
   getUser: async function () {
     const userData = await RequestUtils.request(User.user.getUser);

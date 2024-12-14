@@ -1,0 +1,11 @@
+<view class="qrcode-page">
+  <view class="user-profile">
+    <image class="user-avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+    <text class="user-name">{{userInfo.nickname}}</text>
+  </view>
+  
+  <view class="qrcode-container">
+    <image class="qrcode-image" src="{{qrCodeUrl}}" mode="aspectFit"></image>
+    <text class="qrcode-tip">扫一扫，加我好友</text>
+  </view>
+</view>

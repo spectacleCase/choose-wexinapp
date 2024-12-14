@@ -28,9 +28,16 @@ const user = {
     data: null,
     auth: true,
   },
-
+  // 每天随机健康小知识
   healthTips: {
     url: BASE_URL + "/v1/health-tips",
+    method: "POST",
+    data: null,
+    auth: true,
+  },
+  // 用户的二维码
+  getUseroR: {
+    url: BASE_URL + "/v1/getUserOR",
     method: "POST",
     data: null,
     auth: true,

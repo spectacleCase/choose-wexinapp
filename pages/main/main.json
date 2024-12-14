@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "page-container": "/components/page-container/page-container",
-    "side-tabbar": "/components/side-tabbar/side-tabbar"
+    "side-tabbar": "/components/side-tabbar/side-tabbar",
+    "message-popup": "/components/message-popup/message-popup"
   }
 }

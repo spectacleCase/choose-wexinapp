@@ -2,23 +2,30 @@
 <view class="edit-user-info">
     <view class="avatar-section">
         <image class="avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
-        <button class="change-avatar-btn" bindtap="changeAvatar">更换头像</button>
+        <button class="change-avatar-btn" bindtap="changeAvatar" wx:if="{{!isAdd}}">更换头像</button>
     </view>
     <view class="info-item">
         <text class="label">昵称</text>
-        <input class="input" value="{{userInfo.nickname}}" bindinput="onNicknameChange" placeholder="请输入昵称" />
+        <input class="input" value="{{userInfo.nickname}}" bindinput="onNicknameChange" placeholder="请输入昵称" disabled="{{isAdd}}" />
     </view>
     <view class="info-item">
         <text class="label">性别</text>
         <radio-group class="radio-group" bindchange="onGenderChange">
-            <radio value="male" checked="{{userInfo.gender === '2'}}">男</radio>
-            <radio value="female" checked="{{userInfo.gender === '1'}}">女</radio>
+            <radio value="1" checked="{{userInfo.gender === '1'}}" disabled="{{isAdd}}">男</radio>
+            <radio value="2" checked="{{userInfo.gender === '2'}}" disabled="{{isAdd}}">
+                女
+            </radio>
         </radio-group>
     </view>
     <view class="info-item ">
         <text class="label">个性签名</text>
-        <input class="input" value="{{userInfo.description}}" bindinput="onDescriptionChange" placeholder="请输入个性签名" />
+        <input class="input" value="{{userInfo.description}}" bindinput="onDescriptionChange" placeholder="请输入个性签名" disabled="{{isAdd}}" />
     </view>
-    <button class="save-btn" bindtap="saveUserInfo">保存</button>
+    <view class="info-item " wx:if="{{idAdd}}">
+        <text class="label">添加备注</text>
+        <textarea placeholder="请输入内容" value="{{remark}}" disabled="{{!isAdd}}" bindinput="onInput" />
+    </view>
+    <button class="save-btn" bindtap="addFried" wx:if="{{isAdd}}">添加</button>
+    <button class="save-btn" bindtap="saveUserInfo" wx:else>保存</button>
     <custom-toast show="{{customToast.show}}" message="{{customToast.message}}" type="{{customToast.type}}" duration="{{customToast.duration}}"></custom-toast>
 </view>

@@ -1,0 +1,30 @@
+<view class="container">
+  <!-- 搜索区域 -->
+  <view class="search-area">
+    <view class="search-box">
+      <image class="search-icon" src="./../../../assets/images/搜索.png" mode="aspectFit"></image>
+      <input class="search-input" placeholder="搜索用户" placeholder-class="search-placeholder" bindinput="onSearch" />
+    </view>
+    <image class="qr-icon" src="../../../assets/images/扫描.png" mode="aspectFit" bindtap="scanQRCode"></image>
+  </view>
+  <!-- 新朋友列表 -->
+  <view class="friend-list">
+    <block wx:for="{{friendGroups}}" wx:key="title">
+      <!-- 时间分组标题 -->
+      <view class="time-title" wx:if="{{item.friends.length > 0}}">{{item.title}}</view>
+      <!-- 好友列表 -->
+      <view class="friend-group">
+        <view class="friend-item" wx:for="{{item.friends}}" wx:key="id" wx:for-item="friend">
+          <image class="avatar" src="{{friend.friendImage}}" mode="aspectFill"></image>
+          <view class="info">
+            <view class="name">{{friend.friendName}}</view>
+            <view class="remark">{{friend.remark}}</view>
+          </view>
+          <button class="agree-btn {{friend.status === 1 ? 1 : 0}}" data-id="{{friend.id}}" bindtap="agreeFriend" disabled="{{friend.status === 1}}">
+            {{friend.status === 1 ? '添加' : '同意'}}
+          </button>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

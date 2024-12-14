@@ -1,0 +1,54 @@
+<!-- pages/chat/chat.wxml -->
+<view class="chat-container">
+    <!-- 顶部选项卡 -->
+    <view class="header">
+        <view class="tab-item {{activeTab === 'chat' ? 'active' : ''}}" bindtap="switchTab" data-tab="chat">
+            聊天
+        </view>
+        <view class="tab-item {{activeTab === 'contacts' ? 'active' : ''}}" bindtap="switchTab" data-tab="contacts">
+            联系人
+        </view>
+    </view>
+    <!-- 聊天列表 -->
+    <view class="chat-list" wx:if="{{activeTab === 'chat'}}">
+        <view class="chat-item" wx:for="{{chatList}}" wx:key="id" bindtap="gotoChat" data-id="{{item.id}}">
+            <view class="avatar-container">
+                <image class="avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+                <view class="badge" wx:if="{{item.notReadCount > 0}}">{{item.notReadCount}}</view>
+            </view>
+            <view class="chat-info">
+                <view class="top-line">
+                    <text class="username">{{item.username}}</text>
+                    <text class="time">{{item.createTime}}</text>
+                </view>
+                <text class="last-message">{{item.chat}}</text>
+            </view>
+        </view>
+    </view>
+    <!-- 联系人列表 -->
+    <view class="contacts-container" wx:if="{{activeTab === 'contacts'}}">
+        <view class="quick-actions">
+            <view class="action-item" bindtap="gotoNewFriends">
+                <view class="action-icon">
+                    <image src="../../assets/images/新朋友.png" mode="aspectFit"></image>
+                </view>
+                <text>新的朋友</text>
+            </view>
+            <view class="action-item">
+                <view class="action-icon">
+                    <image src="../../assets/images/群聊.png" mode="aspectFit"></image>
+                </view>
+                <text>群聊</text>
+            </view>
+        </view>
+        <view class="contact-list">
+            <view class="contact-group" wx:for="{{contactGroups}}" wx:key="letter">
+                <view class="group-letter">{{item.letter}}</view>
+                <view class="contact-item" wx:for="{{item.contacts}}" wx:key="id" wx:for-item="contact">
+                    <image class="avatar" src="{{contact.avatar}}" mode="aspectFill"></image>
+                    <text class="username">{{contact.username}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

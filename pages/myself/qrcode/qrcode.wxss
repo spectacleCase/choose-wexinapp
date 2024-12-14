@@ -1,0 +1,47 @@
+.qrcode-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 60rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80rpx;
+}
+
+.user-avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 80rpx;
+  border: 4rpx solid #ffffff;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 20rpx;
+}
+
+.user-name {
+  font-size: 36rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.qrcode-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qrcode-image {
+  width: 400rpx;
+  height: 400rpx;
+  margin-bottom: 30rpx;
+}
+
+.qrcode-tip {
+  font-size: 28rpx;
+  color: #999999;
+} 

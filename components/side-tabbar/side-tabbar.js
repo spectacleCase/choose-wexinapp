@@ -12,6 +12,13 @@ Component({
       },
     },
   },
+  pageLifetimes: {
+    // 页面显示时触发
+    show() {
+      const userInfo = wx.getStorageSync("userInfo");
+      this.setData({ userInfo });
+    },
+  },
 
   data: {
     pageAnimation: {},
@@ -21,11 +28,11 @@ Component({
         text: "首页",
         url: "/pages/index/index",
       },
-      // {
-      //   icon: "../../assets/images/功能排行榜.png",
-      //   text: "排行榜",
-      //   url: "/pages/ranking/ranking",
-      // },
+      {
+        icon: "../../assets/images/聊天.png",
+        text: "搭子",
+        url: "/pages/chat/chat",
+      },
       {
         icon: "../../assets/images/发布.png",
         text: "今日",
@@ -40,7 +47,7 @@ Component({
       {
         icon: "../../assets/images/我的.png",
         text: "我的",
-        url: "/pages/myself/user/user",
+        url: "/pages/user/user",
       },
     ],
     userInfo: {},
