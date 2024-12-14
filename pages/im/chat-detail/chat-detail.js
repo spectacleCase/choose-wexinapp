@@ -134,6 +134,7 @@ Page({
       createTime: new Date().toISOString(), // ISO 格式，不会有问题
       sender: this.data.userInfo.id,
       receiver: this.data.secondUser.id,
+      avatar: this.data.userInfo.avatar,
       type: 0,
       sendFailed: false,
     };
@@ -203,6 +204,7 @@ Page({
         createTime: new Date().toISOString(), // ISO 格式，不会有问题
         sender: this.data.userInfo.id,
         receiver: this.data.secondUser.id,
+        avatar: this.data.userInfo.avatar,
         type: 0,
       }),
       () => {
