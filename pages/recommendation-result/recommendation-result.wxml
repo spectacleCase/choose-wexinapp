@@ -5,9 +5,23 @@
       <image class="bubble-icon" src="{{item.icon}}" mode="aspectFit"></image>
     </view>
   </view>
+
+  <!-- 顶部 Agent 链路简要信息 -->
+  <view wx:if="{{traceId}}" class="agent-meta">
+    <text class="agent-meta-label">Agent 协作 ·</text>
+    <text class="agent-meta-trace">trace {{traceId}}</text>
+    <text wx:if="{{pReActSavedMs}}" class="agent-meta-pl">⚡ P-ReAct -{{pReActSavedMs}}ms</text>
+  </view>
+
+  <!-- 矛盾约束追问条 (论文 3.1.4) -->
+  <view wx:if="{{conflictDetected && clarifyQuestion}}" class="clarify-bar">
+    <text class="clarify-icon">?</text>
+    <text class="clarify-text">{{clarifyQuestion}}</text>
+  </view>
+
   <!-- 推荐信息胶囊 -->
   <swiper class="info-capsule-swiper" bindchange="onSwiperChange" vertical="true" current="{{currentIndex}}">
-    <swiper-item wx:for="{{recommendations}}" wx:key="id">
+    <swiper-item wx:for="{{recommendations}}" wx:key="id" wx:for-index="cardIdx">
       <view class="info-capsule">
         <image class="dish-image" src="{{item.image}}" mode="aspectFill"></image>
         <view class="info-content">
@@ -15,9 +29,12 @@
             <text class="dish-name">{{item.dishesName}}</text>
             <view class="stars">{{item.stars}}</view>
           </view>
+
           <view class="shop-info">
             <text class="shop-name">{{item.shopName}}</text>
-            <view class="navigation-container" bindtap="navigationShop" data-coordinate="{{item.coordinate}}" data-dishesName="{{item.dishesName}}">
+            <view class="navigation-container" bindtap="navigationShop"
+                  data-coordinate="{{item.coordinate}}"
+                  data-dishesName="{{item.dishesName}}">
               <image class="navigation-icon" src="../../assets/images/导航.png" mode="aspectFit"></image>
               <text class="navigation-text">导航到店</text>
             </view>
@@ -26,14 +43,34 @@
               <text class="navigation-text">到店铺</text>
             </view>
           </view>
+
           <view class="tags">
             <view class="tag" wx:for="{{item.tagName}}" wx:for-item="tag" wx:key="index">
               {{tag}}
             </view>
           </view>
+
+          <!-- AI 推荐理由 (论文 5.2 可解释推荐) -->
           <view class="ai-description">
-            <text class="ai-label">AI评价</text>
-            <text class="ai-content">{{item.aiDescription}}</text>
+            <text class="ai-label">AI 推荐理由</text>
+            <text class="ai-content">{{item.aiDescription || '(暂无 AI 推荐理由)'}}</text>
+          </view>
+
+          <!-- 满意度评分 (论文 5.2) -->
+          <view class="rating-bar" wx:if="{{traceId}}">
+            <text class="rating-label">您觉得这条推荐怎么样?</text>
+            <view class="rating-stars">
+              <view
+                wx:for="{{[1,2,3,4,5]}}"
+                wx:for-item="s"
+                wx:key="*this"
+                class="rating-star {{ratings[cardIdx] >= s ? 'rated' : ''}}"
+                bindtap="onRateTap"
+                data-score="{{s}}"
+                data-idx="{{cardIdx}}"
+              >★</view>
+            </view>
+            <text wx:if="{{ratings[cardIdx]}}" class="rating-tip">已评 {{ratings[cardIdx]}} 分,谢谢反馈</text>
           </view>
         </view>
       </view>

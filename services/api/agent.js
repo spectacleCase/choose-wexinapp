@@ -23,6 +23,17 @@ const agent = {
     auth: true,
     data: null,
   },
+
+  /**
+   * 用户提交满意度评价 (论文 5.2)
+   * data: { traceId, rating (1-5), comment? }
+   */
+  feedback: {
+    url: BASE_URL + "/feedback",
+    method: "POST",
+    auth: true,
+    data: null,
+  },
 };
 
 export default { agent };

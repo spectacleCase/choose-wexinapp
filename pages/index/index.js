@@ -19,6 +19,7 @@ Component({
     recommendationCategories: ["菜品", "下午茶", "糕点"],
     selectedCount: "3个",
     selectedCategory: "菜品",
+    searchInput: "",
     // 论文 5.2 常用查询示例
     queryExamples: [
       "附近适合减脂期的健康粤菜",
@@ -75,9 +76,7 @@ Component({
     },
 
     onSearchInput(e) {
-      // 处理搜索输入
-      console.log("Search input:", e.detail.value);
-      // 这里可以添加搜索逻辑
+      this.setData({ searchInput: e.detail.value || "" });
     },
     goToScan() {
       util.scanQRCode();
@@ -129,16 +128,26 @@ Component({
     },
 
     getRecommendations() {
+      // 论文 5.2: 把搜索框内容(若有)作为自然语言 query 传给 Agent 推荐流
+      const query = (this.data.searchInput || "").trim() || "为我推荐美食";
       wx.showToast({
-        title: "正在为您推荐",
+        title: "Agent 协作推荐中",
         icon: "loading",
-        duration: 1000,
+        duration: 1500,
       });
-      setTimeout(() => {
-        wx.navigateTo({
-          url: `/pages/recommendation-result/recommendation-result?selectedCount=${this.data.selectedCount}`,
-        });
-      }, 1000);
+      // 同步取定位,失败不阻塞
+      const go = (location) => {
+        const url = `/pages/recommendation-result/recommendation-result`
+          + `?selectedCount=${this.data.selectedCount}`
+          + `&query=${encodeURIComponent(query)}`
+          + (location ? `&location=${encodeURIComponent(location)}` : "");
+        setTimeout(() => wx.navigateTo({ url }), 800);
+      };
+      wx.getLocation({
+        type: "gcj02",
+        success: (res) => go(res.longitude + "," + res.latitude),
+        fail: () => go(""),
+      });
     },
 
     resetFilter() {

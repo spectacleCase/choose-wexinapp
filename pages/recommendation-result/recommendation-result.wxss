@@ -186,3 +186,95 @@
   font-size: 22rpx;
   color: #4A90E2;
 }
+
+/* 论文 4-5 章 Agent 协作链路信息 */
+.agent-meta {
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+  right: 20rpx;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  padding: 10rpx 18rpx;
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: 28rpx;
+  font-size: 22rpx;
+  color: #4338ca;
+}
+.agent-meta-label { font-weight: bold; }
+.agent-meta-trace { font-family: monospace; opacity: 0.7; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.agent-meta-pl {
+  background: #ddd6fe;
+  color: #6d28d9;
+  padding: 4rpx 12rpx;
+  border-radius: 16rpx;
+  font-size: 20rpx;
+}
+
+/* 论文 3.1.4 矛盾约束追问条 */
+.clarify-bar {
+  position: absolute;
+  top: 80rpx;
+  left: 20rpx;
+  right: 20rpx;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  padding: 14rpx 20rpx;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1rpx solid #f59e0b;
+  border-radius: 16rpx;
+}
+.clarify-icon {
+  flex-shrink: 0;
+  width: 36rpx; height: 36rpx;
+  background: #f59e0b;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 26rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 36rpx;
+}
+.clarify-text {
+  font-size: 24rpx;
+  color: #78350f;
+  line-height: 1.5;
+}
+
+/* 论文 5.2 满意度评分 */
+.rating-bar {
+  margin-top: 24rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx dashed rgba(255, 255, 255, 0.4);
+}
+.rating-label {
+  display: block;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 10rpx;
+}
+.rating-stars {
+  display: flex;
+  gap: 14rpx;
+}
+.rating-star {
+  font-size: 40rpx;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.18s;
+}
+.rating-star.rated {
+  color: #fbbf24;
+}
+.rating-star:active {
+  transform: scale(1.2);
+}
+.rating-tip {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #fbbf24;
+}
