@@ -287,3 +287,68 @@ page {
   border-radius: 8rpx;
   border: 2rpx dashed #999;  /* 添加虚线边框 */
 }
+
+/* 论文 5.2 智能标签建议 */
+.ai-suggest {
+  margin: 10rpx 0;
+  padding: 18rpx;
+  background: linear-gradient(135deg, #eef2ff 0%, #f0fdf4 100%);
+  border: 1rpx solid #c7d2fe;
+  border-radius: 16rpx;
+}
+.ai-suggest-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.ai-suggest-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #4f46e5;
+}
+.ai-suggest-loading {
+  font-size: 22rpx;
+  color: #6366f1;
+}
+.ai-suggest-row {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10rpx;
+}
+.ai-suggest-label {
+  font-size: 22rpx;
+  color: #6b7280;
+  width: 110rpx;
+  flex-shrink: 0;
+  padding-top: 8rpx;
+}
+.ai-suggest-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  flex: 1;
+}
+.ai-chip {
+  padding: 8rpx 18rpx;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  border: 1rpx solid transparent;
+}
+.ai-chip-matched {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #86efac;
+}
+.ai-chip-matched:active { background: #86efac; color: #fff; }
+.ai-chip-new {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #fcd34d;
+}
+.ai-chip-new:active { background: #fcd34d; color: #fff; }
+.ai-chip-topic {
+  background: #ede9fe;
+  color: #6d28d9;
+  border-color: #c4b5fd;
+}

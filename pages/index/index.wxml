@@ -14,6 +14,19 @@
           <image style="width: 50rpx; height: 50rpx;" src="../../assets/images/扫描.png" mode="aspectFit"></image>
         </view>
       </view>
+      <!-- 论文 5.2 常用查询示例引导 -->
+      <scroll-view scroll-x="true" class="example-chips" enhanced="true" show-scrollbar="false">
+        <view class="example-chips-inner">
+          <text class="example-chips-label">试试: </text>
+          <view
+            wx:for="{{queryExamples}}"
+            wx:key="*this"
+            class="example-chip"
+            bindtap="onExampleTap"
+            data-text="{{item}}"
+          >{{item}}</view>
+        </view>
+      </scroll-view>
     </view>
     <view class="header">
       <view class="location-info">

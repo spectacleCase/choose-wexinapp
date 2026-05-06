@@ -28,6 +28,14 @@ Page({
    */
   onLoad(options) {
     this.updateDisplayedHistory();
+    // 论文 5.2 常用查询示例: 从 index 页带 keyword 跳来时直接进搜索结果
+    if (options && options.keyword) {
+      const kw = decodeURIComponent(options.keyword);
+      this.setData({ searchInput: kw });
+      wx.navigateTo({
+        url: `/pages/search/result/result?term=${encodeURIComponent(kw)}`,
+      });
+    }
   },
 
   // 更新显示的历史记录

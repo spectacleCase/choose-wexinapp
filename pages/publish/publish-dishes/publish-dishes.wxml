@@ -29,6 +29,49 @@
             <text class="picker-value">{{selectedShop.shopName || '请选择'}}</text>
         </view>
     </picker>
+    <!-- 论文 5.2 智能标签建议 (LLM 从菜名抽取) -->
+    <view class="ai-suggest" wx:if="{{suggestLoading || suggestedMatchedTags.length || suggestedNewTags.length || suggestedTopics.length}}">
+        <view class="ai-suggest-header">
+            <text class="ai-suggest-title">🤖 智能标签建议</text>
+            <text class="ai-suggest-loading" wx:if="{{suggestLoading}}">分析中…</text>
+        </view>
+        <view wx:if="{{suggestedMatchedTags.length}}" class="ai-suggest-row">
+            <text class="ai-suggest-label">推荐标签</text>
+            <view class="ai-suggest-chips">
+                <view
+                    wx:for="{{suggestedMatchedTags}}"
+                    wx:key="id"
+                    class="ai-chip ai-chip-matched"
+                    bindtap="applySuggestedTag"
+                    data-id="{{item.id}}"
+                    data-name="{{item.name}}"
+                >+ {{item.name}}</view>
+            </view>
+        </view>
+        <view wx:if="{{suggestedNewTags.length}}" class="ai-suggest-row">
+            <text class="ai-suggest-label">建议新增</text>
+            <view class="ai-suggest-chips">
+                <view
+                    wx:for="{{suggestedNewTags}}"
+                    wx:key="*this"
+                    class="ai-chip ai-chip-new"
+                    bindtap="hintNewTag"
+                    data-name="{{item}}"
+                >{{item}}</view>
+            </view>
+        </view>
+        <view wx:if="{{suggestedTopics.length}}" class="ai-suggest-row">
+            <text class="ai-suggest-label">话题</text>
+            <view class="ai-suggest-chips">
+                <view
+                    wx:for="{{suggestedTopics}}"
+                    wx:key="*this"
+                    class="ai-chip ai-chip-topic"
+                >#{{item}}</view>
+            </view>
+        </view>
+    </view>
+
     <view class="tag-selector" bindtap="showTagSelector">
         <text class="tag-selector-text">选择标签</text>
     </view>

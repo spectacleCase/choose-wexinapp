@@ -19,6 +19,15 @@ Component({
     recommendationCategories: ["菜品", "下午茶", "糕点"],
     selectedCount: "3个",
     selectedCategory: "菜品",
+    // 论文 5.2 常用查询示例
+    queryExamples: [
+      "附近适合减脂期的健康粤菜",
+      "想吃辣但最近胃不好",
+      "推荐适合约会的餐厅",
+      "人均80元的清淡日料",
+      "高蛋白低脂的午餐",
+      "想吃热的暖胃的",
+    ],
     recommendationResults: [
       {
         id: 1,
@@ -162,6 +171,15 @@ Component({
     goToSearch() {
       wx.navigateTo({
         url: "/pages/search/search", // 跳转到搜索页面
+      });
+    },
+
+    /** 论文 5.2 常用查询示例: 点击 chip 直接带 keyword 跳搜索页 */
+    onExampleTap(e) {
+      const text = e.currentTarget.dataset.text;
+      if (!text) return;
+      wx.navigateTo({
+        url: "/pages/search/search?keyword=" + encodeURIComponent(text),
       });
     },
   },

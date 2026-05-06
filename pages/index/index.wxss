@@ -586,3 +586,33 @@ background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
   font-size: 20rpx;
   color: #ffffff;
 }
+
+/* 论文 5.2 常用查询示例 chip */
+.example-chips {
+  white-space: nowrap;
+  margin: 14rpx 20rpx 0 20rpx;
+}
+.example-chips-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 14rpx;
+  padding: 4rpx 0;
+}
+.example-chips-label {
+  font-size: 22rpx;
+  color: #999;
+  flex-shrink: 0;
+}
+.example-chip {
+  flex-shrink: 0;
+  padding: 10rpx 22rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(135deg, #fff5e1 0%, #ffe6cc 100%);
+  color: #d97706;
+  font-size: 24rpx;
+  border: 1rpx solid #fdba74;
+}
+.example-chip:active {
+  background: #fdba74;
+  color: #fff;
+}

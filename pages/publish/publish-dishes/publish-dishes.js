@@ -5,6 +5,7 @@ import RequestUtil from "../../../utils/request_util.js";
 import Dishes from "../../../services/api/dishes.js";
 import Ranking from "../../../services/api/ranking.js";
 import Common from "../../../services/api/common.js";
+import Agent from "../../../services/api/agent.js";
 const toast = require("../../../companies/toast.js").default;
 Page({
   /**
@@ -45,11 +46,73 @@ Page({
     ],
     tempFilePaths: [],
     DishesName: "",
+    // 论文 5.2 美食社区智能推荐分享
+    suggestedMatchedTags: [],   // LLM 命中已有标签 [{id, name}]
+    suggestedNewTags: [],       // LLM 建议的新标签名
+    suggestedTopics: [],        // 话题建议
+    suggestLoading: false,
   },
 
   onDishesNameInput(e) {
-    this.setData({
-      dishesName: e.detail.value,
+    const v = e.detail.value;
+    this.setData({ dishesName: v });
+    this._scheduleTagSuggest(v);
+  },
+
+  /** 防抖触发智能标签提取 */
+  _scheduleTagSuggest(text) {
+    if (this._suggestTimer) clearTimeout(this._suggestTimer);
+    if (!text || text.trim().length < 2) {
+      this.setData({
+        suggestedMatchedTags: [],
+        suggestedNewTags: [],
+        suggestedTopics: [],
+      });
+      return;
+    }
+    this._suggestTimer = setTimeout(() => this._fetchTagSuggest(text.trim()), 800);
+  },
+
+  async _fetchTagSuggest(text) {
+    this.setData({ suggestLoading: true });
+    try {
+      Agent.agent.extractTags.data = { content: text };
+      const resp = await RequestUtil.request(Agent.agent.extractTags);
+      const d = (resp && resp.data) || {};
+      this.setData({
+        suggestedMatchedTags: Array.isArray(d.matchedTags) ? d.matchedTags : [],
+        suggestedNewTags: Array.isArray(d.newTags) ? d.newTags : [],
+        suggestedTopics: Array.isArray(d.topics) ? d.topics : [],
+      });
+    } catch (e) {
+      console.warn("tag suggest fail", e);
+    } finally {
+      this.setData({ suggestLoading: false });
+    }
+  },
+
+  /** 点击 LLM 命中标签: 加入 selectedTags */
+  applySuggestedTag(e) {
+    const id = e.currentTarget.dataset.id;
+    const name = e.currentTarget.dataset.name;
+    if (id == null) return;
+    const selectedTags = this.data.selectedTags.slice();
+    if (selectedTags.find((t) => t.id === id)) return;
+    if (selectedTags.length >= 5) {
+      wx.showToast({ title: "最多 5 个标签", icon: "none" });
+      return;
+    }
+    selectedTags.push({ id, tag: name });
+    this.setData({ selectedTags });
+  },
+
+  /** 点击 LLM 建议的新标签: 仅展示提示 (库里没有,无法直接加) */
+  hintNewTag(e) {
+    const name = e.currentTarget.dataset.name;
+    wx.showModal({
+      title: "新标签建议",
+      content: `"${name}" 还不在标签库,可联系管理员补充后再使用。`,
+      showCancel: false,
     });
   },
   showTagSelector() {
