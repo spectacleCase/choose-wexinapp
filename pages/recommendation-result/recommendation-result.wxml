@@ -19,6 +19,15 @@
     <text class="clarify-text">{{clarifyQuestion}}</text>
   </view>
 
+  <!-- 输入被安全防护拦截 (论文 2.1.3) -->
+  <view wx:if="{{blocked}}" class="block-overlay">
+    <view class="block-panel">
+      <text class="block-icon">⚠️</text>
+      <text class="block-title">无法处理这次请求</text>
+      <text class="block-reason">{{blockReason}}</text>
+    </view>
+  </view>
+
   <!-- 推荐信息胶囊 -->
   <swiper class="info-capsule-swiper" bindchange="onSwiperChange" vertical="true" current="{{currentIndex}}">
     <swiper-item wx:for="{{recommendations}}" wx:key="id" wx:for-index="cardIdx">

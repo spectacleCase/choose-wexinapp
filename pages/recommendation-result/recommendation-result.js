@@ -24,6 +24,9 @@ Page({
     /** 是否检测到矛盾约束 */
     conflictDetected: false,
     clarifyQuestion: "",
+    /** 是否被 PromptGuard 拦截 (论文 2.1.3) */
+    blocked: false,
+    blockReason: "",
   },
 
   onLoad: function (options) {
@@ -47,6 +50,15 @@ Page({
     try {
       const resp = await RequestUtils.request(Agent.agent.recommend);
       const d = resp && resp.data ? resp.data : {};
+      // 输入被 PromptGuard 拦截,直接展示拒绝文案
+      if (d.blocked) {
+        this.setData({
+          blocked: true,
+          blockReason: d.blockReason || "您的输入触发了安全检测,请重新描述您的美食需求。",
+          recommendations: [],
+        });
+        return;
+      }
       const list = Array.isArray(d.items) ? d.items : [];
       const updated = list.map((item) => ({
         ...item,
@@ -60,6 +72,8 @@ Page({
         pReActSavedMs: d.pReActSavedMs || 0,
         conflictDetected: !!d.conflictDetected,
         clarifyQuestion: d.clarifyQuestion || "",
+        blocked: false,
+        blockReason: "",
       });
     } catch (e) {
       console.warn("Agent 推荐失败,降级到旧推荐", e);
